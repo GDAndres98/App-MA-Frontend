@@ -1,0 +1,14 @@
+.magic_button {
+    transition-duration: 0.4s;
+  }
+  
+.magic_button:hover {
+    background-color: rgb(67, 27, 245); /* Green */
+    color: white;
+  }
+.body {
+    display: table;
+    background-color: green;
+}
+
+  
