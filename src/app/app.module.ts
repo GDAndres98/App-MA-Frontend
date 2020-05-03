@@ -41,12 +41,16 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { MarkdownModule, KatexOptions   } from 'ngx-markdown';
+import { ProfileComponent } from './profile/profile.component';
+import { SendsComponent } from './sends/sends.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
-    MarkdownComponent
+    MarkdownComponent,
+    ProfileComponent,
+    SendsComponent
   ],
   imports: [
     HttpClientModule,
