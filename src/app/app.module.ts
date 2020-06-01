@@ -39,10 +39,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 import { MarkdownModule, KatexOptions   } from 'ngx-markdown';
 import { ProfileComponent } from './profile/profile.component';
 import { SendsComponent } from './sends/sends.component';
+import { LoginComponent } from './login/login.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,9 @@ import { SendsComponent } from './sends/sends.component';
     TestComponent,
     MarkdownComponent,
     ProfileComponent,
-    SendsComponent
+    SendsComponent,
+    LoginComponent,
+    SidebarComponent
   ],
   imports: [
     HttpClientModule,
@@ -87,6 +93,7 @@ import { SendsComponent } from './sends/sends.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    ReactiveFormsModule,
     MarkdownModule.forRoot()
   ],
   providers: [],
