@@ -1,4 +1,4 @@
-<div class="bg-dark">
+<div class="bg-dark" *ngIf="isLoggedIn$ | async as isLoggedIn">
     <div class="area"></div><nav class="main-menu split left" id="navbarNav">
         <ul class="navbar-nav ">
             <li class ="nav-item">
@@ -77,14 +77,14 @@
             <a routerLink="/profile">
                 <i class="fa fa-user fa-2x"></i>
                 <span class="nav-text">
-                    Oi josuke
+                    {{name}}
                 </span>
             </a>
         </li>
             <li>
-                <a href="#">
-                      <i class="fa fa-power-off fa-2x"></i>
-                    <span class="nav-text">
+                <a  (click) = "logout()">
+                    <i class="fa fa-power-off fa-2x"></i>
+                    <span class="nav-text" >
                         Logout
                     </span>
                 </a>

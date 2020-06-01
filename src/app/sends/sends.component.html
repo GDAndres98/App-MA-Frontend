@@ -4,9 +4,9 @@
     </nav>
 </div>
 
-<div class="container-fluid m-0 p-0 bg-dark h-100">
+<div class="container-fluid m-0 p-0 bg-dark h-100 rounded">
     <div style="height: 100px;"></div>
-    <div class="mx-5 p-3" style="background: #ffffff4d">
+    <div class="mx-5 p-3 rounded" style="background: #ffffff4d">
         <form [formGroup]="myForm" class="text-white">
             <mat-form-field color="accent" class="w-25" >
               <mat-label>Buscar</mat-label>
@@ -19,8 +19,8 @@
             <mat-checkbox class="check-box">Mostrar solo tareas</mat-checkbox>
         </section>
     </div>
-    <div style="display: flex;">
-    <div class="mx-5 my-2 p-3" style="background: #ffffff4d; width: 60%; float: left;">
+    <div style="display: flex">
+    <div class="mx-5 my-2 p-3 rounded" style="background: #ffffff4d; width: 60%; float: left;">
         <table class="table table-dark table-hover" style="border-radius: 10px;">
             <thead>
               <tr>
@@ -101,7 +101,7 @@
           </table>        
     </div>
 
-    <div class="mr-5 my-2 p-3" style="background: #ffffff4d; width: 30%; float: right;">
+    <div class="mr-5 my-2 p-3 rounded" style="background: #ffffff4d; width: 30%; float: right;">
         <form [formGroup]="myForm2" class="text-white">
             <mat-form-field color="accent" class="w-25">
               <mat-label>Buscar</mat-label>

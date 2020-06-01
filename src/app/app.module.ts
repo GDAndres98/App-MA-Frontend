@@ -47,6 +47,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { SendsComponent } from './sends/sends.component';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AuthService } from './services/auth/auth.service';
+import { AuthGuard } from './login/login.guard';
+import { StorageService } from './services/auth/storage.service';
 
 @NgModule({
   declarations: [
@@ -94,9 +97,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MatSortModule,
     MatPaginatorModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MarkdownModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
