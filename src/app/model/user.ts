@@ -7,6 +7,9 @@ export class User {
 }
 
 export class UserLogin {
-    public userName: string;
-    public password: string;
+    public firstName:   string;
+    public lastName:    string;
+    public userName:    string;
+    public email:       string;
+    public password:    string;
 }

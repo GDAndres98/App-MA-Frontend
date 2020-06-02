@@ -5,6 +5,7 @@ import { StorageService } from '../services/auth/storage.service';
 import { User } from '../model/User';
 import { Session } from '../services/auth/Session';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -15,11 +16,13 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   private formSubmitAttempt: boolean;
+  errorMessage : string;
 
   constructor(
     private authService: AuthService, 
     private storageService: StorageService,
     private router: Router,
+    private snackBar: MatSnackBar,
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -27,6 +30,7 @@ export class LoginComponent implements OnInit {
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
+    this.errorMessage = "";
   }
   
   isFieldInvalid(field: string) {
@@ -39,14 +43,20 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       this.authService.login(this.form.value).subscribe(value =>{
-        if(value === null)
-          console.log("ERROR: El usuario o la contraseña son erroneas");
+        if(value === null){
+          this.snackBar.open('El usuario o la contraseña son erroneas', "Cerrar", { duration: 2000,});
+        }
+
         else{
           this.correctLogin(value);
         }
       });
     }
     this.formSubmitAttempt = true;
+  }
+
+  sendToRegister(){
+    this.router.navigate(['/register']);
   }
 
   private correctLogin(data: User){

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sends',
@@ -7,8 +7,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./sends.component.css']
 })
 export class SendsComponent implements OnInit {
-  myForm: FormGroup;
-  myForm2: FormGroup;
+  myForm2: FormGroup = new FormGroup({Search: new FormControl()});
   constructor() { }
 
   ngOnInit(): void {

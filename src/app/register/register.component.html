@@ -1,0 +1,48 @@
+<div class="row h-100"> <div class="col-sm-12 my-auto">
+    <div class="signin-content">
+        <mat-card>
+          <mat-card-content>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <p>Registrar Usuario</p>
+              <mat-form-field class="full-width-input" color = "accent">
+                <input matInput type = "text" placeholder="Nombre" formControlName="firstName" required>
+                <mat-error *ngIf="isFieldInvalid('firstName')">
+                  Por favor, ingrese su nombre
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width-input" color = "accent">
+                <input matInput type = "text" placeholder="Apellido" formControlName="lastName" required>
+                <mat-error *ngIf="isFieldInvalid('lastName')">
+                  Por favor, ingrese su apellido
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width-input" color = "accent">
+                <input matInput type = "text" placeholder="Username" formControlName="userName" required>
+                <mat-error *ngIf="isFieldInvalid('userName')">
+                  Por favor, ingrese su username
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width-input" color = "accent">
+                <input matInput type = "email" placeholder="Email" formControlName="email" required>
+                <mat-error *ngIf="isFieldInvalid('email')">
+                  Por favor, ingrese su email
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width-input" color = "accent">
+                <input matInput type = "password" placeholder="Contraseña" formControlName="password" required>
+                <mat-error *ngIf="isFieldInvalid('password')">
+                  Por favor, ingrese su contraseña
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width-input" color = "accent">
+                <input matInput type = "password" placeholder="Confirmar contraseña" formControlName="spassword" required>
+                <mat-error *ngIf="isFieldInvalid('spassword')">
+                  Las contraseñas no coinciden
+                </mat-error>
+              </mat-form-field>
+              <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Registrar</button>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div></div>

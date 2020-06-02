@@ -16,8 +16,16 @@
               Por favor, ingrese su contraseña
             </mat-error>
           </mat-form-field>
-          <button mat-raised-button color="primary" type="submit">Login</button>
+          <br>
+          <mat-error>
+            {{errorMessage}}
+          </mat-error>
+          <br>
+          <button mat-raised-button color="primary" type="submit" [disabled] = !form.valid>Login</button>
         </form>
+        <br>
+
+        <button mat-raised-button color ="accent" (click) = "sendToRegister()">Crear cuenta nueva</button>
       </mat-card-content>
     </mat-card>
   </div>

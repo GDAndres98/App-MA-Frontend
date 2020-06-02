@@ -52,6 +52,8 @@ import { AuthGuard } from './login/login.guard';
 import { StorageService } from './services/auth/storage.service';
 import { ArticlesComponent } from './test-components/articles/articles.component';
 import { ArticleItemComponent } from './test-components/articles/article-item/article-item.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthDeGuard } from './login/login.deguard';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,8 @@ import { ArticleItemComponent } from './test-components/articles/article-item/ar
     LoginComponent,
     SidebarComponent,
     ArticlesComponent,
-    ArticleItemComponent
+    ArticleItemComponent,
+    RegisterComponent
   ],
   imports: [
     HttpClientModule,
@@ -104,7 +107,7 @@ import { ArticleItemComponent } from './test-components/articles/article-item/ar
     HttpClientModule,
     MarkdownModule.forRoot()
   ],
-  providers: [AuthService, AuthGuard, StorageService],
+  providers: [AuthService, AuthGuard, StorageService, AuthDeGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
