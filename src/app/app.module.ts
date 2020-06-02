@@ -50,6 +50,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuard } from './login/login.guard';
 import { StorageService } from './services/auth/storage.service';
+import { RegisterComponent } from './register/register.component';
+import { AuthDeGuard } from './login/login.deguard';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { StorageService } from './services/auth/storage.service';
     ProfileComponent,
     SendsComponent,
     LoginComponent,
-    SidebarComponent
+    SidebarComponent,
+    RegisterComponent
   ],
   imports: [
     HttpClientModule,
@@ -100,7 +103,7 @@ import { StorageService } from './services/auth/storage.service';
     HttpClientModule,
     MarkdownModule.forRoot()
   ],
-  providers: [AuthService, AuthGuard, StorageService],
+  providers: [AuthService, AuthGuard, StorageService, AuthDeGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
