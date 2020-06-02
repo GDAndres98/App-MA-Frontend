@@ -50,6 +50,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuard } from './login/login.guard';
 import { StorageService } from './services/auth/storage.service';
+import { ArticlesComponent } from './test-components/articles/articles.component';
+import { ArticleItemComponent } from './test-components/articles/article-item/article-item.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { StorageService } from './services/auth/storage.service';
     ProfileComponent,
     SendsComponent,
     LoginComponent,
-    SidebarComponent
+    SidebarComponent,
+    ArticlesComponent,
+    ArticleItemComponent
   ],
   imports: [
     HttpClientModule,

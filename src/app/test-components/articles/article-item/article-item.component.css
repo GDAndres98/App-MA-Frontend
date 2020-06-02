@@ -1,0 +1,11 @@
+.example-card {
+    max-width: 500px;
+    min-width: 500px;
+    margin: 10px;
+    font-family: "Poppins";
+  }
+  
+  .example-header-image {
+    background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+    background-size: cover;
+  }

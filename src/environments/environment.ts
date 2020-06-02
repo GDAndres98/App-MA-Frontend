@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  urlvalidatedUser : "http://localhost:8080/validatedUser"
+  urlvalidatedUser : "http://localhost:8080/validatedUser",
+  urlgetAllArticles: "http://localhost:8080/getAllArticles"
 };
 
 /*

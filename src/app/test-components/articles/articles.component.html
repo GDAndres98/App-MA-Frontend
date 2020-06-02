@@ -1,0 +1,9 @@
+<div>
+  <div class="list">
+    <div class="mx-auto" style="width: 500px;">
+      <div *ngFor="let article of allArticles.slice().reverse(); let i = index">
+        <app-article-item [mySelectedArticle]="article"></app-article-item>
+      </div>
+    </div>
+  </div>
+</div>

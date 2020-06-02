@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SendsComponent } from './sends/sends.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './login/login.guard';
+import { ArticlesComponent } from './test-components/articles/articles.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'markdown', component: MarkdownComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'sends', component: SendsComponent, canActivate: [AuthGuard]},
+  { path: 'articles', component: ArticlesComponent},
 ];
 
 @NgModule({
