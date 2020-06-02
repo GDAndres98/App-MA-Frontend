@@ -1,14 +1,14 @@
 <div>
   <nav class="navbar navbar-dark navbar-expand-sm fixed-top justify-content-between" style="background: rgba(75, 75, 75, 0.404); padding-left: 70px;">
     <a class="navbar-brand mb-0 h1" href="#">Crazy Noisy Bizarre Town</a>
-    <form [formGroup]="myForm" class="form-inline navbar-nav">
+    <div class="form-inline navbar-nav">
       <li class="nav-item">
         <a class="nav-link" routerLink="/profile">{{name}}</a>
       </li>
-      <button mat-button type="submit">
+      <button mat-button type="submit" (click) = "logout()">
         <i class="fas fa-sign-out-alt fa-2x m-0 p-0" style="color: rgb(133, 2, 2);"></i>
       </button>
-    </form>
+    </div>
   </nav>
 </div>
 <div class="container-flex col m-0 p-0 bg-dark h-100">
@@ -29,7 +29,7 @@
 
 
   <div class="row m-0 p-0" style="height: calc(100%/3);">
-    <div class="col m-0 p-0 bg-success" style=" ">
+    <div class="col m-0 p-0 bg-success">
       <button mat-button type="button" class="magic_button btn-block" style="border-radius: 0%;height: 100%;">
         <i class="fa fa-file-text fa-5x m-4" aria-hidden="true"></i> 
         <h1 >Lista de Articulos</h1>
