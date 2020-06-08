@@ -6,7 +6,8 @@
   }
   
   .example-card:hover {
-    background-color: "accent";
+    color: white; /* Green */
+    background-color: #008d67;
     cursor: pointer;
   }
 
