@@ -3,18 +3,18 @@ import { Article } from 'src/app/model/article';
 import { ArticleService } from 'src/app/test-services/article.service';
 
 @Component({
-  selector: 'app-articles',
-  templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.css']
+  selector: 'app-article-list',
+  templateUrl: './article-list.component.html',
+  styleUrls: ['./article-list.component.css']
 })
-export class ArticlesComponent implements OnInit {
+export class ArticleListComponent implements OnInit {
 
   allArticles: Array<Article>;
 
   constructor(private arService: ArticleService) {
     this.allArticles = new Array();
 
-    arService.getAllTweets().subscribe(allArticlesObs => {
+    arService.getAllArticles().subscribe(allArticlesObs => {
       console.log(allArticlesObs);
       this.allArticles = allArticlesObs;
     }

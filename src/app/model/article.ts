@@ -6,5 +6,5 @@ export class Article {
     public author: string;
     public dateWritten: Date;
     public tags: TagItem[];
-    public markdownURL: string;
+    public markdown: string;
 }

@@ -5,6 +5,11 @@
     font-family: "Poppins";
   }
   
+  .example-card:hover {
+    background-color: "accent";
+    cursor: pointer;
+  }
+
   .example-header-image {
     background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
     background-size: cover;

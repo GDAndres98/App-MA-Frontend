@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   urlvalidatedUser : "http://localhost:8080/validatedUser",
   urlgetAllArticles: "http://localhost:8080/getAllArticles",
+  urlgetArticleById: "http://localhost:8080/getArticleById",
   urlStudentCreation : "http://localhost:8080/createStudent"
 };
 

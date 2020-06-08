@@ -6,9 +6,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { SendsComponent } from './sends/sends.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './login/login.guard';
-import { ArticlesComponent } from './test-components/articles/articles.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthDeGuard } from './login/login.deguard';
+import { ArticleListComponent } from './article/article-list/article-list.component';
+import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'markdown', component: MarkdownComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'sends', component: SendsComponent, canActivate: [AuthGuard]},
-  { path: 'articles', component: ArticlesComponent},
+  { path: 'articles', component: ArticleListComponent},
+  { path: 'article/:id', component: ArticleDetailComponent},
 ];
 
 @NgModule({

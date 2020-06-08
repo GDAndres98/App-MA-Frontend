@@ -50,10 +50,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuard } from './login/login.guard';
 import { StorageService } from './services/auth/storage.service';
-import { ArticlesComponent } from './test-components/articles/articles.component';
-import { ArticleItemComponent } from './test-components/articles/article-item/article-item.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthDeGuard } from './login/login.deguard';
+import { ArticleListComponent } from './article/article-list/article-list.component';
+import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
+import { ArticleItemComponent } from './article/article-item/article-item.component';
 
 @NgModule({
   declarations: [
@@ -64,9 +65,10 @@ import { AuthDeGuard } from './login/login.deguard';
     SendsComponent,
     LoginComponent,
     SidebarComponent,
-    ArticlesComponent,
     ArticleItemComponent,
-    RegisterComponent
+    RegisterComponent,
+    ArticleListComponent,
+    ArticleDetailComponent
   ],
   imports: [
     HttpClientModule,

@@ -1,0 +1,45 @@
+<mat-card class="example-card" routerLink="/article/{{mySelectedArticle.id}}">
+    <mat-card-header>
+
+      <div class="col-9">
+        <div class="row">
+          <mat-card-title>
+            <span class="title">{{ mySelectedArticle.title}}</span>
+          </mat-card-title>
+        </div>
+        <div class="row">
+          <mat-card-subtitle>
+            <i class="fa fa-pen"></i>
+            {{ mySelectedArticle.author }}
+          </mat-card-subtitle>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row">
+          <mat-card-subtitle>
+            <i class="fa fa-calendar"></i>
+            {{ mySelectedArticle.dateWritten.toLocaleString() | date : 'yyyy-MM-dd'}}
+          </mat-card-subtitle>
+        </div>
+  
+      </div>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <mat-chip-list aria-label="Fish selection">
+        <div *ngFor="let tag of mySelectedArticle.tags; let i = index">
+          <div *ngIf="tag.level==1">
+            <mat-chip color="primary" selected>{{tag.name}}</mat-chip>
+          </div>
+          <div *ngIf="tag.level==2">
+            <mat-chip>{{tag.name}}</mat-chip>
+          </div>
+        </div>
+      </mat-chip-list>
+    </mat-card-content>
+  
+  
+  
+  
+  
+  </mat-card>
