@@ -40,6 +40,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ReactiveFormsModule } from '@angular/forms';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 import { MarkdownModule, KatexOptions   } from 'ngx-markdown';
@@ -55,6 +56,7 @@ import { AuthDeGuard } from './login/login.deguard';
 import { ArticleListComponent } from './article/article-list/article-list.component';
 import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
 import { ArticleItemComponent } from './article/article-item/article-item.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,7 @@ import { ArticleItemComponent } from './article/article-item/article-item.compon
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
+    ScrollingModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatInputModule,
@@ -107,7 +110,8 @@ import { ArticleItemComponent } from './article/article-item/article-item.compon
     MatPaginatorModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    NgbModule
   ],
   providers: [AuthService, AuthGuard, StorageService, AuthDeGuard],
   bootstrap: [AppComponent]

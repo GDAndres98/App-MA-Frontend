@@ -10,3 +10,31 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-form-field-underline {
     background-color: white;
 }
+
+:root{
+    --primary: #ffffff09;
+    --accent: #00b686;
+    --dark2: #424242;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.178);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00503b;
+  }
+

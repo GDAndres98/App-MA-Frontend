@@ -1,4 +1,11 @@
+<div style="overflow: auto;">
 <h1>{{article.title}}</h1>
-<mat-card style="width: 50%;"><markdown class="variable-binding" [data]="article.markdown" katex ></markdown></mat-card>
+<mat-card>
+    <div style="overflow: auto;">
+    <markdown class="variable-binding"[data]="article.markdown" katex ></markdown>
+    </div>
+</mat-card>
+
+</div>
 
 

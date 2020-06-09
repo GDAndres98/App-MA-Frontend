@@ -5,8 +5,8 @@
   }
   
 .magic_button:hover {
-    background-color: #ffffff09; /* Green */
-    color: #00b686;
+    background-color: var(--primary); /* Green */
+    color: var(--accent);
     ;
   }
 
