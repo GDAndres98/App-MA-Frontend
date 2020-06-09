@@ -19,7 +19,7 @@ export class ArticleListComponent implements OnInit {
 
   constructor(private arService: ArticleService) {
     this.pageNo = 1;
-    this.pageSize = 6;
+    this.pageSize = 5;
     this.sortBy = "title";
 
     this.allArticles = new Array();
