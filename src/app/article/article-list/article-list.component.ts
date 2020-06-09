@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Article } from 'src/app/model/article';
 import { ArticleService } from 'src/app/test-services/article.service';
 
@@ -10,20 +10,34 @@ import { ArticleService } from 'src/app/test-services/article.service';
 export class ArticleListComponent implements OnInit {
 
   allArticles: Array<Article>;
+  collectionSize: number;
+  pageNo: number;
+  pageSize: number;
+  sortBy: string;
+
+
 
   constructor(private arService: ArticleService) {
+    this.pageNo = 1;
+    this.pageSize = 6;
+    this.sortBy = "title";
+
     this.allArticles = new Array();
-
-    arService.getAllArticles().subscribe(allArticlesObs => {
-      console.log(allArticlesObs);
-      this.allArticles = allArticlesObs;
-    }
-
-    );
+    this.onPageChange();
 
   }
+
+  onPageChange() {
+    this.arService.getAllArticlesPagination(this.pageNo - 1, this.pageSize, this.sortBy).subscribe(allArticlesObs => {
+      this.allArticles = allArticlesObs.content;
+      this.collectionSize = allArticlesObs.totalElements;
+    }
+    );
+  }
+
 
   ngOnInit(): void {
   }
+
 
 }

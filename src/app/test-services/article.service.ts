@@ -12,15 +12,24 @@ export class ArticleService {
   constructor(private http: HttpClient) { }
 
   getAllArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(environment.urlgetAllArticles);
+    return this.http.get<Article[]>(environment.urlGetAllArticles);
+  }
+
+  getAllArticlesPagination(pageNo: number, pageSize: number, sortBy: string): Observable<any> {
+    const op = {
+      headers: new HttpHeaders({ 'pageNo': pageNo + '', 'pageSize': pageSize + '', 'sortBy': sortBy + '' })
+    };
+    return this.http.get<any>(environment.urlGetAllArticlesPagination, op);
   }
 
   getArticleById(id: number): Observable<Article> {
     const op = {
       headers: new HttpHeaders({ 'id': id + '' })
     };
-    return this.http.get<Article>(environment.urlgetArticleById, op);
+    return this.http.get<Article>(environment.urlGetArticleById, op);
   }
+
+
 
 
 

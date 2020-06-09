@@ -1,4 +1,7 @@
 <div class="container-flex col m-0 p-0 bg-dark h-100">
+  <mat-card>
+    <p>{{pageNo}}</p>
+  </mat-card>
     <div class="mb-4" style="height: 85%; overflow: auto;">
       <div class="mx-auto" style="width: 500px;">
         <div *ngFor="let article of allArticles.slice().reverse(); let i = index">
@@ -8,6 +11,8 @@
     </div>
     <div class="container">
       <ngb-pagination class="d-flex justify-content-center color-primary"
-      page="1" pageSize="2" collectionSize="10" size="lg"></ngb-pagination>
+      [(page)]="pageNo" [pageSize]="pageSize" [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
     </div>
+
+
 </div>

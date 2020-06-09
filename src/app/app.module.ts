@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { TestComponent } from './test/test.component';
 import { MarkdownComponent } from './test-components/markdown/markdown.component';
@@ -40,10 +40,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ReactiveFormsModule } from '@angular/forms';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
-import { MarkdownModule, KatexOptions   } from 'ngx-markdown';
+import { MarkdownModule, KatexOptions } from 'ngx-markdown';
 import { ProfileComponent } from './profile/profile.component';
 import { SendsComponent } from './sends/sends.component';
 import { LoginComponent } from './login/login.component';

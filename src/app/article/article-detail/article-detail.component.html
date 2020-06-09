@@ -1,11 +1,17 @@
-<div style="overflow: auto;">
-<h1>{{article.title}}</h1>
-<mat-card>
-    <div style="overflow: auto;">
-    <markdown class="variable-binding"[data]="article.markdown" katex ></markdown>
+<div class="container-fluid">
+    <div class="container">
+        <mat-card class="p-4" style="width: 90w; height: 95vh; margin: 1%; display: flex; flex-direction: column;">
+            <mat-card-title> {{article.title}}</mat-card-title>
+            <mat-card-subtitle>
+                Por <a>{{article.author}}</a>
+                <br>
+                Escrito <a>{{article.dateWritten.toLocaleString() | date : 'yyyy-MM-dd'}}</a>
+            </mat-card-subtitle>
+            <hr>
+
+            <mat-card-content class="px-3" style=" max-height: initial; overflow:auto;">
+                <markdown class="variable-binding" [data]="article.markdown" katex></markdown>
+            </mat-card-content>
+        </mat-card>
     </div>
-</mat-card>
-
 </div>
-
-
