@@ -10,6 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { AuthDeGuard } from './login/login.deguard';
 import { ArticleListComponent } from './article/article-list/article-list.component';
 import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
+import { ProblemListComponent } from './problem/problem-list/problem-list.component';
+import { ProblemDetailComponent } from './problem/problem-detail/problem-detail.component';
 
 
 const routes: Routes = [
@@ -21,6 +23,8 @@ const routes: Routes = [
   { path: 'sends', component: SendsComponent, canActivate: [AuthGuard]},
   { path: 'articles', component: ArticleListComponent},
   { path: 'article/:id', component: ArticleDetailComponent},
+  { path: 'problems', component: ProblemListComponent},
+  { path: 'problem/:id', component: ProblemDetailComponent},
 ];
 
 @NgModule({
