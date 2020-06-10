@@ -59,6 +59,7 @@ import { ArticleItemComponent } from './article/article-item/article-item.compon
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProblemListComponent } from './problem/problem-list/problem-list.component';
 import { ProblemDetailComponent } from './problem/problem-detail/problem-detail.component';
+import { StringShorter } from './article/article-list/stringShorterPipe';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { ProblemDetailComponent } from './problem/problem-detail/problem-detail.
     ArticleListComponent,
     ArticleDetailComponent,
     ProblemListComponent,
-    ProblemDetailComponent
+    ProblemDetailComponent,
+    StringShorter
   ],
   imports: [
     HttpClientModule,

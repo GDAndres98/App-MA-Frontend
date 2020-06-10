@@ -5,11 +5,13 @@
 export const environment = {
   production: false,
   urlvalidatedUser : "http://localhost:8080/validatedUser",
+  urlStudentCreation : "http://localhost:8080/createStudent",
   urlGetAllArticles: "http://localhost:8080/getAllArticles",
+  urlGetSearchArticle : "http://localhost:8080/getSearchArticle",
   urlGetAllArticlesPagination: "http://localhost:8080/getAllArticlesPagination",
   urlGetArticleById: "http://localhost:8080/getArticleById",
   urlGetProblemById: "http://localhost:8080/getProblemById",
-  urlStudentCreation : "http://localhost:8080/createStudent"
+
 };
 
 /*

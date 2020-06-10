@@ -43,3 +43,29 @@ ngb-pagination ::ng-deep a {
     background-color: var(--dark2);
 
   }
+
+
+
+  .example-form {
+    min-width: 150px;
+    max-width: 700px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .suffix-button{
+    width: 30px;
+    height: 30px;
+    font-size: medium;
+  }
+
+  .suffix-button .mat-icon{
+    width: 30px;
+    height: 30px;
+    font-size: x-large !important;
+  }
+
+
