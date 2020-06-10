@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ArticleService } from 'src/app/test-services/article.service';
+import { ArticleService } from 'src/app/services/article/article.service';
 import { Article } from 'src/app/model/article';
 
 @Component({

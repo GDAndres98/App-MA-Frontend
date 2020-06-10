@@ -25,4 +25,20 @@ export class ProblemService {
     };
     return this.http.get<Problem>(environment.urlGetProblemById, op);
   }
+
+  
+  getAllProblemPagination(pageNo: number, pageSize: number, sortBy: string): Observable<any> {
+    const op = {
+      headers: new HttpHeaders({ 'pageNo': pageNo + '', 'pageSize': pageSize + '', 'sortBy': sortBy + '' })
+    };
+    return this.http.get<any>(environment.urlGetAllProblemPagination, op);
+  }
+
+  searchProblem(prefix: string): Observable<Problem[]>{
+    const op = {
+      headers: new HttpHeaders({ 'prefix': prefix})
+    };  
+    
+    return this.http.get<Problem[]>(environment.urlGetSearchProblem, op);
+  }
 }

@@ -23,25 +23,21 @@ ngb-pagination ::ng-deep a {
 
   ngb-pagination ::ng-deep .page-item :hover {
     background-color: var(--accent);
-
   }
   
   
   ngb-pagination ::ng-deep .page-item.active .page-link:not(:disabled):not(.disabled):active:focus {
     box-shadow: 0 0 0 0.1rem dimgrey;
     background-color: var(--dark2);
-
   }
   
   ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
     box-shadow: 0 0 0 0.1rem dimgrey;
     background-color: var(--dark2);
-
   }
   ngb-pagination ::ng-deep .page-link:disabled {
     box-shadow: 0 0 0 0.1rem dimgrey;
     background-color: var(--dark2);
-
   }
 
 

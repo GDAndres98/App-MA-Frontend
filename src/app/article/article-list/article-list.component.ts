@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, Pipe, PipeTransform } from '@angular/core';
 import { Article } from 'src/app/model/article';
-import { ArticleService } from 'src/app/test-services/article.service';
+import { ArticleService } from 'src/app/services/article/article.service';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map, debounceTime, tap, switchMap, finalize } from 'rxjs/operators';
@@ -23,10 +23,6 @@ export class ArticleListComponent implements OnInit {
   myControl = new FormControl();
   form: FormGroup;
   search: string;
-
-  
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]>;
 
   articleSelected: Article;
 
@@ -52,12 +48,6 @@ export class ArticleListComponent implements OnInit {
       this.collectionSize = allArticlesObs.totalElements;
     }
     );
-  }
-
-  callService(){
-    this.arService.searchArticle(this.form.get('search').value).subscribe(value =>{
-      console.log(value);
-    });
   }
 
   ngOnInit(): void {
@@ -88,7 +78,6 @@ export class ArticleListComponent implements OnInit {
   }
 
   sendToArticle(article: Article){
-
     this.router.navigateByUrl(`/article/${article.id}`);
   }
 
