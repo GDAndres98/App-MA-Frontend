@@ -33,6 +33,7 @@
         </mat-form-field>
       </form>
 </div>
+<div style="height: 100%; overflow-y: auto;">
 <div class="row row-cols-1">
 <div class="col-8 offset-md-2 my-2 p-3" style="background: transparent;">
     <table class="table table-dark table-hover" style="background-color: rgba(75, 75, 75, 0.404);" >
@@ -71,5 +72,6 @@
     <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
       [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
   </div>
+</div>
 </div>
 </div>
