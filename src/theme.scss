@@ -3,7 +3,7 @@
 
 $my-app-primary: mat-palette($mat-blue-grey);
 $my-app-accent:  mat-palette($mat-teal, A400);
-$my-app-warn:    mat-palette($mat-red);
+$my-app-warn:    mat-palette($mat-red, 400);
 $my-app-theme: mat-dark-theme($my-app-primary, $my-app-accent, $my-app-warn);
 @include angular-material-theme($my-app-theme);
 

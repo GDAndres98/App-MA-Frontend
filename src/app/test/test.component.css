@@ -18,4 +18,8 @@
     background-color: rgb(47, 27, 223);
 }
 
+.mat-button:hover .logout{
+  color: var(--warn) !important;
+}
+
   
