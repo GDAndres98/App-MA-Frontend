@@ -1,22 +1,72 @@
-<div class="container">
-    <div class="col-8">
-        <mat-card class="p-4" style=" height: 95vh; margin: 1%; display: flex; flex-direction: column;">
-            <mat-card-title> {{problem.title}}</mat-card-title>
-            <mat-card-subtitle>
-                Por <a>{{problem.author}}</a>
-            </mat-card-subtitle>
-            <hr>
+<div class="row mr-1 h-100" style="overflow-y: scroll;">
 
+    <div class="col-9">
+        <mat-card class="p-4 mx-5 mt-3" style="display: flex; flex-direction: column;">
+            <mat-card-title class="px-2 mb-4"> {{problem.title}}</mat-card-title>
             <mat-card-content class="px-3" style=" max-height: initial; overflow:auto;">
                 <markdown class="variable-binding" [data]="problem.markdown" katex></markdown>
             </mat-card-content>
         </mat-card>
     </div>
+
     <div class="col">
-        <mat-card class=" p-4" style=" height: 55vh; margin: 1%; display: flex; flex-direction: column;">
-            askdjdsakd
-            <br>
-            sadlkds
-        </mat-card>
+        <div class="row">
+            <mat-card class=" p-4 px-5 mr-5 w-100 mt-3">
+                <mat-card-title class="mb-2"> Información </mat-card-title>
+                <mat-card-subtitle>
+                    <span style="overflow-x: hidden;">{{ problem.title }}</span>
+                    <span style="float: right;">{{ problem.author}}</span>
+                </mat-card-subtitle>
+                <mat-card-content>
+                    <div class="row pr-2 my-2 w-100">
+                        <div class="col-sm">
+                            Límite de tiempo:
+                        </div>
+                        <div class="col-sm">
+                            {{problem.timeLimit}} milisegundos
+                        </div>
+                    </div>
+
+                    <div class="row pr-2 my-2 w-100">
+                        <div class="col-sm">
+                            Límite de memoria:
+                        </div>
+                        <div class="col-sm">
+                            {{problem.memoryLimit}} megabytes
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div class="row">
+            <mat-card class=" p-4 px-5 mr-5 w-100 mt-3">
+                <mat-card-title class="mb-4"> ¿Enviar? </mat-card-title>
+                <mat-card-content>
+                    <div class="row pl-3 my-2 w-100">
+                            <mat-form-field class="w-100">
+                                <mat-label>Lenguaje</mat-label>
+                                <mat-select>
+                                    <mat-option value="Python">Python 3</mat-option>
+                                    <mat-option value="Java">Java 1.8</mat-option>
+                                    <mat-option value="C++">C++ 11</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                    </div>
+                    <div class="row  my-2 w-100 align-items-center">
+                        <div class="col">
+                            <button mat-raised-button color= "primary">Cargar archivo</button>
+                        </div>
+                        <div class="col  ">
+                            archivo.txt
+                        </div>
+                    </div>
+                    <div class="row mx-auto w-100" >
+                        <button mat-raised-button class= "h-50 mt-3 w-100"color="accent" >
+                            Enviar solución <i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
 </div>
