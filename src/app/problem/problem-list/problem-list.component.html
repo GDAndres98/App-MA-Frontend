@@ -33,8 +33,8 @@
         </mat-form-field>
       </form>
 </div>
-<div class="row">
-<div class="col mx-5 my-2 p-3 " style="background: transparent; width: 60%; float: left;">
+<div class="row row-cols-1">
+<div class="col-8 offset-md-2 my-2 p-3" style="background: transparent;">
     <table class="table table-dark table-hover" style="background-color: rgba(75, 75, 75, 0.404);" >
         <thead>
             <tr>
@@ -66,8 +66,10 @@
         </table>        
 </div>  
 
-<div class="container row">
+<div class="row">
+<div class="container col">
     <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
       [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
   </div>
+</div>
 </div>
