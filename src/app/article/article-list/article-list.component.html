@@ -1,8 +1,46 @@
 <div class="container-flex col m-0 p-0 bg-dark h-100">
   <mat-card>
-    <p>{{pageNo}}</p>
+    <!--<p *ngIf="articleSelected">{{articleSelected.title}}</p> !-->
+    <p></p>
   </mat-card>
 
+  <div class="row">
+  <form class="col mx-auto my-2 example-form" [formGroup]="form">
+    <mat-form-field  color="accent" class="example-full-width">
+      
+
+      <input class = "text-white"
+            type="text"
+             placeholder="Buscar"
+             aria-label="Number"
+             matInput
+             [(ngModel)] ="search"
+             [formControl]="myControl"
+             [matAutocomplete]="auto"
+             formControlName="search">
+             <button matSuffix mat-button class = "text-white suffix-button" *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="search=''">
+              <mat-icon>close</mat-icon>
+            </button>
+
+            <button class = "text-white suffix-button"  matSuffix mat-icon-button color="primary"(click) = "callService()" >
+             <mat-icon>search</mat-icon>
+            </button>
+
+
+
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
+        <ng-container *ngIf="!isLoading">
+          <mat-option *ngFor="let article of filteredArticles" (click)="sendToArticle(article)">
+            <span  style="overflow-x: hidden;">{{ article.title | stringShorter}}</span>
+            <small style="float: right;">{{ article.author}}</small>
+          </mat-option>
+        </ng-container>
+      </mat-autocomplete>
+
+    </mat-form-field>
+  </form>
+</div>
     <div class="row h-75 mx-1 my-3" style ="overflow: auto;">
     <div class="col w-75" >
         <div *ngFor="let article of allArticles.slice().reverse(); let i = index">

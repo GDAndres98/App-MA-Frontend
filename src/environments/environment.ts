@@ -8,7 +8,9 @@ export const environment = {
   urlGetAllArticles: "http://localhost:8080/getAllArticles",
   urlGetAllArticlesPagination: "http://localhost:8080/getAllArticlesPagination",
   urlGetArticleById: "http://localhost:8080/getArticleById",
-  urlStudentCreation : "http://localhost:8080/createStudent"
+  urlStudentCreation : "http://localhost:8080/createStudent",
+  urlGetSearchArticle : "http://localhost:8080/getSearchArticle"
+
 };
 
 /*

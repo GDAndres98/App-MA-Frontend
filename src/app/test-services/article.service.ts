@@ -29,6 +29,14 @@ export class ArticleService {
     return this.http.get<Article>(environment.urlGetArticleById, op);
   }
 
+  searchArticle(prefix: string): Observable<Article[]>{
+    const op = {
+      headers: new HttpHeaders({ 'prefix': prefix})
+    };  
+    
+    return this.http.get<Article[]>(environment.urlGetSearchArticle, op);
+  }
+
 
 
 
