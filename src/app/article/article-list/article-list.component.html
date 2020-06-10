@@ -2,17 +2,19 @@
   <mat-card>
     <p>{{pageNo}}</p>
   </mat-card>
-    <div class="mb-4" style="height: 85%; overflow: auto;">
-      <div class="mx-auto" style="width: 500px;">
+
+    <div class="row h-75 mx-1 my-3" style ="overflow: auto;">
+    <div class="col w-75" >
         <div *ngFor="let article of allArticles.slice().reverse(); let i = index">
           <app-article-item [mySelectedArticle]="article"></app-article-item>
         </div>
-      </div>
     </div>
-    <div class="container">
-      <ngb-pagination class="d-flex justify-content-center color-primary"
-      [(page)]="pageNo" [pageSize]="pageSize" [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
-    </div>
+  </div>
+
+  <div class="container">
+    <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
+      [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
+  </div>
 
 
 </div>
