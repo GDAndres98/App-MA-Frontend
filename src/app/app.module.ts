@@ -57,6 +57,8 @@ import { ArticleListComponent } from './article/article-list/article-list.compon
 import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
 import { ArticleItemComponent } from './article/article-item/article-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProblemListComponent } from './problem/problem-list/problem-list.component';
+import { ProblemDetailComponent } from './problem/problem-detail/problem-detail.component';
 import { StringShorter } from './article/article-list/stringShorterPipe';
 
 @NgModule({
@@ -72,6 +74,8 @@ import { StringShorter } from './article/article-list/stringShorterPipe';
     RegisterComponent,
     ArticleListComponent,
     ArticleDetailComponent,
+    ProblemListComponent,
+    ProblemDetailComponent,
     StringShorter
   ],
   imports: [

@@ -1,38 +1,48 @@
-New Year is coming in Line World! In this world, there are n cells numbered by integers from $1$ to $n$, as a $1\times n$ board. People live in cells. However, it was hard to move between distinct cells, because of the difficulty of escaping the cell. People wanted to meet people who live in other cells.
+You are given a weighted undirected graph. The vertices are enumerated from $1,$ to $n.$ Your task is to find the shortest path between the vertex $1,$ and the vertex $n.$
 
 
-
-
-
-Freddy has just built his own homepage and he was very happy. Now he wants to add a new feature
-for his homepage, favorite time detector. With this feature, he can find out when most users visit his
-homepage. He has successfully retrieved visiting time for each online user, but he didn’t know how to
-find the time range when most users visit his page.\
-Given $N,$ range of time when users visit his page, you’re going to help Freddy to find the time range
-when most users visit his page.
 ---
 # Input
-Input begins with an integer $T,$ ($1 \leq T \leq 100$) denoting the number of cases. Each case begins with an integer $N,$ ($1 \leq N \leq 100$) denoting the number of user visiting Freddy's page. The next $N,$ lines each will contains the hour and minute when each user visit Freddy's page, '$ah$:$ai$ $bh$:$bi$' ($00 \leq ah, bh \leq 23$; $00 \leq ai, bi \leq 59$) denoting the beginning and end time, respectively. $ah$:$ai$ will always be equal to or smaller than $bh$:$bi$. $ah$, $ai$, $bh$ and $bi$ will always be two digits (leading zero when it is necessary).
+The first line contains two integers $n,$ and $m (2  \leq n  \leq 105, 0  \leq m  \leq 105)$, where n is the number of vertices and $m,$ is the number of edges. Following $m$, lines contain one edge each in form $a_i$, $b_i$ and $w_i (1  \leq a_i, b_i  \leq n, 1  \leq w_i  \leq 106)$, where $a_i$, $b_i$ are edge endpoints and wi is the length of the edge.
+
+It is possible that the graph has loops and multiple edges between pair of vertices.
 
 # Output
-For each case, print the time range when most users visit his page in '$sh$:$si$ $th$:$ti$' format where $sh$:$si$ is the beginning time and $th$:$ti$ is the end time. $sh$, $si$, $th$, $ti$ should be two digits (leading zero when it’s necessary). If there are two or more time ranges which have the same number of visiting users, output the first occurrence.
+Write the only integer $-1$ in case of no path. Write the shortest path in opposite case. If there are many solutions, print any of them
 
-## Sample Input
+
+---
+## Examples
+### Sample Input
 ```
-2
-3
-00:00 10:25
-13:07 15:09
-09:00 14:00
-3
-19:00 19:30
-19:31 20:00
-19:15 19:45
+5 6
+1 2 2
+2 5 5
+2 3 4
+1 4 1
+4 3 3
+3 5 1
 ```
 
-## Sample Output
+### Sample Output
 
 ```
-09:00 10:25
-19:15 19:45
+1 4 3 5 
+```
+
+### Sample Input
+```
+5 6
+1 2 2
+2 5 5
+2 3 4
+1 4 1
+4 3 3
+3 5 1
+```
+
+### Sample Output
+
+```
+1 4 3 5 
 ```
