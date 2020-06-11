@@ -47,10 +47,6 @@ ngb-pagination ::ng-deep a {
     max-width: 700px;
     width: 100%;
   }
-  
-  .example-full-width {
-    width: 100%;
-  }
 
   .suffix-button{
     width: 30px;
@@ -64,4 +60,6 @@ ngb-pagination ::ng-deep a {
     font-size: x-large !important;
   }
 
-
+  body div.cdk-overlay-container {
+    z-index: 1000000;
+  }

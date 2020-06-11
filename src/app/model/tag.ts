@@ -6,9 +6,6 @@ export class TagItem {
 
 export class Tag {
     public id: number;
-    public title: string;
-    public author: string;
-    public dateWritten: Date;
-    public tags: string;
-    public markdownURL: string;
+    public name: string;
+    public level: number;
 }

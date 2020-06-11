@@ -13,6 +13,7 @@ export const environment = {
   urlGetProblemById: "http://localhost:8080/getProblemById",
   urlGetAllProblemPagination: "http://localhost:8080/getAllProblemPagination",
   urlGetSearchProblem : "http://localhost:8080/getSearchProblem",
+  urlGetAllTags: "http://localhost:8080/getAllTags",
 
 
 };

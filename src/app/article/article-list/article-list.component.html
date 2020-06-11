@@ -1,53 +1,87 @@
 <div class="container-flex col m-0 p-0 bg-dark h-100">
   <mat-card>
-    <!--<p *ngIf="articleSelected">{{articleSelected.title}}</p> !-->
-    <p></p>
+    <p>Barrita pa' debuggear xd <3< /p>
   </mat-card>
 
   <div class="row">
-  <form class="col mx-auto my-2 example-form" [formGroup]="form">
-    <mat-form-field  color="accent" class="example-full-width">
-      
+    <form class="col mx-auto mt-2 example-form" [formGroup]="form">
+      <mat-form-field color="accent" class="w-100">
 
-      <input class = "text-white"
-            type="text"
-             placeholder="Buscar"
-             aria-label="Number"
-             matInput
-             [(ngModel)] ="search"
-             [formControl]="myControl"
-             [matAutocomplete]="auto"
-             formControlName="search">
-             <button matSuffix mat-button class = "text-white suffix-button" *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="search=''">
-              <mat-icon>close</mat-icon>
-            </button>
+        <input class="text-white" type="text" placeholder="Buscar" aria-label="Number" matInput [(ngModel)]="search"
+          [formControl]="myControl" [matAutocomplete]="auto" formControlName="search">
+        <button matSuffix mat-button class="text-white suffix-button" *ngIf="search" matSuffix mat-icon-button
+          aria-label="Clear" (click)="search=''">
+          <mat-icon>close</mat-icon>
+        </button>
 
-            <button class = "text-white suffix-button"  matSuffix mat-icon-button color="primary" >
-             <mat-icon>search</mat-icon>
-            </button>
+        <button class="text-white suffix-button" matSuffix mat-icon-button color="primary">
+          <mat-icon>search</mat-icon>
+        </button>
 
+      </mat-form-field>
+    </form>
 
-
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
-        <ng-container *ngIf="!isLoading">
-          <mat-option *ngFor="let article of filteredArticles" (click)="sendToArticle(article)">
-            <span  style="overflow-x: hidden;">{{ article.title | stringShorter}}</span>
-            <small style="float: right;">{{ article.author}}</small>
-          </mat-option>
-        </ng-container>
-      </mat-autocomplete>
-
-    </mat-form-field>
-  </form>
-</div>
-    <div class="row h-75 mx-1 my-3" style ="overflow: auto;">
-    <div class="col w-75" >
-        <div *ngFor="let article of allArticles.slice().reverse(); let i = index">
-          <app-article-item [mySelectedArticle]="article"></app-article-item>
-        </div>
-    </div>
   </div>
+
+  <div class="row ">
+
+  </div>
+
+
+  <div class="row h-75 mx-1 my-3" >
+    <div class="col-10 w-75 h-100" style="overflow: auto;">
+      <div *ngFor="let article of allArticles.slice().reverse(); let i = index">
+        <app-article-item [mySelectedArticle]="article"></app-article-item>
+      </div>
+    </div>
+    <div class="col mx-auto mt-1 example-form">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Filtrar
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+
+          <form class="row mx-auto" [formGroup]="filterForm">
+            <mat-form-field class="example-full-width w-100">
+              <input #matInput type="text" placeholder="Tag" matInput [formControl]="filterControl"
+                [matAutocomplete]="auto" [(value)]="tagSearch">
+              <mat-autocomplete #auto="matAutocomplete">
+                <div *ngFor="let tag of filteredTagsOptions">
+                  <mat-option *ngIf="!selectedTags.includes(tag)" [value]="tag.name"
+                    (click)="this.addFilterTag(tag); matInput.value=''">
+                    {{tag.name}}
+                  </mat-option>
+                </div>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
+
+          <mat-chip-list #chipList aria-label="Fruit selection">
+            <div *ngFor="let tag of selectedTags">
+              <div *ngIf="tag.level==1">
+                <mat-chip color="primary" [removable]="removable" (removed)="removeFilterTag(tag)" selected>
+                  {{tag.name}}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+              </div>
+              <div *ngIf="tag.level>1">
+                <mat-chip [removable]="removable" (removed)="removeFilterTag(tag)">
+                  {{tag.name}}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+              </div>
+            </div>
+          </mat-chip-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+  </div>
+
+
 
   <div class="container">
     <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
