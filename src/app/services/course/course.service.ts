@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CourseService {
 
-  private courses :Array<Course> = [];
+  courses :Array<Course> = [];
   courseIn: BehaviorSubject<Course[]> = new BehaviorSubject<Course[]>([]);
 
   constructor(private http: HttpClient) { }
