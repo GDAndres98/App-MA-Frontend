@@ -3,6 +3,7 @@ import { User, UserLogin } from 'src/app/model/User';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpParams, HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { CourseService } from '../course/course.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,20 @@ export class UserService {
   currentUser: User;
   name :BehaviorSubject<string> = new BehaviorSubject<string>("");
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private courseService: CourseService
+    ) { }
 
   setUser(user: User){
     this.currentUser = user;
     if(user){
+      this.courseService.getUserCourses(this.currentUser.id);
       console.log(user.firstName);
       this.updateMessage(user.firstName);
+    }
+    else{
+      this.courseService.clearCourses();
     }
   }
 

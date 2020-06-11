@@ -60,6 +60,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProblemListComponent } from './problem/problem-list/problem-list.component';
 import { ProblemDetailComponent } from './problem/problem-detail/problem-detail.component';
 import { StringShorter } from './article/article-list/stringShorterPipe';
+import { CourseListComponent } from './course-list/course-list.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { StringShorter } from './article/article-list/stringShorterPipe';
     ArticleDetailComponent,
     ProblemListComponent,
     ProblemDetailComponent,
-    StringShorter
+    StringShorter,
+    CourseListComponent
   ],
   imports: [
     HttpClientModule,

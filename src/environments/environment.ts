@@ -2,20 +2,25 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const url = "http://localhost:8080/";
+
 export const environment = {
   production: false,
-  urlvalidatedUser : "http://localhost:8080/validatedUser",
-  urlStudentCreation : "http://localhost:8080/createStudent",
-  urlGetAllArticles: "http://localhost:8080/getAllArticles",
-  urlGetSearchArticle : "http://localhost:8080/getSearchArticle",
-  urlGetAllArticlesPagination: "http://localhost:8080/getAllArticlesPagination",
-  urlGetArticleById: "http://localhost:8080/getArticleById",
-  urlGetProblemById: "http://localhost:8080/getProblemById",
-  urlGetAllProblemPagination: "http://localhost:8080/getAllProblemPagination",
-  urlGetSearchProblem : "http://localhost:8080/getSearchProblem",
-  urlGetAllTags: "http://localhost:8080/getAllTags",
+  urlvalidatedUser: url + "validatedUser",
+  urlStudentCreation: url + "createStudent",
 
+  urlGetAllArticles: url + "getAllArticles",
+  urlGetSearchArticle: url + "getSearchArticle",
+  urlGetAllArticlesPagination: url + "getAllArticlesPagination",
+  urlGetArticleById: url + "getArticleById",
 
+  urlGetProblemById: url + "getProblemById",
+  urlGetAllProblemPagination: url + "getAllProblemPagination",
+  urlGetSearchProblem: url + "getSearchProblem",
+
+  urlGetAllTags: url + "getAllTags",
+  
+  urlGetUserCourses: url + "getAllUserCoursesById",
 };
 
 /*

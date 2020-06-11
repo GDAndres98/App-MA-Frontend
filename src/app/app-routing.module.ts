@@ -12,6 +12,7 @@ import { ArticleListComponent } from './article/article-list/article-list.compon
 import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
 import { ProblemListComponent } from './problem/problem-list/problem-list.component';
 import { ProblemDetailComponent } from './problem/problem-detail/problem-detail.component';
+import { CourseListComponent } from './course-list/course-list.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'markdown', component: MarkdownComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'sends', component: SendsComponent, canActivate: [AuthGuard]},
+  { path: 'courses', component: CourseListComponent, canActivate: [AuthGuard]},
   { path: 'articles', component: ArticleListComponent},
   { path: 'article/:id', component: ArticleDetailComponent},
   { path: 'problems', component: ProblemListComponent},
