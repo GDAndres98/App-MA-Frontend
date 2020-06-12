@@ -1,6 +1,6 @@
 <div class="container-flex col m-0 p-0 bg-dark h-100">
   <mat-card>
-    <p>Barrita pa' debuggear xd <3< /p>
+    <p>Barrita pa' debuggear xd </p>
   </mat-card>
 
   <div class="row">
@@ -18,14 +18,21 @@
           <mat-icon>search</mat-icon>
         </button>
 
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
+          <ng-container *ngIf="!isLoading">
+            <mat-option *ngFor="let article of filteredArticles" (click)="sendToArticle(article)">
+              <span  style="overflow-x: hidden;">{{ article.title | stringShorter}}</span>
+              <small style="float: right;">{{ article.author}}</small>
+            </mat-option>
+          </ng-container>
+        </mat-autocomplete>
+
       </mat-form-field>
     </form>
 
   </div>
 
-  <div class="row ">
-
-  </div>
 
 
   <div class="row h-75 mx-1 my-3" >
@@ -47,8 +54,8 @@
           <form class="row mx-auto" [formGroup]="filterForm">
             <mat-form-field class="example-full-width w-100">
               <input #matInput type="text" placeholder="Tag" matInput [formControl]="filterControl"
-                [matAutocomplete]="auto" [(value)]="tagSearch">
-              <mat-autocomplete #auto="matAutocomplete">
+                [matAutocomplete]="xd" [(value)]="tagSearch">
+              <mat-autocomplete #xd="matAutocomplete">
                 <div *ngFor="let tag of filteredTagsOptions">
                   <mat-option *ngIf="!selectedTags.includes(tag)" [value]="tag.name"
                     (click)="this.addFilterTag(tag); matInput.value=''">
