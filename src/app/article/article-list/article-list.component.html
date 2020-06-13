@@ -6,14 +6,13 @@
   <div class="row">
     <form class="col mx-auto mt-2 example-form" [formGroup]="form">
       <mat-form-field color="accent" class="w-100">
-
         <input class="text-white" type="text" placeholder="Buscar" aria-label="Number" matInput [(ngModel)]="search"
           [formControl]="myControl" [matAutocomplete]="auto" formControlName="search">
+
         <button matSuffix mat-button class="text-white suffix-button" *ngIf="search" matSuffix mat-icon-button
           aria-label="Clear" (click)="search=''">
           <mat-icon>close</mat-icon>
         </button>
-
         <button class="text-white suffix-button" matSuffix mat-icon-button color="primary">
           <mat-icon>search</mat-icon>
         </button>
@@ -29,10 +28,8 @@
             </mat-option>
           </ng-container>
         </mat-autocomplete>
-
       </mat-form-field>
     </form>
-
   </div>
 
 
@@ -40,9 +37,7 @@
   <div class="row h-75 mx-1 my-3">
     <div class="col-10 w-75 h-100" style="overflow: auto;">
       <div *ngIf="isLoadingFilter" class="row justify-content-center is-isLoadingFiler">
-        <div>
-          <mat-spinner diameter="100"></mat-spinner>
-        </div>
+        <mat-spinner diameter="100"></mat-spinner>
       </div>
       <div *ngIf="!isLoadingFilter">
         <div *ngFor="let article of articlesShowing.slice().reverse(); let i = index">
@@ -50,16 +45,12 @@
         </div>
       </div>
     </div>
-    <div class="col mx-auto mt-1 example-form">
-      <mat-accordion>
+
+      <mat-accordion class="col mx-auto mt-1 example-form">
         <mat-expansion-panel [(expanded)]="expandedFilter">
           <mat-expansion-panel-header>
-            <mat-panel-title>
-              Filtrar
-            </mat-panel-title>
+            <mat-panel-title> Filtrar </mat-panel-title>
           </mat-expansion-panel-header>
-
-
           <form class="row mx-auto" [formGroup]="filterForm">
             <mat-form-field class="example-full-width w-100">
               <input #matInput type="text" placeholder="Tag" matInput [formControl]="filterControl"
@@ -73,8 +64,7 @@
               </mat-autocomplete>
             </mat-form-field>
           </form>
-
-          <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip-list #chipList>
             <div *ngFor="let tag of selectedTags">
               <mat-chip [ngStyle]="{'background-color': tag.level==1? 'var(--tag1)' : 'var(--tag2)'}"
                 [removable]="removable" (removed)="removeFilterTag(tag)">
@@ -85,8 +75,6 @@
           </mat-chip-list>
         </mat-expansion-panel>
       </mat-accordion>
-    </div>
-
   </div>
 
 

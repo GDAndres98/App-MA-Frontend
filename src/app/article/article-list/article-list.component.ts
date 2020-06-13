@@ -83,13 +83,13 @@ export class ArticleListComponent implements OnInit {
     }
     else {
       this.arService.getAllArticlesPagination(this.pageNo - 1, this.pageSize, this.sortBy)
-      .subscribe(allArticlesObs => {
-        this.articlesShowing = allArticlesObs.content;
-        this.collectionSize = allArticlesObs.totalElements;
-        this.isLoadingFilter = false;
-      }, () => {
-        this.isLoadingFilter = false;
-      });
+        .subscribe(allArticlesObs => {
+          this.articlesShowing = allArticlesObs.content;
+          this.collectionSize = allArticlesObs.totalElements;
+          this.isLoadingFilter = false;
+        }, () => {
+          this.isLoadingFilter = false;
+        });
     }
   }
 
@@ -120,10 +120,7 @@ export class ArticleListComponent implements OnInit {
         })
 
 
-    this.filterForm = this.fb.group({
-    });
-
-
+    this.filterForm = this.fb.group({});
     this.filterControl.valueChanges.subscribe(
       value => {
         this.filteredTagsOptions = this._filter(value);
@@ -134,10 +131,6 @@ export class ArticleListComponent implements OnInit {
     return this.allTags.filter(value => value.name.toLowerCase().includes(search.toLowerCase()));
   }
 
-
-  sendToArticle(article: Article) {
-    this.router.navigateByUrl(`/article/${article.id}`);
-  }
 
   getAllTags() {
     this.tagService.getAllArticles().subscribe(data => this.allTags = data)
@@ -179,5 +172,9 @@ export class ArticleListComponent implements OnInit {
     this.onPageChange();
   }
 
+
+  sendToArticle(article: Article) {
+    this.router.navigateByUrl(`/article/${article.id}`);
+  }
 }
 

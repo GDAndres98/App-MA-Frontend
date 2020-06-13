@@ -17,6 +17,7 @@ export const environment = {
 
   urlGetProblemById: url + "getProblemById",
   urlGetAllProblemPagination: url + "getAllProblemPagination",
+  urldGetProblemsWithTags: url + "getProblemsWithTags",
   urlGetSearchProblem: url + "getSearchProblem",
 
   urlGetAllTags: url + "getAllTags",

@@ -38,19 +38,13 @@ export class ArticleService {
     return this.http.get<Article[]>(environment.urlGetSearchArticle, op);
   }
 
-
   getArticlesWithTags(pageNo: number, pageSize: number, sortBy: string, tags: Tag[]): Observable<any> {
     let tagsID = Array<number>();
     tags.forEach(tag => { tagsID.push(tag.id); });
-    console.log("SERVICIO:");
-    console.log(tags);
     const op = {
-      headers: new HttpHeaders({ 'pageNo': pageNo + '', 'pageSize': pageSize + '', 'sortBy': sortBy + '', 'tagsID': tagsID.toString() })
+      headers: new HttpHeaders({ 'pageNo': pageNo + '', 'pageSize': pageSize + '', 'sortBy': sortBy + '', 'tagsId': tagsID.toString() })
     };
     return this.http.get<any>(environment.urldGetArticlesWithTags, op);
   }
-
-
-
 
 }

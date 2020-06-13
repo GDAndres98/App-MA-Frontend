@@ -33,10 +33,14 @@
         </mat-form-field>
       </form>
 </div>
-<div style="height: 100%; overflow-y: auto;">
-<div class="row row-cols-1">
-<div class="col-8 offset-md-2 my-2 p-3" style="background: transparent;">
-    <table class="table table-dark table-hover" style="background-color: rgba(75, 75, 75, 0.404);" >
+<div style="height: 100%;">
+<div class="row mx-1">
+<div class="col-10 w-75 mx-auto my-2 p-3 " style="background: transparent;  overflow-y: auto;">
+<div *ngIf="isLoadingFilter" class="row justify-content-center is-isLoadingFiler">
+    <mat-spinner diameter="100"></mat-spinner>
+</div>
+<div *ngIf="!isLoadingFilter">
+  <table class="table table-dark table-hover" style="background-color: rgba(75, 75, 75, 0.404);" >
         <thead>
             <tr>
             <th>ID</th>
@@ -46,7 +50,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let problem of allProblem" routerLink="/problem/{{problem.id}}">
+            <tr *ngFor="let problem of problemsShowing" routerLink="/problem/{{problem.id}}">
                 <td>{{problem.id}}</td>
                 <td >{{problem.title}}</td>
                 <td>
@@ -65,13 +69,46 @@
             </tr>
         </tbody>
         </table>        
-</div>  
+</div> 
+</div> 
 
-<div class="row">
-<div class="container col">
-    <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
-      [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
-  </div>
+<mat-accordion class="col mx-auto mt-1 example-form">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Filtrar </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <form class="row mx-auto" [formGroup]="filterForm">
+      <mat-form-field class="example-full-width w-100">
+        <input #matInput type="text" placeholder="Tag" matInput [formControl]="filterControl"
+        [matAutocomplete]="xd" [(value)]="tagSearch">
+      <mat-autocomplete #xd="matAutocomplete">
+        <div *ngFor="let tag of filteredTagsOptions">
+          <mat-option *ngIf="!selectedTags.includes(tag)" [value]="tag.name" (click)="this.addFilterTag(tag); ">
+            {{tag.name}}
+          </mat-option>
+        </div>
+      </mat-autocomplete>
+    </mat-form-field>
+    </form>
+    <mat-chip-list #chipList>
+      <div *ngFor="let tag of selectedTags">
+        <mat-chip [ngStyle]="{'background-color': tag.level==1? 'var(--tag1)' : 'var(--tag2)'}"
+          [removable]="removable" (removed)="removeFilterTag(tag)">
+          {{tag.name}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+      </div>
+    </mat-chip-list>
+  </mat-expansion-panel>
+</mat-accordion>
+
+
 </div>
+  <div class="row">
+  <div class="container col">
+      <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
+        [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
+    </div>
 </div>
 </div>
