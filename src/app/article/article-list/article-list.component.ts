@@ -25,7 +25,8 @@ export class ArticleListComponent implements OnInit {
   removable: boolean;
   filterControl = new FormControl();
   filteredByTags: boolean;
-  expandedFilter:boolean;
+  expandedFilter: boolean;
+  isLoadingFilter = false;
 
 
 
@@ -42,7 +43,7 @@ export class ArticleListComponent implements OnInit {
 
   articleSelected: Article;
 
-  isLoading = false;
+  isLoadingSearch = false;
   filteredArticles: Array<Article> = new Array();
 
 
@@ -59,7 +60,7 @@ export class ArticleListComponent implements OnInit {
     this.filteredByTags = false;
     this.selectedTags = new Array();
     this.allTags = new Array();
-    this.expandedFilter=false;
+    this.expandedFilter = false;
 
 
 
@@ -69,18 +70,26 @@ export class ArticleListComponent implements OnInit {
   }
 
   onPageChange() {
+    this.isLoadingFilter = true;
     if (this.filteredByTags) {
-      this.arService.getArticlesWithTags(this.pageNo - 1, this.pageSize, this.sortBy, this.selectedTags).subscribe(allArticlesObs => {
-        this.articlesShowing = allArticlesObs.content;
-        this.collectionSize = allArticlesObs.totalElements;
-      });
+      this.arService.getArticlesWithTags(this.pageNo - 1, this.pageSize, this.sortBy, this.selectedTags)
+        .subscribe(allArticlesObs => {
+          this.articlesShowing = allArticlesObs.content;
+          this.collectionSize = allArticlesObs.totalElements;
+          this.isLoadingFilter = false;
+        }, () => {
+          this.isLoadingFilter = false;
+        });
     }
     else {
-      this.arService.getAllArticlesPagination(this.pageNo - 1, this.pageSize, this.sortBy).subscribe(allArticlesObs => {
+      this.arService.getAllArticlesPagination(this.pageNo - 1, this.pageSize, this.sortBy)
+      .subscribe(allArticlesObs => {
         this.articlesShowing = allArticlesObs.content;
         this.collectionSize = allArticlesObs.totalElements;
-      }
-      );
+        this.isLoadingFilter = false;
+      }, () => {
+        this.isLoadingFilter = false;
+      });
     }
   }
 
@@ -94,19 +103,19 @@ export class ArticleListComponent implements OnInit {
       .get('search')
       .valueChanges.pipe(
         debounceTime(300),
-        tap(() => this.isLoading = true
+        tap(() => this.isLoadingSearch = true
         )).subscribe(value => {
 
           if (value && value.length >= 3) {
             this.arService.searchArticle(value).subscribe(arts => {
               this.filteredArticles = arts;
             }, err => { }, () => {
-              this.isLoading = false;
+              this.isLoadingSearch = false;
             })
           }
           else {
             this.filteredArticles = [];
-            this.isLoading = false;
+            this.isLoadingSearch = false;
           }
         })
 
@@ -136,7 +145,7 @@ export class ArticleListComponent implements OnInit {
 
   addFilterTag(ntag: Tag) {
     this.tagSearch = '';
-    this.expandedFilter=true;
+    this.expandedFilter = true;
     let tag = ntag;
     this.allTags.some(e => {
       if (e.id === ntag.id) {

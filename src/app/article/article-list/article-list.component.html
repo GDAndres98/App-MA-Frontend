@@ -19,10 +19,10 @@
         </button>
 
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngIf="isLoading" class="is-loading">
+          <mat-option *ngIf="isLoadingSearch" class="is-isLoadingSearch">
             <mat-spinner diameter="50"></mat-spinner>
           </mat-option>
-          <ng-container *ngIf="!isLoading">
+          <ng-container *ngIf="!isLoadingSearch">
             <mat-option *ngFor="let article of filteredArticles" (click)="sendToArticle(article)">
               <span style="overflow-x: hidden;">{{ article.title | stringShorter}}</span>
               <small style="float: right;">{{ article.author}}</small>
@@ -39,8 +39,15 @@
 
   <div class="row h-75 mx-1 my-3">
     <div class="col-10 w-75 h-100" style="overflow: auto;">
-      <div *ngFor="let article of articlesShowing.slice().reverse(); let i = index">
-        <app-article-item [mySelectedArticle]="article" (clickOnTag)="addFilterTag($event)"></app-article-item>
+      <div *ngIf="isLoadingFilter" class="row justify-content-center is-isLoadingFiler">
+        <div>
+          <mat-spinner diameter="100"></mat-spinner>
+        </div>
+      </div>
+      <div *ngIf="!isLoadingFilter">
+        <div *ngFor="let article of articlesShowing.slice().reverse(); let i = index">
+          <app-article-item [mySelectedArticle]="article" (clickOnTag)="addFilterTag($event)"></app-article-item>
+        </div>
       </div>
     </div>
     <div class="col mx-auto mt-1 example-form">
@@ -59,8 +66,7 @@
                 [matAutocomplete]="xd" [(value)]="tagSearch">
               <mat-autocomplete #xd="matAutocomplete">
                 <div *ngFor="let tag of filteredTagsOptions">
-                  <mat-option *ngIf="!selectedTags.includes(tag)" [value]="tag.name"
-                    (click)="this.addFilterTag(tag); ">
+                  <mat-option *ngIf="!selectedTags.includes(tag)" [value]="tag.name" (click)="this.addFilterTag(tag); ">
                     {{tag.name}}
                   </mat-option>
                 </div>
