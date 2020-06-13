@@ -28,7 +28,7 @@
       <mat-chip-list aria-label="Fish selection">
         <div *ngFor="let tag of mySelectedArticle.tags; let i = index">
           <div *ngIf="tag.level==1 || tag.level==2" >
-            <mat-chip color="primary" class ="tag"
+            <mat-chip class ="tag"
             [ngStyle]="{'background-color': tag.level==1? 'var(--tag1)' : 'var(--tag2);'}" (click)="callParent(tag)">{{tag.name}}</mat-chip>
           </div>
         </div>

@@ -56,11 +56,9 @@
                 <td>
                     <mat-chip-list aria-label="Fish selection">
                     <div *ngFor="let tag of problem.tags; let i = index">
-                      <div *ngIf="tag.level==1">
-                        <mat-chip color="primary" selected>{{tag.name}}</mat-chip>
-                      </div>
-                      <div *ngIf="tag.level==2">
-                        <mat-chip>{{tag.name}}</mat-chip>
+                      <div *ngIf="tag.level==1 || tag.level==2" >
+                        <mat-chip class ="tag"
+                        [ngStyle]="{'background-color': tag.level==1? 'var(--tag1)' : 'var(--tag2);'}" (click)="addFilterTag(tag)">{{tag.name}}</mat-chip>
                       </div>
                     </div>
                   </mat-chip-list>
@@ -73,7 +71,7 @@
 </div> 
 
 <mat-accordion class="col mx-auto mt-1 example-form">
-  <mat-expansion-panel>
+  <mat-expansion-panel [(expanded)]="expandedFilter">
     <mat-expansion-panel-header>
       <mat-panel-title> Filtrar </mat-panel-title>
     </mat-expansion-panel-header>
@@ -84,7 +82,7 @@
         [matAutocomplete]="xd" [(value)]="tagSearch">
       <mat-autocomplete #xd="matAutocomplete">
         <div *ngFor="let tag of filteredTagsOptions">
-          <mat-option *ngIf="!selectedTags.includes(tag)" [value]="tag.name" (click)="this.addFilterTag(tag); ">
+          <mat-option *ngIf="!selectedTags.includes(tag)" [value]="tag.name" (click)="addFilterTag(tag); ">
             {{tag.name}}
           </mat-option>
         </div>
