@@ -12,14 +12,6 @@ export class ProblemService {
 
   constructor(private http: HttpClient) { }
 
-
-  getAllArticlesPagination(pageNo: number, pageSize: number, sortBy: string): Observable<any> {
-    const op = {
-      headers: new HttpHeaders({ 'pageNo': pageNo + '', 'pageSize': pageSize + '', 'sortBy': sortBy + '' })
-    };
-    return this.http.get<any>(environment.urlGetAllArticlesPagination, op);
-  }
-
   getProblemById(id: number): Observable<Problem> {
     const op = {
       headers: new HttpHeaders({ 'id': id + '' })
@@ -43,7 +35,7 @@ export class ProblemService {
     return this.http.get<Problem[]>(environment.urlGetSearchProblem, op);
   }
 
-  getArticlesWithTags(pageNo: number, pageSize: number, sortBy: string, tags: Tag[]): Observable<any> {
+  getProblemsWithTags(pageNo: number, pageSize: number, sortBy: string, tags: Tag[]): Observable<any> {
     let tagsID = Array<number>();
     tags.forEach(tag => { tagsID.push(tag.id); });
     const op = {

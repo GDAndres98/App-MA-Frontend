@@ -62,7 +62,7 @@ export class ProblemListComponent implements OnInit {
   onPageChange() {
     this.isLoadingFilter = true;
     if (this.filteredByTags) {
-      this.problemService.getArticlesWithTags(this.pageNo - 1, this.pageSize, this.sortBy, this.selectedTags)
+      this.problemService.getProblemsWithTags(this.pageNo - 1, this.pageSize, this.sortBy, this.selectedTags)
         .subscribe(allProblemObs => {
           this.problemsShowing = allProblemObs.content;
           this.collectionSize = allProblemObs.totalElements;
@@ -72,7 +72,7 @@ export class ProblemListComponent implements OnInit {
         });
     }
     else {
-      this.problemService.getAllArticlesPagination(this.pageNo - 1, this.pageSize, this.sortBy)
+      this.problemService.getAllProblemPagination(this.pageNo - 1, this.pageSize, this.sortBy)
         .subscribe(allProblemObs => {
           this.problemsShowing = allProblemObs.content;
           this.collectionSize = allProblemObs.totalElements;
