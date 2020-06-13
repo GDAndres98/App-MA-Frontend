@@ -7,7 +7,6 @@ import { startWith, map, debounceTime, tap, switchMap, finalize } from 'rxjs/ope
 import { Router } from '@angular/router';
 import { Tag } from 'src/app/model/tag';
 import { TagService } from 'src/app/services/tag/tag.service';
-import { log } from 'util';
 
 @Component({
   selector: 'app-article-list',
@@ -25,10 +24,12 @@ export class ArticleListComponent implements OnInit {
   filteredTagsOptions: Array<Tag>;
   removable: boolean;
   filterControl = new FormControl();
+  filteredByTags: boolean;
+  expandedFilter:boolean;
 
 
 
-  allArticles: Array<Article>;
+  articlesShowing: Array<Article>;
   collectionSize: number;
   pageNo: number;
   pageSize: number;
@@ -53,21 +54,34 @@ export class ArticleListComponent implements OnInit {
     this.pageNo = 1;
     this.pageSize = 7;
     this.sortBy = "title";
-    this.removable = true;
 
-    this.allArticles = new Array();
-    this.allTags = new Array();
+    this.removable = true;
+    this.filteredByTags = false;
     this.selectedTags = new Array();
+    this.allTags = new Array();
+    this.expandedFilter=false;
+
+
+
+    this.articlesShowing = new Array();
     this.onPageChange();
     this.getAllTags();
   }
 
   onPageChange() {
-    this.arService.getAllArticlesPagination(this.pageNo - 1, this.pageSize, this.sortBy).subscribe(allArticlesObs => {
-      this.allArticles = allArticlesObs.content;
-      this.collectionSize = allArticlesObs.totalElements;
+    if (this.filteredByTags) {
+      this.arService.getArticlesWithTags(this.pageNo - 1, this.pageSize, this.sortBy, this.selectedTags).subscribe(allArticlesObs => {
+        this.articlesShowing = allArticlesObs.content;
+        this.collectionSize = allArticlesObs.totalElements;
+      });
     }
-    );
+    else {
+      this.arService.getAllArticlesPagination(this.pageNo - 1, this.pageSize, this.sortBy).subscribe(allArticlesObs => {
+        this.articlesShowing = allArticlesObs.content;
+        this.collectionSize = allArticlesObs.totalElements;
+      }
+      );
+    }
   }
 
   ngOnInit(): void {
@@ -120,10 +134,27 @@ export class ArticleListComponent implements OnInit {
     this.tagService.getAllArticles().subscribe(data => this.allTags = data)
   }
 
-  addFilterTag(tag: Tag) {
+  addFilterTag(ntag: Tag) {
     this.tagSearch = '';
-    this.selectedTags.push(tag);
-    console.log(this.selectedTags);
+    this.expandedFilter=true;
+    let tag = ntag;
+    this.allTags.some(e => {
+      if (e.id === ntag.id) {
+        tag = e;
+        return true
+      }
+    });
+
+
+    if (!this.selectedTags.includes(tag)) {
+      this.selectedTags.push(tag);
+      console.log(this.selectedTags);
+
+      this.filteredByTags = true;
+      this.pageNo = 1;
+      this.onPageChange();
+    }
+
   }
 
   removeFilterTag(tag: Tag): void {
@@ -133,7 +164,10 @@ export class ArticleListComponent implements OnInit {
       this.selectedTags.splice(index, 1);
     }
     console.log(this.selectedTags);
-
+    if (this.selectedTags.length < 1)
+      this.filteredByTags = false;
+    this.pageNo = 1;
+    this.onPageChange();
   }
 
 }

@@ -4,9 +4,23 @@
   
   .example-card:hover {
     color: white; /* Green */
-    background-color: #008d67;
+    background-color: var(--accent2);
     cursor: pointer;
   }
+
+  .tag:hover {
+    cursor: pointer;
+  }
+
+  .tag {
+    font-family: "Roboto";
+    cursor: pointer;
+  } 
+
+
+
+
+
 
   .example-header-image {
     background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");

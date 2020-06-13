@@ -19,10 +19,12 @@
         </button>
 
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
+          <mat-option *ngIf="isLoading" class="is-loading">
+            <mat-spinner diameter="50"></mat-spinner>
+          </mat-option>
           <ng-container *ngIf="!isLoading">
             <mat-option *ngFor="let article of filteredArticles" (click)="sendToArticle(article)">
-              <span  style="overflow-x: hidden;">{{ article.title | stringShorter}}</span>
+              <span style="overflow-x: hidden;">{{ article.title | stringShorter}}</span>
               <small style="float: right;">{{ article.author}}</small>
             </mat-option>
           </ng-container>
@@ -35,15 +37,15 @@
 
 
 
-  <div class="row h-75 mx-1 my-3" >
+  <div class="row h-75 mx-1 my-3">
     <div class="col-10 w-75 h-100" style="overflow: auto;">
-      <div *ngFor="let article of allArticles.slice().reverse(); let i = index">
-        <app-article-item [mySelectedArticle]="article"></app-article-item>
+      <div *ngFor="let article of articlesShowing.slice().reverse(); let i = index">
+        <app-article-item [mySelectedArticle]="article" (clickOnTag)="addFilterTag($event)"></app-article-item>
       </div>
     </div>
     <div class="col mx-auto mt-1 example-form">
       <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel [(expanded)]="expandedFilter">
           <mat-expansion-panel-header>
             <mat-panel-title>
               Filtrar
@@ -58,7 +60,7 @@
               <mat-autocomplete #xd="matAutocomplete">
                 <div *ngFor="let tag of filteredTagsOptions">
                   <mat-option *ngIf="!selectedTags.includes(tag)" [value]="tag.name"
-                    (click)="this.addFilterTag(tag); matInput.value=''">
+                    (click)="this.addFilterTag(tag); ">
                     {{tag.name}}
                   </mat-option>
                 </div>
@@ -68,18 +70,11 @@
 
           <mat-chip-list #chipList aria-label="Fruit selection">
             <div *ngFor="let tag of selectedTags">
-              <div *ngIf="tag.level==1">
-                <mat-chip color="primary" [removable]="removable" (removed)="removeFilterTag(tag)" selected>
-                  {{tag.name}}
-                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                </mat-chip>
-              </div>
-              <div *ngIf="tag.level>1">
-                <mat-chip [removable]="removable" (removed)="removeFilterTag(tag)">
-                  {{tag.name}}
-                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                </mat-chip>
-              </div>
+              <mat-chip [ngStyle]="{'background-color': tag.level==1? 'var(--tag1)' : 'var(--tag2)'}"
+                [removable]="removable" (removed)="removeFilterTag(tag)">
+                {{tag.name}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
             </div>
           </mat-chip-list>
         </mat-expansion-panel>

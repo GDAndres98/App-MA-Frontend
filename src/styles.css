@@ -16,7 +16,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --accent: #00b686;
     --accent2: #008d67;
     --dark2: #424242;
-    --dark2: #424242;
+    --tag1: #607d8b;
+    --tag2: #616161;
     --warn: #ef5350;
 
 }

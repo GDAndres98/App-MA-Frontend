@@ -12,6 +12,7 @@ export const environment = {
   urlGetAllArticles: url + "getAllArticles",
   urlGetSearchArticle: url + "getSearchArticle",
   urlGetAllArticlesPagination: url + "getAllArticlesPagination",
+  urldGetArticlesWithTags: url + "getArticlesWithTags",
   urlGetArticleById: url + "getArticleById",
 
   urlGetProblemById: url + "getProblemById",
