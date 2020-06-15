@@ -4,9 +4,9 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'stringShorter'
 })
 export class StringShorter implements PipeTransform {
-  transform(value: string): string {
-      if(value.length > 60)
-        return value.slice(0,60) + "...";
+  transform(value: string, limit: number = 60): string {
+      if(value.length > limit)
+        return value.slice(0,limit) + "...";
       return value;
   }
 }

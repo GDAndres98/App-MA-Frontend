@@ -35,15 +35,15 @@
                 </a>
             </li>
             <mat-divider></mat-divider>
-            <span class ="my-2" style="margin-left: 60px; color: white">Cursos</span>
+            <span class ="my-2" style="margin-left: 60px; color: white" *ngIf="courses.length > 0">Cursos</span>
             <mat-divider></mat-divider>
             <li class="nav-item" *ngFor="let course of courses">
                 <a class = "nav-link" routerLink="/">
                     <i class="fa fa-{{course.logoUrl}}"></i>
                     <!--<mat-icon class="icon">{{course.logoUrl}}</mat-icon> -->
-                    <span class="nav-text">
-                            {{course.name}}
-                        </span>
+                    <span class="nav-text" title="{{course.name}}">
+                        {{course.name | stringShorter: 23}}
+                    </span>
                     </a>
             </li>
     

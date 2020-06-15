@@ -1,23 +1,26 @@
-<div class="container h-100">
-    <div class="row">
-        <mat-card class="col" *ngFor="let course of courses">
-            <mat-card-header>
-              <div mat-card-avatar ></div>
-              <mat-card-title>{{course.name}}</mat-card-title>
-              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p>
-                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                bred for hunting.
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>LIKE</button>
-              <button mat-button>SHARE</button>
-            </mat-card-actions>
-          </mat-card>
+<div class="container h-100" style="overflow-y: auto;">
+    <div class="row justify-content-center">
+        <mat-card class="mx-3 my-3 hoverAccent" style="width: 280px; height: 300px;" *ngFor="let course of courses">
+          <mat-card-subtitle style="height: 5px;">ID: {{course.id}}</mat-card-subtitle>
+          <div class="row align-items-center" style="height: 180px;"> <i class="fa fa-{{course.logoUrl}} mx-auto my-3"></i> </div>
+          <mat-card-content class="container" style="height: 50px;">
+            <h2 class="display-2 text-center" title="{{course.name}}">{{course.name | stringShorter: 40}}</h2>
+          </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="row justify-content-center align-items-center h-100" *ngIf="courses.length == 0" >
+      <mat-card class="col mx-3 my-3" style="height: 95vh;">
+        <div class="row align-items-end" style="height: 50vh;"> <i class="fa fa-frown mx-auto my-3"></i></div>
+        <mat-card-content class="container" style="height: 50px;">
+          <h1 class="text-center" style="color: var(--primary2);">Ups :( al parecer no tienes cursos.</h1>
+        </mat-card-content>
+      </mat-card>
     </div>
 </div>
+<!--
+            <mat-card-content>
+              <h1>{{course.name}}</h1>
+            </mat-card-content>
+            <mat-card-footer><span>{{course.professor.firstName}} {{course.professor.lastName}}</span></mat-card-footer>
+            -->
