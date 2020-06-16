@@ -15,7 +15,9 @@ export class StorageService {
 
   constructor(private router: Router, private userService: UserService) {
     this.localStorageService = localStorage;
+    console.log("CALL CONSTRUCTOR");
     this.currentSession = this.loadSessionData();
+    
   }
 
   setCurrentSession(session: Session): void {
@@ -28,6 +30,8 @@ export class StorageService {
   loadSessionData(): Session{
     var sessionStr = this.localStorageService.getItem('currentUser');
     this.loggedIn.next(sessionStr);
+    console.log("LOADSESSION "+ sessionStr);
+    
     if(sessionStr)
       this.userService.setUser(JSON.parse(sessionStr).user);
     return (sessionStr) ? <Session> JSON.parse(sessionStr) : null;

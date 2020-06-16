@@ -18,9 +18,14 @@ export class CourseService {
 
   getUserCourses(id: number): void{
     const op = {headers: new HttpHeaders({ 'id': id +''})};  
+    console.log("CALL USER COURSE SERVICE");
+    
     
     this.http.get<Course[]>(environment.urlGetUserCourses, op).subscribe(data =>{
       this.courses = data;
+
+      console.log("END USER COURSE SERVICE");
+      
       let map: Map<Number, User> = new Map();
       this.courses.forEach((v, index) =>{
         if(typeof v.professor == 'number')     
@@ -35,6 +40,14 @@ export class CourseService {
   clearCourses() : void{
     this.courses = [];
     this.courseIn.next([]);
+  }
+
+  hasCourse(id: number): boolean{
+    return this.courses.find(v => v.id == id) !== undefined;
+  }
+
+  getCourse(id: number): Course{
+    return this.courses.find(v => v.id == id);
   }
 
 }

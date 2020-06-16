@@ -49,10 +49,10 @@ import { SendsComponent } from './sends/sends.component';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AuthService } from './services/auth/auth.service';
-import { AuthGuard } from './login/login.guard';
+import { AuthGuard } from './guards/login.guard';
 import { StorageService } from './services/auth/storage.service';
 import { RegisterComponent } from './register/register.component';
-import { AuthDeGuard } from './login/login.deguard';
+import { AuthDeGuard } from './guards/login.deguard';
 import { ArticleListComponent } from './article/article-list/article-list.component';
 import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
 import { ArticleItemComponent } from './article/article-item/article-item.component';
@@ -61,6 +61,7 @@ import { ProblemListComponent } from './problem/problem-list/problem-list.compon
 import { ProblemDetailComponent } from './problem/problem-detail/problem-detail.component';
 import { StringShorter } from './article/article-list/stringShorterPipe';
 import { CourseListComponent } from './course-list/course-list.component';
+import { CourseComponent } from './course/course.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { CourseListComponent } from './course-list/course-list.component';
     ProblemListComponent,
     ProblemDetailComponent,
     StringShorter,
-    CourseListComponent
+    CourseListComponent,
+    CourseComponent
   ],
   imports: [
     HttpClientModule,

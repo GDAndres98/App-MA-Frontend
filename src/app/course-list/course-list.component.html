@@ -1,6 +1,12 @@
+<div>
+  <nav class="navbar navbar-dark navbar-expand-sm fixed-top justify-content-between" style="background: rgba(75, 75, 75, 0.404); padding-left: 70px;">
+    <a class="navbar-brand mb-0 h1">Entorno Educativo</a>
+  </nav>
+</div>
+<div class="container-flex col m-0 p-0 bg-dark h-100 mt-5">
 <div class="container h-100" style="overflow-y: auto;">
     <div class="row justify-content-center">
-        <mat-card class="mx-3 my-3 hoverAccent" style="width: 280px; height: 300px;" *ngFor="let course of courses">
+        <mat-card class="mx-3 my-3 hoverAccent" style="width: 280px; height: 300px;" *ngFor="let course of courses" routerLink="/course/{{course.id}}">
           <mat-card-subtitle style="height: 5px;">ID: {{course.id}}</mat-card-subtitle>
           <div class="row align-items-center" style="height: 180px;"> <i class="fa fa-{{course.logoUrl}} mx-auto my-3"></i> </div>
           <mat-card-content class="container" style="height: 50px;">

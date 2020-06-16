@@ -19,6 +19,8 @@ export class UserService {
 
   setUser(user: User){
     this.currentUser = user;
+    console.log("CALL SETUSER");
+    
     if(user){
       this.courseService.getUserCourses(this.currentUser.id);
       console.log(user.firstName);
@@ -54,6 +56,5 @@ export class UserService {
  updateMessage(name: string) {
   this.name.next(name);
 }
-
 
 }
