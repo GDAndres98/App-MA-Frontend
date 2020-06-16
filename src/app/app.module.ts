@@ -64,6 +64,7 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { CourseComponent } from './course/course-list/course.component';
 import { RouterModule } from '@angular/router';
 import { SectionItemComponent } from './course/section-item/section-item.component';
+import { DialogArticleComponent } from './course/dialog-article/dialog-article/dialog-article.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { SectionItemComponent } from './course/section-item/section-item.compone
     StringShorter,
     CourseListComponent,
     CourseComponent,
-    SectionItemComponent
+    SectionItemComponent,
+    DialogArticleComponent
   ],
   imports: [
     HttpClientModule,
