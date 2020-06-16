@@ -18,9 +18,7 @@ export class UserService {
     ) { }
 
   setUser(user: User){
-    this.currentUser = user;
-    console.log("CALL SETUSER");
-    
+    this.currentUser = user;    
     if(user){
       this.courseService.getUserCourses(this.currentUser.id);
       console.log(user.firstName);

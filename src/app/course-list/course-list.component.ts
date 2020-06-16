@@ -10,9 +10,7 @@ import { Course } from '../model/course';
 export class CourseListComponent implements OnInit {
   courses : Course[];
   constructor(private courseServices: CourseService) { 
-    this.courseServices.courseIn.subscribe(data => this.courses = data);
-    console.log(this.courses);
-    
+    this.courseServices.courseIn.subscribe(data => this.courses = data);    
   }
 
   ngOnInit(): void {

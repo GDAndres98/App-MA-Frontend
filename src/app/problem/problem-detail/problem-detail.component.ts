@@ -20,11 +20,16 @@ export class ProblemDetailComponent implements OnInit {
   }
 
   getProblem(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.problemService.getProblemById(id).subscribe(problem => {
-      this.problem = problem;
-      console.log(this.problem);
-    });
+    this.route.params.subscribe(params =>{
+      let id = +params['id'];
+      console.log(id);
+      
+      this.problemService.getProblemById(id).subscribe(problem => {
+        this.problem = problem;
+        console.log(problem);
+      });
+    })
+
   }
 
 

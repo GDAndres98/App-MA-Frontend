@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Course } from 'src/app/model/course';
-import { BehaviorSubject } from 'rxjs';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/model/User';
+import { Section } from 'src/app/model/section';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +18,10 @@ export class CourseService {
 
 
   getUserCourses(id: number): void{
-    const op = {headers: new HttpHeaders({ 'id': id +''})};  
-    console.log("CALL USER COURSE SERVICE");
-    
+    const op = {headers: new HttpHeaders({ 'id': id +''})};      
     
     this.http.get<Course[]>(environment.urlGetUserCourses, op).subscribe(data =>{
       this.courses = data;
-
-      console.log("END USER COURSE SERVICE");
       
       let map: Map<Number, User> = new Map();
       this.courses.forEach((v, index) =>{
@@ -48,6 +45,11 @@ export class CourseService {
 
   getCourse(id: number): Course{
     return this.courses.find(v => v.id == id);
+  }
+
+  getSectionFromCourse(id: number): Observable<Section[]>{
+    const op = {headers: new HttpHeaders({ 'id': id +''})};      
+    return this.http.get<Section[]>(environment.urlGetSectionFromCourse, op);  
   }
 
 }

@@ -13,7 +13,7 @@ export class ProblemService {
   constructor(private http: HttpClient) { }
 
   getProblemById(id: number): Observable<Problem> {
-    const op = {
+    let op = {
       headers: new HttpHeaders({ 'id': id + '' })
     };
     return this.http.get<Problem>(environment.urlGetProblemById, op);

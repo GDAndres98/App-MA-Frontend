@@ -1,0 +1,36 @@
+<div class="container h-100" style="overflow-y: auto;">
+    <h1 *ngIf="!valid" style="color: white; text-align: center; margin-top: 48vh;">No tiene permisos para ver este curso</h1>
+    <div *ngIf="valid">
+        <h1 class="title">{{course.name}}</h1>
+        <mat-divider></mat-divider>
+
+
+        <div class="row">
+            <div class="col-10 my-2" style="height: 80vh; overflow-y: auto;">
+                <div class="row" *ngFor="let section of sections" >
+                    <app-section-item class="col" [section]='section' ></app-section-item>
+                </div>
+            </div>
+
+            <div class="col-xl">
+            <div class="row">
+                <mat-card class="my-2 col button" style="height: 175px; width: 150px;">
+
+                    <div class="row align-items-center h-100 pt-3">
+                        <i class="fas fa-comments col-12" style="font-size: 70px;"></i>
+                        <h2 class="col">Foro</h2>
+                    </div>
+                </mat-card>
+                <mat-card class="my-2 col-12 button" style="height: 175px;">
+                    <div class="row align-items-center h-100 pt-3">
+                        <i class="fas fa-bookmark col-12" style="font-size: 70px;"></i>
+                        <h2 class="col">Tarea</h2>
+                    </div>
+                </mat-card>
+            </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+

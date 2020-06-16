@@ -1,0 +1,14 @@
+.title{
+    color: white;
+    margin-top: 50px;
+    font-size: xx-large;
+}
+
+.button{
+    text-align: center;
+}
+
+.button:hover{
+    background-color: var(--accent2);
+    cursor: pointer;
+}

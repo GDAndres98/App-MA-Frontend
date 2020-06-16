@@ -61,7 +61,9 @@ import { ProblemListComponent } from './problem/problem-list/problem-list.compon
 import { ProblemDetailComponent } from './problem/problem-detail/problem-detail.component';
 import { StringShorter } from './article/article-list/stringShorterPipe';
 import { CourseListComponent } from './course-list/course-list.component';
-import { CourseComponent } from './course/course.component';
+import { CourseComponent } from './course/course-list/course.component';
+import { RouterModule } from '@angular/router';
+import { SectionItemComponent } from './course/section-item/section-item.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,8 @@ import { CourseComponent } from './course/course.component';
     ProblemDetailComponent,
     StringShorter,
     CourseListComponent,
-    CourseComponent
+    CourseComponent,
+    SectionItemComponent
   ],
   imports: [
     HttpClientModule,
@@ -121,7 +124,7 @@ import { CourseComponent } from './course/course.component';
     ReactiveFormsModule,
     HttpClientModule,
     MarkdownModule.forRoot(),
-    NgbModule
+    NgbModule,
   ],
   providers: [AuthService, AuthGuard, StorageService, AuthDeGuard],
   bootstrap: [AppComponent]

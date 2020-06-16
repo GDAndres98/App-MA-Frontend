@@ -23,6 +23,7 @@ export const environment = {
   urlGetAllTags: url + "getAllTags",
   
   urlGetUserCourses: url + "getAllUserCoursesById",
+  urlGetSectionFromCourse: url + "getSectionsByCourseId",
 };
 
 /*
