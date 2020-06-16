@@ -5,6 +5,7 @@ import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/model/User';
 import { Section } from 'src/app/model/section';
+import { Post } from 'src/app/model/post';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,11 @@ export class CourseService {
   getSectionFromCourse(id: number): Observable<Section[]>{
     const op = {headers: new HttpHeaders({ 'id': id +''})};      
     return this.http.get<Section[]>(environment.urlGetSectionFromCourse, op);  
+  }
+
+  getPostsFromCourse(id: number): Observable<Post[]>{
+    const op = {headers: new HttpHeaders({ 'id': id +''})};      
+    return this.http.get<Post[]>(environment.urlGetPostsFromCourse, op);  
   }
 
 }

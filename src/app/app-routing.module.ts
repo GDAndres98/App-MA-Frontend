@@ -14,6 +14,7 @@ import { ProblemListComponent } from './problem/problem-list/problem-list.compon
 import { ProblemDetailComponent } from './problem/problem-detail/problem-detail.component';
 import { CourseListComponent } from './course-list/course-list.component';
 import { CourseComponent } from './course/course-list/course.component';
+import { PostListComponent } from './forum/post-list/post-list.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'sends', component: SendsComponent, canActivate: [AuthGuard]},
   { path: 'courses', component: CourseListComponent, canActivate: [AuthGuard]},
   { path: 'course/:id', component: CourseComponent, canActivate: [AuthGuard]},
+  { path: 'course/:courseid/forum', component: PostListComponent, canActivate: [AuthGuard]},
   { path: 'articles', component: ArticleListComponent},
   { path: 'article/:id', component: ArticleDetailComponent},
   { path: 'problems', component: ProblemListComponent},

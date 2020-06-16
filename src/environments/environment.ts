@@ -24,6 +24,7 @@ export const environment = {
   
   urlGetUserCourses: url + "getAllUserCoursesById",
   urlGetSectionFromCourse: url + "getSectionsByCourseId",
+  urlGetPostsFromCourse: url + "getPostsFromCourse",
 };
 
 /*

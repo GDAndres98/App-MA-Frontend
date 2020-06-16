@@ -6,3 +6,7 @@ export class Course{
     public logoUrl: string;
     public professor: User;
 }
+
+export class UserCourse{
+    public student: User;
+}
