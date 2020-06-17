@@ -64,7 +64,8 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { CourseComponent } from './course/course-list/course.component';
 import { RouterModule } from '@angular/router';
 import { SectionItemComponent } from './course/section-item/section-item.component';
-import { DialogArticleComponent } from './course/dialog-article/dialog-article/dialog-article.component';
+import { BauraComponent } from './test/basura/baura/baura.component';
+import { DialogArticleComponent } from './course/dialog-article/dialog-article.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { DialogArticleComponent } from './course/dialog-article/dialog-article/d
     CourseListComponent,
     CourseComponent,
     SectionItemComponent,
+    BauraComponent,
     DialogArticleComponent
   ],
   imports: [
@@ -128,7 +130,11 @@ import { DialogArticleComponent } from './course/dialog-article/dialog-article/d
     MarkdownModule.forRoot(),
     NgbModule,
   ],
+  exports:[],
   providers: [AuthService, AuthGuard, StorageService, AuthDeGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogArticleComponent
+],
 })
 export class AppModule { }

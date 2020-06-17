@@ -5,6 +5,9 @@ import { UserService } from '../../services/user/user.service';
 import { CourseService } from '../../services/course/course.service';
 import { StorageService } from '../../services/auth/storage.service';
 import { Section } from '../../model/section';
+import { DialogArticleComponent } from '../dialog-article/dialog-article.component';
+import { Article } from 'src/app/model/article';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-course',
@@ -38,5 +41,6 @@ export class CourseComponent implements OnInit {
       });
     });
   }
+
 
 }
