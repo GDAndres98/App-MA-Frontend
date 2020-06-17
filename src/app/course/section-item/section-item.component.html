@@ -10,7 +10,7 @@
 
       <mat-list>
         <div *ngFor="let article of section.articles; let i = index">
-        <mat-list-item class="item-list" *ngIf="3 > i"> {{article.title| stringShorter:100}} </mat-list-item>
+        <mat-list-item class="item-list" *ngIf="3 > i" (click)="openDialog(article)"> {{article.title| stringShorter:100}} </mat-list-item>
         </div>
         <mat-list-item *ngIf="section.articles.length > 3"> ... </mat-list-item>
 

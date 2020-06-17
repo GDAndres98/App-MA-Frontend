@@ -66,6 +66,7 @@ import { RouterModule } from '@angular/router';
 import { SectionItemComponent } from './course/section-item/section-item.component';
 import { DialogArticleComponent } from './course/dialog-article/dialog-article/dialog-article.component';
 import { PostListComponent } from './forum/post-list/post-list.component';
+import { BauraComponent } from './test/basura/baura/baura.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { PostListComponent } from './forum/post-list/post-list.component';
     CourseComponent,
     SectionItemComponent,
     DialogArticleComponent,
-    PostListComponent
+    PostListComponent,
+    BauraComponent,
   ],
   imports: [
     HttpClientModule,
@@ -130,7 +132,11 @@ import { PostListComponent } from './forum/post-list/post-list.component';
     MarkdownModule.forRoot(),
     NgbModule,
   ],
+  exports:[],
   providers: [AuthService, AuthGuard, StorageService, AuthDeGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogArticleComponent
+],
 })
 export class AppModule { }
