@@ -10,6 +10,7 @@ export class Post {
 }
 
 export class PostToSubmit {
+    public postId: number;
     public studentId: number;
     public courseId: number;
     public title: string;

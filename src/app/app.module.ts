@@ -70,6 +70,7 @@ import { CourseOutletComponent } from './course/course-outlet/course-outlet.comp
 import { CourseComponent } from './course/course-list/course.component';
 import { SectionComponent } from './course/section/section.component';
 import { PostComponent } from './forum/post/post.component';
+import { DialogPostComponent } from './forum/dialog-post/dialog-post.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { PostComponent } from './forum/post/post.component';
     CourseOutletComponent,
     SectionComponent,
     PostComponent,
+    DialogPostComponent,
   ],
   imports: [
     HttpClientModule,

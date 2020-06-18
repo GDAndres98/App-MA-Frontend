@@ -6,6 +6,8 @@ import { Course } from 'src/app/model/course';
 import { Post, PostToSubmit } from 'src/app/model/post';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogPostComponent } from '../dialog-post/dialog-post.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-post-list',
@@ -27,15 +29,18 @@ export class PostListComponent implements OnInit {
 
   postToSubmit: PostToSubmit;
 
-  form: FormGroup;
 
   constructor(
     private router: Router,
     private routerActivated: ActivatedRoute,
     private courseService: CourseService,
     private userService: UserService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {
+
+
+    this.postToSubmit = new PostToSubmit();
 
     this.authors = new Map();
     this.pageNo = 1;
@@ -44,18 +49,13 @@ export class PostListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      postTitle: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]),
-      postContent: new FormControl('', Validators.compose([Validators.required, Validators.minLength(50), Validators.maxLength(2000)])),
-    });
-
-
     if (!this.course) {
       this.routerActivated.parent.params.subscribe(params => {
         let courseId = +params['id'];
         this.courseService.courseIn.subscribe(v => {
           this.course = v.find(value => value.id == courseId);
           this.valid = this.course !== undefined;
+          this.postToSubmit.courseId = this.course.id;
           this.onPageChange();
         });
       });
@@ -77,22 +77,20 @@ export class PostListComponent implements OnInit {
     }
   }
 
-  submitPost() {
-    if (this.form.valid) {
-      this.postToSubmit = new PostToSubmit();
-      this.postToSubmit.studentId = this.userService.getId();
-      this.postToSubmit.courseId = this.course.id;
-      this.postToSubmit.title = this.form.get('postTitle').value;
-      this.postToSubmit.content = this.form.get('postContent').value;
-      this.courseService.createPost(this.postToSubmit).subscribe(
-        value => {
-          this.snackBar.open('Publicación creada satisfactoriamente', "Cerrar", { duration: 2000, });
-          this.onPageChange();
-        },
-        err => this.snackBar.open(err.error, "Cerrar", { duration: 2000, })
-      );
-      console.log(this.postToSubmit);
-    }
+  openDialog(postToSubmit: PostToSubmit): void {
+    postToSubmit.postId = -1;
+    postToSubmit.studentId = this.userService.getId();
+    const dialogRef = this.dialog.open(DialogPostComponent, {
+      height: '85vh',
+      data: postToSubmit
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.pageNo = 1;
+        this.onPageChange();
+      }
+    });
   }
 
 
