@@ -58,4 +58,9 @@ export class CourseService {
     return this.http.get<Post[]>(environment.urlGetPostsFromCourse, op);  
   }
 
+  getSectionById(id: number): Observable<Section>{
+    const op = {headers: new HttpHeaders({ 'id': id +''})};      
+    return this.http.get<Section>(environment.urlGetSectionById, op);  
+  }
+
 }

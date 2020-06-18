@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CourseService } from 'src/app/services/course/course.service';
 import { StorageService } from 'src/app/services/auth/storage.service';
+import { Course } from 'src/app/model/course';
 
 @Component({
   selector: 'app-course-outlet',
@@ -10,6 +11,7 @@ import { StorageService } from 'src/app/services/auth/storage.service';
 })
 export class CourseOutletComponent implements OnInit {
   
+  course: Course;
   valid: boolean = false;
   constructor(
     private router: Router,
@@ -22,9 +24,11 @@ export class CourseOutletComponent implements OnInit {
     this.routerActivated.params.subscribe(params =>{
       let courseId = +params['id'];
        this.courseService.courseIn.subscribe(v => {
-         this.valid = v.find(value => value.id == courseId) !== undefined;
+         this.course = v.find(value => value.id == courseId);
+         this.valid  = this.course !== undefined;
       });
     });
   }
+
 
 }

@@ -16,6 +16,7 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { PostListComponent } from './forum/post-list/post-list.component';
 import { CourseOutletComponent } from './course/course-outlet/course-outlet.component';
 import { CourseComponent } from './course/course-list/course.component';
+import { SectionComponent } from './course/section/section.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'course/:id', component: CourseOutletComponent, canActivate: [AuthGuard],
      children: [
        {path: '', component: CourseComponent},
+       {path: 'section/:id', component: SectionComponent},
        {path: 'forum', component: PostListComponent}
     ]},
   { path: 'articles', component: ArticleListComponent},

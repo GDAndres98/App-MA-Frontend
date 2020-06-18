@@ -1,0 +1,15 @@
+.title{
+    color: white;
+    margin-top: 50px;
+    font-size: xx-large;
+}
+.fa:hover{
+cursor: pointer;
+}
+
+.fa:focus{
+    outline: groove;
+    outline-color: var(--accent);
+    outline-width: 2px;
+}
+
