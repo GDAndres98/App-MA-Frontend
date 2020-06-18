@@ -67,6 +67,7 @@ import { SectionItemComponent } from './course/section-item/section-item.compone
 import { PostListComponent } from './forum/post-list/post-list.component';
 import { BauraComponent } from './test/basura/baura/baura.component';
 import { DialogArticleComponent } from './course/dialog-article/dialog-article.component';
+import { CourseOutletComponent } from './course/course-outlet/course-outlet.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { DialogArticleComponent } from './course/dialog-article/dialog-article.c
     DialogArticleComponent,
     PostListComponent,
     BauraComponent,
+    CourseOutletComponent,
   ],
   imports: [
     HttpClientModule,

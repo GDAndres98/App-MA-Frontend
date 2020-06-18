@@ -38,7 +38,7 @@
             <span class ="my-2" style="margin-left: 60px; color: white" *ngIf="courses.length > 0">Cursos</span>
             <mat-divider></mat-divider>
             <div *ngFor="let c of courses">
-                <li class="nav-item"  [ngClass]='{active: state === "/course/"+c.id}'>
+                <li class="nav-item"  [ngClass]='{active: state.includes("/course/"+c.id)}'>
                     <a class = "nav-link" routerLink="/course/{{c.id}}">
                         <i class="fa fa-{{c.logoUrl}}"></i>
                         <!--<mat-icon class="icon">{{course.logoUrl}}</mat-icon> -->

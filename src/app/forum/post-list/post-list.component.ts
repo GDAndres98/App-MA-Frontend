@@ -30,8 +30,8 @@ this.authors = new Map();
 
 
     if (!this.course) {
-      this.routerActivated.params.subscribe(params => {
-        let courseId = +params['courseid'];
+      this.routerActivated.parent.params.subscribe(params => {
+        let courseId = +params['id'];
         this.courseService.courseIn.subscribe(v => {
           this.course = v.find(value => value.id == courseId);
           this.valid = this.course !== undefined;

@@ -15,6 +15,7 @@ import { ProblemDetailComponent } from './problem/problem-detail/problem-detail.
 import { CourseListComponent } from './course-list/course-list.component';
 import { CourseComponent } from './course/course-list/course.component';
 import { PostListComponent } from './forum/post-list/post-list.component';
+import { CourseOutletComponent } from './course/course-outlet/course-outlet.component';
 
 
 const routes: Routes = [
@@ -25,8 +26,11 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'sends', component: SendsComponent, canActivate: [AuthGuard]},
   { path: 'courses', component: CourseListComponent, canActivate: [AuthGuard]},
-  { path: 'course/:id', component: CourseComponent, canActivate: [AuthGuard]},
-  { path: 'course/:courseid/forum', component: PostListComponent, canActivate: [AuthGuard]},
+  { path: 'course/:id', component: CourseOutletComponent, canActivate: [AuthGuard],
+     children: [
+       {path: '', component: CourseComponent},
+       {path: 'forum', component: PostListComponent}
+    ]},
   { path: 'articles', component: ArticleListComponent},
   { path: 'article/:id', component: ArticleDetailComponent},
   { path: 'problems', component: ProblemListComponent},
