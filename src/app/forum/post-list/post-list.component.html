@@ -1,21 +1,28 @@
-<mat-card>
-    post-list works! {{course.name}}
-</mat-card>
+
+<h1 class="title">Temas de discusión</h1>
 
 
+<mat-card class="my-2" *ngFor="let post of posts">
 
-<mat-card class="mb-2" *ngFor="let post of posts">
-    <mat-card-header>
-      <mat-card-title>{{post.title}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content class="ml-3">
-      <p>
-        {{post.content}}
-      </p>
-      <br>
-      <p>
-        {{post.author}}
-      </p>
+  <mat-card-header class="row justify-content-between">
+    <div class="col-9">
+      <mat-card-title class="row">
+        <span>{{ post.title}}</span>
+      </mat-card-title>
 
-    </mat-card-content>
+    </div>
+    <div class="col">
+      <mat-card-subtitle class="row ml-5">
+        {{ post.author }}
+      </mat-card-subtitle>
+      <mat-card-subtitle class="row ml-5">
+        <i class="fa fa-calendar mr-2"></i>
+        {{ post.creationDate.toLocaleString() | date : 'dd/MM/yyyy'}}
+      </mat-card-subtitle>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="row mx-3 ">
+    {{post.content}}
+  </mat-card-content>
+
 </mat-card>
