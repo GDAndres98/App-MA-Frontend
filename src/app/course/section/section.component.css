@@ -1,0 +1,19 @@
+.title{
+    color: white;
+    font-size: x-large;
+}
+
+.card{
+    height: 200px;
+    width: 200px;
+}
+
+.center-box{
+    text-align: center;
+    font-size: large;   
+}
+
+.mat-card:hover{
+    background-color: var(--accent2);
+    cursor: pointer;
+}

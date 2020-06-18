@@ -1,1 +1,12 @@
-<p>section works!</p>
+<div style="overflow-y: auto; height: 80vh;">
+    <h2 class="title my-3">Articulos</h2>
+    <div class="row container-fluid my-2" *ngIf="section">
+        <div *ngFor="let article of section.articles">
+        <mat-card class="col card mx-2 my-2" (click)="openDialog(article)">
+            <div class="row align-items-center" style="height: 90%;"><div class="col center-box">{{article.title | stringShorter:100}}</div></div>
+            <mat-card-footer class="ml-1 mb-1">{{article.author}}</mat-card-footer>
+        </mat-card>
+    </div>
+          
+    </div>
+</div>
