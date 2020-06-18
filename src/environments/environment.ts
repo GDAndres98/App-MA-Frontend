@@ -29,6 +29,7 @@ export const environment = {
   urlGetPostById: url + "getPostById",
   urlGetSubPostFromPost: url + "getSubPostFromPost",
   urlCreatePost: url + "createPost",
+  urlCreateSubPost: url + "createSubPost",
 };
 
 /*

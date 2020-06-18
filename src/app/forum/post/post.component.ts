@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from 'src/app/services/course/course.service';
 import { MatDialog } from '@angular/material/dialog';
-import { Post } from 'src/app/model/post';
+import { Post, PostToSubmit } from 'src/app/model/post';
 import { Course } from 'src/app/model/course';
+import { UserService } from 'src/app/services/user/user.service';
+import { DialogPostComponent } from '../dialog-post/dialog-post.component';
 
 @Component({
   selector: 'app-post',
@@ -23,28 +25,35 @@ export class PostComponent implements OnInit {
   pageNo: number;
   pageSize: number;
 
+  postToSubmit: PostToSubmit;
 
   constructor(
     private router: Router,
-    private routerActive: ActivatedRoute,
+    private routerActivated: ActivatedRoute,
     private courseService: CourseService,
+    private userService: UserService,
     private dialog: MatDialog) {
+
+    this.postToSubmit = new PostToSubmit();
+
+
     this.authors = new Map();
     this.pageNo = 1;
     this.pageSize = 5;
   }
 
   ngOnInit(): void {
-    this.routerActive.parent.params.subscribe(parentParams => {
+    this.routerActivated.parent.params.subscribe(parentParams => {
       let idCourse = +parentParams['id'];
 
-      this.routerActive.params.subscribe(params => {
+      this.routerActivated.params.subscribe(params => {
         let id = +params['id'];
         console.log(idCourse);
         console.log(id);
         this.courseService.getPostById(id).subscribe(data => {
           this.notFound = data.userCourse.id.courseId != idCourse;
           if (!this.notFound) {
+            this.postToSubmit.courseId = idCourse;
             this.post = data;
             this.authors.set(data.userCourse.student.id, data.userCourse.student.firstName + " " + data.userCourse.student.lastName);
             data.author = this.authors.get(data.userCourse.student.id);
@@ -71,5 +80,23 @@ export class PostComponent implements OnInit {
       })
     }
   }
+
+
+  openDialog(postToSubmit: PostToSubmit): void {
+    postToSubmit.postId = this.post.id;
+    postToSubmit.studentId = this.userService.getId();
+    const dialogRef = this.dialog.open(DialogPostComponent, {
+      height: '85vh',
+      data: postToSubmit
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.onPageChange();
+        this.pageNo = 1;
+      }
+    });
+  }
+
 
 }

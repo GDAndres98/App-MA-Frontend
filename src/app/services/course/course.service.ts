@@ -85,4 +85,16 @@ export class CourseService {
     return this.http.post(environment.urlCreatePost, body, { responseType: 'text' });
   }
 
+  createSubPost(post: PostToSubmit) {
+    const body = new HttpParams()
+      .set("postId", post.postId.toString())
+      .set("userId", post.studentId.toString())
+      .set("courseId", post.courseId.toString())
+      .set("content", post.content.trim());
+
+    console.log(body);
+
+    return this.http.post(environment.urlCreateSubPost, body, { responseType: 'text' });
+  }
+
 }

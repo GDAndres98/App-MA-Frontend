@@ -22,7 +22,7 @@ export class DialogPostComponent implements OnInit {
 
 
   constructor(
-    public courseService: CourseService, 
+    public courseService: CourseService,
     public snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<DialogPostComponent>,
     @Inject(MAT_DIALOG_DATA) public data: PostToSubmit) {
@@ -34,6 +34,7 @@ export class DialogPostComponent implements OnInit {
       postTitle: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]),
       postContent: new FormControl('', Validators.compose([Validators.required, Validators.minLength(50), Validators.maxLength(2000)])),
     });
+
   }
 
   ngOnInit(): void {
@@ -42,12 +43,11 @@ export class DialogPostComponent implements OnInit {
 
 
   submitPost() {
-    if (this.form.valid) {
-      if (!this.isReply)
-        this.postToSubmit.title = this.form.get('postTitle').value;
-      else
-        this.postToSubmit.title = 'Reply';
-      this.postToSubmit.content = this.form.get('postContent').value;
+    this.postToSubmit.content = this.form.get('postContent').value;
+    if (!this.isReply && this.form.valid) {
+      this.postToSubmit.title = this.form.get('postTitle').value;
+
+
       this.courseService.createPost(this.postToSubmit).subscribe(
         value => {
           this.snackBar.open('Publicación creada satisfactoriamente', "Cerrar", { duration: 2000, });
@@ -55,7 +55,17 @@ export class DialogPostComponent implements OnInit {
         },
         err => this.snackBar.open(err.error, "Cerrar", { duration: 2000, })
       );
-      console.log(this.postToSubmit);
     }
+    else if (this.isReply && this.form.get('postContent').valid) {
+      this.postToSubmit.title = 'Reply';
+      this.courseService.createSubPost(this.postToSubmit).subscribe(
+        value => {
+          this.snackBar.open('Respuesta publicada satisfactoriamente', "Cerrar", { duration: 2000, });
+          this.dialogRef.close(true);
+        },
+        err => this.snackBar.open(err.error, "Cerrar", { duration: 2000, })
+      );
+    }
+    console.log(this.postToSubmit);
   }
 }

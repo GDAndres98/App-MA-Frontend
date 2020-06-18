@@ -4,8 +4,6 @@ import { UserService } from 'src/app/services/user/user.service';
 import { CourseService } from 'src/app/services/course/course.service';
 import { Course } from 'src/app/model/course';
 import { Post, PostToSubmit } from 'src/app/model/post';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogPostComponent } from '../dialog-post/dialog-post.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -35,7 +33,6 @@ export class PostListComponent implements OnInit {
     private routerActivated: ActivatedRoute,
     private courseService: CourseService,
     private userService: UserService,
-    private snackBar: MatSnackBar,
     private dialog: MatDialog
   ) {
 
