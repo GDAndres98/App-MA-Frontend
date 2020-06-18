@@ -26,6 +26,9 @@ export const environment = {
   urlGetSectionFromCourse: url + "getSectionsByCourseId",
   urlGetSectionById: url + "getSectionById",
   urlGetPostsFromCourse: url + "getPostsFromCourse",
+  urlGetPostById: url + "getPostById",
+  urlGetSubPostFromPost: url + "getSubPostFromPost",
+  urlCreatePost: url + "createPost",
 };
 
 /*

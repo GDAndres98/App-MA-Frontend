@@ -10,6 +10,7 @@ import { CourseService } from '../course/course.service';
 })
 export class UserService {
   currentUser: User;
+  id :BehaviorSubject<number> = new BehaviorSubject<number>(-1);
   name :BehaviorSubject<string> = new BehaviorSubject<string>("");
 
   constructor(
@@ -22,7 +23,7 @@ export class UserService {
     if(user){
       this.courseService.getUserCourses(this.currentUser.id);
       console.log(user.firstName);
-      this.updateMessage(user.firstName);
+      this.updateMessage(user.id, user.firstName);
     }
     else{
       this.courseService.clearCourses();
@@ -47,12 +48,17 @@ export class UserService {
     return this.currentUser; 
   }
 
+  getId(): number{   
+    return this.currentUser.id; 
+  }
+
   getName(): Observable<string> {
     return this.name.asObservable();
  }
 
- updateMessage(name: string) {
+ updateMessage(id: number, name: string) {
   this.name.next(name);
+  this.id.next(id);
 }
 
 }

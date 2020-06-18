@@ -1,1 +1,54 @@
-<p>post works!</p>
+<p>BUENAS NOCHES</p>
+<p>BUENAS NOCHES</p>
+<p>BUENAS NOCHES</p>
+
+<div  *ngIf="loaded">
+<mat-card>
+
+    <mat-card-header class="row justify-content-between mb-5">
+        <div class="col-9">
+          <mat-card-title class="row">
+            <span>{{ post.title}}</span>
+          </mat-card-title>
+    
+        </div>
+        <div class="col">
+          <mat-card-subtitle class="row ml-5">
+            {{ post.author }}
+          </mat-card-subtitle>
+          <mat-card-subtitle class="row ml-5">
+            <i class="fa fa-calendar mr-2"></i>
+            {{ post.creationDate.toLocaleString() | date : 'dd/MM/yyyy'}}
+          </mat-card-subtitle>
+        </div>
+      </mat-card-header>
+      <mat-card-content class="row mx-3 ">
+        {{post.content}}
+      </mat-card-content>
+</mat-card>
+
+<mat-card class="my-2 pb-4" *ngFor="let reply of repliesShowing">
+    <mat-card-header class="row justify-content-between">
+      <div class="col-9">
+      </div>
+      <div class="col">
+        <mat-card-subtitle class="row ml-5">
+          {{ reply.author }}
+        </mat-card-subtitle>
+        <mat-card-subtitle class="row ml-5">
+          <i class="fa fa-calendar mr-2"></i>
+          {{ reply.creationDate.toLocaleString() | date : 'dd/MM/yyyy'}}
+        </mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-card-content class="row mx-3 ">
+      {{reply.content}}
+    </mat-card-content>
+  </mat-card>
+
+
+  <div class="container">
+    <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
+      [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
+  </div>
+</div>

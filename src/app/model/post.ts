@@ -8,3 +8,10 @@ export class Post {
     public userCourse: UserCourse;
     public content: string;
 }
+
+export class PostToSubmit {
+    public studentId: number;
+    public courseId: number;
+    public title: string;
+    public content: string;
+}

@@ -8,5 +8,11 @@ export class Course{
 }
 
 export class UserCourse{
+    public id: IDUserCourse;
     public student: User;
+}
+
+export class IDUserCourse{
+    public studentId: number;
+    public courseId: number;
 }

@@ -17,6 +17,7 @@ import { PostListComponent } from './forum/post-list/post-list.component';
 import { CourseOutletComponent } from './course/course-outlet/course-outlet.component';
 import { CourseComponent } from './course/course-list/course.component';
 import { SectionComponent } from './course/section/section.component';
+import { PostComponent } from './forum/post/post.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
      children: [
        {path: '', component: CourseComponent},
        {path: 'section/:id', component: SectionComponent},
-       {path: 'forum', component: PostListComponent}
+       {path: 'forum', component: PostListComponent},
+       {path: 'forum/:id', component: PostComponent},
     ]},
   { path: 'articles', component: ArticleListComponent},
   { path: 'article/:id', component: ArticleDetailComponent},

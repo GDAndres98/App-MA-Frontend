@@ -1,28 +1,65 @@
-
 <h1 class="title">Temas de discusión</h1>
 
 
-<mat-card class="my-2" *ngFor="let post of posts">
 
-  <mat-card-header class="row justify-content-between">
-    <div class="col-9">
-      <mat-card-title class="row">
-        <span>{{ post.title}}</span>
-      </mat-card-title>
+<form class="w-100" [formGroup]="form">
+  <mat-form-field class="w-100">
+    <mat-label>Título</mat-label>
+    <input matInput placeholder="Un título llamativo..." formControlName="postTitle">
+    <mat-error *ngIf="form.get('postTitle').hasError('minlength')||form.get('postTitle').hasError('required')">
+      Cantidad mínima de caractéres <strong>10</strong>
+    </mat-error>
+    <mat-error *ngIf="form.get('postTitle').hasError('maxlength')">
+      Cantidad máxima de caractéres <strong>200</strong>
+    </mat-error>
+  </mat-form-field>
 
-    </div>
-    <div class="col">
-      <mat-card-subtitle class="row ml-5">
-        {{ post.author }}
-      </mat-card-subtitle>
-      <mat-card-subtitle class="row ml-5">
-        <i class="fa fa-calendar mr-2"></i>
-        {{ post.creationDate.toLocaleString() | date : 'dd/MM/yyyy'}}
-      </mat-card-subtitle>
-    </div>
-  </mat-card-header>
-  <mat-card-content class="row mx-3 ">
-    {{post.content}}
-  </mat-card-content>
+  <mat-form-field class="w-100">
+    <mat-label>Contenido</mat-label>
+    <textarea style="height: 400px;" matInput placeholder="Describe tu opinión o problema..." formControlName="postContent"></textarea>
+    <mat-error *ngIf="form.get('postContent').hasError('minlength')||form.get('postContent').hasError('required')">
+      Cantidad mínima de caractéres <strong>50</strong>
+    </mat-error>
+    <mat-error *ngIf="form.get('postContent').hasError('maxlength')">
+      Cantidad máxima de caractéres <strong>2000</strong>
+    </mat-error>
+  </mat-form-field>
 
-</mat-card>
+  
+<button mat-raised-button>Cancelar</button>
+
+<button mat-raised-button (click)="submitPost()" color="accent" type="submit" [disabled]="!form.valid"> Publicar</button>
+</form>
+
+
+
+
+<div *ngIf="true">
+  <mat-card class="my-2 pb-4" *ngFor="let post of postsShowing" [routerLink]="[post.id]">
+    <mat-card-header class="row justify-content-between">
+      <div class="col-9">
+        <mat-card-title class="row">
+          <span>{{ post.title}}</span>
+        </mat-card-title>
+
+      </div>
+      <div class="col">
+        <mat-card-subtitle class="row ml-5">
+          {{ post.author }}
+        </mat-card-subtitle>
+        <mat-card-subtitle class="row ml-5">
+          <i class="fa fa-calendar mr-2"></i>
+          {{ post.creationDate.toLocaleString() | date : 'dd/MM/yyyy'}}
+        </mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-card-content class="row mx-3 ">
+      {{post.content}}
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="container">
+  <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
+    [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
+</div>
