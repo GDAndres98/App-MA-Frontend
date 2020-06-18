@@ -13,9 +13,9 @@ import { ArticleDetailComponent } from './article/article-detail/article-detail.
 import { ProblemListComponent } from './problem/problem-list/problem-list.component';
 import { ProblemDetailComponent } from './problem/problem-detail/problem-detail.component';
 import { CourseListComponent } from './course-list/course-list.component';
-import { CourseComponent } from './course/course-list/course.component';
 import { PostListComponent } from './forum/post-list/post-list.component';
 import { CourseOutletComponent } from './course/course-outlet/course-outlet.component';
+import { CourseComponent } from './course/course-list/course.component';
 
 
 const routes: Routes = [
