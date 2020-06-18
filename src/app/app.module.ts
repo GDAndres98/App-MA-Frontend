@@ -64,9 +64,9 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { CourseComponent } from './course/course-list/course.component';
 import { RouterModule } from '@angular/router';
 import { SectionItemComponent } from './course/section-item/section-item.component';
-import { DialogArticleComponent } from './course/dialog-article/dialog-article.component';
 import { PostListComponent } from './forum/post-list/post-list.component';
 import { BauraComponent } from './test/basura/baura/baura.component';
+import { DialogArticleComponent } from './course/dialog-article/dialog-article.component';
 
 @NgModule({
   declarations: [
