@@ -53,17 +53,19 @@
                                 </mat-select>
                             </mat-form-field>
                     </div>
-                    <div class="row  my-2 w-100 align-items-center">
+                    <div class="row  my-2 w-100 align-items-center row-cols-1">
+                        <form [formGroup]="form" (ngSubmit)="onSubmit()">
                         <div class="col">
-                            <button mat-raised-button color= "primary">Cargar archivo</button>
-                        </div>
-                        <div class="col  ">
-                            archivo.txt
-                        </div>
-                    </div>
-                    <div class="row mx-auto w-100" >
-                        <button mat-raised-button class= "h-50 mt-3 w-100"color="accent" >
-                            Enviar solución <i class="fas fa-paper-plane"></i></button>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile" formControlName="file" (change)="handleFileInput($event.target.files)" accept=".cpp, .java, .py, .c">
+                                    <label class="custom-file-label" style="overflow: hidden;" for="customFile">{{text}}</label>
+                                </div>
+                            </div>
+                            <div class="row mx-auto w-100" >
+                                <button type="submit" mat-raised-button class= "h-50 mt-3 w-100"color="accent" >
+                                    Enviar solución <i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </form>
                     </div>
                 </mat-card-content>
             </mat-card>
