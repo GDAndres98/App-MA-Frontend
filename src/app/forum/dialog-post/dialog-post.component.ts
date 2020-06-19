@@ -26,18 +26,15 @@ export class DialogPostComponent implements OnInit {
     public snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<DialogPostComponent>,
     @Inject(MAT_DIALOG_DATA) public data: PostToSubmit) {
+      this.postToSubmit = data;
+  }
 
-    this.postToSubmit = data;
+  ngOnInit(): void {
     this.isReply = this.data.postId >= 0;
-
     this.form = new FormGroup({
       postTitle: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]),
       postContent: new FormControl('', Validators.compose([Validators.required, Validators.minLength(50), Validators.maxLength(2000)])),
     });
-
-  }
-
-  ngOnInit(): void {
   }
 
 

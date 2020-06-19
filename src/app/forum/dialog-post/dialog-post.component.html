@@ -1,30 +1,33 @@
 <form class="w-100" [formGroup]="form">
-    <mat-form-field class="w-100" *ngIf="!isReply">
-        <mat-label>Título</mat-label>
-        <input matInput placeholder="Un título llamativo..." formControlName="postTitle">
-        <mat-error *ngIf="form.get('postTitle').hasError('minlength')||form.get('postTitle').hasError('required')">
-            Cantidad mínima de caractéres <strong>10</strong>
-        </mat-error>
-        <mat-error *ngIf="form.get('postTitle').hasError('maxlength')">
-            Cantidad máxima de caractéres <strong>200</strong>
-        </mat-error>
-    </mat-form-field>
+    <div mat-dialog-content>
+        <mat-form-field class="w-100" *ngIf="!isReply">
+            <mat-label>Título</mat-label>
+            <input matInput placeholder="Un título llamativo..." formControlName="postTitle">
+            <mat-error *ngIf="form.get('postTitle').hasError('minlength')||form.get('postTitle').hasError('required')">
+                Cantidad mínima de caractéres <strong>10</strong>
+            </mat-error>
+            <mat-error *ngIf="form.get('postTitle').hasError('maxlength')">
+                Cantidad máxima de caractéres <strong>200</strong>
+            </mat-error>
+        </mat-form-field>
 
-    <mat-form-field class="w-100">
-        <mat-label>Contenido</mat-label>
-        <textarea style="height: 400px;" matInput placeholder="Describe tu opinión o problema..."
-            formControlName="postContent"></textarea>
-        <mat-error *ngIf="form.get('postContent').hasError('minlength')||form.get('postContent').hasError('required')">
-            Cantidad mínima de caractéres <strong>50</strong>
-        </mat-error>
-        <mat-error *ngIf="form.get('postContent').hasError('maxlength')">
-            Cantidad máxima de caractéres <strong>2000</strong>
-        </mat-error>
-    </mat-form-field>
+        <mat-form-field class="w-100" style="width: max-content;">
+            <mat-label>Contenido</mat-label>
+            <textarea style="height: 10vh;" matInput placeholder="Describe tu opinión o problema..."
+                formControlName="postContent"></textarea>
+            <mat-error
+                *ngIf="form.get('postContent').hasError('minlength')||form.get('postContent').hasError('required')">
+                Cantidad mínima de caractéres <strong>50</strong>
+            </mat-error>
+            <mat-error *ngIf="form.get('postContent').hasError('maxlength')">
+                Cantidad máxima de caractéres <strong>2000</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions align="end">
+        <button mat-raised-button [mat-dialog-close]>Cancelar</button>
 
-
-    <button mat-raised-button [mat-dialog-close]>Cancelar</button>
-
-    <button mat-raised-button (click)="submitPost()" color="accent" type="submit"
-        [disabled]="(!isReply&&!form.valid)|| (isReply&&!form.get('postContent').valid)"> Publicar</button>
+        <button mat-raised-button (click)="submitPost()" color="accent" type="submit"
+            [disabled]="(!isReply&&!form.valid)|| (isReply&&!form.get('postContent').valid)"> Publicar</button>
+    </div>
 </form>
