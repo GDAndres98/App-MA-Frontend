@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { UserService } from '../services/user/user.service';
 import { StorageService } from '../services/auth/storage.service';
+import { ProblemService } from '../services/problem/problem.service';
 
 @Component({
   selector: 'app-test',
@@ -13,7 +14,8 @@ export class TestComponent implements OnInit {
   name: string = "";
 
   constructor(private userService: UserService,
-    private storageService: StorageService) { }
+    private storageService: StorageService) {
+    }
 
   ngOnInit(): void {
     this.userService.name.subscribe(v => this.name = v);
