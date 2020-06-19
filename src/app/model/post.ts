@@ -7,6 +7,7 @@ export class Post {
     public creationDate: Date;
     public userCourse: UserCourse;
     public content: string;
+    public repliesCount: number;
 }
 
 export class PostToSubmit {

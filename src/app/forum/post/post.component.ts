@@ -86,7 +86,6 @@ export class PostComponent implements OnInit {
     postToSubmit.postId = this.post.id;
     postToSubmit.studentId = this.userService.getId();
     const dialogRef = this.dialog.open(DialogPostComponent, {
-      height: '85vh',
       data: postToSubmit
     });
 
