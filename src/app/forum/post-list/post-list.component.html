@@ -1,6 +1,7 @@
 <h2 class="title my-3">Temas de Discusión</h2>
-<button mat-raised-button style="background-color: var(--accent2); " (click)="openDialog(postToSubmit)">Nuevo Tema</button>
-
+<div class="d-flex justify-content-end">
+  <button mat-raised-button style="background-color: var(--accent2); " (click)="openDialog(postToSubmit)">Nuevo Tema</button>
+</div>
 <div *ngIf="loaded" class="postlist container my-4">
   <mat-card class="card my-2 pb-4 w-100" *ngFor="let post of postsShowing" [routerLink]="[post.id]">
     <mat-card-header class="row justify-content-between">
@@ -32,7 +33,7 @@
   </mat-card>
 </div>
 
-<div class="container">
+<div *ngIf="postsShowing.length > 0" class="container">
   <ngb-pagination class="paginator d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
     [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
 </div>

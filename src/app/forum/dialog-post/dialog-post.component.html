@@ -1,5 +1,5 @@
-<form class="w-100" [formGroup]="form">
-    <div mat-dialog-content>
+<form class="w-100"  [formGroup]="form">
+    <div mat-dialog-content style="width: 720px;">
         <mat-form-field class="w-100" *ngIf="!isReply">
             <mat-label>Título</mat-label>
             <input matInput placeholder="Un título llamativo..." formControlName="postTitle">
@@ -11,7 +11,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="w-100" style="width: max-content;">
+        <mat-form-field class="w-100">
             <mat-label>Contenido</mat-label>
             <textarea style="height: 10vh;" matInput placeholder="Describe tu opinión o problema..."
                 formControlName="postContent"></textarea>
@@ -24,7 +24,7 @@
             </mat-error>
         </mat-form-field>
     </div>
-    <div mat-dialog-actions align="end">
+    <div class="row mx-auto justify-content-between">
         <button mat-raised-button [mat-dialog-close]>Cancelar</button>
 
         <button mat-raised-button (click)="submitPost()" color="accent" type="submit"

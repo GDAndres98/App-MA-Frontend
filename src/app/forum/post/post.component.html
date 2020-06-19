@@ -1,7 +1,6 @@
 <div *ngIf="loaded">
-  <mat-card>
-
-    <mat-card-header class="row justify-content-between mb-5">
+  <mat-card class="card mb-2 w-100">
+    <mat-card-header class="row justify-content-between">
       <div class="col-9">
         <mat-card-title class="row">
           <span>{{ post.title}}</span>
@@ -27,32 +26,29 @@
         {{post.repliesCount}} Comentarios
       </div>
     </mat-card-subtitle>
-
   </mat-card>
 
-  <button mat-raised-button (click)="openDialog(postToSubmit)">Responder</button>
+  <div class="d-flex justify-content-end">
+    <button mat-raised-button class="mb-3" style="background-color: var(--accent2); " (click)="openDialog(postToSubmit)">Responder</button>
+  </div>
 
-  <mat-card class="my-2 pb-4" *ngFor="let reply of repliesShowing">
-    <mat-card-header class="row justify-content-between">
-      <div class="col-9">
+  <mat-card class="my-2 mx-5 pb-4" *ngFor="let reply of repliesShowing">
+    <mat-card-subtitle class="ml-3 mr-5 d-flex justify-content-between">
+      <div>
+        {{ reply.author }}
       </div>
-      <div class="col">
-        <mat-card-subtitle class="row ml-5">
-          {{ reply.author }}
-        </mat-card-subtitle>
-        <mat-card-subtitle class="row ml-5">
-          <i class="fa fa-calendar mr-2"></i>
-          {{ reply.creationDate.toLocaleString() | date : 'dd/MM/yyyy'}}
-        </mat-card-subtitle>
+      <div>
+        <i class="fa fa-calendar mr-2"></i>
+        {{ reply.creationDate.toLocaleString() | date : 'dd/MM/yyyy'}}
       </div>
-    </mat-card-header>
+    </mat-card-subtitle>
     <mat-card-content class="row mx-3 ">
       {{reply.content}}
     </mat-card-content>
   </mat-card>
 
 
-  <div class="container">
+  <div *ngIf="repliesShowing.length > 0" class="container">
     <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
       [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
   </div>
