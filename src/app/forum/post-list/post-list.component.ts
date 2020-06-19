@@ -25,6 +25,8 @@ export class PostListComponent implements OnInit {
   pageSize: number;
   sortBy: string;
 
+  loaded: boolean;
+
   postToSubmit: PostToSubmit;
 
 
@@ -36,6 +38,7 @@ export class PostListComponent implements OnInit {
     private dialog: MatDialog
   ) {
 
+    this.loaded = false;
 
     this.postToSubmit = new PostToSubmit();
 
@@ -70,6 +73,7 @@ export class PostListComponent implements OnInit {
             this.authors.set(post.userCourse.student.id, post.userCourse.student.firstName + " " + post.userCourse.student.lastName);
           post.author = this.authors.get(post.userCourse.id.studentId);
         });
+        this.loaded = true;
       });
     }
   }

@@ -1,9 +1,10 @@
-<h1 class="title">Temas de discusión</h1>
+<h2 class="title my-3">Temas de Discusión</h2>
+
 
 <button mat-raised-button (click)="openDialog(postToSubmit)">Nuevo Tema</button>
 
-<div *ngIf="true">
-  <mat-card class="my-2 pb-4" *ngFor="let post of postsShowing" [routerLink]="[post.id]">
+<div *ngIf="loaded" class="container " style="overflow-y: scroll; height: 24%;"> 
+  <mat-card class="my-2 pb-4 w-100" *ngFor="let post of postsShowing" [routerLink]="[post.id]">
     <mat-card-header class="row justify-content-between">
       <div class="col-9">
         <mat-card-title class="row">

@@ -46,35 +46,35 @@
       </div>
     </div>
 
-      <mat-accordion class="col mx-auto mt-1 example-form">
-        <mat-expansion-panel [(expanded)]="expandedFilter">
-          <mat-expansion-panel-header>
-            <mat-panel-title> Filtrar </mat-panel-title>
-          </mat-expansion-panel-header>
-          <form class="row mx-auto" [formGroup]="filterForm">
-            <mat-form-field class="example-full-width w-100">
-              <input #matInput type="text" placeholder="Tag" matInput [formControl]="filterControl"
-                [matAutocomplete]="xd" [(value)]="tagSearch">
-              <mat-autocomplete #xd="matAutocomplete">
-                <div *ngFor="let tag of filteredTagsOptions">
-                  <mat-option *ngIf="!selectedTags.includes(tag)" [value]="tag.name" (click)="this.addFilterTag(tag); ">
-                    {{tag.name}}
-                  </mat-option>
-                </div>
-              </mat-autocomplete>
-            </mat-form-field>
-          </form>
-          <mat-chip-list #chipList>
-            <div *ngFor="let tag of selectedTags">
-              <mat-chip [ngStyle]="{'background-color': tag.level==1? 'var(--tag1)' : 'var(--tag2)'}"
-                [removable]="removable" (removed)="removeFilterTag(tag)">
-                {{tag.name}}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-              </mat-chip>
-            </div>
-          </mat-chip-list>
-        </mat-expansion-panel>
-      </mat-accordion>
+    <mat-accordion class="col mx-auto mt-1 example-form">
+      <mat-expansion-panel [(expanded)]="expandedFilter">
+        <mat-expansion-panel-header>
+          <mat-panel-title> Filtrar </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form class="row mx-auto" [formGroup]="filterForm">
+          <mat-form-field class="example-full-width w-100">
+            <input #matInput type="text" placeholder="Tag" matInput [formControl]="filterControl" [matAutocomplete]="xd"
+              [(value)]="tagSearch">
+            <mat-autocomplete #xd="matAutocomplete">
+              <div *ngFor="let tag of filteredTagsOptions">
+                <mat-option *ngIf="!selectedTags.includes(tag)" [value]="tag.name" (click)="this.addFilterTag(tag); ">
+                  {{tag.name}}
+                </mat-option>
+              </div>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+        <mat-chip-list #chipList>
+          <div *ngFor="let tag of selectedTags">
+            <mat-chip [ngStyle]="{'background-color': tag.level==1? 'var(--tag1)' : 'var(--tag2)'}"
+              [removable]="removable" (removed)="removeFilterTag(tag)">
+              {{tag.name}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+          </div>
+        </mat-chip-list>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
 
 
