@@ -71,6 +71,7 @@ import { CourseComponent } from './course/course-list/course.component';
 import { SectionComponent } from './course/section/section.component';
 import { PostComponent } from './forum/post/post.component';
 import { DialogPostComponent } from './forum/dialog-post/dialog-post.component';
+import { ArticleMarkdownComponent } from './article/article-markdown/article-markdown.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { DialogPostComponent } from './forum/dialog-post/dialog-post.component';
     SectionComponent,
     PostComponent,
     DialogPostComponent,
+    ArticleMarkdownComponent,
   ],
   imports: [
     HttpClientModule,

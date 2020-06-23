@@ -1,1 +1,12 @@
-<app-article-detail [articleSelected] = 'data'></app-article-detail>
+<div class="px-3 pt-3" style="overflow:auto">
+    <mat-card-title> {{data.title}}</mat-card-title>
+    <mat-card-subtitle>
+        Por <a>{{data.author}}</a>
+        <br>
+        Escrito <a>{{data.dateWritten.toLocaleString() | date : 'yyyy-MM-dd'}}</a>
+    </mat-card-subtitle>
+    <hr>
+    <mat-card-content class="px-3" style=" max-height: initial;">
+        <app-article-markdown [articleSelected]="data"></app-article-markdown>
+    </mat-card-content>
+</div>

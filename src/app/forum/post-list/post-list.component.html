@@ -1,4 +1,7 @@
-<h2 class="title my-3">Temas de Discusión</h2>
+<h2 class="title my-3">
+  
+  <i class="fas fa-comments"></i>
+  Temas de Discusión</h2>
 <div class="d-flex justify-content-end">
   <button mat-raised-button style="background-color: var(--accent2); " (click)="openDialog(postToSubmit)">Nuevo Tema</button>
 </div>
@@ -26,7 +29,7 @@
         {{ post.author }}
       </div>
       <div class="mr-5">
-        <i class="fas fa-smile"></i>
+        <i class="fas fa-comment-alt"></i>
         {{post.repliesCount}} Commentarios
       </div>
     </mat-card-subtitle>
