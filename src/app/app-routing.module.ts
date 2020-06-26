@@ -18,6 +18,7 @@ import { CourseOutletComponent } from './course/course-outlet/course-outlet.comp
 import { CourseComponent } from './course/course-list/course.component';
 import { SectionComponent } from './course/section/section.component';
 import { PostComponent } from './forum/post/post.component';
+import { ContestOutletComponent } from './contest/contest-outlet/contest-outlet.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,15 @@ const routes: Routes = [
   { path: 'article/:id', component: ArticleDetailComponent},
   { path: 'problems', component: ProblemListComponent},
   { path: 'problem/:id', component: ProblemDetailComponent},
+
+  { path: 'contest/:id', component: ContestOutletComponent, canActivate: [AuthGuard],
+  children: [
+    {path: '', component: CourseComponent},
+    {path: 'overview', component: SectionComponent},
+    {path: 'problems/:id', component: PostListComponent},
+    {path: 'status', component: PostComponent},
+    {path: 'rank', component: PostComponent},
+ ]},
 ];
 
 @NgModule({

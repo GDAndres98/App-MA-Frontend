@@ -59,7 +59,7 @@ import { ArticleItemComponent } from './article/article-item/article-item.compon
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProblemListComponent } from './problem/problem-list/problem-list.component';
 import { ProblemDetailComponent } from './problem/problem-detail/problem-detail.component';
-import { StringShorter } from './article/article-list/stringShorterPipe';
+import { StringShorter } from './pipes/stringShorterPipe';
 import { CourseListComponent } from './course-list/course-list.component';
 import { RouterModule } from '@angular/router';
 import { SectionItemComponent } from './course/section-item/section-item.component';
@@ -72,6 +72,8 @@ import { SectionComponent } from './course/section/section.component';
 import { PostComponent } from './forum/post/post.component';
 import { DialogPostComponent } from './forum/dialog-post/dialog-post.component';
 import { ArticleMarkdownComponent } from './article/article-markdown/article-markdown.component';
+import { ContestOutletComponent } from './contest/contest-outlet/contest-outlet.component';
+import { MinuteSecondsPipe } from './pipes/secondsToMinutesPipe';
 
 @NgModule({
   declarations: [
@@ -89,6 +91,7 @@ import { ArticleMarkdownComponent } from './article/article-markdown/article-mar
     ProblemListComponent,
     ProblemDetailComponent,
     StringShorter,
+    MinuteSecondsPipe,
     CourseListComponent,
     CourseComponent,
     SectionItemComponent,
@@ -100,6 +103,7 @@ import { ArticleMarkdownComponent } from './article/article-markdown/article-mar
     PostComponent,
     DialogPostComponent,
     ArticleMarkdownComponent,
+    ContestOutletComponent,
   ],
   imports: [
     HttpClientModule,
