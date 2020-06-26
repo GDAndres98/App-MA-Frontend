@@ -30,6 +30,8 @@ export const environment = {
   urlGetSubPostFromPost: url + "getSubPostFromPost",
   urlCreatePost: url + "createPost",
   urlCreateSubPost: url + "createSubPost",
+
+  urlSubmit: url + "submit"
 };
 
 /*
