@@ -9,7 +9,7 @@
 }
 
 .progress{
-    min-height: 3vh;
+    min-height: 7px;
 }
 
 ::ng-deep .progress .mat-progress-bar-fill::after {
