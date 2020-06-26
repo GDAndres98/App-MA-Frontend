@@ -1,0 +1,19 @@
+<div class="my-3">
+
+    <table class="table  table-dark table-striped table-hover " style="background-color: rgba(75, 75, 75, 0.404);">
+        <thead>
+            <tr class="d-flex">
+                <th class="col-3 text-center">Soluciones/Intentos</th>
+                <th class="col-2 text-center">Problema</th>
+                <th class="col text-left">Título</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="d-flex" *ngFor="let problem of problems" routerLink="/problem/{{problem.id}}">
+                <td class="col-3 text-center">{{problem.id}}</td>
+                <td class="col-2 text-center">{{problem.id}}</td>
+                <td class="col text-left">{{problem.title}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

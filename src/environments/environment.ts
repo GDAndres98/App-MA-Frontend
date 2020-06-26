@@ -17,6 +17,7 @@ export const environment = {
 
   urlGetProblemById: url + "getProblemById",
   urlGetAllProblemPagination: url + "getAllProblemPagination",
+  urlGetAllProblems: url + "getAllProblems", //Provisional FIXME
   urldGetProblemsWithTags: url + "getProblemsWithTags",
   urlGetSearchProblem: url + "getSearchProblem",
 

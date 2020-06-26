@@ -74,6 +74,10 @@ import { DialogPostComponent } from './forum/dialog-post/dialog-post.component';
 import { ArticleMarkdownComponent } from './article/article-markdown/article-markdown.component';
 import { ContestOutletComponent } from './contest/contest-outlet/contest-outlet.component';
 import { MilisecondsFormat } from './pipes/secondsToMinutesPipe';
+import { ContestOverviewComponent } from './contest/contest-overview/contest-overview.component';
+import { ContestProblemsComponent } from './contest/contest-problems/contest-problems.component';
+import { ContestStatusComponent } from './contest/contest-status/contest-status.component';
+import { ContestScoreboardComponent } from './contest/contest-scoreboard/contest-scoreboard.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +108,10 @@ import { MilisecondsFormat } from './pipes/secondsToMinutesPipe';
     DialogPostComponent,
     ArticleMarkdownComponent,
     ContestOutletComponent,
+    ContestOverviewComponent,
+    ContestProblemsComponent,
+    ContestStatusComponent,
+    ContestScoreboardComponent,
   ],
   imports: [
     HttpClientModule,

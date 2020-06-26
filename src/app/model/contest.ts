@@ -1,9 +1,11 @@
+import { Problem } from './problem';
 
 
-export class Contest{
+export class Contest {
     public id: number;
     public name: string;
     public startTime: Date;
     public durationTime: Date;
     public endTime: Date;
+    public problemSet: Problem[];
 }

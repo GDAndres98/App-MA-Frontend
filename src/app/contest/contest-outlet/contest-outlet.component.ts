@@ -3,6 +3,10 @@ import { Contest } from 'src/app/model/contest';
 import { stat } from 'fs';
 import { ActivatedRoute } from '@angular/router';
 import { CourseService } from 'src/app/services/course/course.service';
+import { ProblemService } from 'src/app/services/problem/problem.service';
+import { Problem } from 'src/app/model/problem';
+import { ContestOverviewComponent } from '../contest-overview/contest-overview.component';
+import { ContestProblemsComponent } from '../contest-problems/contest-problems.component';
 
 @Component({
   selector: 'app-contest-outlet',
@@ -24,7 +28,7 @@ export class ContestOutletComponent implements OnInit {
 
   constructor(
     private routerActivated: ActivatedRoute,
-    private courseService: CourseService) {
+    private problemService: ProblemService) {
 
 
 
@@ -34,11 +38,21 @@ export class ContestOutletComponent implements OnInit {
   ngOnInit(): void {
 
 
-
+    // Provisional ************************ FIXME
     this.contest = new Contest();
     this.contest.name = "Entrenamiento Junio 25";
     this.contest.startTime = new Date(2020, 5, 25, 18, 30);
     this.contest.endTime = new Date(2020, 6, 9, 18, 30);
+    this.contest.problemSet = new Array<Problem>();
+
+    this.problemService.getAllProblems().subscribe(data => {
+      this.contest.problemSet = data;
+      console.log(data);
+    })
+
+    // *******************************************
+
+
 
     this.maxTime = (this.contest.endTime.getTime() - this.contest.startTime.getTime());
     this.startTimer();
@@ -68,7 +82,8 @@ export class ContestOutletComponent implements OnInit {
   }
 
 
-  fake(): void {
+  onActivate(componentReference: ContestOverviewComponent | ContestProblemsComponent) {
+    componentReference.problems = this.contest.problemSet;
 
   }
 
