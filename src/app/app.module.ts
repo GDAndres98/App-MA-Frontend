@@ -59,7 +59,7 @@ import { ArticleItemComponent } from './article/article-item/article-item.compon
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProblemListComponent } from './problem/problem-list/problem-list.component';
 import { ProblemDetailComponent } from './problem/problem-detail/problem-detail.component';
-import { StringShorter } from './article/article-list/stringShorterPipe';
+import { StringShorter } from './pipes/stringShorterPipe';
 import { CourseListComponent } from './course-list/course-list.component';
 import { RouterModule } from '@angular/router';
 import { SectionItemComponent } from './course/section-item/section-item.component';
@@ -71,6 +71,13 @@ import { CourseComponent } from './course/course-list/course.component';
 import { SectionComponent } from './course/section/section.component';
 import { PostComponent } from './forum/post/post.component';
 import { DialogPostComponent } from './forum/dialog-post/dialog-post.component';
+import { ArticleMarkdownComponent } from './article/article-markdown/article-markdown.component';
+import { ContestOutletComponent } from './contest/contest-outlet/contest-outlet.component';
+import { MilisecondsFormat } from './pipes/secondsToMinutesPipe';
+import { ContestOverviewComponent } from './contest/contest-overview/contest-overview.component';
+import { ContestProblemsComponent } from './contest/contest-problems/contest-problems.component';
+import { ContestStatusComponent } from './contest/contest-status/contest-status.component';
+import { ContestScoreboardComponent } from './contest/contest-scoreboard/contest-scoreboard.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +95,7 @@ import { DialogPostComponent } from './forum/dialog-post/dialog-post.component';
     ProblemListComponent,
     ProblemDetailComponent,
     StringShorter,
+    MilisecondsFormat,
     CourseListComponent,
     CourseComponent,
     SectionItemComponent,
@@ -98,6 +106,12 @@ import { DialogPostComponent } from './forum/dialog-post/dialog-post.component';
     SectionComponent,
     PostComponent,
     DialogPostComponent,
+    ArticleMarkdownComponent,
+    ContestOutletComponent,
+    ContestOverviewComponent,
+    ContestProblemsComponent,
+    ContestStatusComponent,
+    ContestScoreboardComponent,
   ],
   imports: [
     HttpClientModule,

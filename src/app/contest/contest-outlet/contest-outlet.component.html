@@ -1,0 +1,75 @@
+<div class="" style="height: 100%; overflow-y: auto;">
+    <div class="container">
+        <mat-card class="col my-3">
+
+            <div class="row mx-2 my-2">
+                <mat-card-subtitle class="col text-left">
+                    Inicio: <span class="bodytext">
+                        {{contest.startTime | date : 'yyyy-MM-dd HH:mm'}}
+                    </span>
+                </mat-card-subtitle>
+                <mat-card-title class="col text-center">
+                    {{contest.name}}
+                </mat-card-title>
+                <mat-card-subtitle class="col text-right">
+                    Final: <span class="bodytext">
+                        {{contest.endTime | date : 'yyyy-MM-dd HH:mm'}}
+                    </span>
+                </mat-card-subtitle>
+            </div>
+
+
+
+            <div class="row" *ngIf="contestStatus == 0">
+                <mat-card-subtitle class="col text-center" style="font-size: large;">
+                    Cuenta Regresiva: <span class="bodytext">
+                        {{timeDisplayed | milisecondsFormat}}
+                    </span>
+                </mat-card-subtitle>
+            </div>
+
+            <div *ngIf="contestStatus > 0">
+                <div class="row mx-2 my-2 mb-3">
+                    <mat-progress-bar class="progress" mode="determinate" [value]="contestProgress"></mat-progress-bar>
+                </div>
+
+                <mat-card-subtitle class="row mx-2 my-2 d-flex justify-content-between">
+                    <div class="col text-left">
+                        Tiempo transcurrido: <span class="bodytext">
+                            {{timeDisplayed | milisecondsFormat}}
+                        </span>
+                    </div>
+                    <div *ngIf="contestStatus==1" class="col text-center" style="color: var(--accent);">
+                        Corriendo
+                    </div>
+                    <div *ngIf="contestStatus==2" class="col text-center" style="color: var(--warn);">
+                        Ha terminado
+                    </div>
+                    <div class="col text-right">
+                        Tiempo restante: <span class="bodytext">
+                            {{maxTime-timeDisplayed | milisecondsFormat}}
+                        </span>
+                    </div>
+                </mat-card-subtitle>
+                <hr>
+            </div>
+        </mat-card>
+        <mat-card class="mb-3" *ngIf="contestStatus>0">
+            <nav mat-tab-nav-bar mat-align-tabs="start" color="accent" animationDuration="500ms">
+                <a mat-tab-link [routerLink]="['./overview']" routerLinkActive #rlaOverview="routerLinkActive"
+                    [active]="rlaOverview.isActive" selected>
+                    Vista General</a>
+                <a mat-tab-link [routerLink]="['./problems/1']" routerLinkActive #rlaProblems="routerLinkActive"
+                    [active]="rlaProblems.isActive"><i class="fa fa-exclamation mx-1" aria-hidden="true"></i>
+                    Problemas</a>
+                <a mat-tab-link [routerLink]="['./status']" routerLinkActive #rlaStatus="routerLinkActive"
+                    [active]="rlaStatus.isActive"> <i class="far fa-list-alt mx-1"></i>
+                    Estado</a>
+                <a mat-tab-link [routerLink]="['./rank']" routerLinkActive #rlaScoreboard="routerLinkActive"
+                    [active]="rlaScoreboard.isActive"> <i class="fas fa-star mx-1"></i>
+                    Marcador</a>
+            </nav>
+            <router-outlet (activate)="onActivate($event)"></router-outlet>
+        </mat-card>
+    </div>
+</div>
