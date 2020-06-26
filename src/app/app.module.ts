@@ -73,7 +73,7 @@ import { PostComponent } from './forum/post/post.component';
 import { DialogPostComponent } from './forum/dialog-post/dialog-post.component';
 import { ArticleMarkdownComponent } from './article/article-markdown/article-markdown.component';
 import { ContestOutletComponent } from './contest/contest-outlet/contest-outlet.component';
-import { MinuteSecondsPipe } from './pipes/secondsToMinutesPipe';
+import { MilisecondsFormat } from './pipes/secondsToMinutesPipe';
 
 @NgModule({
   declarations: [
@@ -91,7 +91,7 @@ import { MinuteSecondsPipe } from './pipes/secondsToMinutesPipe';
     ProblemListComponent,
     ProblemDetailComponent,
     StringShorter,
-    MinuteSecondsPipe,
+    MilisecondsFormat,
     CourseListComponent,
     CourseComponent,
     SectionItemComponent,
