@@ -6,3 +6,7 @@
 ::ng-deep.mat-dialog-container {
     background-color: #343a40 !important;
 }
+
+.table-dark th, .table-dark td, .table-dark thead th {
+    border-color: var(--dark2);
+}
