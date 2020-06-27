@@ -15,11 +15,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --primary: #ffffff09;
     --accent: #00b686;
     --accent2: #008d67;
+    --dark1: #343a40;
     --dark2: #424242;
     --tag1: #607d8b;
     --tag2: #616161;
     --warn: #ef5350;
 
+    --accepted: #31a3a3;
+    --wrong-answer: #31a3a3;
+    --time-limit: #31a3a3;
+    --memory-limit: #31a3a3;
+    --compilation-error: #31a3a3;
+    --presentation-error: #31a3a3;
+    --in-queue: #8fac30;
 }
 
 

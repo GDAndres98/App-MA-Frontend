@@ -78,6 +78,8 @@ import { ContestOverviewComponent } from './contest/contest-overview/contest-ove
 import { ContestProblemsComponent } from './contest/contest-problems/contest-problems.component';
 import { ContestStatusComponent } from './contest/contest-status/contest-status.component';
 import { ContestScoreboardComponent } from './contest/contest-scoreboard/contest-scoreboard.component';
+import { VeredictPipe } from './pipes/veredictPipe';
+import { DialogSendComponent } from './sends/dialog-send/dialog-send.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +97,7 @@ import { ContestScoreboardComponent } from './contest/contest-scoreboard/contest
     ProblemListComponent,
     ProblemDetailComponent,
     StringShorter,
+    VeredictPipe,
     MilisecondsFormat,
     CourseListComponent,
     CourseComponent,
@@ -112,6 +115,7 @@ import { ContestScoreboardComponent } from './contest/contest-scoreboard/contest
     ContestProblemsComponent,
     ContestStatusComponent,
     ContestScoreboardComponent,
+    DialogSendComponent,
   ],
   imports: [
     HttpClientModule,

@@ -6,7 +6,7 @@
 
 <div class="container-fluid m-0 p-0 bg-dark h-100 rounded">
     <div style="height: 100px;"></div>
-    <div class="mx-5 p-3 rounded" style="background: #ffffff4d">
+    <div class="container p-3 rounded" style="background: #ffffff4d">
         <div class="text-white">
             <mat-form-field color="accent" class="w-25" >
               <mat-label>Buscar</mat-label>
@@ -19,9 +19,10 @@
             <mat-checkbox class="check-box">Mostrar solo tareas</mat-checkbox>
         </section>
     </div>
-    <div style="display: flex">
-    <div class="mx-5 my-2 p-3 " style="background: transparent; width: 60%; float: left;">
-        <table class="table table-dark table-hover" style="border-radius: 10px; background-color: rgba(75, 75, 75, 0.404);" >
+
+
+    <div class="container my-2 p-3 " style="background: transparent;">
+        <table class="table table-dark table-hover text-center" style="border-radius: 10px; background-color: rgba(75, 75, 75, 0.404);" >
             <thead>
               <tr>
                 <th>#</th>
@@ -29,92 +30,31 @@
                 <th>Lenguaje</th>
                 <th>Resultado</th>
                 <th>Tiempo</th>
+                <th>Memoria</th>
                 <th>Rank</th>
                 <th>Fecha</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>077</td>
-                <td>Fundraising</td>
-                <td>Java 1.8</td>               
-                <td style="background: rgba(33, 240, 33, 0.596);">Accepted</td>
-                <td>0.002</td>
+            <tbody>              
+              <tr *ngFor="let submit of submitShowing">
+                <td class="pointer" (click)="openDialog(submit)">{{submit.id}}</td>
+                <td class="pointer" routerLink="/problem/{{submit.problem.id}}">{{submit.problem.title}}</td>
+                <td>{{language[submit.language]}}</td>               
+                <td [ngStyle]="{'color': veredict[submit.veredict]}" style="font-weight: bold;">{{submit.veredict | veredictPipe}}</td>
+                <td>{{submit.timeConsumed?submit.timeConsumed: "-"}}</td>
+                <td>{{submit.memoryConsumed?submit.memoryConsumed: "-"}}</td>
+
                 <td>25</td>
-                <td>2019-05-14 18:02</td>
-              </tr>
-              <tr>
-                <td>071</td>
-                <td>Fundraising</td>
-                <td>Java 1.8</td>
-                <td style="background: rgba(240, 33, 33, 0.596);">Wrong Answer</td>
-                <td>-</td>
-                <td>-</td>
-                <td>2019-05-14 13:11</td>
-              </tr>
-              <tr>
-                <td>066</td>
-                <td>Fundraising</td>
-                <td>Java 1.8</td>
-                <td style="background: rgba(240, 33, 33, 0.596);">Wrong Answer</td>
-                <td>-</td>
-                <td>-</td>
-                <td>2019-05-14 12:31</td>
-              </tr>
-              <tr>
-                <td>056</td>
-                <td>Fundraising</td>
-                <td>C++ 11</td>
-                <td style="background: rgba(123, 33, 240, 0.596);">Time Limit Excedeed</td>
-                <td>3.000</td>
-                <td>-</td>
-                <td>2019-05-14 12:22</td>
-              </tr>
-              <tr>
-                <td>045</td>
-                <td>Fundraising</td>
-                <td>C</td>
-                <td style="background: rgba(185, 240, 33, 0.596);">Compilation Error</td>
-                <td>-</td>
-                <td>-</td>
-                <td>2019-05-14 10:02</td>
-              </tr>
-              <tr>
-                <td>011</td>
-                <td>Sum two numbers</td>
-                <td>Python 2</td>               
-                <td style="background: rgba(33, 240, 33, 0.596);">Accepted</td>
-                <td>2.999</td>
-                <td>1999</td>
-                <td>2018-06-28 07:02</td>
-              </tr>
-              <tr>
-                <td>010</td>
-                <td>Sum two numbers</td>
-                <td>Python 3</td>
-                <td style="background: rgba(33, 216, 240, 0.596);">Runtime Error</td>
-                <td>-</td>
-                <td>-</td>
-                <td>2018-06-27 11:02</td>
+                <td>{{submit.submitDate| date:'y/M/d - HH:mm:ss'}}</td>
               </tr>
             </tbody>
-          </table>        
-    </div>
-
-    <div class="mr-5 my-2 p-3 rounded" style="background: #ffffff4d; width: 30%; float: right;">
-        <form [formGroup]="myForm2" class="text-white" >
-            <mat-form-field color="accent" class="w-25">
-              <mat-label>Buscar</mat-label>
-              <input type="text" matInput fromControlName = "Search" >
-              <mat-icon matSuffix>search</mat-icon>
-            </mat-form-field>
-          </form>
-          <section >
-            <mat-checkbox class="check-box">Mostrar solo aceptados</mat-checkbox>
-            <mat-checkbox class="check-box">Mostrar solo tareas</mat-checkbox>
-          </section>
-    </div>
+          </table>       
     </div>
     
+
+    <div class="container">
+      <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
+        [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
+    </div>
 
 </div>

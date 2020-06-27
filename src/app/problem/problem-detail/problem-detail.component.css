@@ -1,0 +1,8 @@
+.pointer:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+::ng-deep.mat-dialog-container {
+    background-color: #343a40 !important;
+}

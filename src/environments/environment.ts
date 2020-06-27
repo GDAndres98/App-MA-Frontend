@@ -32,7 +32,10 @@ export const environment = {
   urlCreatePost: url + "createPost",
   urlCreateSubPost: url + "createSubPost",
 
-  urlSubmit: url + "submit"
+  urlSubmit: url + "submit",
+  urlGetUserSubmit: url + "getUserSubmits",
+  urlGetSourceCode: url + "getSourceCode",
+  utlGetLastProblemAttempt: url + "getLastProblemAttempt"
 };
 
 /*

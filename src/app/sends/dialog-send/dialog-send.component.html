@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>#{{submit.id}} | {{submit.problem.title}}</h2>
+
+<div class="container my-2">
+        <table class="table table-dark text-center" style="border-radius: 10px; background-color: var(--dark2)" >
+            <thead>
+            <tr>
+                <th>Lenguaje</th>
+                <th>Tamaño</th>
+                <th>Resultado</th>
+                <th>Tiempo</th>
+                <th>Memoria</th>
+                <th>Rank</th>
+                <th>Fecha</th>
+            </tr>
+            </thead>
+            <tbody>              
+            <tr>
+                <td>{{language[submit.language]}}</td>               
+                <td>{{code.length}}</td>               
+                <td [ngStyle]="{'color': veredict[submit.veredict]}" style="font-weight: bold;">{{submit.veredict | veredictPipe}}</td>
+                <td>{{submit.timeConsumed?submit.timeConsumed: "-"}}</td>
+                <td>{{submit.memoryConsumed?submit.memoryConsumed: "-"}}</td>
+                <td>25</td>
+                <td>{{submit.submitDate| date:'y/M/d - HH:mm:ss'}}</td>
+            </tr>
+            </tbody>
+        </table>
+</div>
+
+<div class="container">
+<mat-card style="background-color: var(--dark2)"><code><pre style="color: white; ">{{code}}</pre></code></mat-card>
+</div>

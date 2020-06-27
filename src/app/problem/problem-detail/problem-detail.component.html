@@ -43,19 +43,17 @@
             <mat-card class=" p-4 px-5 mr-5 w-100 mt-3">
                 <mat-card-title class="mb-4"> ¿Enviar? </mat-card-title>
                 <mat-card-content>
-                    <div class="row pl-3 my-2 w-100">
-                            <mat-form-field class="w-100">
-                                <mat-label>Lenguaje</mat-label>
-                                <mat-select>
-                                    <mat-option value="Language.Python_3">Python 3</mat-option>
-                                    <mat-option value="Language.Java_1_8">Java 1.8</mat-option>
-                                    <mat-option value="Language.Cpp_11">C++ 11</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                    </div>
                     <div class="row  my-2 w-100 align-items-center row-cols-1">
                         <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                        <div class="col">
+                            <div class="row pl-3 my-2 w-100">
+                                    <mat-form-field class="w-100" >
+                                        <mat-label>Lenguaje</mat-label>
+                                        <mat-select  formControlName="lang">
+                                            <mat-option *ngFor="let lan of language" value="{{ll[lan]}}">{{ll[lan]}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                            </div>
+                        <div class="col p-0">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="customFile" formControlName="file" (change)="handleFileInput($event.target.files)" accept=".cpp, .java, .py, .c">
                                     <label class="custom-file-label" style="overflow: hidden;" for="customFile">{{text}}</label>
@@ -66,6 +64,34 @@
                                     Enviar solución <i class="fas fa-paper-plane"></i></button>
                             </div>
                         </form>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div class="row">
+            <mat-card class="mr-5 w-100 mt-3">
+                <mat-card-title class="mb-4 px-4"> Últimos Envíos </mat-card-title>
+                <mat-card-content>
+                    <div class="my-2" style="background: transparent;">
+                        <table class="table table-dark table-hover text-center" style="border-radius: 10px; background-color: rgba(75, 75, 75, 0.404);" >
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>Resultado</th>
+                                <th>Fecha</th>
+                              </tr>
+                            </thead>
+                            
+                            <tbody>              
+                              <tr *ngFor="let submit of lastSubmits">
+                                <td class="pointer" (click)="openDialog(submit)">{{submit.id}}</td>
+                                <td [ngStyle]="{'color': veredict[submit.veredict]}" style="font-weight: bold;">{{submit.veredict | veredictPipe}}</td>
+                                <td>{{submit.submitDate| date:'y/M/d - HH:mm:ss'}}</td>
+                              </tr>
+                            </tbody>
+                            
+                          </table>       
                     </div>
                 </mat-card-content>
             </mat-card>
