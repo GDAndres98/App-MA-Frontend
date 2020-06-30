@@ -14,7 +14,7 @@
         </thead>
         <tbody>              
           <tr *ngFor="let submit of submitShowing">
-            <td class="pointer" (click)="openDialog(submit)">{{submit.id}}</td>
+            <td class="pointer">{{submit.id}}</td>
             <td class="pointer" routerLink="/problem/{{submit.problem.id}}">{{submit.problem.title}}</td>
             <td>{{language[submit.language]}}</td>               
             <td [ngStyle]="{'color': veredict[submit.veredict]}" style="font-weight: bold;">{{submit.veredict | veredictPipe}}</td>
