@@ -1,5 +1,5 @@
-<div class="" style="height: 100%; overflow-y: auto;">
-    <div class="container">
+<div *ngIf="!isLoading" class="" style="height: 100%; overflow-y: auto;">
+    <div *ngIf="!notFound" class="container">
         <mat-card class="col my-3">
 
             <div class="row mx-2 my-2">

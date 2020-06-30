@@ -26,14 +26,20 @@ export const environment = {
   urlGetUserCourses: url + "getAllUserCoursesById",
   urlGetSectionFromCourse: url + "getSectionsByCourseId",
   urlGetSectionById: url + "getSectionById",
+
   urlGetPostsFromCourse: url + "getPostsFromCourse",
   urlGetPostById: url + "getPostById",
   urlGetSubPostFromPost: url + "getSubPostFromPost",
   urlCreatePost: url + "createPost",
   urlCreateSubPost: url + "createSubPost",
 
+  urlGetContestById: url + "getContestById",
+  urlGetAllProblemsFromContest: url + "getAllProblemsFromContest",
+
   urlSubmit: url + "submit",
+  urlGetAllSubmits: url + "getAllSubmits",
   urlGetUserSubmit: url + "getUserSubmits",
+  urlGetContestSubmits: url + "getContestSubmits",
   urlGetSourceCode: url + "getSourceCode",
   utlGetLastProblemAttempt: url + "getLastProblemAttempt"
 };

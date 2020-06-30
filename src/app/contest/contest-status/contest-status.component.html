@@ -1,1 +1,27 @@
-<p>contest-status works!</p>
+
+<div class="container my-2 p-3 " style="background: transparent;">
+    <table class="table table-dark table-hover text-center" style="border-radius: 10px; background-color: rgba(75, 75, 75, 0.404);" >
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Problema</th>
+            <th>Lenguaje</th>
+            <th>Resultado</th>
+            <th>Tiempo</th>
+            <th>Memoria</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody>              
+          <tr *ngFor="let submit of submitShowing">
+            <td class="pointer" (click)="openDialog(submit)">{{submit.id}}</td>
+            <td class="pointer" routerLink="/problem/{{submit.problem.id}}">{{submit.problem.title}}</td>
+            <td>{{language[submit.language]}}</td>               
+            <td [ngStyle]="{'color': veredict[submit.veredict]}" style="font-weight: bold;">{{submit.veredict | veredictPipe}}</td>
+            <td>{{submit.timeConsumed?submit.timeConsumed: "-"}}</td>
+            <td>{{submit.memoryConsumed?submit.memoryConsumed: "-"}}</td>
+            <td>{{submit.submitDate| date:'y/M/d - HH:mm:ss'}}</td>
+          </tr>
+        </tbody>
+      </table>       
+</div>

@@ -7,6 +7,7 @@ import { ProblemService } from 'src/app/services/problem/problem.service';
 import { Problem } from 'src/app/model/problem';
 import { ContestOverviewComponent } from '../contest-overview/contest-overview.component';
 import { ContestProblemsComponent } from '../contest-problems/contest-problems.component';
+import { ContestService } from 'src/app/services/contest/contest.service';
 
 @Component({
   selector: 'app-contest-outlet',
@@ -14,6 +15,9 @@ import { ContestProblemsComponent } from '../contest-problems/contest-problems.c
   styleUrls: ['./contest-outlet.component.css']
 })
 export class ContestOutletComponent implements OnInit {
+
+  notFound: boolean;
+  isLoading: boolean;
 
 
   contestProgress: number;
@@ -28,34 +32,30 @@ export class ContestOutletComponent implements OnInit {
 
   constructor(
     private routerActivated: ActivatedRoute,
+    private contestService: ContestService,
     private problemService: ProblemService) {
-
-
-
 
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
+    this.routerActivated.params.subscribe(params => {
+      let contestId = +params['id'];
+      this.contestService.getContestById(contestId).subscribe(
+        data => {
+          this.contest = data;
 
+          this.contest.startTime = new Date(this.contest.startTime);
+          this.contest.endTime = new Date(this.contest.endTime);
 
-    // Provisional ************************ FIXME
-    this.contest = new Contest();
-    this.contest.name = "Entrenamiento Junio 25";
-    this.contest.startTime = new Date(2020, 5, 25, 18, 30);
-    this.contest.endTime = new Date(2020, 6, 9, 18, 30);
-    this.contest.problemSet = new Array<Problem>();
+          this.maxTime = (this.contest.endTime.getTime() - this.contest.startTime.getTime());
+          this.startTimer();
 
-    this.problemService.getAllProblems().subscribe(data => {
-      this.contest.problemSet = data;
-      console.log(data);
-    })
+          this.isLoading = false;
+        },
+        err => (this.notFound = true, this.isLoading = false))
+    });
 
-    // *******************************************
-
-
-
-    this.maxTime = (this.contest.endTime.getTime() - this.contest.startTime.getTime());
-    this.startTimer();
   }
 
 
@@ -70,7 +70,6 @@ export class ContestOutletComponent implements OnInit {
       else if (this.time >= this.maxTime) {
         this.contestStatus = 2;
         this.timeDisplayed = this.maxTime;
-        console.log(this.timeDisplayed);
         this.contestProgress = 100;
       }
       else {
@@ -83,8 +82,7 @@ export class ContestOutletComponent implements OnInit {
 
 
   onActivate(componentReference: ContestOverviewComponent | ContestProblemsComponent) {
-    componentReference.problems = this.contest.problemSet;
-
+    componentReference.problems = this.contest.problem;
   }
 
   getCurrentTime() {

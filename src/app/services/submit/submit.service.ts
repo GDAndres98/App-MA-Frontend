@@ -41,6 +41,24 @@ export class SubmitService {
     return this.http.get<any>(environment.urlGetUserSubmit, op);
   }
 
+  getAllSubmits(): Observable<Submit[]> {
+    return this.http.get<Submit[]>(environment.urlGetAllSubmits);
+  }
+
+  getContestSubmitPage(pageNo: number, pageSize: number, sortBy: string, ascending: boolean, contestId: number): Observable<any> {
+    const op = {
+      headers: new HttpHeaders({
+        'pageNo': pageNo + '',
+        'pageSize': pageSize + '',
+        'sortBy': sortBy + '',
+        'ascending': ascending + '',
+        'contestId': contestId + ''
+      })
+    };
+    return this.http.get<any>(environment.urlGetContestSubmits, op);
+  }
+
+
 
   getSourceCode(submitId: number){
     const op = {
