@@ -31,9 +31,12 @@ export class ContestStatusComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.onPageChange();
+  }
+
+  onPageChange() {
     this.routerActivated.parent.params.subscribe(params => {
       let contestId = +params['id'];
-      console.log("contestID->"+contestId);
       this.submitService.getContestSubmitPage(this.pageNo - 1, this.pageSize, this.sortBy, false, contestId).subscribe(
         data => {
           this.submitShowing = data.content;
@@ -42,10 +45,6 @@ export class ContestStatusComponent implements OnInit {
         });
 
     });
-  }
-
-  onPageChange() {
-
   }
 
 }

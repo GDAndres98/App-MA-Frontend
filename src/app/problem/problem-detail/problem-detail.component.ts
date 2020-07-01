@@ -19,6 +19,7 @@ import { DialogSendComponent } from 'src/app/sends/dialog-send/dialog-send.compo
 export class ProblemDetailComponent implements OnInit {
 
   @Input() problem: Problem;
+  @Input() contestId: number = 1;
 
   form: FormGroup;
   fileToUpload: File = null;
@@ -40,9 +41,9 @@ export class ProblemDetailComponent implements OnInit {
     private userService: UserService,
     private submitService: SubmitService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog) { 
-      this.language = Object.keys(Language);
-    }
+    private dialog: MatDialog) {
+    this.language = Object.keys(Language);
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -50,12 +51,12 @@ export class ProblemDetailComponent implements OnInit {
       lang: Validators.required
     });
     this.form.get("lang").setValue(null);
-    this.form.get("file").valueChanges.subscribe(value =>{
-      if(!value)
+    this.form.get("file").valueChanges.subscribe(value => {
+      if (!value)
         this.text = "Agregar Archivo";
-      else{
+      else {
         this.text = value.split("\\").pop();
-        if(this.text.length == 0)
+        if (this.text.length == 0)
           this.text = "Agregar Archivo";
       }
 
@@ -66,72 +67,72 @@ export class ProblemDetailComponent implements OnInit {
   }
 
   getProblem(): void {
-    this.routeActivate.params.subscribe(params =>{
+    this.routeActivate.params.subscribe(params => {
       let id = +params['id'];
-      
+
       this.problemService.getProblemById(id).subscribe(problem => {
         this.problem = problem;
       });
     })
   }
-  getLastSubmit(){
-    this.routeActivate.params.subscribe(params =>{
-      this.submitService.getLastProblemAttempt(this.userService.getId(), 1, +params['id']).subscribe(value =>{
+  getLastSubmit() {
+    this.routeActivate.params.subscribe(params => {
+      this.submitService.getLastProblemAttempt(this.userService.getId(), 1, +params['id']).subscribe(value => {
         this.lastSubmits = value;
       });
     });
   }
 
-  onSubmit(){
-        if(this.fileToUpload == null)
-        return;        
-        
-      if(this.form.get('lang').value == null){
-        this.snackBar.open('Por favor seleccione un lenguaje.', "Cerrar", { duration: 2000,});
-        return;
-      }
-        
-      this.fileToUpload.text().then(value =>{
-        this.submitService.submit(
-          this.userService.getId(),
-          1,
-          this.problem.id,
-          value,
-          this.form.get('lang').value,
-          ).subscribe(res =>{
-            this.snackBar.open('Envio hecho correctamente.', "Ver envíos", { duration: 2000,}).onAction().subscribe(()=> this.router.navigateByUrl("\sends"));
-            this.getLastSubmit();
-          },
-          error =>{
-            this.snackBar.open('Hubo un error al hacer el envio.', "Cerrar", { duration: 2000,});
-          },
-          () =>{
-            this.clearSubmit();
-          });
-      });
+  onSubmit() {
+    if (this.fileToUpload == null)
+      return;
+
+    if (this.form.get('lang').value == null) {
+      this.snackBar.open('Por favor seleccione un lenguaje.', "Cerrar", { duration: 2000, });
+      return;
+    }
+
+    this.fileToUpload.text().then(value => {
+      this.submitService.submit(
+        this.userService.getId(),
+        this.contestId,
+        this.problem.id,
+        value,
+        this.form.get('lang').value,
+      ).subscribe(res => {
+        this.snackBar.open('Envio hecho correctamente.', "Ver envíos", { duration: 2000, }).onAction().subscribe(() => this.router.navigateByUrl("\sends"));
+        this.getLastSubmit();
+      },
+        error => {
+          this.snackBar.open('Hubo un error al hacer el envio.', "Cerrar", { duration: 2000, });
+        },
+        () => {
+          this.clearSubmit();
+        });
+    });
   }
 
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
-    if(!(["cpp", "java", "py", "c"].includes(this.fileToUpload.name.split(".").pop()))){
+    if (!(["cpp", "java", "py", "c"].includes(this.fileToUpload.name.split(".").pop()))) {
       this.clearSubmit();
     }
   }
 
-  clearSubmit(){
+  clearSubmit() {
     this.fileToUpload = null;
     this.form.get("file").setValue(null);
     this.form.get("lang").setValue(null);
     this.text = "Agregar Archivo";
   }
 
-  openDialog(submit: Submit): void{
+  openDialog(submit: Submit): void {
     const dialogRef = this.dialog.open(DialogSendComponent, {
       height: '85%',
       width: '80%',
       data: submit
     });
   }
-  
+
 
 }

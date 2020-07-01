@@ -1,3 +1,45 @@
 .table-dark th, .table-dark td, .table-dark thead th {
     border-color: var(--dark2);
 }
+
+  ngb-pagination ::ng-deep a {
+    color: white !important;
+    background-color: rgba(75, 75, 75, 0.404);
+    border-color: transparent;
+  }
+  
+  ngb-pagination ::ng-deep .page-item.active .page-link {
+    background-color: var(--accent);
+    border-color: transparent;
+  }
+
+  ngb-pagination ::ng-deep .page-item.disabled  {
+    background-color: rgba(75, 75, 75, 0.404);
+  }
+
+  ngb-pagination ::ng-deep .page-item .page-link  {
+    background-color: rgba(75, 75, 75, 0.404);
+  }
+  ngb-pagination ::ng-deep .page-item.disabled .page-link  {
+    border-color: transparent;
+    background-color: rgba(75, 75, 75, 0.404);
+  }
+
+  ngb-pagination ::ng-deep .page-item :hover {
+    background-color: var(--accent);
+  }
+  
+  
+  ngb-pagination ::ng-deep .page-item.active .page-link:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+    background-color: rgba(75, 75, 75, 0.404);
+  }
+  
+  ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+    background-color: rgba(75, 75, 75, 0.404);
+  }
+  ngb-pagination ::ng-deep .page-link:disabled {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+    background-color: rgba(75, 75, 75, 0.404);
+  }

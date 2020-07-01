@@ -80,6 +80,7 @@ import { ContestStatusComponent } from './contest/contest-status/contest-status.
 import { ContestScoreboardComponent } from './contest/contest-scoreboard/contest-scoreboard.component';
 import { VeredictPipe } from './pipes/veredictPipe';
 import { DialogSendComponent } from './sends/dialog-send/dialog-send.component';
+import { ProblemEmbeddedComponent } from './problem/problem-embedded/problem-embedded.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +117,7 @@ import { DialogSendComponent } from './sends/dialog-send/dialog-send.component';
     ContestStatusComponent,
     ContestScoreboardComponent,
     DialogSendComponent,
+    ProblemEmbeddedComponent,
   ],
   imports: [
     HttpClientModule,

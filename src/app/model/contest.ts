@@ -6,5 +6,11 @@ export class Contest {
     public name: string;
     public startTime: Date;
     public endTime: Date;
-    public problem: Problem[];
+    public problems: ProblemInContest[];
+}
+
+export class ProblemInContest {
+    public id: number;
+    public title: string;
+    public letter: string;
 }
