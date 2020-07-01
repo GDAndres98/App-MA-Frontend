@@ -63,6 +63,10 @@ export class StorageService {
     this.loggedIn.next(false);
     this.router.navigate(['/login']);
   }
+  getCurrentUserId(): number{
+      let user = this.getCurrentUser();
+      return user === null? null: user.id;
+  }
 
   
   get isLoggedIn() {

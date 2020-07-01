@@ -5,6 +5,7 @@ export class User {
     public firstName: string;
     public lastName : string;
     public rating   : number;
+    public admin    : boolean;
 }
 
 export class UserLogin {

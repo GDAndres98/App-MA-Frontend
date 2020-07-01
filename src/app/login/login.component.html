@@ -21,12 +21,13 @@
             {{errorMessage}}
           </mat-error>
           <br>
-          <button mat-raised-button color="primary" type="submit" [disabled] = !form.valid>Login</button>
+          <button mat-raised-button color="primary" type="submit" [disabled] = !form.valid>Iniciar Sesión</button>
         </form>
         <br>
 
         <button mat-raised-button color ="accent" (click) = "sendToRegister()">Crear cuenta nueva</button>
       </mat-card-content>
+      <mat-card-footer><a style="color: var(--accent);" routerLink="/admin-login">Soy administrador</a></mat-card-footer>
     </mat-card>
   </div>
 </div></div>

@@ -8,7 +8,8 @@ export const environment = {
   production: false,
   urlvalidatedUser: url + "validatedUser",
   urlStudentCreation: url + "createStudent",
-
+  urlIsAdmin:       url + "isAdmin",
+  
   urlGetAllArticles: url + "getAllArticles",
   urlGetSearchArticle: url + "getSearchArticle",
   urlGetAllArticlesPagination: url + "getAllArticlesPagination",
@@ -41,7 +42,12 @@ export const environment = {
   urlGetUserSubmit: url + "getUserSubmits",
   urlGetContestSubmits: url + "getContestSubmits",
   urlGetSourceCode: url + "getSourceCode",
-  utlGetLastProblemAttempt: url + "getLastProblemAttempt"
+  utlGetLastProblemAttempt: url + "getLastProblemAttempt",
+
+
+  // ADMIN
+
+  urlCreateArticle: url + "createArticle",
 };
 
 /*

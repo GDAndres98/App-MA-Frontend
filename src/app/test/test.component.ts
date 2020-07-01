@@ -12,9 +12,11 @@ import { ProblemService } from '../services/problem/problem.service';
 export class TestComponent implements OnInit {
   myForm: FormGroup;
   name: string = "";
+  admin: boolean = false;
 
   constructor(private userService: UserService,
     private storageService: StorageService) {
+      this.admin = this.userService.currentUser.admin;
     }
 
   ngOnInit(): void {

@@ -2,6 +2,7 @@
   <nav class="navbar navbar-dark navbar-expand-sm fixed-top justify-content-between" style="background: rgba(75, 75, 75, 0.404); padding-left: 70px;">
     <a class="navbar-brand mb-0 h1" href="#">Crazy Noisy Bizarre Town</a>
     <div class="form-inline navbar-nav">
+      <a class="nav-link" *ngIf="admin" routerLink="/admin">Administrador</a>
       <li class="nav-item">
         <a class="nav-link" routerLink="/profile">{{name}}</a>
       </li>

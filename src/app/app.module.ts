@@ -80,6 +80,13 @@ import { ContestStatusComponent } from './contest/contest-status/contest-status.
 import { ContestScoreboardComponent } from './contest/contest-scoreboard/contest-scoreboard.component';
 import { VeredictPipe } from './pipes/veredictPipe';
 import { DialogSendComponent } from './sends/dialog-send/dialog-send.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminGuard } from './guards/admin.guard';
+import { AdminDeGuard } from './guards/admin.deguard';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
+import { AdminArticleComponent } from './admin/admin-article/admin-article.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -116,6 +123,10 @@ import { DialogSendComponent } from './sends/dialog-send/dialog-send.component';
     ContestStatusComponent,
     ContestScoreboardComponent,
     DialogSendComponent,
+    AdminComponent,
+    AdminLoginComponent,
+    AdminMenuComponent,
+    AdminArticleComponent,
   ],
   imports: [
     HttpClientModule,
@@ -128,6 +139,7 @@ import { DialogSendComponent } from './sends/dialog-send/dialog-send.component';
     MatInputModule,
     MatAutocompleteModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
     MatRadioModule,
     MatSelectModule,
@@ -159,7 +171,7 @@ import { DialogSendComponent } from './sends/dialog-send/dialog-send.component';
     NgbModule,
   ],
   exports:[],
-  providers: [AuthService, AuthGuard, StorageService, AuthDeGuard],
+  providers: [AuthService, AuthGuard, StorageService, AuthDeGuard, AdminGuard, AdminDeGuard],
   bootstrap: [AppComponent],
   entryComponents: [
     DialogArticleComponent
