@@ -24,6 +24,12 @@ import { ContestProblemsComponent } from './contest/contest-problems/contest-pro
 import { ContestStatusComponent } from './contest/contest-status/contest-status.component';
 import { ContestScoreboardComponent } from './contest/contest-scoreboard/contest-scoreboard.component';
 import { ProblemEmbeddedComponent } from './problem/problem-embedded/problem-embedded.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdminDeGuard } from './guards/admin.deguard';
+import { AdminGuard } from './guards/admin.guard';
+import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
+import { AdminArticleComponent } from './admin/admin-article/admin-article.component';
 
 
 const routes: Routes = [
@@ -58,6 +64,15 @@ const routes: Routes = [
       { path: 'status', component: ContestStatusComponent },
       { path: 'rank', component: ContestScoreboardComponent },
     ]
+  },
+  {path: 'admin-login', component: AdminLoginComponent, canActivate: [AdminDeGuard]},
+  {
+    path: 'admin', component: AdminComponent, canActivate: [AdminGuard],
+    children: [
+      { path: '', component: AdminMenuComponent},
+      { path: 'articles', component: AdminArticleComponent}
+    ]
+    
   },
 ];
 

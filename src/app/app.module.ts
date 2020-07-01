@@ -81,6 +81,13 @@ import { ContestScoreboardComponent } from './contest/contest-scoreboard/contest
 import { VeredictPipe } from './pipes/veredictPipe';
 import { DialogSendComponent } from './sends/dialog-send/dialog-send.component';
 import { ProblemEmbeddedComponent } from './problem/problem-embedded/problem-embedded.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminGuard } from './guards/admin.guard';
+import { AdminDeGuard } from './guards/admin.deguard';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
+import { AdminArticleComponent } from './admin/admin-article/admin-article.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -118,6 +125,10 @@ import { ProblemEmbeddedComponent } from './problem/problem-embedded/problem-emb
     ContestScoreboardComponent,
     DialogSendComponent,
     ProblemEmbeddedComponent,
+    AdminComponent,
+    AdminLoginComponent,
+    AdminMenuComponent,
+    AdminArticleComponent,
   ],
   imports: [
     HttpClientModule,
@@ -130,6 +141,7 @@ import { ProblemEmbeddedComponent } from './problem/problem-embedded/problem-emb
     MatInputModule,
     MatAutocompleteModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
     MatRadioModule,
     MatSelectModule,
@@ -161,7 +173,7 @@ import { ProblemEmbeddedComponent } from './problem/problem-embedded/problem-emb
     NgbModule,
   ],
   exports:[],
-  providers: [AuthService, AuthGuard, StorageService, AuthDeGuard],
+  providers: [AuthService, AuthGuard, StorageService, AuthDeGuard, AdminGuard, AdminDeGuard],
   bootstrap: [AppComponent],
   entryComponents: [
     DialogArticleComponent

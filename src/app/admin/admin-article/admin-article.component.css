@@ -1,0 +1,26 @@
+.subtitle{
+    color: white;
+    margin-top: 25px;
+    font-size: x-large;
+}
+
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+  }
+  .signin-content {
+    padding: 60px 1rem;
+  }
+  .full-width-input {
+    width: 100%;
+  }
+
+  .unstyled {
+    -webkit-appearance: none;
+}
+.unstyled::-webkit-inner-spin-button,
+.unstyled::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}

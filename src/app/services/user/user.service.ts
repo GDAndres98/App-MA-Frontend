@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { User, UserLogin } from 'src/app/model/User';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpParams, HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
@@ -59,6 +59,12 @@ export class UserService {
  updateMessage(id: number, name: string) {
   this.name.next(name);
   this.id.next(id);
-}
+  }
+
+  isAdmin(id: number): Observable<boolean>{
+    if(id == null) return new BehaviorSubject<boolean>(false);
+    let op = {headers: new HttpHeaders({ 'id': id + '' })};
+    return this.http.get<boolean>(environment.urlIsAdmin, op);
+  }
 
 }

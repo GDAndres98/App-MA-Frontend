@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit {
 
   name$ : Observable<string>;
   name : string;
-  state: string;
+  state: string="";
   constructor(
     private storageService: StorageService,
     private userService: UserService,
