@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Submit, Veredict, Language } from 'src/app/model/submit';
 import { SubmitService } from 'src/app/services/submit/submit.service';
 import { ActivatedRoute } from '@angular/router';
+import { Contest } from 'src/app/model/contest';
 
 @Component({
   selector: 'app-contest-status',
@@ -9,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./contest-status.component.css']
 })
 export class ContestStatusComponent implements OnInit {
+
+  contest: Contest;
 
   submitShowing: Array<Submit>;
   collectionSize: number;
@@ -19,13 +22,17 @@ export class ContestStatusComponent implements OnInit {
   language = Language;
   veredict = Veredict;
 
+  letterOfProblem: Map<number, string>;
 
   constructor(
     private submitService: SubmitService,
     private routerActivated: ActivatedRoute) {
+    this.letterOfProblem = new Map();
+
     this.pageNo = 1;
     this.pageSize = 10;
     this.sortBy = "id"
+
 
 
   }
@@ -35,16 +42,28 @@ export class ContestStatusComponent implements OnInit {
   }
 
   onPageChange() {
-    this.routerActivated.parent.params.subscribe(params => {
-      let contestId = +params['id'];
-      this.submitService.getContestSubmitPage(this.pageNo - 1, this.pageSize, this.sortBy, false, contestId).subscribe(
-        data => {
-          this.submitShowing = data.content;
-          this.collectionSize = data.totalElements;
-          console.log(this.submitShowing);
+    this.submitService.getContestSubmitPage(this.pageNo - 1, this.pageSize, this.sortBy, false, this.contest.id).subscribe(
+      data => {
+        this.submitShowing = data.content;
+        this.collectionSize = data.totalElements;
+
+        this.submitShowing.forEach(submit => {
+          if (!this.letterOfProblem.has(submit.problem.id)) {
+            this.letterOfProblem.set(submit.problem.id, this.getLetterByProblemId(submit.problem.id));
+          }
         });
 
+        console.log(this.letterOfProblem);
+      });
+  }
+
+  getLetterByProblemId(id: number): string {
+    let letter = "-";
+    this.contest.problems.forEach(problem => {
+      if (problem.id == id)
+        letter = problem.letter;
     });
+    return letter;
   }
 
 }

@@ -18,6 +18,7 @@ export enum Veredict{
 
 export class Submit {
     public id: number;
+    public username: string;
     public language: Language;
     public veredict: Veredict;
     public memoryConsumed: number;
