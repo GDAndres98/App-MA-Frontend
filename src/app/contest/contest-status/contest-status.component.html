@@ -25,3 +25,9 @@
         </tbody>
       </table>       
 </div>
+
+
+<div class="container">
+  <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
+    [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
+</div>

@@ -80,6 +80,7 @@ import { ContestStatusComponent } from './contest/contest-status/contest-status.
 import { ContestScoreboardComponent } from './contest/contest-scoreboard/contest-scoreboard.component';
 import { VeredictPipe } from './pipes/veredictPipe';
 import { DialogSendComponent } from './sends/dialog-send/dialog-send.component';
+import { ProblemEmbeddedComponent } from './problem/problem-embedded/problem-embedded.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AdminDeGuard } from './guards/admin.deguard';
@@ -123,6 +124,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     ContestStatusComponent,
     ContestScoreboardComponent,
     DialogSendComponent,
+    ProblemEmbeddedComponent,
     AdminComponent,
     AdminLoginComponent,
     AdminMenuComponent,

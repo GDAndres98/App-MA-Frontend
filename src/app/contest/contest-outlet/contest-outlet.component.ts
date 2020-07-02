@@ -82,7 +82,7 @@ export class ContestOutletComponent implements OnInit {
 
 
   onActivate(componentReference: ContestOverviewComponent | ContestProblemsComponent) {
-    componentReference.problems = this.contest.problem;
+    componentReference.problems = this.contest.problems;
   }
 
   getCurrentTime() {

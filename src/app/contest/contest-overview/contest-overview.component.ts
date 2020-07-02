@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Problem } from 'src/app/model/problem';
 import { ActivatedRoute } from '@angular/router';
+import { ProblemInContest } from 'src/app/model/contest';
 
 @Component({
   selector: 'app-contest-overview',
@@ -10,8 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ContestOverviewComponent implements OnInit {
 
 
-  problems: Problem[];
-  lol: any;
+  problems: ProblemInContest[];
 
 
   constructor(activatedRoute: ActivatedRoute) {
@@ -20,6 +20,15 @@ export class ContestOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.problems.sort((a, b) => {
+      if (a.letter > b.letter)
+        return 1;
+      if (a.letter < b.letter)
+        return -1;
+      return 0;
+    });
+
+    console.log(this.problems);
   }
 
 }

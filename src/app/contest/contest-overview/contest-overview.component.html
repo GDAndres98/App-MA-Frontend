@@ -11,7 +11,7 @@
         <tbody>
             <tr class="d-flex" *ngFor="let problem of problems" routerLink="/problem/{{problem.id}}">
                 <td class="col-3 text-center">{{problem.id}}</td>
-                <td class="col-2 text-center">{{problem.id}}</td>
+                <td class="col-2 text-center">{{problem.letter}}</td>
                 <td class="col text-left">{{problem.title}}</td>
             </tr>
         </tbody>

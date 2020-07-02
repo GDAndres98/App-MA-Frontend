@@ -23,6 +23,7 @@ import { ContestOverviewComponent } from './contest/contest-overview/contest-ove
 import { ContestProblemsComponent } from './contest/contest-problems/contest-problems.component';
 import { ContestStatusComponent } from './contest/contest-status/contest-status.component';
 import { ContestScoreboardComponent } from './contest/contest-scoreboard/contest-scoreboard.component';
+import { ProblemEmbeddedComponent } from './problem/problem-embedded/problem-embedded.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminDeGuard } from './guards/admin.deguard';
@@ -32,6 +33,7 @@ import { AdminArticleComponent } from './admin/admin-article/admin-article.compo
 
 
 const routes: Routes = [
+  { path: 'test', component: ProblemEmbeddedComponent },
   { path: '', component: TestComponent, pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [AuthDeGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AuthDeGuard] },
