@@ -48,6 +48,9 @@ export const environment = {
   // ADMIN
 
   urlCreateArticle: url + "createArticle",
+  urlUpdateArticle: url + "updateArticle",
+  urlDeleteArticle: url + "deleteArticle",
+
 };
 
 /*

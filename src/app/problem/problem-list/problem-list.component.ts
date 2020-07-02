@@ -121,7 +121,7 @@ export class ProblemListComponent implements OnInit {
   }
 
   getAllTags() {
-    this.tagService.getAllArticles().subscribe(data => this.allTags = data)
+    this.tagService.getAllTags().subscribe(data => this.allTags = data)
   }
 
   addFilterTag(ntag: Tag) {

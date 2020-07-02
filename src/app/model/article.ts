@@ -1,10 +1,10 @@
-import { TagItem } from './tag';
+import { TagItem, Tag } from './tag';
 
 export class Article {
     public id: number;
     public title: string;
     public author: string;
     public dateWritten: Date;
-    public tags: TagItem[];
+    public tags: Tag[];
     public markdown: string;
 }
