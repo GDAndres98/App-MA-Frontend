@@ -77,6 +77,8 @@ export class ProblemEmbeddedComponent implements OnInit {
 
   getProblem() {
     this.isLoading = true;
+    
+    if(this.contest)
     this.problemService.getProblemById(this.contest.problems[this._index].id).subscribe(problem => {
       this.problem = problem;
       this.isLoading = false;

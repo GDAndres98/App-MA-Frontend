@@ -36,7 +36,7 @@
   </mat-card>
 </div>
 
-<div *ngIf="postsShowing.length > 0" class="container">
+<div *ngIf="postsShowing&&postsShowing.length > 0" class="container">
   <ngb-pagination class="paginator d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
     [collectionSize]="collectionSize" size="lg" (pageChange)="onPageChange()"></ngb-pagination>
 </div>
