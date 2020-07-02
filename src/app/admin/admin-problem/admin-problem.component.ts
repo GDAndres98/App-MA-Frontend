@@ -162,6 +162,7 @@ export class AdminProblemComponent implements OnInit {
       height: '85vh',
       data: article
     });
+    
     */
   }
 

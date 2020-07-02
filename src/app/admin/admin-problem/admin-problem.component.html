@@ -136,7 +136,7 @@
                 <input matInput  type = "text" placeholder="Nombre del Artículo" disabled autocomplete="off"  [(ngModel)]="problemDel.title" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             <div class="col-2">
-                <button mat-icon-button color="primary" aria-label="Visualizar" matTooltip="Vista previa" (click) = "openDeleteDialog(articleDel)">
+                <button mat-icon-button color="primary" aria-label="Visualizar" matTooltip="Vista previa" (click) = "openDeleteDialog(problemDel)">
                     <mat-icon>visibility</mat-icon>
                 </button>
                 <button class="ml-2" mat-icon-button color="warn" aria-label="Eliminar" matTooltip="Eliminar Artículo" (click) = "openConfirmDeleteDialog()">
