@@ -88,6 +88,7 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
 import { AdminArticleComponent } from './admin/admin-article/admin-article.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AdminProblemComponent } from './admin/admin-problem/admin-problem.component';
 
 @NgModule({
   declarations: [
@@ -129,6 +130,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     AdminLoginComponent,
     AdminMenuComponent,
     AdminArticleComponent,
+    AdminProblemComponent,
   ],
   imports: [
     HttpClientModule,

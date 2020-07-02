@@ -30,6 +30,7 @@ import { AdminDeGuard } from './guards/admin.deguard';
 import { AdminGuard } from './guards/admin.guard';
 import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
 import { AdminArticleComponent } from './admin/admin-article/admin-article.component';
+import { AdminProblemComponent } from './admin/admin-problem/admin-problem.component';
 
 
 const routes: Routes = [
@@ -70,7 +71,8 @@ const routes: Routes = [
     path: 'admin', component: AdminComponent, canActivate: [AdminGuard],
     children: [
       { path: '', component: AdminMenuComponent},
-      { path: 'articles', component: AdminArticleComponent}
+      { path: 'articles', component: AdminArticleComponent},
+      { path: 'problems', component: AdminProblemComponent},
     ]
     
   },

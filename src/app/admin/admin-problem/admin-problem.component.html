@@ -1,0 +1,165 @@
+<div class="px-4 py-3" style="color: white;">
+    <mat-accordion class="my-3">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div style="font-weight: 400; font-size: medium;">Crear Problema</div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form class="my-2" [formGroup]="formCreate" (ngSubmit)="onCreateProblem()">
+                <mat-form-field class="full-width-input" color = "accent">
+                    <input matInput type = "text" placeholder="Titulo" formControlName="title" required>
+                </mat-form-field>
+                <mat-form-field class="full-width-input" color = "accent">
+                    <input matInput type = "text" placeholder="Autor" formControlName="author" required>
+                </mat-form-field>
+                <mat-form-field class="full-width-input" color = "accent">
+                    <textarea matInput placeholder="Markdown" rows="10" formControlName="source" required [(ngModel)]="sourceCreate"></textarea>
+                </mat-form-field>
+        
+                <p>Vista previa</p>
+                <div class="w-100 mb-3" style="height: 200px; overflow-y: auto; word-wrap: break-word;">
+                    <markdown emoji  class="variable-binding" [data]="sourceCreate" katex ></markdown>
+                </div>
+
+                <mat-form-field class="full-width-input" color = "accent">
+                    <input matInput type = "number" placeholder="Tiempo limite" formControlName="time" required>
+                </mat-form-field>
+
+                <mat-form-field class="full-width-input" color = "accent">
+                    <input matInput type = "number" placeholder="Memoria" formControlName="memory" required>
+                </mat-form-field>
+
+
+                <mat-form-field class="full-width-input" appearance="fill">
+                    <mat-label>Tags</mat-label>
+                    <mat-select formControlName="tags" multiple>
+                      <mat-select-trigger>
+                        {{this.formCreate.get('tags').value ? this.formCreate.get('tags').value[0].name : ''}}
+                        <span *ngIf="this.formCreate.get('tags').value?.length > 1" class="example-additional-selection">
+                          (+{{formCreate.get('tags').value.length - 1}} {{this.formCreate.get('tags').value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                      </mat-select-trigger>
+                      <mat-option *ngFor="let tag of tags" [value]="tag">{{tag.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                <div class="w-100 row justify-content-center">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!formCreate.valid">Crear Problema</button>
+                </div>
+            </form>
+        </mat-expansion-panel>
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <div style="font-weight: 400; font-size: medium;">Editar Articulo</div>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Buscar por Id</p>
+
+        <div class="row align-items-center">
+            <mat-form-field class="full-width-input col-9" color = "accent">
+                <input matInput  type = "number" placeholder="Id de problema" autocomplete="off"  [(ngModel)]="editId" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <div class="col-2">
+                <button mat-raised-button color="primary" [disabled]="editId === null" (click)="searchEdit(editId)">Buscar</button>
+            </div>
+        </div>
+
+        <div *ngIf="findEdit">
+            <form class="my-2" [formGroup]="formEdit" (ngSubmit)="onEditProblem()">
+                <mat-form-field class="full-width-input" color = "accent">
+                    <input matInput type = "text" placeholder="Titulo" formControlName="title" required>
+                    </mat-form-field>
+                    <mat-form-field class="full-width-input" color = "accent">
+                        <input matInput type = "text" placeholder="Autor" formControlName="author" required>
+                    </mat-form-field>
+                    <mat-form-field class="full-width-input" color = "accent">
+                        <textarea matInput placeholder="Markdown" rows="10" formControlName="source" required [(ngModel)]="sourceEdit"></textarea>
+                    </mat-form-field>
+            
+                    <p>Vista previa</p>
+                    <div class="w-100 mb-3" style="height: 200px; overflow-y: auto; word-wrap: break-word;">
+                        <markdown emoji  class="variable-binding" [data]="sourceEdit" katex ></markdown>
+                    </div>
+    
+                    <mat-form-field class="full-width-input" color = "accent">
+                        <input matInput type = "number" placeholder="Tiempo limite" formControlName="time" required>
+                    </mat-form-field>
+    
+                    <mat-form-field class="full-width-input" color = "accent">
+                        <input matInput type = "number" placeholder="Memoria" formControlName="memory" required>
+                    </mat-form-field>
+    
+    
+                    <mat-form-field class="full-width-input" appearance="fill">
+                        <mat-label>Tags</mat-label>
+                        <mat-select formControlName="tags" multiple>
+                          <mat-select-trigger>
+                            {{this.formEdit.get('tags').value ? this.formEdit.get('tags').value[0].name : ''}}
+                            <span *ngIf="this.formEdit.get('tags').value?.length > 1" class="example-additional-selection">
+                              (+{{formEdit.get('tags').value.length - 1}} {{this.formEdit.get('tags').value?.length === 2 ? 'other' : 'others'}})
+                            </span>
+                          </mat-select-trigger>
+                          <mat-option *ngFor="let tag of tags" [value]="tag">{{tag.name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+    
+                    <div class="w-100 row justify-content-center">
+                        <button mat-raised-button color="primary" type="submit" [disabled]="!formEdit.valid">Crear Problema</button>
+                    </div>
+            </form>
+        </div>
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <div style="font-weight: 400; font-size: medium;">Eliminar Problema</div>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Buscar por Id</p>
+        <div class="row align-items-center">
+            <mat-form-field class="full-width-input col-9" color = "accent">
+                <input matInput  type = "number" placeholder="Id de problema" autocomplete="off"  [(ngModel)]="delId" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <div class="col-2">
+                <button mat-raised-button color="primary" [disabled]="delId === null" (click)="searchDel(delId)">Buscar</button>
+            </div>
+        </div>
+
+        <div class="row align-items-center" *ngIf="findDel">
+            <mat-form-field class="full-width-input col-9" color = "accent">
+                <input matInput  type = "text" placeholder="Nombre del Artículo" disabled autocomplete="off"  [(ngModel)]="problemDel.title" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <div class="col-2">
+                <button mat-icon-button color="primary" aria-label="Visualizar" matTooltip="Vista previa" (click) = "openDeleteDialog(articleDel)">
+                    <mat-icon>visibility</mat-icon>
+                </button>
+                <button class="ml-2" mat-icon-button color="warn" aria-label="Eliminar" matTooltip="Eliminar Artículo" (click) = "openConfirmDeleteDialog()">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+
+<ng-template #callAPIDialog>
+    <div mat-dialog-title>
+        <p>Esta seguro que desea eliminar el problema:</p>
+    </div>
+    <div mat-dialog-content>
+    <p>{{problemDel.title}}</p>
+    </div>
+    <div mat-dialog-actions>
+    <button mat-button (click) = "this.dialogRef.close()">No</button>
+    <button mat-button (click) = "deleteProblem(problemDel)" cdkFocusInitial>Sí</button>
+    </div>
+</ng-template>
+
+

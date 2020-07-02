@@ -50,6 +50,9 @@ export const environment = {
   urlCreateArticle: url + "createArticle",
   urlUpdateArticle: url + "updateArticle",
   urlDeleteArticle: url + "deleteArticle",
+  urlCreateProblem: url + "createProblem",
+  urlUpdateProblem: url + "updateProblem",
+  
 
 };
 
