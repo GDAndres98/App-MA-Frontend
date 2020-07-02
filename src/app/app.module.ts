@@ -39,7 +39,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
@@ -169,7 +169,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     HttpClientModule,
     MarkdownModule.forRoot(),
     NgbModule,
-  ],
+    FormsModule,
+    ],
   exports:[],
   providers: [AuthService, AuthGuard, StorageService, AuthDeGuard, AdminGuard, AdminDeGuard],
   bootstrap: [AppComponent],
