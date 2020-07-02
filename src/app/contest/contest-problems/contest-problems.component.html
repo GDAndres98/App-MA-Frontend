@@ -1,15 +1,13 @@
-<div class="row m-3" style="height: 100vh;">
-    <div class="col-1  " style="background-color: khaki; height: 100vh; overflow-y: auto;">
 
-        <div *ngFor="let  n of numbers" class="my-2">
-            <button mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
-            {{n}}
+<div class="row m-3" style="min-height: 70vh;">
+    <div class="col-1  " style="max-height: 70vh; overflow-y: auto;">
+        <div *ngFor="let problem of contest.problems; let i = index" class="my-2">
+            <button mat-fab style="background-color: var(--accent); color: white;" (click)="index=i">
+                {{problem.letter}}
             </button>
-          </div>
+        </div>
     </div>
-
-    
-    <div class="col-11" style="background-color: red; height: 100vh;">
-<app-problem-embedded></app-problem-embedded>
+    <div class="col-11">
+        <app-problem-embedded [index]="index" [contest]="contest"></app-problem-embedded>
     </div>
 </div>

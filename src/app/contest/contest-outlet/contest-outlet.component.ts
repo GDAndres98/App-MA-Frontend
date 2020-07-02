@@ -48,6 +48,14 @@ export class ContestOutletComponent implements OnInit {
           this.contest.startTime = new Date(this.contest.startTime);
           this.contest.endTime = new Date(this.contest.endTime);
 
+          this.contest.problems.sort((a, b) => {
+            if (a.letter > b.letter)
+              return 1;
+            if (a.letter < b.letter)
+              return -1;
+            return 0;
+          });
+
           this.maxTime = (this.contest.endTime.getTime() - this.contest.startTime.getTime());
           this.startTimer();
 
@@ -82,7 +90,7 @@ export class ContestOutletComponent implements OnInit {
 
 
   onActivate(componentReference: ContestOverviewComponent | ContestProblemsComponent) {
-    componentReference.problems = this.contest.problems;
+    componentReference.contest = this.contest;
   }
 
   getCurrentTime() {
