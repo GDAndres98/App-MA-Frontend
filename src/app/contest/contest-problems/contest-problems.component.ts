@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Problem } from 'src/app/model/problem';
 import { ActivatedRoute } from '@angular/router';
+import { ProblemInContest, Contest } from 'src/app/model/contest';
+import { ProblemService } from 'src/app/services/problem/problem.service';
 
 @Component({
   selector: 'app-contest-problems',
@@ -9,26 +11,30 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ContestProblemsComponent implements OnInit {
 
-  problems: Problem[];
+
+  @Input() index: number = 0;
 
 
-  numbers: Array<number>
+  contest: Contest;
+  problem: Problem;
 
-  constructor() { }
+
+
+
+  constructor(
+    private problemService: ProblemService) { }
 
   ngOnInit(): void {
 
-
-
-    this.numbers = new Array<number>();
-    for (let index = 0; index < 27; index++) {
-      this.numbers.push(index)%10;
-    }
-
-    console.log(this.numbers);
-
   }
 
+  
+
+
+
+  getProblem(): void {
+
+  }
 
 
 }

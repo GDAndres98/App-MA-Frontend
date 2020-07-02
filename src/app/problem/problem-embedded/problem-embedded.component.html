@@ -1,25 +1,33 @@
-<mat-card *ngIf="problem" class="row m-3">
-    <mat-card-subtitle class="d-flex justify-content-between">
-        <div>
-            Límite de tiempo:
-            {{problem.timeLimit}} milisegundos
-        </div>
-        <div class=" d-flex justify-content-end">
-            Límite de memoria:
-            {{problem.memoryLimit}} megabytes
-        </div>
-    </mat-card-subtitle>
-</mat-card>
+<div *ngIf="problem && !isLoading" class="row m-3" style="height: 7%;">
+    <mat-card class="col-2 mx-auto d-flex align-items-center justify-content-center  h-100"
+        style="background-color: var(--tag2);">
+        <mat-card-subtitle>
+            <div>
+                Tiempo:
+                {{problem.timeLimit}} ms
+            </div>
+            <div>
+                Memoria:
+                {{problem.memoryLimit}} MB
+            </div>
+        </mat-card-subtitle>
+    </mat-card>
 
-<mat-card *ngIf="problem" class="row m-3">
-    <mat-card-subtitle class="d-flex justify-content-between">
-        <div>
-            Límite de tiempo:
-            {{problem.timeLimit}} milisegundos
-        </div>
-        <div class=" d-flex justify-content-end">
-            Límite de memoria:
-            {{problem.memoryLimit}} megabytes
-        </div>
-    </mat-card-subtitle>
-</mat-card>
+    <mat-card class="col-6 mx-auto justify-content-center text-center h-100 " style="background-color: var(--tag2);">
+        <mat-card-title class="title my-auto ">
+            {{contest.problems[_index].letter}} - <span> {{problem.title}}</span>
+        </mat-card-title>
+    </mat-card>
+
+    <button mat-raised-button class="col-2 mx-auto h-100" style="background-color: var(--accent);">
+        Enviar solución <i class="fas fa-paper-plane"></i>
+    </button>
+</div>
+
+<div *ngIf="problem && !isLoading" class="row m-3">
+    <mat-card class="col h-100" style="background-color: var(--tag2);">
+        <mat-card-content class="px-3" style=" max-height: initial;">
+            <markdown class="variable-binding" [data]="problem.markdown" katex></markdown>
+        </mat-card-content>
+    </mat-card>
+</div>
