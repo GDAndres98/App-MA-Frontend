@@ -15,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AdminProblemComponent implements OnInit {
   @ViewChild('callAPIDialog') callAPIDialog: TemplateRef<any>;
+  @ViewChild('dialogProblemView') dialogProblemView: TemplateRef<any>;
 
   dialogRef;
 
@@ -157,13 +158,7 @@ export class AdminProblemComponent implements OnInit {
   }
 
   openDeleteDialog(problem: Problem){
-    /*
-    this.dialogRef = this.dialog.open(DialogArticleComponent, {
-      height: '85vh',
-      data: article
-    });
-    
-    */
+    this.dialogRef = this.dialog.open(this.dialogProblemView);
   }
 
   openConfirmDeleteDialog(){
@@ -171,7 +166,16 @@ export class AdminProblemComponent implements OnInit {
   }
 
   deleteProblem(problemDel: Problem){
-
+    this.adminService.deleteProblem(problemDel).subscribe(v =>{
+      this.snackBar.open('Problema eliminado correctamente', "Cerrar", { duration: 2000,});
+      this.findDel = false;
+    },
+    err =>{
+      this.snackBar.open('Hubo un error en la creación del problema', "Cerrar", { duration: 2000,});
+    },
+    () =>{
+      this.dialogRef.close();
+    });
   }
 
 }

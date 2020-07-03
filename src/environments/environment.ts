@@ -50,10 +50,19 @@ export const environment = {
   urlCreateArticle: url + "createArticle",
   urlUpdateArticle: url + "updateArticle",
   urlDeleteArticle: url + "deleteArticle",
+
   urlCreateProblem: url + "createProblem",
   urlUpdateProblem: url + "updateProblem",
+  urlDeleteProblem: url + "removeProblem",
   
-
+  urlGetProfesorById: url + "getProfesorById",
+  urlCreateCourse   : url + "createCourse",
+  urlGetCourseById  : url + "getCourseById",
+  urlUpdateCourse   : url + "editCourse",
+  urlGetStudentsCourse      : url + "getCourseStudentsById",
+  urlGetStudentsById        : url + "getStudentById",
+  urlAddStudentToCourse     : url + "addStudentToCourse",
+  urlRemoveStudentToCourse  : url + "removeStudentToCourse",
 };
 
 /*

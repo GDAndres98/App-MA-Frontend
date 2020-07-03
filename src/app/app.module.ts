@@ -90,6 +90,7 @@ import { AdminArticleComponent } from './admin/admin-article/admin-article.compo
 import { MatNativeDateModule } from '@angular/material/core';
 import { AdminProblemComponent } from './admin/admin-problem/admin-problem.component';
 import { SendSolutionComponent } from './problem/problem-embedded/send-solution/send-solution.component';
+import { AdminCoursesComponent } from './admin/admin-courses/admin-courses.component';
 
 @NgModule({
   declarations: [
@@ -133,6 +134,7 @@ import { SendSolutionComponent } from './problem/problem-embedded/send-solution/
     AdminArticleComponent,
     AdminProblemComponent,
     SendSolutionComponent,
+    AdminCoursesComponent,
   ],
   imports: [
     HttpClientModule,
@@ -176,7 +178,7 @@ import { SendSolutionComponent } from './problem/problem-embedded/send-solution/
     MarkdownModule.forRoot(),
     NgbModule,
     FormsModule,
-    ],
+  ],
   exports:[],
   providers: [AuthService, AuthGuard, StorageService, AuthDeGuard, AdminGuard, AdminDeGuard],
   bootstrap: [AppComponent],

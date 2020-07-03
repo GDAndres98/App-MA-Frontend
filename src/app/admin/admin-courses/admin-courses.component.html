@@ -1,0 +1,198 @@
+<div class="px-4 py-3" style="color: white;">
+    <mat-accordion class="my-3">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div style="font-weight: 400; font-size: medium;">Crear curso</div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <form class="my-2" [formGroup]="formCreate" (ngSubmit)="onCreateCourse()">
+                <mat-form-field class="full-width-input" color = "accent">
+                    <input matInput type = "text" placeholder="Nombre del curso" formControlName="name" required>
+                </mat-form-field>
+
+                <div class="row align-items-center">
+                    <mat-form-field class="full-width-input col-9" color = "accent">
+                        <mat-label>Logo del curso</mat-label>
+                        <input matInput type = "text" placeholder="Ejemplo: cat" formControlName="logo" [(ngModel)]="logoCreate" required>
+                    </mat-form-field>
+                    <mat-card style="width: 100px; height: 100px; background-color: var(--dark);">
+                        <i class="fa fa-{{logoCreate}} my-3" style="font-size: xx-large;"></i>
+                    </mat-card>
+                </div>
+
+                <div class="row align-items-center">
+                    <mat-form-field class="full-width-input col-9" color = "accent">
+                        <input matInput  type = "number" placeholder="Id de profesor"  autocomplete="off"  [(ngModel)]="profesorIdCreate" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                    <div class="col-2">
+                        <button mat-raised-button type="button" color="primary" [disabled]="profesorIdCreate === null" (click)="searchProfessor(profesorIdCreate)">Buscar</button>
+                    </div>
+                </div>
+
+                <div *ngIf="profesor">
+                    <mat-form-field class="full-width-input" color = "accent">
+                        <input matInput type="text" placeholder="Nombre del profesor" disabled [(ngModel)]="profesor.firstName + ' ' + profesor.lastName" [ngModelOptions]="{standalone: true}">
+                        <button mat-button *ngIf="profesor" type="button" matSuffix mat-icon-button aria-label="Clear" (click)="clearformProfesor(formCreate)">
+                            <mat-icon>close</mat-icon>
+                          </button>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="false">
+                    <mat-form-field class="full-width-input col-9" color = "accent">
+                        <input matInput  type = "number" placeholder="Id de profesor" formControlName="profesor"  autocomplete="off"">
+                    </mat-form-field>
+                </div>
+
+                <div class="w-100 row justify-content-center">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!formCreate.valid">Crear Curso</button>
+                </div>
+
+            </form>
+        </mat-expansion-panel>
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div style="font-weight: 400; font-size: medium;">Editar curso</div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row align-items-center">
+                <mat-form-field class="full-width-input col-9" color = "accent">
+                    <input matInput  type = "number" placeholder="Id del curso" autocomplete="off"  [(ngModel)]="editId" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <div class="col-2">
+                    <button mat-raised-button color="primary" [disabled]="editId === null" (click)="searchEdit(editId)">Buscar</button>
+                </div>
+            </div>
+
+            <div *ngIf="findEdit">
+                <form class="my-2" [formGroup]="formEdit" (ngSubmit)="onEditCourse()">
+                    <mat-form-field class="full-width-input" color = "accent">
+                        <input matInput type = "text" placeholder="Nombre del curso" formControlName="name" required>
+                    </mat-form-field>
+    
+                    <div class="row align-items-center">
+                        <mat-form-field class="full-width-input col-9" color = "accent">
+                            <mat-label>Logo del curso</mat-label>
+                            <input matInput type = "text" placeholder="Ejemplo: cat" formControlName="logo" [(ngModel)]="logoEdit" required>
+                        </mat-form-field>
+                        <mat-card style="width: 100px; height: 100px; background-color: var(--dark);">
+                            <i class="fa fa-{{logoEdit}} my-3" style="font-size: xx-large;"></i>
+                        </mat-card>
+                    </div>
+    
+                    <div class="row align-items-center">
+                        <mat-form-field class="full-width-input col-9" color = "accent">
+                            <input matInput  type = "number" placeholder="Id de profesor"  autocomplete="off"  [(ngModel)]="profesorIdEdit" [ngModelOptions]="{standalone: true}">
+                        </mat-form-field>
+                        <div class="col-2">
+                            <button mat-raised-button type="button" color="primary" [disabled]="profesorIdEdit === null" (click)="searchProfessor(profesorIdEdit)">Buscar</button>
+                        </div>
+                    </div>
+    
+                    <div *ngIf="profesor">
+                        <mat-form-field class="full-width-input" color = "accent">
+                            <input matInput type="text" placeholder="Nombre del profesor" disabled [(ngModel)]="profesor.firstName + ' ' + profesor.lastName" [ngModelOptions]="{standalone: true}">
+                            <button mat-button *ngIf="profesor" type="button" matSuffix mat-icon-button aria-label="Clear" (click)="clearformProfesor(formEdit)">
+                                <mat-icon>close</mat-icon>
+                              </button>
+                        </mat-form-field>
+                    </div>
+                    <div *ngIf="false">
+                        <mat-form-field class="full-width-input col-9" color = "accent">
+                            <input matInput  type = "number" placeholder="Id de profesor" formControlName="profesor"  autocomplete="off"">
+                        </mat-form-field>
+                    </div>
+    
+                    <div class="w-100 row justify-content-center">
+                        <button mat-raised-button color="primary" type="submit" [disabled]="!formEdit.valid">Editar Curso</button>
+                    </div>
+    
+                </form>
+            </div>
+
+        </mat-expansion-panel>
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div style="font-weight: 400; font-size: medium;">Editar estudiantes de cursos</div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row align-items-center">
+                <mat-form-field class="full-width-input col-9" color = "accent">
+                    <input matInput  type = "number" placeholder="Id del curso" autocomplete="off"  [(ngModel)]="editUserId" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <div class="col-2">
+                    <button mat-raised-button color="primary" [disabled]="editUserId === null" (click)="searchEditUser(editUserId)">Buscar</button>
+                </div>
+            </div>
+
+            <div class="row align-items-center" *ngIf="findEditUser">
+            <mat-form-field class="full-width-input col-9" color = "accent">
+                <input matInput  type = "text" placeholder="Nombre del Curso" disabled autocomplete="off"  [(ngModel)]="courseUserEdit.name" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <div class="col-2">
+                <button mat-icon-button color="primary" aria-label="Visualizar" matTooltip="Vista previa" (click) = "openStudentsDialog(editUserId)">
+                    <mat-icon>visibility</mat-icon>
+                </button>
+
+            </div>
+        </div>
+
+        </mat-expansion-panel>
+        <mat-divider></mat-divider>
+
+    </mat-accordion>
+</div>
+
+
+<ng-template #dialogUserCourseView>
+    <div mat-dialog-title>
+        <p>{{courseUserEdit.name}}</p>
+    </div>
+    <div class="px-3 pt-3" style="overflow-y:auto; height: 60vh;">
+        <h3>Estudiantes</h3>
+        <div *ngFor="let student of students; let i = index">
+            <mat-form-field class="full-width-input col-9" color = "accent">
+                <input matInput  type = "text"  disabled autocomplete="off" placeholder="Nombre" value="{{student.firstName}} {{student.lastName}}">
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input col-1" color = "accent">
+                <input matInput  type="number"  disabled autocomplete="off" placeholder="Id" value="{{student.id}}">
+            </mat-form-field>
+
+            <button class="ml-2" mat-icon-button color="warn" aria-label="Eliminar" matTooltip="Eliminar Estudiante" (click) = "deleteStudent(i)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+
+    </div>
+    <div>
+        <div class="row align-items-center">
+            <mat-form-field class="full-width-input col-9" color = "accent">
+                <input matInput  type = "number" placeholder="Id del estudiante" autocomplete="off"  [(ngModel)]="studentId" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <div class="col-2">
+                <button mat-raised-button color="primary" [disabled]="studentId === null" (click)="searchStudent(studentId)">Buscar</button>
+            </div>
+        </div>
+        <div class="row align-items-center" *ngIf="findStudent">
+            <mat-form-field class="full-width-input col-9" color = "accent">
+                <input matInput  type = "text" placeholder="Nombre del estudiante" disabled autocomplete="off"  [(ngModel)]="student.firstName + ' ' + student.lastName" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <div class="col-2">
+                <button mat-icon-button color="accent" aria-label="Añadir" matTooltip="Añadir estudiante" (click) = "addStudent(studentId)">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
