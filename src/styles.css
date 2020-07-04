@@ -21,13 +21,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --tag2: #616161;
     --warn: #ef5350;
 
+    --in-queue: #8fac30;
     --accepted: #31a3a3;
     --wrong-answer: #31a3a3;
     --time-limit: #31a3a3;
     --memory-limit: #31a3a3;
     --compilation-error: #31a3a3;
     --presentation-error: #31a3a3;
-    --in-queue: #8fac30;
+    --runtime-error: #31a3a3;
 }
 
 
