@@ -32,18 +32,18 @@ export class Scoreboard {
 }
 
 export class UserStats {
-    private id:             number;
-    private position:       number;
-    private username:       string;
-    private name:           string;
-    private generalPenalty: number;
-    private problemsSolved: number;
-    private problemScore:   ProblemScore[];
+    public id:             number;
+    public position:       number;
+    public username:       string;
+    public name:           string;
+    public generalPenalty: number;
+    public problemsSolved: number;
+    public problemsScore:   ProblemScore[];
 }
 
 export class ProblemScore {
-    private id:         number;
-    private penalty:    number;
-    private tries:      string;
-    private solved:     boolean;
+    public id:         number;
+    public penalty:    number;
+    public tries:      number;
+    public solved:     boolean;
 }

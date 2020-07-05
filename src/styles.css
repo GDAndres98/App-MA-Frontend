@@ -29,6 +29,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --compilation-error: #31a3a3;
     --presentation-error: #31a3a3;
     --runtime-error: #31a3a3;
+
+    --solved: #31a3a3;
+    --not-solved: #ef5350;
 }
 
 

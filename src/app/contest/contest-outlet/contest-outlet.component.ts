@@ -9,6 +9,7 @@ import { ContestProblemsComponent } from '../contest-problems/contest-problems.c
 import { ContestService } from 'src/app/services/contest/contest.service';
 import { ContestStatusComponent } from '../contest-status/contest-status.component';
 import { delay, timeout } from 'rxjs/operators';
+import { ContestScoreboardComponent } from '../contest-scoreboard/contest-scoreboard.component';
 
 @Component({
   selector: 'app-contest-outlet',
@@ -100,7 +101,7 @@ export class ContestOutletComponent implements OnInit {
   }
 
 
-  onActivate(componentReference: ContestOverviewComponent | ContestProblemsComponent | ContestStatusComponent) {
+  onActivate(componentReference: ContestOverviewComponent | ContestProblemsComponent | ContestStatusComponent | ContestScoreboardComponent) {
     if (componentReference instanceof ContestOverviewComponent)
       componentReference.stats = this.contestStats.stats;
     componentReference.contest = this.contest;

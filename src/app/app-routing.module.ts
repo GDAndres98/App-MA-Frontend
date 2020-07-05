@@ -63,7 +63,7 @@ const routes: Routes = [
       { path: 'overview', component: ContestOverviewComponent },
       { path: 'problems', component: ContestProblemsComponent },
       { path: 'status', component: ContestStatusComponent },
-      { path: 'rank', component: ContestScoreboardComponent },
+      { path: 'scoreboard', component: ContestScoreboardComponent },
     ]
   },
   {path: 'admin-login', component: AdminLoginComponent, canActivate: [AdminDeGuard]},

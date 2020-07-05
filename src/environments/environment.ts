@@ -36,6 +36,7 @@ export const environment = {
 
   urlGetContestById: url + "getContestById",
   urlGetAllProblemsFromContest: url + "getAllProblemsFromContest",
+  urlGetScoreboard: url + "getScoreboard",
 
   urlSubmit: url + "submit",
   urlGetAllSubmits: url + "getAllSubmits",
