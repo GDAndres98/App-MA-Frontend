@@ -34,9 +34,10 @@ export const environment = {
   urlCreatePost: url + "createPost",
   urlCreateSubPost: url + "createSubPost",
 
-  urlGetContestById: url + "getContestById",
+  urlGetContestStatsById: url + "getContestStatsById",
   urlGetAllProblemsFromContest: url + "getAllProblemsFromContest",
   urlGetScoreboard: url + "getScoreboard",
+  urlGetContestById:  url + "getContestById",
 
   urlSubmit: url + "submit",
   urlGetAllSubmits: url + "getAllSubmits",
@@ -65,7 +66,9 @@ export const environment = {
   urlAddStudentToCourse     : url + "addStudentToCourse",
   urlRemoveStudentToCourse  : url + "removeStudentToCourse",
   
-  urlCreateContest   : url + "createContest",
+  urlCreateContest    : url + "createContest",
+  urlEditContest      : url + "editContest",
+  urlDeleteContest      : url + "deleteContest",
 
 };
 
