@@ -24,7 +24,7 @@ export class ContestListComponent implements OnInit {
 
   constructor(private contestService: ContestService) {
     this.pageNo = 1;
-    this.pageSize = 7;
+    this.pageSize = 3;
     this.sortBy = "id";
 
     this.getRuningContests();
@@ -50,14 +50,14 @@ export class ContestListComponent implements OnInit {
   }
 
   getPastContestsPage() {
-  this.contestService.getPastContests(this.pageNo,this.pageSize,this.sortBy).subscribe(
-    data=>{
-      this.pastContests=data.content;
-      console.log(data);
-      console.log(this.pastContests);
-      
-      this.collectionSize = data.totalElements;
-    });
+    this.contestService.getPastContests(this.pageNo - 1, this.pageSize, this.sortBy).subscribe(
+      data => {
+        this.pastContests = data.content;
+        console.log(data);
+        console.log(this.pastContests);
+
+        this.collectionSize = data.totalElements;
+      });
   }
 
 }

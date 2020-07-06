@@ -54,7 +54,7 @@
                 <hr>
             </div>
         </mat-card>
-        <mat-card class="mb-3" *ngIf="contestStatus>0">
+        <mat-card class="mb-3 p-0" *ngIf="contestStatus>0">
             <nav mat-tab-nav-bar mat-align-tabs="start" color="accent" animationDuration="500ms">
                 <a mat-tab-link [routerLink]="['./overview']" routerLinkActive #rlaOverview="routerLinkActive"
                     [active]="rlaOverview.isActive" selected>

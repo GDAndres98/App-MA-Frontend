@@ -1,23 +1,92 @@
-<h1>contest-list works!</h1>
+<mat-card>
+    <mat-card-title>
+        COMPETENCIAS
+    </mat-card-title>
+</mat-card>
 
-<div *ngFor="let contest of runningContests">
-    {{contest.name}}
+<div class="h-100 py-5" style="overflow-y: auto;">
+    <div class="container">
+
+        <mat-card class="contests-box ">
+            <mat-card-title>
+                Competencias En Vivo
+            </mat-card-title>
+
+            
+            <table class="w-100">
+                <thead class="w-100 ">
+                    <tr class="row w-100 mx-auto">
+                        <th class="header-t col-1">ID</th>
+                        <th class="header-t col-5">Nombre</th>
+                        <th class="header-t col-2"><i class="far fa-calendar"></i> Inicio </th>
+                        <th class="header-t col-1" matTooltip="Duración" [matTooltipPosition]="'above'">
+                            <i class="far fa-clock"></i></th>
+                        <th class="header-t col-1" matTooltip="Tiempo restante para terminar" [matTooltipPosition]="'above'">
+                            <i class="fas fa-hourglass-half"></i></th>
+                        <th class="col"></th>
+                    </tr>
+                </thead>
+            </table>
+            <div *ngFor="let contest of runningContests">
+                <app-contest-item [contest]="contest"></app-contest-item>
+            </div>
+        </mat-card>
 
 
+        <mat-card class="contests-box">
+            <mat-card-title>
+                Competencias Futuras
+            </mat-card-title>
+
+            <table class="w-100">
+                <thead class="w-100 ">
+                    <tr class="row w-100 mx-auto">
+                        <th class="header-t col-1">ID</th>
+                        <th class="header-t col-5">Nombre</th>
+                        <th class="header-t col-2"><i class="far fa-calendar"></i> Inicio </th>
+                        <th class="header-t col-1" matTooltip="Duración" [matTooltipPosition]="'above'">
+                            <i class="far fa-clock"></i></th>
+                        <th class="header-t col-1" matTooltip="Tiempo restante para iniciar" [matTooltipPosition]="'above'">
+                            <i class="fas fa-hourglass-start"></i></th>
+                        <th class="col"></th>
+                    </tr>
+                </thead>
+            </table>
+            <div *ngFor="let contest of futureContests">
+                <app-contest-item [contest]="contest"></app-contest-item>
+            </div>
+        </mat-card>
+
+        <mat-card class="contests-box">
+            <mat-card-title>
+                Competencias Pasadas
+            </mat-card-title>
+
+            <table class="w-100">
+                <thead class="w-100 ">
+                    <tr class="row w-100 mx-auto">
+                        <th class="header-t col-1">ID</th>
+                        <th class="header-t col-5">Nombre</th>
+                        <th class="header-t col-2"><i class="far fa-calendar"></i> Inicio </th>
+                        <th class="header-t col-1" matTooltip="Duración" [matTooltipPosition]="'above'">
+                            <i class="far fa-clock"></i></th>
+                        <th class="col"></th>
+                    </tr>
+                </thead>
+            </table>
+            <div *ngFor="let contest of pastContests">
+                <app-contest-item [contest]="contest"></app-contest-item>
+            </div>
+
+            <div class="container mt-5">
+                <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo"
+                    [pageSize]="pageSize" [collectionSize]="collectionSize" size="lg"
+                    (pageChange)="getPastContestsPage()"></ngb-pagination>
+            </div>
+        </mat-card>
+
+
+
+
+    </div>
 </div>
-
-<div *ngFor="let contest of futureContests">
-    {{contest.name}}
-
-
-</div>
-
-<div *ngFor="let contest of pastContests">
-    {{contest.name}}
-
-</div>
-
-<div class="container">
-    <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
-      [collectionSize]="collectionSize" size="lg" (pageChange)="getPastContestsPage()"></ngb-pagination>
-  </div>

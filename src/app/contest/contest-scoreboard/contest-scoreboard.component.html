@@ -1,4 +1,4 @@
-<div *ngIf="scoreboard" class="container my-2 p-3 " style="background: transparent;">
+<div *ngIf="scoreboard" class="container my-2 p-0 " style="background: transparent;">
     <table class="table table-dark table-striped  table-responsive text-center "
         style="border-radius: 10px; background-color: rgba(75, 75, 75, 0.404);">
         <thead>
@@ -21,7 +21,7 @@
                     {{user.position}}
                 </td>
                 <td>
-                    <span data-toggle="tooltip" data-placement="bottom" title="{{user.name}}">
+                    <span matTooltip="{{user.name}}" [matTooltipShowDelay]="500">
                         {{user.username}}
                     </span>
                 </td>
@@ -29,7 +29,9 @@
                     {{user.problemsSolved}}
                 </td>
                 <td>
-                    {{user.generalPenalty/60000|round}}
+                    <span matTooltip="{{user.generalPenalty|milisecondsFormat}}" [matTooltipShowDelay]="500">
+                        {{user.generalPenalty/60000|round}}
+                    </span>
                 </td>
 
                 <td class="py-0" style="height: 70px; padding-left: 2px; padding-right: 0px"
