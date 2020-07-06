@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Contest, ContestStats, Scoreboard } from 'src/app/model/contest';
+import { Contest, ContestStats, Scoreboard, ContestPreview } from 'src/app/model/contest';
 import { environment } from 'src/environments/environment';
 import { Problem } from 'src/app/model/problem';
 
@@ -33,12 +33,12 @@ export class ContestService {
     return this.http.get<Scoreboard>(environment.urlGetScoreboard, op);
   }
 
-  getRunningContests(): Observable<Contest[]> {
-    return this.http.get<Contest[]>(environment.urlGetRunningContests);
+  getRunningContests(): Observable<ContestPreview[]> {
+    return this.http.get<ContestPreview[]>(environment.urlGetRunningContests);
   }
 
-  getFutureContests(): Observable<Contest[]> {
-    return this.http.get<Contest[]>(environment.urlGetFutureContests);
+  getFutureContests(): Observable<ContestPreview[]> {
+    return this.http.get<ContestPreview[]>(environment.urlGetFutureContests);
   }
 
   getPastContests(pageNo: number, pageSize: number, sortBy: string): Observable<any> {

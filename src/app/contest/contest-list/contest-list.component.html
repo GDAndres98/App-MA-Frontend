@@ -1,1 +1,23 @@
-<p>contest-list works!</p>
+<h1>contest-list works!</h1>
+
+<div *ngFor="let contest of runningContests">
+    {{contest.name}}
+
+
+</div>
+
+<div *ngFor="let contest of futureContests">
+    {{contest.name}}
+
+
+</div>
+
+<div *ngFor="let contest of pastContests">
+    {{contest.name}}
+
+</div>
+
+<div class="container">
+    <ngb-pagination class="d-flex justify-content-center color-primary" [(page)]="pageNo" [pageSize]="pageSize"
+      [collectionSize]="collectionSize" size="lg" (pageChange)="getPastContestsPage()"></ngb-pagination>
+  </div>
