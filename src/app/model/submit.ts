@@ -7,17 +7,19 @@ export enum Language{
 }
 
 export enum Veredict{
-	In_Queue            = "var(--in-queue)",
-	Accepted            = "var(--accepted)",
-	Wrong_Answer        = "var(--wrong-answer)",
-	Time_Limit          = "var(--time-limit)",
-	Memory_Limit        = "var(--memory-limit)",
-	Compilation_Error   = "var(--compilation-error)", 
-	Presentation_Error  = "var(--presentation-error)",
+	IN_QUEUE            = "var(--in-queue)",
+	ACCEPTED            = "var(--accepted)",
+	WRONG_ANSWER        = "var(--wrong-answer)",
+	TIME_LIMIT          = "var(--time-limit)",
+	MEMORY_LIMIT        = "var(--memory-limit)",
+	COMPILATION_ERROR   = "var(--compilation-error)", 
+	PRESENTATION_ERROR  = "var(--presentation-error)",
+	RUNTIME_ERROR       = "var(--runtime-error)",
 }
 
 export class Submit {
     public id: number;
+    public username: string;
     public language: Language;
     public veredict: Veredict;
     public memoryConsumed: number;

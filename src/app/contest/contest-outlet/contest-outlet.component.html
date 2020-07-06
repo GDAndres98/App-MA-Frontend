@@ -59,13 +59,13 @@
                 <a mat-tab-link [routerLink]="['./overview']" routerLinkActive #rlaOverview="routerLinkActive"
                     [active]="rlaOverview.isActive" selected>
                     Vista General</a>
-                <a mat-tab-link [routerLink]="['./problems/1']" routerLinkActive #rlaProblems="routerLinkActive"
+                <a mat-tab-link [routerLink]="['./problems']" routerLinkActive #rlaProblems="routerLinkActive"
                     [active]="rlaProblems.isActive"><i class="fa fa-exclamation mx-1" aria-hidden="true"></i>
                     Problemas</a>
                 <a mat-tab-link [routerLink]="['./status']" routerLinkActive #rlaStatus="routerLinkActive"
                     [active]="rlaStatus.isActive"> <i class="far fa-list-alt mx-1"></i>
                     Estado</a>
-                <a mat-tab-link [routerLink]="['./rank']" routerLinkActive #rlaScoreboard="routerLinkActive"
+                <a mat-tab-link [routerLink]="['./scoreboard']" routerLinkActive #rlaScoreboard="routerLinkActive"
                     [active]="rlaScoreboard.isActive"> <i class="fas fa-star mx-1"></i>
                     Marcador</a>
             </nav>

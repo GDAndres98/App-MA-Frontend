@@ -1,4 +1,4 @@
-<div *ngIf="problem && !isLoading" class="row m-3" style="height: 7%;">
+<div *ngIf="problem && !isLoading" class="row m-3" style="height: 7vh;">
     <mat-card class="col-2 mx-auto d-flex align-items-center justify-content-center  h-100"
         style="background-color: var(--tag2);">
         <mat-card-subtitle>
@@ -19,8 +19,14 @@
         </mat-card-title>
     </mat-card>
 
-    <button mat-raised-button class="col-2 mx-auto h-100" style="background-color: var(--accent);">
+    <button mat-raised-button *ngIf="contest.isValid" class="col-2 mx-auto h-100"
+        style="background-color: var(--accent);" (click)="openSendDialog()">
         Enviar solución <i class="fas fa-paper-plane"></i>
+    </button>
+
+    <button mat-raised-button *ngIf="!contest.isValid" class="col-2 mx-auto h-100"
+        style="background-color: var(--tag1);" routerLink="/problem/{{problem.id}}">
+        Resolver <mat-icon>launch</mat-icon>
     </button>
 </div>
 
@@ -31,3 +37,38 @@
         </mat-card-content>
     </mat-card>
 </div>
+
+
+<ng-template #callAPIDialog *ngIf="problem && !isLoading">
+    <div mat-dialog-title>
+        <p>Solucionar problema {{contest.problems[_index].letter}} </p>
+    </div>
+    <div mat-dialog-content>
+        <p>{{problem.title}}</p>
+    </div>
+    <div class="col  my-2 w-100 align-items-center row-cols-1">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row pl-3 my-2 w-100">
+                <mat-form-field class="w-100">
+                    <mat-label>Lenguaje</mat-label>
+                    <mat-select formControlName="lang">
+                        <mat-option *ngFor="let lan of language" value="{{ll[lan]}}">{{ll[lan]}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col p-0">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile" formControlName="file"
+                        (change)="handleFileInput($event.target.files)" accept=".cpp, .java, .py, .c">
+                    <label class="custom-file-label" style="overflow: hidden;" for="customFile">{{text}}</label>
+                </div>
+            </div>
+
+            <div mat-dialog-actions class="row mx-auto w-100">
+                <button type="submit" mat-raised-button class="h-50 mt-3 w-100"
+                    style="background-color: var(--accent);">
+                    Enviar solución <i class="fas fa-paper-plane"></i></button>
+            </div>
+        </form>
+    </div>
+</ng-template>

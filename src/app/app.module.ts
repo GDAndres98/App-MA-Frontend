@@ -73,7 +73,7 @@ import { PostComponent } from './forum/post/post.component';
 import { DialogPostComponent } from './forum/dialog-post/dialog-post.component';
 import { ArticleMarkdownComponent } from './article/article-markdown/article-markdown.component';
 import { ContestOutletComponent } from './contest/contest-outlet/contest-outlet.component';
-import { MilisecondsFormat } from './pipes/secondsToMinutesPipe';
+import { MilisecondsFormat } from './pipes/milisecondsToMinutesPipe';
 import { ContestOverviewComponent } from './contest/contest-overview/contest-overview.component';
 import { ContestProblemsComponent } from './contest/contest-problems/contest-problems.component';
 import { ContestStatusComponent } from './contest/contest-status/contest-status.component';
@@ -89,12 +89,12 @@ import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
 import { AdminArticleComponent } from './admin/admin-article/admin-article.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AdminProblemComponent } from './admin/admin-problem/admin-problem.component';
-import { SendSolutionComponent } from './problem/problem-embedded/send-solution/send-solution.component';
 import { AdminCoursesComponent } from './admin/admin-courses/admin-courses.component';
 import { AdminContestComponent } from './admin/admin-contest/admin-contest.component';
 
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
+import { RoundFormat } from './pipes/roundNumberPipe';
 
 @NgModule({
   declarations: [
@@ -137,9 +137,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     AdminMenuComponent,
     AdminArticleComponent,
     AdminProblemComponent,
-    SendSolutionComponent,
     AdminCoursesComponent,
     AdminContestComponent,
+    RoundFormat,
   ],
   imports: [
     HttpClientModule,

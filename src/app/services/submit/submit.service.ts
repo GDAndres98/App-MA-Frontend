@@ -3,6 +3,7 @@ import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Language, Submit } from 'src/app/model/submit';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,11 @@ import { Observable } from 'rxjs';
 export class SubmitService {
 
 
+
   constructor(    
-    private http: HttpClient,) { }
+    private http: HttpClient,) {
+
+     }
 
   submit(userId: number, contestId: number, problemId: number, source: string, languague: Language){
     let sl = (Object.keys(Language).find(key => Language[key] === languague));

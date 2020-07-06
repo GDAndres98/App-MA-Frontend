@@ -4,6 +4,7 @@
         <thead>
           <tr>
             <th>#</th>
+            <th>Usuario</th>
             <th>Problema</th>
             <th>Lenguaje</th>
             <th>Resultado</th>
@@ -15,7 +16,8 @@
         <tbody>              
           <tr *ngFor="let submit of submitShowing">
             <td class="pointer">{{submit.id}}</td>
-            <td class="pointer" routerLink="/problem/{{submit.problem.id}}">{{submit.problem.title}}</td>
+            <td>{{submit.username}}</td>               
+            <td class="pointer">{{letterOfProblem.get(submit.problem.id)}}</td>
             <td>{{language[submit.language]}}</td>               
             <td [ngStyle]="{'color': veredict[submit.veredict]}" style="font-weight: bold;">{{submit.veredict | veredictPipe}}</td>
             <td>{{submit.timeConsumed?submit.timeConsumed: "-"}}</td>

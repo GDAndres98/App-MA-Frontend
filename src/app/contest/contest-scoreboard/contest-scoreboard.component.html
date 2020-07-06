@@ -1,1 +1,55 @@
-<p>contest-scoreboard works!</p>
+<div *ngIf="scoreboard" class="container my-2 p-3 " style="background: transparent;">
+    <table class="table table-dark table-striped  table-responsive text-center "
+        style="border-radius: 10px; background-color: rgba(75, 75, 75, 0.404);">
+        <thead>
+            <tr>
+                <th style="width: 5%">Puesto</th>
+                <th style="width: 15%">Usuario</th>
+                <th style="width: 5%">Puntaje</th>
+                <th style="width: 5%">Penalización</th>
+                <th style="width: 80px" *ngFor="let problem of contest.problems">
+                    {{problem.letter}}
+                </th>
+                <!-- <th style="width: 100%" *ngFor="let problem of numbers">
+                    {{problem}}
+                </th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of scoreboard.stats">
+                <td>
+                    {{user.position}}
+                </td>
+                <td>
+                    <span data-toggle="tooltip" data-placement="bottom" title="{{user.name}}">
+                        {{user.username}}
+                    </span>
+                </td>
+                <td>
+                    {{user.problemsSolved}}
+                </td>
+                <td>
+                    {{user.generalPenalty/60000|round}}
+                </td>
+
+                <td class="py-0" style="height: 70px; padding-left: 2px; padding-right: 0px"
+                    *ngFor="let problem of contest.problems">
+                    <div class="h-100 pt-2 container" *ngIf="scoreToProblem.get(user.id+','+problem.id)"
+                        [ngStyle]="{'background-color': scoreToProblem.get(user.id+','+problem.id).solved? 'var(--solved)':'var(--not-solved)'}">
+
+                        <div *ngIf="scoreToProblem.get(user.id+','+problem.id).solved">
+                            {{scoreToProblem.get(user.id+','+problem.id).penalty | milisecondsFormat}}
+                        </div>
+                        <div class="pt-3" *ngIf="scoreToProblem.get(user.id+','+problem.id).tries>0">
+                            <i class="fas fa-times"></i>
+                            {{'\n' + scoreToProblem.get(user.id+','+problem.id).tries}}
+                        </div>
+
+
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

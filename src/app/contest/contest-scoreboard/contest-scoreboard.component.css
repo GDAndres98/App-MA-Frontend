@@ -1,0 +1,8 @@
+td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .table-dark th, .table-dark td, .table-dark thead th {
+    border-color: var(--dark2);
+}

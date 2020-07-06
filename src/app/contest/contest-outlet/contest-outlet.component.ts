@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Contest } from 'src/app/model/contest';
-import { stat } from 'fs';
+import { Contest, ContestStats } from 'src/app/model/contest';
 import { ActivatedRoute } from '@angular/router';
 import { CourseService } from 'src/app/services/course/course.service';
 import { ProblemService } from 'src/app/services/problem/problem.service';
@@ -8,6 +7,9 @@ import { Problem } from 'src/app/model/problem';
 import { ContestOverviewComponent } from '../contest-overview/contest-overview.component';
 import { ContestProblemsComponent } from '../contest-problems/contest-problems.component';
 import { ContestService } from 'src/app/services/contest/contest.service';
+import { ContestStatusComponent } from '../contest-status/contest-status.component';
+import { delay, timeout } from 'rxjs/operators';
+import { ContestScoreboardComponent } from '../contest-scoreboard/contest-scoreboard.component';
 
 @Component({
   selector: 'app-contest-outlet',
@@ -27,23 +29,29 @@ export class ContestOutletComponent implements OnInit {
   contestStatus: number; // 0 sin empezar, 1 Corriendo, 2 Terminada
   interval;
 
-
+  contestStats: ContestStats;
   contest: Contest;
 
   constructor(
-    private routerActivated: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private contestService: ContestService,
     private problemService: ProblemService) {
 
   }
 
   ngOnInit(): void {
+    this.getContest();
+  }
+
+
+  getContest() {
     this.isLoading = true;
-    this.routerActivated.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       let contestId = +params['id'];
       this.contestService.getContestById(contestId).subscribe(
         data => {
-          this.contest = data;
+          this.contestStats = data;
+          this.contest = this.contestStats.contest
 
           this.contest.startTime = new Date(this.contest.startTime);
           this.contest.endTime = new Date(this.contest.endTime);
@@ -66,7 +74,6 @@ export class ContestOutletComponent implements OnInit {
 
   }
 
-
   startTimer() {
     this.interval = setInterval(() => {
       this.getCurrentTime();
@@ -82,14 +89,21 @@ export class ContestOutletComponent implements OnInit {
       }
       else {
         this.contestStatus = 1;
+        this.contest.isValid = true;
         this.timeDisplayed = this.time;
+        if(!(Math.trunc(this.timeDisplayed/1000)%360 )){
+          console.log(this.timeDisplayed);
+          this.getContest();
+        }
         this.contestProgress = this.time / this.maxTime * 100;
       }
     }, 1000);
   }
 
 
-  onActivate(componentReference: ContestOverviewComponent | ContestProblemsComponent) {
+  onActivate(componentReference: ContestOverviewComponent | ContestProblemsComponent | ContestStatusComponent | ContestScoreboardComponent) {
+    if (componentReference instanceof ContestOverviewComponent)
+      componentReference.stats = this.contestStats.stats;
     componentReference.contest = this.contest;
   }
 
