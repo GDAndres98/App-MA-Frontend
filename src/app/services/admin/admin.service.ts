@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment';
 import { Problem } from 'src/app/model/problem';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/model/User';
+import { Contest } from 'src/app/model/contest';
+import { LoginComponent } from 'src/app/login/login.component';
 
 @Injectable({
   providedIn: 'root'
@@ -138,6 +140,22 @@ export class AdminService {
     .set("courseId",   courseId + "");
 
     return this.http.post(environment.urlRemoveStudentToCourse, body, {responseType: 'text'});
+  }
+
+  createContest(contest: Contest, password: string, problems: Problem[]){
+    let map: number[] = [];
+    problems.forEach(element => {
+      map.push(element.id);
+    });
+    
+    const body = new HttpParams()
+    .set("name",        contest.name + "")
+    .set("isPrivate",   contest.isPrivate + "")
+    .set("password",    password)
+    .set("startTime",   contest.startTime + "")
+    .set("endTime",     contest.endTime + "")
+    .set("problems",    map.toString());
+    return this.http.post(environment.urlCreateContest, body, {responseType: 'text'});
   }
 
 

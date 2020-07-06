@@ -91,6 +91,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AdminProblemComponent } from './admin/admin-problem/admin-problem.component';
 import { SendSolutionComponent } from './problem/problem-embedded/send-solution/send-solution.component';
 import { AdminCoursesComponent } from './admin/admin-courses/admin-courses.component';
+import { AdminContestComponent } from './admin/admin-contest/admin-contest.component';
+
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 
 @NgModule({
   declarations: [
@@ -135,6 +139,7 @@ import { AdminCoursesComponent } from './admin/admin-courses/admin-courses.compo
     AdminProblemComponent,
     SendSolutionComponent,
     AdminCoursesComponent,
+    AdminContestComponent,
   ],
   imports: [
     HttpClientModule,
@@ -178,6 +183,7 @@ import { AdminCoursesComponent } from './admin/admin-courses/admin-courses.compo
     MarkdownModule.forRoot(),
     NgbModule,
     FormsModule,
+    DragDropModule
   ],
   exports:[],
   providers: [AuthService, AuthGuard, StorageService, AuthDeGuard, AdminGuard, AdminDeGuard],

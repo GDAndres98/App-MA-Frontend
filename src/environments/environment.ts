@@ -63,6 +63,9 @@ export const environment = {
   urlGetStudentsById        : url + "getStudentById",
   urlAddStudentToCourse     : url + "addStudentToCourse",
   urlRemoveStudentToCourse  : url + "removeStudentToCourse",
+  
+  urlCreateContest   : url + "createContest",
+
 };
 
 /*
