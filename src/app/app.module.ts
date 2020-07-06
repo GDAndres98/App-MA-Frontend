@@ -90,6 +90,7 @@ import { AdminArticleComponent } from './admin/admin-article/admin-article.compo
 import { MatNativeDateModule } from '@angular/material/core';
 import { AdminProblemComponent } from './admin/admin-problem/admin-problem.component';
 import { RoundFormat } from './pipes/roundNumberPipe';
+import { ContestListComponent } from './contest/contest-list/contest-list.component';
 
 @NgModule({
   declarations: [
@@ -133,6 +134,7 @@ import { RoundFormat } from './pipes/roundNumberPipe';
     AdminArticleComponent,
     AdminProblemComponent,
     RoundFormat,
+    ContestListComponent,
   ],
   imports: [
     HttpClientModule,

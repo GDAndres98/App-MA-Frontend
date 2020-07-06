@@ -33,4 +33,19 @@ export class ContestService {
     return this.http.get<Scoreboard>(environment.urlGetScoreboard, op);
   }
 
+  getRunningContests(): Observable<Contest[]> {
+    return this.http.get<Contest[]>(environment.urlGetRunningContests);
+  }
+
+  getFutureContests(): Observable<Contest[]> {
+    return this.http.get<Contest[]>(environment.urlGetFutureContests);
+  }
+
+  getPastContests(pageNo: number, pageSize: number, sortBy: string): Observable<any> {
+    const op = {
+      headers: new HttpHeaders({ 'pageNo': pageNo + '', 'pageSize': pageSize + '', 'sortBy': sortBy + '' })
+    };
+    return this.http.get<any>(environment.urlGetPastContests, op);
+  }
+
 }

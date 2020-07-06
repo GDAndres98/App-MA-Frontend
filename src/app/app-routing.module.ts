@@ -31,6 +31,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
 import { AdminArticleComponent } from './admin/admin-article/admin-article.component';
 import { AdminProblemComponent } from './admin/admin-problem/admin-problem.component';
+import { ContestListComponent } from './contest/contest-list/contest-list.component';
 
 
 const routes: Routes = [
@@ -55,7 +56,8 @@ const routes: Routes = [
   { path: 'article/:id', component: ArticleDetailComponent },
   { path: 'problems', component: ProblemListComponent },
   { path: 'problem/:id', component: ProblemDetailComponent },
-
+  
+  { path: 'contests', component: ContestListComponent },
   {
     path: 'contest/:id', component: ContestOutletComponent, canActivate: [AuthGuard],
     children: [
