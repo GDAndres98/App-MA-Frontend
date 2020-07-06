@@ -32,6 +32,8 @@ import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
 import { AdminArticleComponent } from './admin/admin-article/admin-article.component';
 import { AdminProblemComponent } from './admin/admin-problem/admin-problem.component';
 import { ContestListComponent } from './contest/contest-list/contest-list.component';
+import { AdminCoursesComponent } from './admin/admin-courses/admin-courses.component';
+import { AdminContestComponent } from './admin/admin-contest/admin-contest.component';
 
 
 const routes: Routes = [
@@ -75,6 +77,9 @@ const routes: Routes = [
       { path: '', component: AdminMenuComponent},
       { path: 'articles', component: AdminArticleComponent},
       { path: 'problems', component: AdminProblemComponent},
+      { path: 'courses',  component: AdminCoursesComponent},
+      { path: 'contest',  component: AdminContestComponent},
+
     ]
     
   },

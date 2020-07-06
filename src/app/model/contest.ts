@@ -13,6 +13,7 @@ export class Contest {
     public endTime:     Date;
     public problems:    ProblemInContest[];
     public isValid:     boolean;
+    public isPrivate:   boolean;
 }
 
 export class ProblemInContest {

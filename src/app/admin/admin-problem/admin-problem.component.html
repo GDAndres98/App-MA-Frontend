@@ -108,12 +108,14 @@
                       </mat-form-field>
     
                     <div class="w-100 row justify-content-center">
-                        <button mat-raised-button color="primary" type="submit" [disabled]="!formEdit.valid">Crear Problema</button>
+                        <button mat-raised-button color="primary" type="submit" [disabled]="!formEdit.valid">Editar Problema</button>
                     </div>
             </form>
         </div>
 
         </mat-expansion-panel>
+        <mat-divider></mat-divider>
+
 
         <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -146,8 +148,38 @@
         </div>
 
         </mat-expansion-panel>
+        <mat-divider></mat-divider>
+
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div style="font-weight: 400; font-size: medium;">Editar casos de prueba</div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <mat-divider></mat-divider>
+
+
     </mat-accordion>
 </div>
+
+<ng-template #dialogProblemView>
+    <div class="px-3 pt-3" style="overflow-y:auto">
+        <mat-card-title> {{problemDel.title}}</mat-card-title>
+        <mat-card-subtitle>
+            Por <a>{{problemDel.author}}</a> <br>
+            Tiempo Limite: {{problemDel.timeLimit}} <br>
+            Memoria Limite: {{problemDel.memoryLimit}}
+        </mat-card-subtitle>
+        <hr>
+        <mat-card-content class="px-3">
+            <div  style="height: 60vh" >
+                <markdown emoji  class="variable-binding" [data]="problemDel.markdown" katex ></markdown>
+            </div>
+        </mat-card-content>
+    </div>
+</ng-template>
 
 <ng-template #callAPIDialog>
     <div mat-dialog-title>

@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Article } from 'src/app/model/article';
-import { HttpParams, HttpClient } from '@angular/common/http';
+import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Tag } from 'src/app/model/tag';
 import { environment } from 'src/environments/environment';
 import { Problem } from 'src/app/model/problem';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/model/User';
+import { Contest } from 'src/app/model/contest';
+import { LoginComponent } from 'src/app/login/login.component';
 
 @Injectable({
   providedIn: 'root'
@@ -89,4 +93,72 @@ export class AdminService {
     //console.log("HEE HEE ");  
       return this.http.post(environment.urlUpdateProblem, body, {responseType: 'text'});
   }
+
+  deleteProblem(problem: Problem){
+    const body = new HttpParams()
+    .set("problemId", problem.id + "");    
+    //console.log("HEE HEE ");  
+      return this.http.post(environment.urlDeleteProblem, body, {responseType: 'text'});
+  }
+
+  getProfesorById(id: number): Observable<User> {
+    const op = {
+      headers: new HttpHeaders({ 'id': id + ""})
+    };
+
+    return this.http.get<User>(environment.urlGetProfesorById, op);
+  }
+
+  createCourse(name: string, logo: string, professor: User){
+    const body = new HttpParams()
+    .set("name",        name)
+    .set("image",       logo)
+    .set("professorId", professor.id + "" );
+    return this.http.post(environment.urlCreateCourse, body, {responseType: 'text'});
+  }
+
+  updateCourse(name: string, logo: string, professor: User, courseId: number){
+    const body = new HttpParams()
+    .set("name",        name)
+    .set("image",       logo)
+    .set("professorId", professor.id + "" )
+    .set("courseId",    courseId + "" );
+    return this.http.post(environment.urlUpdateCourse, body, {responseType: 'text'});
+  }
+
+  addStudentToCourse(studentId: number, courseId: number){
+    const body = new HttpParams()
+    .set("studentId",  studentId +"")
+    .set("courseId",   courseId + "");
+
+    return this.http.post(environment.urlAddStudentToCourse, body, {responseType: 'text'});
+  }
+
+  removeStudentToCourse(studentId: number, courseId: number){
+    const body = new HttpParams()
+    .set("studentId",  studentId +"")
+    .set("courseId",   courseId + "");
+
+    return this.http.post(environment.urlRemoveStudentToCourse, body, {responseType: 'text'});
+  }
+
+  createContest(contest: Contest, password: string, problems: Problem[]){
+    let map: number[] = [];
+    problems.forEach(element => {
+      map.push(element.id);
+    });
+    
+    const body = new HttpParams()
+    .set("name",        contest.name + "")
+    .set("isPrivate",   contest.isPrivate + "")
+    .set("password",    password)
+    .set("startTime",   contest.startTime + "")
+    .set("endTime",     contest.endTime + "")
+    .set("problems",    map.toString());
+    return this.http.post(environment.urlCreateContest, body, {responseType: 'text'});
+  }
+
+
+
+
 }

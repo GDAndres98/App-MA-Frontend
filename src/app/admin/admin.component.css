@@ -3,3 +3,8 @@
     margin-top: 50px;
     font-size: xx-large;
 }
+
+.title:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}

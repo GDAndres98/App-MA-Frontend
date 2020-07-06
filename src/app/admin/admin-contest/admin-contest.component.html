@@ -1,0 +1,110 @@
+<div class="px-4 py-3" style="color: white;">
+    <mat-accordion class="my-3">
+        <!--CREAR COMPETENCIA-->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div style="font-weight: 400; font-size: medium;">Crear Competencia</div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form class="my-2" [formGroup]="formCreate" (ngSubmit)="onCreateContest()">
+                <mat-form-field class="full-width-input" color = "accent">
+                    <input matInput type = "text" placeholder="Nombre de la competencia" autocomplete="off" formControlName="name" required>
+                </mat-form-field>
+
+                <mat-slide-toggle [(ngModel)]="passwordCreate" [ngModelOptions]="{standalone: true}">Privada</mat-slide-toggle >
+                <mat-form-field class="full-width-input" color = "accent" *ngIf="passwordCreate">
+                    <input matInput type = "text" placeholder="Contraseña" autocomplete="off" [(ngModel)]="passwordCreateString" formControlName="password">
+                </mat-form-field>
+
+                <div class="row my-2">
+                    <mat-form-field class="full-width-input col-2" color = "accent">
+                        <mat-label>Fecha de inicio</mat-label>
+                        <input matInput type = "date" placeholder="YY/MM/DD" autocomplete="off" formControlName="dateStart" required>
+                    </mat-form-field>
+                    <mat-form-field class="full-width-input col-2" color = "accent">
+                        <mat-label>Hora de inicio</mat-label>
+                        <input matInput type = "text" placeholder="hh:mm" autocomplete="off" formControlName="timeStart" required>
+                    </mat-form-field>
+                </div>
+
+                <mat-form-field class="full-width-input" color = "accent">
+                    <mat-label>Duración</mat-label>
+                    <input matInput type = "text" placeholder="hh:mm" autocomplete="off" formControlName="duration" required>
+                </mat-form-field>
+                
+
+                <h3>Problemas</h3>
+                <div>
+                    <h4>Buscar problema</h4>
+                    <div class="row align-items-center">
+                        <mat-form-field class="full-width-input col-9" color = "accent">
+                            <input matInput  type = "number" placeholder="Id del problema" autocomplete="off"  [(ngModel)]="problemCreateId" [ngModelOptions]="{standalone: true}">
+                        </mat-form-field>
+                        <div class="col-2">
+                            <button mat-raised-button type="button" color="primary" [disabled]="problemCreateId === null" (click)="searchProblemCreate(problemCreateId)">Buscar</button>
+                        </div>
+                    </div>
+                    <div class="row align-items-center" *ngIf="findProblemCreate" >
+                        <mat-form-field class="full-width-input col-9" color = "accent">
+                            <input matInput  type = "text" placeholder="Nombre del problema" disabled autocomplete="off"  [(ngModel)]="problemCreate.title" [ngModelOptions]="{standalone: true}">
+                        </mat-form-field>
+                        <div class="col-2">
+                            <button mat-icon-button color="accent" aria-label="Añadir" matTooltip="Añadir Problema" (click) = "addCreateProblem(problemCreate)">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <h4>Lista de problemas</h4>
+                <div cdkDropList  (cdkDropListDropped)="drop($event)">
+                    <div style="cursor: move;" *ngFor="let problem of problemsCreate; let i = index" cdkDrag>
+                        <mat-form-field class="full-width-input col-1" color = "accent">
+                            <input matInput  type="Text"  disabled autocomplete="off" placeholder="Letra" value="{{char[i]}}">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width-input col-9" color = "accent">
+                            <input matInput  type = "text"  disabled autocomplete="off" placeholder="Nombre" value="{{problem.title}}">
+                        </mat-form-field>
+            
+                        <mat-form-field class="full-width-input col-1" color = "accent">
+                            <input matInput  type="number"  disabled autocomplete="off" placeholder="Id" value="{{problem.id}}">
+                        </mat-form-field>
+            
+                        <button class="ml-2" mat-icon-button color="warn" aria-label="Eliminar" matTooltip="Eliminar Problema" (click) = "deleteProblemCreate(i)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="w-100 row justify-content-center">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!formCreate.valid">Crear competencia</button>
+                </div>
+                
+            </form>
+        </mat-expansion-panel>
+        
+        <mat-divider></mat-divider>
+
+        <!--EDITAR COMPETENCIA-->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div style="font-weight: 400; font-size: medium;">Editar competencia </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <mat-divider></mat-divider>
+
+        <!--Eliminar Competencia-->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div style="font-weight: 400; font-size: medium;">Eliminar Competencia </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <mat-divider></mat-divider>
+    </mat-accordion>
+</div>

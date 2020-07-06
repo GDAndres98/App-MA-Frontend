@@ -89,6 +89,11 @@ import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
 import { AdminArticleComponent } from './admin/admin-article/admin-article.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AdminProblemComponent } from './admin/admin-problem/admin-problem.component';
+import { AdminCoursesComponent } from './admin/admin-courses/admin-courses.component';
+import { AdminContestComponent } from './admin/admin-contest/admin-contest.component';
+
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 import { RoundFormat } from './pipes/roundNumberPipe';
 import { ContestListComponent } from './contest/contest-list/contest-list.component';
 
@@ -133,6 +138,8 @@ import { ContestListComponent } from './contest/contest-list/contest-list.compon
     AdminMenuComponent,
     AdminArticleComponent,
     AdminProblemComponent,
+    AdminCoursesComponent,
+    AdminContestComponent,
     RoundFormat,
     ContestListComponent,
   ],
@@ -178,7 +185,8 @@ import { ContestListComponent } from './contest/contest-list/contest-list.compon
     MarkdownModule.forRoot(),
     NgbModule,
     FormsModule,
-    ],
+    DragDropModule
+  ],
   exports:[],
   providers: [AuthService, AuthGuard, StorageService, AuthDeGuard, AdminGuard, AdminDeGuard],
   bootstrap: [AppComponent],

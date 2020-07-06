@@ -9,4 +9,5 @@ export class Problem {
     public memoryLimit: number;
     public tags: TagItem[];
     public markdown: string;
+    public letter: string; // Ignorelo, lo usé solo por pereza, salu2
 }

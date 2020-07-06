@@ -97,4 +97,20 @@ export class CourseService {
     return this.http.post(environment.urlCreateSubPost, body, { responseType: 'text' });
   }
 
+  getCourseById(id: number): Observable<Course>{    
+    const op = { headers: new HttpHeaders({ 'id': id + '' }) };
+    return this.http.get<Course>(environment.urlGetCourseById, op);
+  }
+
+  getStudentsByCourseId(id: number): Observable<User[]>{
+    const op = { headers: new HttpHeaders({ 'id': id + '' }) };
+    return this.http.get<User[]>(environment.urlGetStudentsCourse, op);
+  }
+
+  getStudentsById(id: number): Observable<User>{
+    const op = { headers: new HttpHeaders({ 'id': id + '' }) };
+    return this.http.get<User>(environment.urlGetStudentsById, op);
+  }
+
+
 }
