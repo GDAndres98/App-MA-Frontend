@@ -22,7 +22,7 @@ export class Contest {
     public endTime:     Date;
     public problems:    ProblemInContest[];
     public isValid:     boolean;
-    public private:   boolean;
+    public private:     boolean;
 }
 
 export class ProblemInContest {

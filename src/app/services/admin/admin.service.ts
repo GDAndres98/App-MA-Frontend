@@ -158,6 +158,31 @@ export class AdminService {
     return this.http.post(environment.urlCreateContest, body, {responseType: 'text'});
   }
 
+  editContest(contest: Contest, password: string, problems: Problem[]){
+    let map: number[] = [];
+    problems.forEach(element => {
+      map.push(element.id);
+    });
+    
+    const body = new HttpParams()
+    .set("id",          contest.id + "")
+    .set("name",        contest.name + "")
+    .set("isPrivate",   contest.private + "")
+    .set("password",    password)
+    .set("startTime",   contest.startTime + "")
+    .set("endTime",     contest.endTime + "")
+    .set("problems",    map.toString());
+    return this.http.post(environment.urlEditContest, body, {responseType: 'text'});
+  }
+
+  
+  deleteContest(idContest: number){
+    const body = new HttpParams()
+    .set("id", idContest + "");    
+    //console.log("HEE HEE ");  
+      return this.http.post(environment.urlDeleteContest, body, {responseType: 'text'});
+  }
+
 
 
 

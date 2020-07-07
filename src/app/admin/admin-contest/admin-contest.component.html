@@ -94,6 +94,93 @@
                     <div style="font-weight: 400; font-size: medium;">Editar competencia </div>
                 </mat-panel-title>
             </mat-expansion-panel-header>
+
+            <div class="row align-items-center">
+                <mat-form-field class="full-width-input col-9" color = "accent">
+                    <input matInput  type = "number" placeholder="Id de la compentencia" autocomplete="off"  [(ngModel)]="editId" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <div class="col-2">
+                    <button mat-raised-button color="primary" [disabled]="editId === null" (click)="searchEdit(editId)">Buscar</button>
+                </div>
+            </div>
+            <form class="my-2" [formGroup]="formEdit" (ngSubmit)="onEditContest()" *ngIf="findContestEdit">
+                <mat-form-field class="full-width-input" color = "accent">
+                    <input matInput type = "text" placeholder="Nombre de la competencia" autocomplete="off" formControlName="name" required>
+                </mat-form-field>
+
+                <mat-slide-toggle [(ngModel)]="passwordEdit" [ngModelOptions]="{standalone: true}">Privada</mat-slide-toggle >
+                <mat-form-field class="full-width-input" color = "accent" *ngIf="passwordEdit">
+                    <input matInput type = "text" placeholder="Contraseña" autocomplete="off" [(ngModel)]="passwordEditString" formControlName="password">
+                </mat-form-field>
+
+                <div class="row my-2">
+                    <mat-form-field class="full-width-input col-2" color = "accent">
+                        <mat-label>Fecha de inicio</mat-label>
+                        <input matInput type = "date" placeholder="YY/MM/DD" autocomplete="off" formControlName="dateStart" required>
+                    </mat-form-field>
+                    <mat-form-field class="full-width-input col-2" color = "accent">
+                        <mat-label>Hora de inicio</mat-label>
+                        <input matInput type = "text" placeholder="hh:mm" autocomplete="off" formControlName="timeStart" required>
+                    </mat-form-field>
+                </div>
+
+                <mat-form-field class="full-width-input" color = "accent">
+                    <mat-label>Duración</mat-label>
+                    <input matInput type = "text" placeholder="hh:mm" autocomplete="off" formControlName="duration" required>
+                </mat-form-field>
+                
+
+                <h3>Problemas</h3>
+                <div>
+                    <h4>Buscar problema</h4>
+                    <div class="row align-items-center">
+                        <mat-form-field class="full-width-input col-9" color = "accent">
+                            <input matInput  type = "number" placeholder="Id del problema" autocomplete="off"  [(ngModel)]="problemEditId" [ngModelOptions]="{standalone: true}">
+                        </mat-form-field>
+                        <div class="col-2">
+                            <button mat-raised-button type="button" color="primary" [disabled]="problemEditId === null" (click)="searchProblemEdit(problemEditId)">Buscar</button>
+                        </div>
+                    </div>
+                    <div class="row align-items-center" *ngIf="findProblemEdit" >
+                        <mat-form-field class="full-width-input col-9" color = "accent">
+                            <input matInput  type = "text" placeholder="Nombre del problema" disabled autocomplete="off"  [(ngModel)]="problemEdit.title" [ngModelOptions]="{standalone: true}">
+                        </mat-form-field>
+                        <div class="col-2">
+                            <button mat-icon-button color="accent" aria-label="Añadir" matTooltip="Añadir Problema" (click) = "addEditProblem(problemEdit)">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <h4>Lista de problemas</h4>
+                <div cdkDropList  (cdkDropListDropped)="drop($event)">
+                    <div style="cursor: move;" *ngFor="let problem of problemsEdit; let i = index" cdkDrag>
+                        <mat-form-field class="full-width-input col-1" color = "accent">
+                            <input matInput  type="Text"  disabled autocomplete="off" placeholder="Letra" value="{{char[i]}}">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width-input col-9" color = "accent">
+                            <input matInput  type = "text"  disabled autocomplete="off" placeholder="Nombre" value="{{problem.title}}">
+                        </mat-form-field>
+            
+                        <mat-form-field class="full-width-input col-1" color = "accent">
+                            <input matInput  type="number"  disabled autocomplete="off" placeholder="Id" value="{{problem.id}}">
+                        </mat-form-field>
+            
+                        <button class="ml-2" mat-icon-button color="warn" aria-label="Eliminar" matTooltip="Eliminar Problema" (click) = "deleteProblemEdit(i)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="w-100 row justify-content-center">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!formEdit.valid">Editar competencia</button>
+                </div>
+                
+            </form>
+
+
         </mat-expansion-panel>
         <mat-divider></mat-divider>
 
@@ -104,7 +191,50 @@
                     <div style="font-weight: 400; font-size: medium;">Eliminar Competencia </div>
                 </mat-panel-title>
             </mat-expansion-panel-header>
+            <div class="row align-items-center">
+                <mat-form-field class="full-width-input col-9" color = "accent">
+                    <input matInput  type = "number" placeholder="Id de la compentencia" autocomplete="off"  [(ngModel)]="deleteId" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <div class="col-2">
+                    <button mat-raised-button color="primary" [disabled]="deleteId === null" (click)="searchDelete(deleteId)">Buscar</button>
+                </div>
+            </div>
+            <div class="row align-items-center" *ngIf="findDeleteContest">
+                <mat-form-field class="full-width-input col-9" color = "accent">
+                    <input matInput  type = "text" placeholder="Nombre de la competencia" disabled autocomplete="off"  [(ngModel)]="contestDelete.name" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <div class="col-2">
+                    <button mat-icon-button color="warn" aria-label="Eliminar" matTooltip="Eliminar Competencia" (click) = "openConfirmDeleteDialog()">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
         </mat-expansion-panel>
         <mat-divider></mat-divider>
+
+                <!--Ver envios de compentencia-->
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <div style="font-weight: 400; font-size: medium;">Ver envios de competencia </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+                <mat-divider></mat-divider>
     </mat-accordion>
 </div>
+
+
+<ng-template #callAPIDialog>
+    <div mat-dialog-title>
+        <p>Esta seguro que desea eliminar la competencia:</p>
+    </div>
+    <div mat-dialog-content>
+    <p>{{contestDelete.name}}</p>
+    </div>
+    <div mat-dialog-actions>
+    <button mat-button (click) = "this.dialogRef.close()">No</button>
+    <button mat-button (click) = "deleteContest(contestDelete.id)" cdkFocusInitial>Sí</button>
+    </div>
+</ng-template>
+
