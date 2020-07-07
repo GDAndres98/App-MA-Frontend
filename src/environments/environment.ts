@@ -40,6 +40,8 @@ export const environment = {
   urlGetRunningContests: url + "getRunningContests",
   urlGetFutureContests: url + "getFutureContests",
   urlGetPastContests: url + "getPastContests",
+  urlGetContestPreviewById: url + "getContestPreviewById",
+  urlGetContestByIdAux: url + "getContestByIdAux", // FIXME
 
   urlSubmit: url + "submit",
   urlGetAllSubmits: url + "getAllSubmits",

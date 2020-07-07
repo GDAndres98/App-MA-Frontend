@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Contest, ContestStats } from 'src/app/model/contest';
+import { Contest, ContestStats, ContestPreview } from 'src/app/model/contest';
 import { ActivatedRoute } from '@angular/router';
 import { CourseService } from 'src/app/services/course/course.service';
 import { ProblemService } from 'src/app/services/problem/problem.service';
@@ -10,6 +10,7 @@ import { ContestService } from 'src/app/services/contest/contest.service';
 import { ContestStatusComponent } from '../contest-status/contest-status.component';
 import { delay, timeout } from 'rxjs/operators';
 import { ContestScoreboardComponent } from '../contest-scoreboard/contest-scoreboard.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-contest-outlet',
@@ -30,17 +31,43 @@ export class ContestOutletComponent implements OnInit {
   interval;
 
   contestStats: ContestStats;
+  contestPreview: ContestPreview;
+  inputContestPassword: string;
   contest: Contest;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private contestService: ContestService,
-    private problemService: ProblemService) {
-
+    private problemService: ProblemService,
+    private snackBar :MatSnackBar) {
+    this.inputContestPassword = "";
+    this.notFound = false;
   }
 
   ngOnInit(): void {
-    this.getContest();
+    this.getContestPreview();
+  }
+
+
+  getContestPreview() {
+    this.isLoading = true;
+    this.activatedRoute.params.subscribe(params => {
+      let contestId = +params['id'];
+      this.contestService.getContestPreviewById(contestId).subscribe(
+        data => {
+          this.contestPreview = data;
+          if (!this.contestPreview.visible)
+            this.notFound = true;
+          if (!this.contestPreview.private)
+            this.getContest();
+            
+          this.isLoading = false;
+        },
+        err => {
+          this.notFound = true;
+          this.isLoading = false;
+        });
+    });
   }
 
 
@@ -48,7 +75,7 @@ export class ContestOutletComponent implements OnInit {
     this.isLoading = true;
     this.activatedRoute.params.subscribe(params => {
       let contestId = +params['id'];
-      this.contestService.getContestById(contestId).subscribe(
+      this.contestService.getContestByIdAux(contestId, this.inputContestPassword).subscribe(
         data => {
           this.contestStats = data;
           this.contest = this.contestStats.contest
@@ -65,11 +92,18 @@ export class ContestOutletComponent implements OnInit {
           });
 
           this.maxTime = (this.contest.endTime.getTime() - this.contest.startTime.getTime());
+          
           this.startTimer();
-
           this.isLoading = false;
         },
-        err => (this.notFound = true, this.isLoading = false))
+        err => {
+          if (err.status == 404)
+            this.notFound = true;
+            if (err.status == 400)
+              this.snackBar.open('Contraseña Incorrecta', "Cerrar", { duration: 2000});
+            this.isLoading = false;
+        }
+      )
     });
 
   }
@@ -91,7 +125,7 @@ export class ContestOutletComponent implements OnInit {
         this.contestStatus = 1;
         this.contest.isValid = true;
         this.timeDisplayed = this.time;
-        if(!(Math.trunc(this.timeDisplayed/1000)%360 )){
+        if (!(Math.trunc(this.timeDisplayed / 1000) % 360)) {
           console.log(this.timeDisplayed);
           this.getContest();
         }

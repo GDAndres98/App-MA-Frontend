@@ -19,6 +19,20 @@ export class ContestService {
     return this.http.get<ContestStats>(environment.urlGetContestById, op);
   }
 
+  getContestByIdAux(id: number, password: string): Observable<ContestStats> { //FIXME
+    let op = {
+      headers: new HttpHeaders({ 'id': id + '', 'password': password})
+    };
+    return this.http.get<ContestStats>(environment.urlGetContestByIdAux, op);
+  }
+
+  getContestPreviewById(id: number): Observable<ContestPreview> {
+    let op = {
+      headers: new HttpHeaders({ 'id': id + '' })
+    };
+    return this.http.get<ContestPreview>(environment.urlGetContestPreviewById, op);
+  }
+
   getAllProblemsFromContest(id: number): Observable<Problem[]> {
     let op = {
       headers: new HttpHeaders({ 'id': id + '' })
