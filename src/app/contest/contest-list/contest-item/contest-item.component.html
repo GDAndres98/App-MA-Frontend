@@ -1,0 +1,28 @@
+<div class="row w-100 my-2 mx-auto p-0">
+    <mat-card class="col-field col-1">
+        100{{contest.id}}
+    </mat-card>
+    <mat-card class="col-field col-5">
+        <i *ngIf="contest.private" class="fa fa-lock" style="color: var(--warn);"></i>
+        {{contest.name}}
+    </mat-card>
+    <mat-card class="col-field col-2">
+        {{contest.startTime| date: 'dd/MMMM/yyy HH:mm'}}
+    </mat-card>
+    <mat-card class="col-field col-1">
+        {{contestLength | milisecondsFormat: true: false}}
+    </mat-card>
+    <mat-card *ngIf="2>contestStatus" class="col-field col-1">
+        {{timeDisplayed | milisecondsFormat: true}}
+    </mat-card>
+
+    <button mat-flat-button *ngIf="1>=contestStatus" style="background-color: var(--accent);" class="col"
+        routerLink="/contest/{{contest.id}}" [disabled]="0==contestStatus">
+        Participar
+    </button>
+
+    <button mat-flat-button *ngIf="contestStatus>1" style="background-color: var(--tag1);" class="col"
+        routerLink="/contest/{{contest.id}}/scoreboard" [disabled]="0==contestStatus">
+        Ver Resultados
+    </button>
+</div>

@@ -95,6 +95,8 @@ import { AdminContestComponent } from './admin/admin-contest/admin-contest.compo
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import { RoundFormat } from './pipes/roundNumberPipe';
+import { ContestListComponent } from './contest/contest-list/contest-list.component';
+import { ContestItemComponent } from './contest/contest-list/contest-item/contest-item.component';
 
 @NgModule({
   declarations: [
@@ -140,6 +142,8 @@ import { RoundFormat } from './pipes/roundNumberPipe';
     AdminCoursesComponent,
     AdminContestComponent,
     RoundFormat,
+    ContestListComponent,
+    ContestItemComponent,
   ],
   imports: [
     HttpClientModule,

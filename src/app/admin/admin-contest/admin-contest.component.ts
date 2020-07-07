@@ -120,7 +120,7 @@ export class AdminContestComponent implements OnInit {
       let contest: Contest = new Contest();
 
       contest.name = this.formCreate.value.name;
-      contest.isPrivate = this.passwordCreate;
+      contest.private = this.passwordCreate;
       contest.startTime = startTime;
       contest.endTime = endTime;
 

@@ -1,0 +1,49 @@
+.contests-box{
+    margin-bottom: 30px;
+}
+
+.header-t{
+    margin-right: 3px;
+    text-align:center;
+}
+
+ngb-pagination ::ng-deep a {
+    color: white !important;
+    background-color: var(--tag2);
+    border-color: transparent;
+  }
+  
+  ngb-pagination ::ng-deep .page-item.active .page-link {
+    background-color: var(--accent);
+    border-color: transparent;
+  }
+
+  ngb-pagination ::ng-deep .page-item.disabled  {
+    background-color: var(--tag2);
+  }
+
+  ngb-pagination ::ng-deep .page-item .page-link  {
+    background-color: var(--tag2);
+  }
+  ngb-pagination ::ng-deep .page-item.disabled .page-link  {
+    border-color: transparent;
+    background-color: var(--tag2);
+  }
+
+  ngb-pagination ::ng-deep .page-item :hover {
+    background-color: var(--accent);
+  }
+  
+  ngb-pagination ::ng-deep .page-item.active .page-link:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+    background-color: var(--tag2);
+  }
+  
+  ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+    background-color: var(--tag2);
+  }
+  ngb-pagination ::ng-deep .page-link:disabled {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+    background-color: var(--tag2);
+  }

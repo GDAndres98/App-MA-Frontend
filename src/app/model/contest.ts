@@ -6,6 +6,15 @@ export class ContestStats {
     public stats:   ProblemStats[];
 }
 
+export class ContestPreview{
+    public id:          number;
+    public name:        string;
+    public startTime:   Date;
+    public endTime:     Date;
+    public private:   boolean;
+    public visible:   boolean;
+}
+
 export class Contest {
     public id:          number;
     public name:        string;
@@ -13,7 +22,7 @@ export class Contest {
     public endTime:     Date;
     public problems:    ProblemInContest[];
     public isValid:     boolean;
-    public isPrivate:   boolean;
+    public private:   boolean;
 }
 
 export class ProblemInContest {
