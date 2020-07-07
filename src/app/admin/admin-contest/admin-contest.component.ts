@@ -210,7 +210,7 @@ export class AdminContestComponent implements OnInit {
       console.log(endTime);
 
       this.contestEdit.name = this.formEdit.value.name;
-      this.contestEdit.isPrivate = this.passwordEdit;
+      this.contestEdit.private = this.passwordEdit;
       this.contestEdit.startTime = startTime;
       this.contestEdit.endTime = endTime;
 

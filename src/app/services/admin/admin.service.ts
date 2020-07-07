@@ -167,7 +167,7 @@ export class AdminService {
     const body = new HttpParams()
     .set("id",          contest.id + "")
     .set("name",        contest.name + "")
-    .set("isPrivate",   contest.isPrivate + "")
+    .set("isPrivate",   contest.private + "")
     .set("password",    password)
     .set("startTime",   contest.startTime + "")
     .set("endTime",     contest.endTime + "")
