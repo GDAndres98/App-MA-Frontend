@@ -34,30 +34,29 @@ export const environment = {
   urlCreatePost: url + "createPost",
   urlCreateSubPost: url + "createSubPost",
 
+  urlGetContestPreviewById: url + "getContestPreviewById",
+  urlGetContestById: url + "getContestById",
   urlGetContestStatsById: url + "getContestStatsById",
   urlGetAllProblemsFromContest: url + "getAllProblemsFromContest",
   urlGetScoreboard: url + "getScoreboard",
-  urlGetContestById:  url + "getContestById",
   urlGetRunningContests: url + "getRunningContests",
   urlGetFutureContests: url + "getFutureContests",
   urlGetPastContests: url + "getPastContests",
-  urlGetContestPreviewById: url + "getContestPreviewById",
-  urlGetContestByIdAux: url + "getContestByIdAux", // FIXME
-
+  
   urlSubmit: url + "submit",
   urlGetAllSubmits: url + "getAllSubmits",
   urlGetUserSubmit: url + "getUserSubmits",
   urlGetContestSubmits: url + "getContestSubmits",
   urlGetSourceCode: url + "getSourceCode",
   utlGetLastProblemAttempt: url + "getLastProblemAttempt",
-
-
+  
+  
   // ADMIN
-
+  
   urlCreateArticle: url + "createArticle",
   urlUpdateArticle: url + "updateArticle",
   urlDeleteArticle: url + "deleteArticle",
-
+  
   urlCreateProblem: url + "createProblem",
   urlUpdateProblem: url + "updateProblem",
   urlDeleteProblem: url + "removeProblem",
@@ -71,6 +70,7 @@ export const environment = {
   urlAddStudentToCourse     : url + "addStudentToCourse",
   urlRemoveStudentToCourse  : url + "removeStudentToCourse",
   
+  urlGetContestAdminById:  url + "getContestAdminById",
   urlCreateContest    : url + "createContest",
   urlEditContest      : url + "editContest",
   urlDeleteContest      : url + "deleteContest",

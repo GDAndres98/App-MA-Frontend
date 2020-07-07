@@ -75,7 +75,7 @@ export class ContestOutletComponent implements OnInit {
     this.isLoading = true;
     this.activatedRoute.params.subscribe(params => {
       let contestId = +params['id'];
-      this.contestService.getContestByIdAux(contestId, this.inputContestPassword).subscribe(
+      this.contestService.getContestById(contestId, this.inputContestPassword).subscribe(
         data => {
           this.contestStats = data;
           this.contest = this.contestStats.contest

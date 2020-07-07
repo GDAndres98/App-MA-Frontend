@@ -235,7 +235,7 @@ export class AdminContestComponent implements OnInit {
   }
 
   searchEdit(editId: number){
-    this.contestService.getContest(editId).subscribe(v =>{
+    this.contestService.getContestAdmin(editId).subscribe(v =>{
       this.contestEdit = v;
 
       this.contestEdit.startTime = new Date(this.contestEdit.startTime);
@@ -299,7 +299,7 @@ export class AdminContestComponent implements OnInit {
   }
 
   searchDelete(deleteId: number){
-    this.contestService.getContest(deleteId).subscribe(v =>{
+    this.contestService.getContestAdmin(deleteId).subscribe(v =>{
       this.contestDelete = v;
       this.findDeleteContest = true;
     },
