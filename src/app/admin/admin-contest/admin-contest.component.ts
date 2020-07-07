@@ -8,6 +8,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Contest } from 'src/app/model/contest';
 import { ContestService } from 'src/app/services/contest/contest.service';
 import { MatDialog } from '@angular/material/dialog';
+import { start } from 'repl';
 
 @Component({
   selector: 'app-admin-contest',
@@ -101,10 +102,10 @@ export class AdminContestComponent implements OnInit {
       
       //startTime.setFullYear(year);
       //startTime.setMonth(month - 1);
-      startTime.setUTCDate(day);
-      startTime.setUTCHours(hour);
-      startTime.setUTCMinutes(minute);
-      startTime.setUTCSeconds(0);
+      startTime.setDate(day);
+      startTime.setHours(hour);
+      startTime.setMinutes(minute);
+      startTime.setSeconds(0);
       
       console.log(startTime);
 
@@ -192,10 +193,10 @@ export class AdminContestComponent implements OnInit {
       
       //startTime.setFullYear(year);
       //startTime.setMonth(month - 1);
-      startTime.setUTCDate(day);
-      startTime.setUTCHours(hour);
-      startTime.setUTCMinutes(minute);
-      startTime.setUTCSeconds(0);
+      startTime.setDate(day);
+      startTime.setHours(hour);
+      startTime.setMinutes(minute);
+      startTime.setSeconds(0);
       
       
       console.log(startTime);

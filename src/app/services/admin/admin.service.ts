@@ -147,6 +147,9 @@ export class AdminService {
     problems.forEach(element => {
       map.push(element.id);
     });
+
+    console.log("HEHEHEHEHEHEHEHE");
+    
     
     const body = new HttpParams()
     .set("name",        contest.name + "")

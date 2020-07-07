@@ -71,7 +71,7 @@ export const environment = {
   
   urlCreateContest    : url + "createContest",
   urlEditContest      : url + "editContest",
-  urlDeleteContest      : url + "deleteContest",
+  urlDeleteContest    : url + "deleteContest",
 
 };
 
