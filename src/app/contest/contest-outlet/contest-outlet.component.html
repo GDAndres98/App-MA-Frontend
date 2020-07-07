@@ -1,5 +1,31 @@
-<div *ngIf="!isLoading" class="" style="height: 100%; overflow-y: auto;">
-    <div *ngIf="!notFound" class="container">
+<div *ngIf="!isLoading&&!notFound" style="height: 100%; overflow-y: auto;">
+
+
+    <div *ngIf="!contest&&contestPreview.private" class="row h-100 w-100">
+        <mat-card  class="container col-5 mx-auto my-auto">
+            <mat-card-title>
+                {{contestPreview.name}}
+            </mat-card-title>
+            <div class="row">
+                <mat-form-field class="col-8">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput type="text" [(ngModel)]="inputContestPassword">
+                    <button mat-button *ngIf="inputContestPassword" matSuffix mat-icon-button
+                        (click)="inputContestPassword=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+                <div class="col">
+                    <button mat-button style="background-color: var(--accent);" (click)="getContest()">Entrar</button>
+                </div>
+            </div>
+
+        </mat-card>
+    </div>
+
+
+
+    <div *ngIf="contest" class="container">
         <mat-card class="col my-3">
 
             <div class="row mx-2 my-2">
@@ -72,4 +98,8 @@
             <router-outlet (activate)="onActivate($event)"></router-outlet>
         </mat-card>
     </div>
+</div>
+
+<div *ngIf="notFound">
+    INSERTAR NOT FOUND
 </div>

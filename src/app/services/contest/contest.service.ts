@@ -12,18 +12,25 @@ export class ContestService {
 
   constructor(private http: HttpClient) { }
 
-  getContestById(id: number): Observable<ContestStats> {
+  getContestAdmin(id: number): Observable<Contest> {
     let op = {
       headers: new HttpHeaders({ 'id': id + '' })
     };
-    return this.http.get<ContestStats>(environment.urlGetContestStatsById, op);
+    return this.http.get<Contest>(environment.urlGetContestAdminById, op);
   }
 
-  getContest(id: number): Observable<Contest> {
+  getContestById(id: number, password: string): Observable<ContestStats> {
+    let op = {
+      headers: new HttpHeaders({ 'id': id + '', 'password': password})
+    };
+    return this.http.get<ContestStats>(environment.urlGetContestById, op);
+  }
+
+  getContestPreviewById(id: number): Observable<ContestPreview> {
     let op = {
       headers: new HttpHeaders({ 'id': id + '' })
     };
-    return this.http.get<Contest>(environment.urlGetContestById, op);
+    return this.http.get<ContestPreview>(environment.urlGetContestPreviewById, op);
   }
 
   getAllProblemsFromContest(id: number): Observable<Problem[]> {
