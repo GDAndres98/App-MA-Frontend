@@ -4,25 +4,42 @@
   </nav>
 </div>
 <div class="container-flex col m-0 p-0 bg-dark h-100 mt-5">
-<div class="container h-100" style="overflow-y: auto;">
-    <div class="row justify-content-center">
-        <mat-card class="mx-3 my-3 hoverAccent" style="width: 280px; height: 300px;" *ngFor="let course of courses" routerLink="/course/{{course.id}}">
-          <mat-card-subtitle style="height: 5px;">ID: {{course.id}}</mat-card-subtitle>
-          <div class="row align-items-center" style="height: 180px;"> <i class="fa fa-{{course.logoUrl}} mx-auto my-3"></i> </div>
+  <div class="container h-100" style="overflow-y: auto;">
+    <div *ngIf="coursesProfesor.length !== 0">
+      <h1 class="mt-2" style="color: white;">Mis cursos (profesor)</h1>
+      <mat-divider></mat-divider>
+      <div class="row justify-content-center">
+          <mat-card class="mx-3 my-3 hoverAccent" style="width: 280px; height: 300px;" *ngFor="let course of coursesProfesor" routerLink="/course/{{course.id}}">
+            <mat-card-subtitle style="height: 5px;">ID: {{course.id}}</mat-card-subtitle>
+            <div class="row align-items-center" style="height: 180px;"> <i class="fa fa-{{course.logoUrl}} mx-auto my-3"></i> </div>
+            <mat-card-content class="container" style="height: 50px;">
+              <h2 class="display-2 text-center" title="{{course.name}}">{{course.name | stringShorter: 40}}</h2>
+            </mat-card-content>
+          </mat-card>
+      </div>
+    </div>
+    <h1 class="mt-2" style="color: white;">Mis cursos</h1>
+    <mat-divider></mat-divider>
+      <div class="row justify-content-center">
+          <mat-card class="mx-3 my-3 hoverAccent" style="width: 280px; height: 300px;" *ngFor="let course of courses" routerLink="/course/{{course.id}}">
+            <mat-card-subtitle style="height: 5px;">ID: {{course.id}}</mat-card-subtitle>
+            <div class="row align-items-center" style="height: 180px;"> <i class="fa fa-{{course.logoUrl}} mx-auto my-3"></i> </div>
+            <mat-card-content class="container" style="height: 50px;">
+              <h2 class="display-2 text-center" title="{{course.name}}">{{course.name | stringShorter: 40}}</h2>
+            </mat-card-content>
+          </mat-card>
+      </div>
+
+
+      <div class="row justify-content-center align-items-center h-100" *ngIf="courses.length == 0 && coursesProfesor.length == 0" >
+        <mat-card class="col mx-3 my-3" style="height: 95vh;">
+          <div class="row align-items-end" style="height: 50vh;"> <i class="fa fa-frown mx-auto my-3"></i></div>
           <mat-card-content class="container" style="height: 50px;">
-            <h2 class="display-2 text-center" title="{{course.name}}">{{course.name | stringShorter: 40}}</h2>
+            <h1 class="text-center" style="color: var(--primary2);">Ups :( al parecer no tienes cursos.</h1>
           </mat-card-content>
         </mat-card>
-    </div>
-
-    <div class="row justify-content-center align-items-center h-100" *ngIf="courses.length == 0" >
-      <mat-card class="col mx-3 my-3" style="height: 95vh;">
-        <div class="row align-items-end" style="height: 50vh;"> <i class="fa fa-frown mx-auto my-3"></i></div>
-        <mat-card-content class="container" style="height: 50px;">
-          <h1 class="text-center" style="color: var(--primary2);">Ups :( al parecer no tienes cursos.</h1>
-        </mat-card-content>
-      </mat-card>
-    </div>
+      </div>
+  </div>
 </div>
 <!--
             <mat-card-content>

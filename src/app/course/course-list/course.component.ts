@@ -19,6 +19,7 @@ export class CourseComponent implements OnInit {
   course: Course;
   sections: Section[];
   valid: boolean = false;
+  isProfesor: boolean = false;
   constructor(
     private router: Router,
     private routerActivated: ActivatedRoute,
@@ -30,15 +31,33 @@ export class CourseComponent implements OnInit {
     this.routerActivated.params.subscribe(params =>{
       let courseId = +params['id'];
        this.courseService.courseIn.subscribe(v => {
+        if(this.valid) return;
          this.course = v.find(value => value.id == courseId);
          this.valid = this.course !== undefined;
          if(this.valid){
             this.courseService.getSectionFromCourse(this.course.id).subscribe(data => {
+              data.sort((a,b) => a.orderSection-b.orderSection);
               this.sections = data;
               console.log(data);
             });
         }
       });
+      
+      this.courseService.courseOwn.subscribe(v => {
+        let course = v.find(value => value.id == courseId);
+        this.isProfesor = course !== undefined;
+        if(this.valid) return;
+        this.course = course;
+        this.valid = this.course !== undefined;
+        if(this.valid){
+           this.courseService.getSectionFromCourse(this.course.id).subscribe(data => {
+            data.sort((a,b) => a.orderSection-b.orderSection);
+             this.sections = data;
+             console.log(data);
+           });
+       }
+     });
+     
     });
   }
 

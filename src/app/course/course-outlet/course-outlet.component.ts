@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CourseService } from 'src/app/services/course/course.service';
 import { StorageService } from 'src/app/services/auth/storage.service';
 import { Course } from 'src/app/model/course';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-course-outlet',
@@ -13,6 +14,7 @@ export class CourseOutletComponent implements OnInit {
   
   course: Course;
   valid: boolean = false;
+  valid$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   constructor(
     private router: Router,
     private routerActivated: ActivatedRoute,
@@ -24,9 +26,20 @@ export class CourseOutletComponent implements OnInit {
     this.routerActivated.params.subscribe(params =>{
       let courseId = +params['id'];
        this.courseService.courseIn.subscribe(v => {
-         this.course = v.find(value => value.id == courseId);
-         this.valid  = this.course !== undefined;
-      });
+         let course = v.find(value => value.id == courseId);
+         if(course !== undefined){
+          this.valid$.next(true);
+          this.course = course;
+         }
+        });
+        this.courseService.courseOwn.subscribe(v => {
+          let course = v.find(value => value.id == courseId);
+          if(course !== undefined){
+           this.valid$.next(true);
+           this.course = course;
+
+          }
+        });
     });
   }
 

@@ -97,6 +97,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { RoundFormat } from './pipes/roundNumberPipe';
 import { ContestListComponent } from './contest/contest-list/contest-list.component';
 import { ContestItemComponent } from './contest/contest-list/contest-item/contest-item.component';
+import { SectionEditComponent } from './course/section-edit/section-edit.component';
+import { StudentListComponent } from './course/student-list/student-list.component';
+
 
 @NgModule({
   declarations: [
@@ -144,6 +147,8 @@ import { ContestItemComponent } from './contest/contest-list/contest-item/contes
     RoundFormat,
     ContestListComponent,
     ContestItemComponent,
+    SectionEditComponent,
+    StudentListComponent,
   ],
   imports: [
     HttpClientModule,

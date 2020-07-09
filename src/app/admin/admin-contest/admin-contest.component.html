@@ -50,7 +50,7 @@
                             <input matInput  type = "text" placeholder="Nombre del problema" disabled autocomplete="off"  [(ngModel)]="problemCreate.title" [ngModelOptions]="{standalone: true}">
                         </mat-form-field>
                         <div class="col-2">
-                            <button mat-icon-button color="accent" aria-label="Añadir" matTooltip="Añadir Problema" (click) = "addCreateProblem(problemCreate)">
+                            <button mat-icon-button type="button" color="accent" aria-label="Añadir" matTooltip="Añadir Problema" (click) = "addCreateProblem(problemCreate)">
                                 <mat-icon>add</mat-icon>
                             </button>
                         </div>
@@ -146,7 +146,7 @@
                             <input matInput  type = "text" placeholder="Nombre del problema" disabled autocomplete="off"  [(ngModel)]="problemEdit.title" [ngModelOptions]="{standalone: true}">
                         </mat-form-field>
                         <div class="col-2">
-                            <button mat-icon-button color="accent" aria-label="Añadir" matTooltip="Añadir Problema" (click) = "addEditProblem(problemEdit)">
+                            <button mat-icon-button type = "button" color="accent" aria-label="Añadir" matTooltip="Añadir Problema" (click) = "addEditProblem(problemEdit)">
                                 <mat-icon>add</mat-icon>
                             </button>
                         </div>

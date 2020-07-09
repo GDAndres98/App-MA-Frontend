@@ -1,12 +1,71 @@
-<div style="overflow-y: auto; height: 80vh;">
+<div style="overflow-y: auto; height: 80vh; color: white;">
+    <h2 class="title my-3">Descripción</h2>
+    <p *ngIf="section">{{section.description}}</p>
     <h2 class="title my-3">Artículos</h2>
     <div class="row container-fluid my-2" *ngIf="section">
-        <div *ngFor="let article of section.articles">
-        <mat-card class="col card mx-2 my-2" (click)="openDialog(article)">
-            <div class="row align-items-center" style="height: 90%;"><div class="col center-box">{{article.title | stringShorter:100}}</div></div>
-            <mat-card-footer class="ml-1 mb-1">{{article.author}}</mat-card-footer>
-        </mat-card>
-    </div>
-          
+        <div *ngFor="let article of section.articles; let i = index">
+            <mat-card class="col card mx-2 my-2">
+                <div class="button-close" matTooltip="Eliminar Artículo" *ngIf="profesor" (click)="openRemoveArticleDialog(i)">
+                    <mat-icon >close</mat-icon>
+                </div>
+                
+                <div class="row align-items-center" style="height: 90%;"  (click)="openDialog(article)"><div class="col center-box">{{article.title | stringShorter:100}}</div></div>
+                <mat-card-footer class="ml-1 mb-1">{{article.author}}</mat-card-footer>
+            </mat-card>
+        </div>
+        <div class="card2 mx-2 my-2 new-article" (click) = "openAddArticleDialog()" *ngIf="profesor">
+            <div class="row align-items-center justify-content-center h-100">
+                <i class="fa fa-plus my-3" style="font-size: 50px; color: var(--accent);"></i>
+            </div>
+        </div>
     </div>
 </div>
+
+
+<ng-template #addArticleDialog>
+    <div mat-dialog-title>
+        <p>Añardir Artículo</p>
+    </div>
+    <div mat-dialog-content>
+        <p>Buscar por Id</p>
+
+        <div class="row align-items-center">
+            <mat-form-field class="full-width-input col-10" color = "accent">
+                <input matInput  type = "number" placeholder="Id de artículo" autocomplete="off"  [(ngModel)]="idArticle" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <div class="col-2">
+                <button mat-raised-button color="primary" [disabled]="idArticle === null" (click)="searchArticle(idArticle)">Buscar</button>
+            </div>
+        </div>
+        <div class="row align-items-center" *ngIf="findArticle">
+            <mat-form-field class="full-width-input col-9" color = "accent">
+                <input matInput  type = "text" placeholder="Nombre del Artículo" disabled autocomplete="off"  [(ngModel)]="articleAdd.title" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <div class="col-2">
+                <button mat-icon-button color="primary" aria-label="Visualizar" matTooltip="Vista previa" (click) = "switchVisible()">
+                    <mat-icon *ngIf="!visible">visibility</mat-icon>
+                    <mat-icon *ngIf="visible">visibility_off</mat-icon>
+                </button>
+                <button mat-icon-button color="accent" aria-label="Visualizar" matTooltip="Añadir Artículo" (click) = "addArticle(articleAdd)">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+
+            <div class="container" *ngIf="visible">
+                <app-article-markdown [articleSelected]="articleAdd"></app-article-markdown>
+            </div>
+
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #deleteArticleDialog>
+    <div mat-dialog-title>
+        <p>¿Esta seguro que desea remover el artículo "{{articleSelected.title}}" de la sección?</p>
+    </div>
+    <div mat-dialog-actions>
+    <button mat-raised-button (click) = "this.dialogRef.close()" cdkFocusInitial>No</button>
+    <button mat-raised-button style="color: white;" color="warn" (click) = "deleteArticle()" >Sí</button>
+    </div>
+</ng-template>

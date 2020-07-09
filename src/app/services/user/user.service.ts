@@ -12,6 +12,7 @@ export class UserService {
   currentUser: User;
   id :BehaviorSubject<number> = new BehaviorSubject<number>(-1);
   name :BehaviorSubject<string> = new BehaviorSubject<string>("");
+  profesor : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: HttpClient,
@@ -22,8 +23,10 @@ export class UserService {
     this.currentUser = user;    
     if(user){
       this.courseService.getUserCourses(this.currentUser.id);
+      this.courseService.getProfesorCourses(this.currentUser.id);
       console.log(user.firstName);
       this.updateMessage(user.id, user.firstName);
+      this.isProfesor(this.currentUser.id).subscribe(v => this.profesor.next(v));  
     }
     else{
       this.courseService.clearCourses();
@@ -65,6 +68,12 @@ export class UserService {
     if(id == null) return new BehaviorSubject<boolean>(false);
     let op = {headers: new HttpHeaders({ 'id': id + '' })};
     return this.http.get<boolean>(environment.urlIsAdmin, op);
+  }
+
+  isProfesor(id: number): Observable<boolean>{
+    if(id == null) return new BehaviorSubject<boolean>(false);
+    let op = {headers: new HttpHeaders({ 'id': id + '' })};
+    return this.http.get<boolean>(environment.urlIsProfesor, op);
   }
 
 }

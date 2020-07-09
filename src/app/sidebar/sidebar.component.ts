@@ -16,6 +16,8 @@ export class SidebarComponent implements OnInit {
 
   courseLoad$: Observable<Course[]>;
   courses: Course[];
+  coursesOwnLoad$: Observable<Course[]>;
+  coursesOwn: Course[];
 
   name$ : Observable<string>;
   name : string;
@@ -30,6 +32,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn$ = this.storageService.isLoggedIn;
     this.courseLoad$ = this.courseService.courseIn;
+    this.coursesOwnLoad$ = this.courseService.courseOwn;
     this.name$ = this.userService.name;
     this.name$.subscribe(v =>{
       this.name = v;
@@ -38,6 +41,8 @@ export class SidebarComponent implements OnInit {
     this.courseLoad$.subscribe(c =>{
       this.courses = c;
     })
+    this.coursesOwnLoad$.subscribe(c => this.coursesOwn = c);
+
 
     this.router.events.subscribe(r =>{
       if(r instanceof NavigationEnd){

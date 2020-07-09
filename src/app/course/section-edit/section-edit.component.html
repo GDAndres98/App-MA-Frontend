@@ -1,0 +1,77 @@
+<div class="container" style="overflow-y: auto;">
+    <h1 class="subtitle">Lista de Secciones</h1>
+
+    <div>
+        <div cdkDropList (cdkDropListDropped)="drop($event)">
+            <mat-card  class="my-1"  *ngFor="let section of sections; let i = index" cdkDrag>
+                <div class="row align-items-center">
+                    <div class="example-handle h-100" cdkDragHandle>
+                        <i class="fa fa-grip-vertical mx-2" style="font-size: small;" ></i>
+                    </div>
+                    <div class="col-1">{{i+1}}</div>
+                    <div class="col-9"> {{section.title}} </div>
+                    <button mat-icon-button matTooltip="Editar Sección" color="accent" aria-label="Example icon button with a home icon" (click) ="openEditDialog(i)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button matTooltip="Eliminar Sección" color="warn" aria-label="Example icon button with a home icon" (click) ="openDeleteDialog(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="row justify-content-center my-3">
+        <button mat-raised-button class="mx-3" type="button" color="accent" (click)="openCreateDialog()">Añadir Sección</button>
+        <button mat-raised-button class="mx-3" type="button" color="accent" [disabled]="!orderAffected" (click) = "updateOrder()">Guardar orden</button>
+    </div>
+
+</div>
+
+
+<ng-template #createSectionDialog>
+    <h1>Creación de sección</h1>
+    <form [formGroup]="formCreate" (ngSubmit)="onCreateSection()">
+        <mat-form-field class="full-width-input" color = "accent">
+            <input matInput type = "text" placeholder="Titulo" formControlName="title" required>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input" color = "accent">
+            <textarea matInput placeholder="Descripción" rows="2" formControlName="description"></textarea>
+        </mat-form-field>
+
+        <div class="w-100 row justify-content-center">
+            <button mat-raised-button color="primary" type="submit" [disabled]="!formCreate.valid">Crear Sección</button>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #editSectionDialog>
+    <h1>Edición de sección</h1>
+    <form [formGroup]="formEdit" (ngSubmit)="onEditSection()">
+        <mat-form-field class="full-width-input" color = "accent">
+            <input matInput type = "text" placeholder="Titulo" formControlName="title" required>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input" color = "accent">
+            <textarea matInput placeholder="Descripción" rows="2" formControlName="description"></textarea>
+        </mat-form-field>
+
+        <div class="w-100 row justify-content-center">
+            <button mat-raised-button color="primary" type="submit" [disabled]="!formEdit.valid">Editar Sección</button>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #deleteSectionDialog>
+    <div mat-dialog-title>
+        <p>Esta seguro que desea eliminar la sección:</p>
+    </div>
+    <div mat-dialog-content>
+    <p>{{sectionSelected.title}}</p>
+    </div>
+    <div mat-dialog-actions>
+    <button mat-button (click) = "this.dialogRef.close()">No</button>
+    <button mat-button (click) = "deleteProblem()" cdkFocusInitial>Sí</button>
+    </div>
+</ng-template>

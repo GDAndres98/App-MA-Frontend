@@ -7,4 +7,5 @@ export class Section{
     public description: string;
     public postedAt:    Course;
     public articles:    Article[];
+    public orderSection:       number;
 }

@@ -7,6 +7,34 @@
     height: 200px;
     width: 200px;
 }
+.card2{
+    height: 200px;
+    width: 200px;
+}
+
+.button-close{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+
+.button-close:hover{
+    color: var(--warn);
+}
+
+
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+  }
+  .signin-content {
+    padding: 60px 1rem;
+  }
+  .full-width-input {
+    width: 100%;
+  }
+
 
 .center-box{
     text-align: center;
@@ -17,3 +45,29 @@
     background-color: var(--accent2);
     cursor: pointer;
 }
+
+.new-article{
+    background-color: transparent;
+    border: var(--accent2);
+    border-style: dashed;
+}
+.new-article:hover{
+    background-color: rgba(0, 182, 134, 0.253);
+    cursor: pointer;
+
+}
+
+.new-article:hover i{
+    animation-name: new-article-animation;
+    animation-duration: 0.4s;
+    animation-timing-function: cubic-bezier(0,0,.15,1.12);
+    animation-fill-mode: forwards;
+
+}
+
+
+
+@keyframes new-article-animation {
+    from {font-size: 50px;}
+    to {font-size: 70px;}
+  }

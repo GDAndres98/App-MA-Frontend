@@ -4,6 +4,9 @@ import { User } from 'src/app/model/User';
 import { Session } from './Session';
 import { BehaviorSubject } from 'rxjs';
 import { UserService } from '../user/user.service';
+import * as CryptoJS from 'crypto-js';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable()
 export class StorageService {
@@ -23,12 +26,15 @@ export class StorageService {
     this.currentSession = session;
     this.loggedIn.next(true);
     this.userService.setUser(session.user);
-    this.localStorageService.setItem('currentUser', JSON.stringify(session));
+    var encryted = CryptoJS.AES.encrypt(JSON.stringify(session), environment.hashCode);    
+    this.localStorageService.setItem('currentUser', encryted.toString());
   }
 
   loadSessionData(): Session{
-    var sessionStr = this.localStorageService.getItem('currentUser');
-    this.loggedIn.next(sessionStr);    
+    var hash = this.localStorageService.getItem('currentUser');
+    this.loggedIn.next(hash);    
+    if(!hash) return null;
+    var sessionStr = CryptoJS.AES.decrypt(hash, environment.hashCode).toString(CryptoJS.enc.Utf8);    
     if(sessionStr)
       this.userService.setUser(JSON.parse(sessionStr).user);
     return (sessionStr) ? <Session> JSON.parse(sessionStr) : null;
@@ -42,6 +48,7 @@ export class StorageService {
     this.localStorageService.removeItem('currentUser');
     this.currentSession = null;
     this.userService.setUser(null);
+    
   }
 
   getCurrentUser(): User {
@@ -72,5 +79,8 @@ export class StorageService {
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }
+
+
+  
 
 }

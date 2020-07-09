@@ -1,8 +1,8 @@
 <div class="h-100" style="overflow: auto;">
     <div class="container">
-        <h1 *ngIf="!valid" style="color: white; text-align: center; margin-top: 48vh;">No tiene permisos para ver este
+        <h1 *ngIf="!(valid$ | async)" style="color: white; text-align: center; margin-top: 48vh;">No tiene permisos para ver este
             curso</h1>
-        <div *ngIf="valid">
+        <div *ngIf="valid$ | async">
             <div>
                 <h1 class="title"><i class="fa fa-{{course.logoUrl}} mr-2" [routerLink]="['./']"></i> {{course.name}}
                 </h1>

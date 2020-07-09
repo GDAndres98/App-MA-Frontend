@@ -34,6 +34,8 @@ import { AdminProblemComponent } from './admin/admin-problem/admin-problem.compo
 import { ContestListComponent } from './contest/contest-list/contest-list.component';
 import { AdminCoursesComponent } from './admin/admin-courses/admin-courses.component';
 import { AdminContestComponent } from './admin/admin-contest/admin-contest.component';
+import { SectionEditComponent } from './course/section-edit/section-edit.component';
+import { StudentListComponent } from './course/student-list/student-list.component';
 
 
 const routes: Routes = [
@@ -49,9 +51,12 @@ const routes: Routes = [
     path: 'course/:id', component: CourseOutletComponent, canActivate: [AuthGuard],
     children: [
       { path: '', component: CourseComponent },
-      { path: 'section/:id', component: SectionComponent },
+      { path: 'section/:id',  component: SectionComponent },
+      { path: 'section-edit', component: SectionEditComponent },
       { path: 'forum', component: PostListComponent },
       { path: 'forum/:id', component: PostComponent },
+      { path: 'student', component: StudentListComponent },
+
     ]
   },
   { path: 'articles', component: ArticleListComponent },

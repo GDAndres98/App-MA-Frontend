@@ -8,32 +8,31 @@ export const environment = {
   production: false,
   urlvalidatedUser: url + "validatedUser",
   urlStudentCreation: url + "createStudent",
-  urlIsAdmin:       url + "isAdmin",
   
   urlGetAllArticles: url + "getAllArticles",
   urlGetSearchArticle: url + "getSearchArticle",
   urlGetAllArticlesPagination: url + "getAllArticlesPagination",
   urldGetArticlesWithTags: url + "getArticlesWithTags",
   urlGetArticleById: url + "getArticleById",
-
+  
   urlGetProblemById: url + "getProblemById",
   urlGetAllProblemPagination: url + "getAllProblemPagination",
   urlGetAllProblems: url + "getAllProblems", //Provisional FIXME
   urldGetProblemsWithTags: url + "getProblemsWithTags",
   urlGetSearchProblem: url + "getSearchProblem",
-
+  
   urlGetAllTags: url + "getAllTags",
   
   urlGetUserCourses: url + "getAllUserCoursesById",
   urlGetSectionFromCourse: url + "getSectionsByCourseId",
   urlGetSectionById: url + "getSectionById",
-
+  
   urlGetPostsFromCourse: url + "getPostsFromCourse",
   urlGetPostById: url + "getPostById",
   urlGetSubPostFromPost: url + "getSubPostFromPost",
   urlCreatePost: url + "createPost",
   urlCreateSubPost: url + "createSubPost",
-
+  
   urlGetContestPreviewById: url + "getContestPreviewById",
   urlGetContestById: url + "getContestById",
   urlGetContestStatsById: url + "getContestStatsById",
@@ -52,6 +51,8 @@ export const environment = {
   
   
   // ADMIN
+  
+  urlIsAdmin:       url + "isAdmin",
   
   urlCreateArticle: url + "createArticle",
   urlUpdateArticle: url + "updateArticle",
@@ -74,7 +75,24 @@ export const environment = {
   urlCreateContest    : url + "createContest",
   urlEditContest      : url + "editContest",
   urlDeleteContest    : url + "deleteContest",
+  
+  
+  // PROFESOR
+  urlIsProfesor         : url + "isProfesor",
+  urlGetProfesorCourses : url + "getProfesorCourseById",
+  urlHasCoursePermision : url + "hasCoursePermision",
+  urlCreateSection      : url + "createSection",
+  urlUpdateOrderSection : url + "setOrderSection",
+  urlUpdateSection      : url + "editSection",
+  urlDeleteSection      : url + "deleteSection",
+  urlAddArticleToSection: url + "addArticleToSection",
+  urlRemoveArticleToSection: url + "removeArticleToSection",
 
+
+
+
+
+  hashCode: "efa0bf84cb475de3e47f2b760bd80e7a",
 };
 
 /*

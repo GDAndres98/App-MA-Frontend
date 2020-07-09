@@ -13,8 +13,9 @@ import { Post, PostToSubmit } from 'src/app/model/post';
 export class CourseService {
 
   courses: Array<Course> = [];
-  courseIn: BehaviorSubject<Course[]> = new BehaviorSubject<Course[]>([]);
-
+  coursesProfesor: Array<Course> = [];
+  courseIn:   BehaviorSubject<Course[]> = new BehaviorSubject<Course[]>([]);
+  courseOwn:  BehaviorSubject<Course[]> = new BehaviorSubject<Course[]>([]);
   constructor(private http: HttpClient) { }
 
 
@@ -35,9 +36,29 @@ export class CourseService {
     });
   }
 
+  getProfesorCourses(id: number): void {
+    const op = { headers: new HttpHeaders({ 'id': id + '' }) };
+
+    this.http.get<Course[]>(environment.urlGetProfesorCourses, op).subscribe(data => {
+      this.coursesProfesor = data;
+
+      let map: Map<Number, User> = new Map();
+      this.coursesProfesor.forEach((v, index) => {
+        if (typeof v.professor == 'number')
+          this.coursesProfesor[index].professor = map.get(v.professor);
+        else
+          map.set(v.professor.id, v.professor);
+      });
+
+      this.courseOwn.next(this.coursesProfesor);
+    });
+  }
+
   clearCourses(): void {
     this.courses = [];
     this.courseIn.next([]);
+    this.coursesProfesor = [];
+    this.courseOwn.next([]);
   }
 
   hasCourse(id: number): boolean {
@@ -92,8 +113,6 @@ export class CourseService {
       .set("courseId", post.courseId.toString())
       .set("content", post.content.trim());
 
-    console.log(body);
-
     return this.http.post(environment.urlCreateSubPost, body, { responseType: 'text' });
   }
 
@@ -111,6 +130,60 @@ export class CourseService {
     const op = { headers: new HttpHeaders({ 'id': id + '' }) };
     return this.http.get<User>(environment.urlGetStudentsById, op);
   }
+  hasCoursePermision(courseId: number, userId: number): Observable<boolean>{
+    const op = { headers: new HttpHeaders(
+      { 'courseId': courseId + '',
+        'userId': userId + ""
+      })};
+      return this.http.get<boolean>(environment.urlHasCoursePermision, op);
+  }
 
+  createSection(section: Section, courseId: number): Observable<Section>{
+    const body = new HttpParams()
+      .set("title",       section.title)
+      .set("description", section.description)
+      .set("order",       section.orderSection + "")
+      .set("courseId",    courseId +"");
+      return this.http.post<Section>(environment.urlCreateSection, body);
+  }
+
+  setOrderSection(ids: number[]){
+    const body = new HttpParams()
+    .set("ids", ids.toString());
+    return this.http.post(environment.urlUpdateOrderSection, body, { responseType: 'text' });
+
+  }
+
+  editSection(section: Section): Observable<Section>{
+    
+    const body = new HttpParams()
+      .set("id",          section.id + "")
+      .set("title",       section.title)
+      .set("description", section.description)
+      .set("order",       section.orderSection + "");
+      return this.http.post<Section>(environment.urlUpdateSection, body);
+  }
+
+  deleteSection(section: Section){
+    const body = new HttpParams()
+      .set("id",          section.id + "");
+      return this.http.post(environment.urlDeleteSection, body, { responseType: 'text' });
+  }
+
+  addArticleToSection(sectionId: number, articleId: number){
+    const body = new HttpParams()
+      .set("articleId", articleId + "")
+      .set("sectionId", sectionId + "");
+
+      return this.http.post(environment.urlAddArticleToSection, body, { responseType: 'text' });
+  } 
+
+  removeArticleToSection(sectionId: number, articleId: number){
+    const body = new HttpParams()
+      .set("articleId", articleId + "")
+      .set("sectionId", sectionId + "");
+
+      return this.http.post(environment.urlRemoveArticleToSection, body, { responseType: 'text' });
+  } 
 
 }
