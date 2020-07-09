@@ -1,4 +1,4 @@
-import { TagItem } from './tag';
+import { Tag } from './tag';
 
 export class Problem {
     public id: number;
@@ -7,7 +7,7 @@ export class Problem {
     public createAt: Date;
     public timeLimit: number;
     public memoryLimit: number;
-    public tags: TagItem[];
+    public tags: Tag[];
     public markdown: string;
     public letter: string; // Ignorelo, lo usé solo por pereza, salu2
 }

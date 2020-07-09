@@ -100,6 +100,7 @@ import { ContestItemComponent } from './contest/contest-list/contest-item/contes
 import { SectionEditComponent } from './course/section-edit/section-edit.component';
 import { StudentListComponent } from './course/student-list/student-list.component';
 
+import { LevelListComponent } from './level/level-list/level-list.component';
 
 @NgModule({
   declarations: [
@@ -149,6 +150,7 @@ import { StudentListComponent } from './course/student-list/student-list.compone
     ContestItemComponent,
     SectionEditComponent,
     StudentListComponent,
+    LevelListComponent,
   ],
   imports: [
     HttpClientModule,
