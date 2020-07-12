@@ -39,7 +39,7 @@ export class ContestOutletComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private contestService: ContestService,
     private problemService: ProblemService,
-    private snackBar :MatSnackBar) {
+    private snackBar: MatSnackBar) {
     this.inputContestPassword = "";
     this.notFound = false;
   }
@@ -60,7 +60,7 @@ export class ContestOutletComponent implements OnInit {
             this.notFound = true;
           if (!this.contestPreview.private)
             this.getContest();
-            
+
           this.isLoading = false;
         },
         err => {
@@ -92,16 +92,16 @@ export class ContestOutletComponent implements OnInit {
           });
 
           this.maxTime = (this.contest.endTime.getTime() - this.contest.startTime.getTime());
-          
+
           this.startTimer();
           this.isLoading = false;
         },
         err => {
           if (err.status == 404)
             this.notFound = true;
-            if (err.status == 400)
-              this.snackBar.open('Contraseña Incorrecta', "Cerrar", { duration: 2000});
-            this.isLoading = false;
+          if (err.status == 400)
+            this.snackBar.open('Contraseña Incorrecta', "Cerrar", { duration: 2000 });
+          this.isLoading = false;
         }
       )
     });
@@ -109,28 +109,9 @@ export class ContestOutletComponent implements OnInit {
   }
 
   startTimer() {
+    this.getCurrentTime();
     this.interval = setInterval(() => {
       this.getCurrentTime();
-      if (this.time < 0) {
-        this.contestStatus = 0;
-        this.timeDisplayed = Math.abs(this.time);
-        this.contestProgress = 0;
-      }
-      else if (this.time >= this.maxTime) {
-        this.contestStatus = 2;
-        this.timeDisplayed = this.maxTime;
-        this.contestProgress = 100;
-      }
-      else {
-        this.contestStatus = 1;
-        this.contest.isValid = true;
-        this.timeDisplayed = this.time;
-        if (!(Math.trunc(this.timeDisplayed / 1000) % 360)) {
-          console.log(this.timeDisplayed);
-          this.getContest();
-        }
-        this.contestProgress = this.time / this.maxTime * 100;
-      }
     }, 1000);
   }
 
@@ -143,6 +124,26 @@ export class ContestOutletComponent implements OnInit {
 
   getCurrentTime() {
     this.time = ((new Date()).getTime() - this.contest.startTime.getTime());
+    if (this.time < 0) {
+      this.contestStatus = 0;
+      this.timeDisplayed = Math.abs(this.time);
+      this.contestProgress = 0;
+    }
+    else if (this.time >= this.maxTime) {
+      this.contestStatus = 2;
+      this.timeDisplayed = this.maxTime;
+      this.contestProgress = 100;
+    }
+    else {
+      this.contestStatus = 1;
+      this.contest.isValid = true;
+      this.timeDisplayed = this.time;
+      if (!(Math.trunc(this.timeDisplayed / 1000) % 360)) {
+        console.log(this.timeDisplayed);
+        this.getContest();
+      }
+      this.contestProgress = this.time / this.maxTime * 100;
+    }
   }
 
 
