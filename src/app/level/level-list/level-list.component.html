@@ -1,8 +1,6 @@
 <div class="container">
-
     <div class="col m-4  justify-content-md-center" *ngFor="let level of levels" style="width: 1000px;">
-        
-        <app-level-item [level]="level" [lock]="level.number>1" [actual]="level.number===1"> </app-level-item>
+        <app-level-item [level]="level" [lock]="level.number>levelNumber" [actual]="level.number===levelNumber"
+            (eventEmitter)="getUserLevel($event)"> </app-level-item>
     </div>
-
 </div>

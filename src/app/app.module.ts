@@ -102,6 +102,7 @@ import { StudentListComponent } from './course/student-list/student-list.compone
 
 import { LevelListComponent } from './level/level-list/level-list.component';
 import { LevelItemComponent } from './level/level-item/level-item.component';
+import { SendTableEmbeddedComponent } from './sends/send-table-embedded/send-table-embedded.component';
 
 @NgModule({
   declarations: [
@@ -153,6 +154,7 @@ import { LevelItemComponent } from './level/level-item/level-item.component';
     StudentListComponent,
     LevelListComponent,
     LevelItemComponent,
+    SendTableEmbeddedComponent,
   ],
   imports: [
     HttpClientModule,

@@ -76,4 +76,9 @@ export class UserService {
     return this.http.get<boolean>(environment.urlIsProfesor, op);
   }
 
+  getLevelNumber(id:number):Observable<number>{
+    let op = {headers: new HttpHeaders({ 'id': id + '' })};
+    return this.http.get<number>(environment.urlGetLevelByUserId, op);
+  }
+
 }

@@ -6,49 +6,54 @@ const url = "http://localhost:8080/";
 
 export const environment = {
   production: false,
-  urlvalidatedUser: url + "validatedUser",
+  urlvalidatedUser:   url + "validatedUser",
   urlStudentCreation: url + "createStudent",
   
-  urlGetAllArticles: url + "getAllArticles",
-  urlGetSearchArticle: url + "getSearchArticle",
-  urlGetAllArticlesPagination: url + "getAllArticlesPagination",
-  urldGetArticlesWithTags: url + "getArticlesWithTags",
-  urlGetArticleById: url + "getArticleById",
+  urlGetAllArticles:            url + "getAllArticles",
+  urlGetSearchArticle:          url + "getSearchArticle",
+  urlGetAllArticlesPagination:  url + "getAllArticlesPagination",
+  urldGetArticlesWithTags:      url + "getArticlesWithTags",
+  urlGetArticleById:            url + "getArticleById",
   
-  urlGetProblemById: url + "getProblemById",
+  urlGetProblemById:          url + "getProblemById",
   urlGetAllProblemPagination: url + "getAllProblemPagination",
-  urlGetAllProblems: url + "getAllProblems", //Provisional FIXME
-  urldGetProblemsWithTags: url + "getProblemsWithTags",
-  urlGetSearchProblem: url + "getSearchProblem",
+  urlGetAllProblems:          url + "getAllProblems", //Provisional FIXME
+  urldGetProblemsWithTags:    url + "getProblemsWithTags",
+  urlGetSearchProblem:        url + "getSearchProblem",
   
   urlGetAllTags: url + "getAllTags",
   
-  urlGetUserCourses: url + "getAllUserCoursesById",
-  urlGetSectionFromCourse: url + "getSectionsByCourseId",
-  urlGetSectionById: url + "getSectionById",
+  urlGetUserCourses:        url + "getAllUserCoursesById",
+  urlGetSectionFromCourse:  url + "getSectionsByCourseId",
+  urlGetSectionById:        url + "getSectionById",
   
-  urlGetPostsFromCourse: url + "getPostsFromCourse",
-  urlGetPostById: url + "getPostById",
-  urlGetSubPostFromPost: url + "getSubPostFromPost",
-  urlCreatePost: url + "createPost",
-  urlCreateSubPost: url + "createSubPost",
+  urlGetPostsFromCourse:  url + "getPostsFromCourse",
+  urlGetPostById:         url + "getPostById",
+  urlGetSubPostFromPost:  url + "getSubPostFromPost",
+  urlCreatePost:          url + "createPost",
+  urlCreateSubPost:       url + "createSubPost",
   
-  urlGetContestPreviewById: url + "getContestPreviewById",
-  urlGetContestById: url + "getContestById",
-  urlGetContestStatsById: url + "getContestStatsById",
+  urlGetContestPreviewById:     url + "getContestPreviewById",
+  urlGetContestById:            url + "getContestById",
+  urlGetContestStatsById:       url + "getContestStatsById",
   urlGetAllProblemsFromContest: url + "getAllProblemsFromContest",
-  urlGetScoreboard: url + "getScoreboard",
-  urlGetRunningContests: url + "getRunningContests",
-  urlGetFutureContests: url + "getFutureContests",
-  urlGetPastContests: url + "getPastContests",
-  urlGetSolvedProblems: url + "getSolvedProblems",
+  urlGetScoreboard:             url + "getScoreboard",
+  urlGetRunningContests:        url + "getRunningContests",
+  urlGetFutureContests:         url + "getFutureContests",
+  urlGetPastContests:           url + "getPastContests",
+  urlGetSolvedProblems:         url + "getSolvedProblems",
   
-  urlSubmit: url + "submit",
-  urlGetAllSubmits: url + "getAllSubmits",
-  urlGetUserSubmit: url + "getUserSubmits",
-  urlGetContestSubmits: url + "getContestSubmits",
-  urlGetSourceCode: url + "getSourceCode",
-  utlGetLastProblemAttempt: url + "getLastProblemAttempt",
+  urlSubmit:                  url + "submit",
+  urlGetAllSubmits:           url + "getAllSubmits",
+  urlGetUserSubmit:           url + "getUserSubmits",
+  urlGetSubmitsByUserContest: url + "getSubmitsByUserContest",
+  urlGetContestSubmits:       url + "getContestSubmits",
+  urlGetSourceCode:           url + "getSourceCode",
+  utlGetLastProblemAttempt:   url + "getLastProblemAttempt",
+
+  urlGetAllLevels:      url + "getAllLevels",
+  urlGetLevelById:      url + "getLevelById",
+  urlGetLevelByUserId:  url + "getLevelByUserId",
   
   
   // ADMIN
@@ -76,9 +81,6 @@ export const environment = {
   urlCreateContest    : url + "createContest",
   urlEditContest      : url + "editContest",
   urlDeleteContest    : url + "deleteContest",
-  
-  urlGetAllLevels      : url + "getAllLevels",
-  urlGetLevelById    : url + "getLevelById",
   
   // PROFESOR
   urlIsProfesor         : url + "isProfesor",
