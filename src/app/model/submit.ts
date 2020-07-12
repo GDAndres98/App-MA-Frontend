@@ -6,6 +6,12 @@ export enum Language{
     Cpp_11      = "C++ 11"
 }
 
+export enum LanguageSyntax{
+    Java_1_8    = "java",
+    Phyton_3    = "python",
+    Cpp_11      = "cpp"
+}
+
 export enum Veredict{
 	IN_QUEUE            = "var(--in-queue)",
 	ACCEPTED            = "var(--accepted)",

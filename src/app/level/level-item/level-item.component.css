@@ -1,0 +1,12 @@
+.clickIcon  {
+    cursor: pointer;
+}
+
+.problem-item:hover  {
+    cursor: pointer;
+    background-color: var(--accent2) !important;
+}
+
+.article-item:hover .clickIcon {
+    color: var(--accent) !important;
+}

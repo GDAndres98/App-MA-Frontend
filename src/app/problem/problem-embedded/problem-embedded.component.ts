@@ -119,7 +119,8 @@ export class ProblemEmbeddedComponent implements OnInit {
         this.snackBar.open('Envio hecho correctamente.', "Ver envíos", { duration: 5000, }).onAction().subscribe(
           () => {
             this.dialog.closeAll();
-            this.router.navigateByUrl("/contest/" + this.contest.id + "/status")});
+            this.router.navigateByUrl("/contest/" + this.contest.id + "/status");
+          });
       },
         error => {
           this.snackBar.open('Hubo un error al hacer el envio.', "Cerrar", { duration: 3000, });

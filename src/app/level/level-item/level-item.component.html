@@ -1,0 +1,72 @@
+<mat-expansion-panel class="w-100" (opened)="getLevelData()" hideToggle [disabled]="lock" [expanded]="actual">
+  <mat-expansion-panel-header [collapsedHeight]="'150px'" [expandedHeight]="'70px'">
+    <!-- 
+    <mat-panel-title>
+      {{level.name}}
+    </mat-panel-title>
+    <mat-panel-description>
+      <i class="fa fa-{{level.logo}}" aria-hidden="true"></i>
+    </mat-panel-description> -->
+    <h1 class="row w-100 d-flex justify-content-center">
+      <div class="col-3">
+        <i class="fa fa-{{level.logo}}" aria-hidden="true"></i>
+      </div>
+      <div class="col d-flex justify-content-center">
+        {{level.name}}
+      </div>
+      <div *ngIf="lock" class="col-2 d-flex justify-content-center">
+        <i class="fas fa-lock"></i>
+      </div>
+    </h1>
+  </mat-expansion-panel-header>
+
+
+  <div *ngIf="isLoadingLevel" class="row w-100 justify-content-center">
+    <mat-spinner diameter="75"></mat-spinner>
+  </div>
+
+  <div class="row" *ngIf="!isLoadingLevel">
+    <div class="col-5">
+      <mat-list>
+        <div mat-subheader>Lectura</div>
+        <mat-list-item class="article-item" *ngFor="let article of level.articles;">
+          <i class="fas fa-file-alt clickIcon" mat-list-icon (click)="openArticle(article, false)"></i>
+          <div mat-line>{{article.title}}</div>
+          <div mat-line> {{article.author}} </div>
+          <i class="fas fa-external-link-alt clickIcon" (click)="openArticle(article, true)"></i>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div class="col-6">
+      <mat-list>
+        <div mat-subheader>Práctica</div>
+        <mat-list-item class="problem-item" *ngFor="let problem of level.problems.problems;let i=index"
+          (click)=openProblem(i)>
+          <strong mat-list-icon>{{problem.letter}}</strong>
+          <div mat-line>{{problem.title}}</div>
+          <i *ngIf="problemsSolved.includes(problem.id)" style="color: var(--accent);" matTooltip="Solucionado"
+            [matTooltipPosition]="'right'" class="fas fa-check-circle"></i>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+
+
+  </div>
+  <mat-action-row>
+    <button mat-button style="background-color: var(--tag1);"> Ver envíos
+      <i class="fas fa-paper-plane mx-1"></i>
+    </button>
+    <button mat-button style="background-color: var(--accent);">Desbloquear siguiente nivel
+      <i class="fas fa-key mx-1"></i>
+    </button>
+  </mat-action-row>
+
+</mat-expansion-panel>
+
+<ng-template #callProblemDialog>
+  <div class="container" style="overflow-y: auto; height: 80vh;">
+    <app-problem-embedded [index]="problemIndex" [contest]="level.problems"></app-problem-embedded>
+  </div>
+</ng-template>

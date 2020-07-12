@@ -101,6 +101,7 @@ import { SectionEditComponent } from './course/section-edit/section-edit.compone
 import { StudentListComponent } from './course/student-list/student-list.component';
 
 import { LevelListComponent } from './level/level-list/level-list.component';
+import { LevelItemComponent } from './level/level-item/level-item.component';
 
 @NgModule({
   declarations: [
@@ -151,6 +152,7 @@ import { LevelListComponent } from './level/level-list/level-list.component';
     SectionEditComponent,
     StudentListComponent,
     LevelListComponent,
+    LevelItemComponent,
   ],
   imports: [
     HttpClientModule,
