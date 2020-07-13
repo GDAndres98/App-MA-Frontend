@@ -8,6 +8,9 @@ import { DialogArticleComponent } from '../dialog-article/dialog-article.compone
 import { ArticleService } from 'src/app/services/article/article.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user/user.service';
+import { Problem } from 'src/app/model/problem';
+import { ProblemService } from 'src/app/services/problem/problem.service';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-section',
@@ -17,6 +20,10 @@ import { UserService } from 'src/app/services/user/user.service';
 export class SectionComponent implements OnInit {
   @ViewChild('addArticleDialog') addArticleDialog: TemplateRef<any>;
   @ViewChild('deleteArticleDialog') deleteArticleDialog: TemplateRef<any>;
+  @ViewChild('addProblemDialog') addProblemDialog: TemplateRef<any>;
+  @ViewChild('deleteProblemDialog') deleteProblemDialog: TemplateRef<any>;
+  @ViewChild('problemDialog') problemDialog: TemplateRef<any>;
+
 
 
   dialogRef;
@@ -32,6 +39,19 @@ export class SectionComponent implements OnInit {
   articleSelected: Article;
   indexSelected: number;
 
+  idProblem: number = null;
+  problemAdd: Problem = null;
+  findProblem: boolean = false;
+  problemSelected: Problem;
+
+
+  attachedEditVisible: boolean = false;
+  phrases: string[] = [];
+  phrasesEdit: string[] = [];
+  phrasesEdit2: string[] = [];
+  attached: string;
+  addString: string;
+
   public section: Section;
   constructor(
     private router: Router,
@@ -41,6 +61,7 @@ export class SectionComponent implements OnInit {
     private articleService: ArticleService,
     private snackBar: MatSnackBar,
     private userService: UserService,
+    private problemService: ProblemService,
     ) {
 
  }
@@ -50,6 +71,9 @@ export class SectionComponent implements OnInit {
       let id = +params['id'];
       this.courseService.getSectionById(id).subscribe(data =>{
         this.section = data;
+        console.log(this.section);
+        
+        this.separatePhrases(this.section.attached);
       })
     });
     this.routerActive.parent.params.subscribe(params =>{
@@ -122,4 +146,121 @@ export class SectionComponent implements OnInit {
     });
   }
 
+  openAttachedEdit(){
+    if(!this.attachedEditVisible){
+      this.phrasesEdit = new Array();
+      this.phrasesEdit2 = new Array();
+      this.phrases.forEach(v =>{
+        this.phrasesEdit.push(v);
+        this.phrasesEdit2.push(v);
+      });
+      this.attachedEditVisible = true;
+    }
+    else
+      this.attachedEditVisible = false;   
+  }
+  addPhrase(phase: string){
+    if(!phase || phase.trim().length === 0) return;
+    this.phrasesEdit.push(phase);
+    this.phrasesEdit2.push(phase);
+    this.addString = "";
+  }
+
+  separatePhrases(attached: string){
+    if(!attached) return;
+    attached = attached.trim();
+    this.phrases = attached.split("\n");
+    this.attached = "";
+    this.phrases.forEach(v => this.attached += "- " + v + "\n\n");
+  }
+  deletePhase(i: number){
+    this.phrasesEdit.splice(i,1);
+    this.phrasesEdit2.splice(i,1);
+  }
+
+  saveAttached(){
+    let a: string = "";
+    this.phrasesEdit2.forEach(v => a += v + "\n");
+    this.courseService.setSectionAttached(this.section.id, a).subscribe(v =>{
+      this.section.attached = v;
+      this.openAttachedEdit();
+      this.separatePhrases(v);
+      this.snackBar.open('Anexo actualizado', "Cerrar", { duration: 2000,});
+    },
+    err =>{
+      this.snackBar.open('Hubo un error al actualizar', "Cerrar", { duration: 2000,});
+    });
+  }
+
+  openRemoveProblemDialog(id: number){
+    this.indexSelected = id;
+    this.problemSelected = this.section.problems[id];
+    this.dialogRef = this.dialog.open(this.deleteProblemDialog, {
+    });
+  }
+
+  openDialogProblem(problem: Problem){
+    this.problemSelected = problem;
+    this.dialogRef = this.dialog.open(this.problemDialog, {
+      height: '70vh'
+    });
+  }
+  openAddProblemDialog(){
+    this.dialogRef = this.dialog.open(this.addProblemDialog,  {
+      width: '60vw',
+    });
+  }
+
+  searchProblem(idProblem: number){
+    this.problemService.getProblemById(idProblem).subscribe(problem =>{
+      this.problemAdd = problem;
+      this.findProblem= true;      
+    },
+    err =>{
+      this.snackBar.open('Problema no existe', "Cerrar", { duration: 2000,});
+      this.findProblem = false;
+      this.problemAdd = null;
+    });
+  }
+
+
+  addProblem(problemAdd: Problem){
+    if(this.section.problems.find(v => v.id === problemAdd.id) !== undefined){
+      this.snackBar.open('Problema ya esta en la sección', "Cerrar", { duration: 2000,});
+      return;
+    }
+    this.courseService.addProblemToSection(this.section.id, this.problemAdd.id).subscribe(v =>{
+      this.snackBar.open('Problema añadido exitosamente', "Cerrar", { duration: 2000,});
+      this.section.problems.push(this.problemAdd);
+      this.section.problems.sort((a,b) => a.title.localeCompare(b.title));
+      this.dialogRef.close();
+      this.problemAdd= null;
+      this.idProblem = null;
+      this.findProblem = false;
+    },
+    err =>{
+      this.snackBar.open('Hubo un error al añadir el problema.', "Cerrar", { duration: 2000,});
+    });
+  }
+  deleteProblem(){
+    this.courseService.removeProblemToSection(this.section.id, this.problemSelected.id).subscribe(v => {
+      this.dialogRef.close();
+      this.snackBar.open('Problema removido exitosamente', "Cerrar", { duration: 2000,});
+      this.section.problems.splice(this.indexSelected, 1);
+    },
+    err =>{
+      this.snackBar.open('Hubo un error al intentar remover el problema', "Cerrar", { duration: 2000,});
+    });
+  }
+
+  sendProblem(){
+    this.dialogRef.close();
+    this.router.navigateByUrl("/problem/" + this.problemSelected.id);
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.phrasesEdit, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.phrasesEdit2, event.previousIndex, event.currentIndex);
+
+  }
 }

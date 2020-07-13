@@ -186,4 +186,28 @@ export class CourseService {
       return this.http.post(environment.urlRemoveArticleToSection, body, { responseType: 'text' });
   } 
 
+  setSectionAttached(sectionId: number, attached: string){
+    const body = new HttpParams()
+    .set("id", sectionId + "")
+    .set("attached", attached);
+
+    return this.http.post(environment.urlSetSectionAttached, body, { responseType: 'text' });
+  }
+
+
+  addProblemToSection(sectionId: number, problemId: number){
+    const body = new HttpParams()
+      .set("problemId", problemId + "")
+      .set("sectionId", sectionId + "");
+
+      return this.http.post(environment.urlAddProblemToSection, body, { responseType: 'text' });
+  } 
+
+  removeProblemToSection(sectionId: number, problemId: number){
+    const body = new HttpParams()
+      .set("problemId", problemId + "")
+      .set("sectionId", sectionId + "");
+
+      return this.http.post(environment.urlRemoveProblemToSection, body, { responseType: 'text' });
+  } 
 }

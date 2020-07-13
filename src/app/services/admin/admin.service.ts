@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/model/User';
 import { Contest } from 'src/app/model/contest';
 import { LoginComponent } from 'src/app/login/login.component';
+import { TestCase } from 'src/app/model/test-case';
 
 @Injectable({
   providedIn: 'root'
@@ -176,6 +177,25 @@ export class AdminService {
     .set("endTime",     contest.endTime + "")
     .set("problems",    map.toString());
     return this.http.post(environment.urlEditContest, body, {responseType: 'text'});
+  }
+
+  setTestCases(problemId: number, testCases: TestCase[]){
+    let input: String[] = [];
+    let output: String[] = [];
+    let dificulty: number[] = [];
+
+    testCases.forEach(v =>{
+      input.push(v.tcInputURL);
+      output.push(v.tcOutputURL);
+      dificulty.push(v.tcDifficulty);
+    });
+    
+    const body = new HttpParams()
+    .set("problemId",   problemId + "")
+    .set("input",       input.toString())
+    .set("output",      output.toString())
+    .set("dificulty",   dificulty.toString());
+    return this.http.post(environment.urlSetTestCases, body, {responseType: 'text'});
   }
 
   

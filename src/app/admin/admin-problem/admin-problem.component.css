@@ -3,15 +3,21 @@
     margin-top: 25px;
     font-size: medium;
 }
-
-mat-card {
-    max-width: 400px;
-    margin: 2em auto;
-    text-align: center;
-  }
   .signin-content {
     padding: 60px 1rem;
   }
   .full-width-input {
     width: 100%;
   }
+
+
+
+.tc-card{
+  background-color: var(--dark2);
+}
+
+.test-case-input{
+  height: 150px;
+  max-height: 150px;
+  min-height: 150px;
+}

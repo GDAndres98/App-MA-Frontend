@@ -135,7 +135,7 @@
 
         <div class="row align-items-center" *ngIf="findDel">
             <mat-form-field class="full-width-input col-9" color = "accent">
-                <input matInput  type = "text" placeholder="Nombre del Artículo" disabled autocomplete="off"  [(ngModel)]="problemDel.title" [ngModelOptions]="{standalone: true}">
+                <input matInput  type = "text" placeholder="Nombre del Problema" disabled autocomplete="off"  [(ngModel)]="problemDel.title" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             <div class="col-2">
                 <button mat-icon-button color="primary" aria-label="Visualizar" matTooltip="Vista previa" (click) = "openDeleteDialog(problemDel)">
@@ -157,6 +157,28 @@
                     <div style="font-weight: 400; font-size: medium;">Editar casos de prueba</div>
                 </mat-panel-title>
             </mat-expansion-panel-header>
+
+        <p>Buscar por Id</p>
+        <div class="row align-items-center">
+            <mat-form-field class="full-width-input col-9" color = "accent">
+                <input matInput  type = "number" placeholder="Id de problema" autocomplete="off"  [(ngModel)]="testId" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <div class="col-2">
+                <button mat-raised-button color="primary" [disabled]="testId === null" (click)="searchTest(testId)">Buscar</button>
+            </div>
+        </div>
+
+        <div class="row align-items-center" *ngIf="findTest">
+            <mat-form-field class="full-width-input col-9" color = "accent">
+                <input matInput  type = "text" placeholder="Nombre del Problema" disabled autocomplete="off"  [(ngModel)]="problemTest.title" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <div class="col-2">
+                <button mat-icon-button color="primary" aria-label="Visualizar" matTooltip="Vista previa" (click) = "openTestCaseDialog(problemTest)">
+                    <mat-icon>visibility</mat-icon>
+                </button>
+            </div>
+        </div>
+
         </mat-expansion-panel>
         <mat-divider></mat-divider>
 
@@ -191,6 +213,65 @@
     <div mat-dialog-actions>
     <button mat-button (click) = "this.dialogRef.close()">No</button>
     <button mat-button (click) = "deleteProblem(problemDel)" cdkFocusInitial>Sí</button>
+    </div>
+</ng-template>
+
+
+<ng-template #testCaseEditDialog>
+    <div mat-dialog-title>
+        Casos de prueba de {{problemTest.title}}
+    </div>
+    <div class="h-100" mat-dialog-content>
+        <mat-accordion class="my-3">
+            <mat-expansion-panel style="background-color: var(--dark);" *ngFor="let testcase of testCases; let i = index">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div style="font-weight: 400; font-size: medium;">Caso de prueba #{{i + 1}}</div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="row">
+                    <div class="col-5 ml-2">
+                        <mat-form-field color="accent" class="full-width-input">
+                            <mat-label>Input</mat-label>
+                            <textarea class="test-case-input"  matInput [(ngModel)]="testcase.tcInputURL"></textarea>
+                        </mat-form-field>
+                        <input type="file"
+                        name="avatar"
+                        (change)="handleFileInput($event.target.files, testcase)"
+                        accept=".in, .txt">
+                    </div>
+                    <div class="col-5 ml-2 offset-1">
+                        <mat-form-field color="accent" class="full-width-input">
+                            <mat-label>Output</mat-label>
+                            <textarea class="test-case-input"  matInput  [(ngModel)]="testcase.tcOutputURL"></textarea>
+                        </mat-form-field>
+                        <input type="file"
+                        name="avatar"
+                        (change)="handleFileOutput($event.target.files, testcase)"
+                        accept=".out, .txt">
+                    </div>
+                    <div class="col-1">
+                        <mat-form-field color="accent" class="full-width-input">
+                            <mat-label>Dificultad</mat-label>
+                            <mat-select [(value)]="testcase.tcDifficulty">
+                            <mat-option [value]="d" *ngFor="let d of dificultList">{{ d }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button mat-icon-button color="warn" (click) = "removeTestCase(i)">
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+
+
+    </div>
+    <div class="row justify-content-between" mat-dialog-actions>
+        <button mat-button class="mx-4" (click) = "this.dialogRef.close()" >Cerrar</button>
+        <button mat-raised-button class="mx-4" color="accent" (click) = "addTestCase()" cdkFocusInitial>Añardir Caso de Prueba</button>
+        <button mat-button class="mx-4" color="accent" (click) = "saveTestCase()" cdkFocusInitial>Guardar</button>
     </div>
 </ng-template>
 

@@ -5,8 +5,9 @@
         <div cdkDropList (cdkDropListDropped)="drop($event)">
             <mat-card  class="my-1"  *ngFor="let section of sections; let i = index" cdkDrag>
                 <div class="row align-items-center">
-                    <div class="example-handle h-100" cdkDragHandle>
-                        <i class="fa fa-grip-vertical mx-2" style="font-size: small;" ></i>
+                    <div class="example-handle h-100 ml-2" cdkDragHandle>
+                        <mat-icon>drag_handle</mat-icon>
+                        <!-- <i class="fa fa-grip-vertical mx-2" style="font-size: small;" ></i> -->
                     </div>
                     <div class="col-1">{{i+1}}</div>
                     <div class="col-9"> {{section.title}} </div>

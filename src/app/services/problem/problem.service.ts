@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Problem } from 'src/app/model/problem';
 import { Tag } from 'src/app/model/tag';
+import { TestCase } from 'src/app/model/test-case';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,13 @@ export class ProblemService {
       headers: new HttpHeaders({ 'pageNo': pageNo + '', 'pageSize': pageSize + '', 'sortBy': sortBy + '', 'tagsId': tagsID.toString() })
     };
     return this.http.get<any>(environment.urldGetProblemsWithTags, op);
+  }
+
+  getProblemTCById(problemId: number): Observable<TestCase[]>{
+    const op = {
+      headers: new HttpHeaders({ 'problemId': problemId + ""})
+    };
+    return this.http.get<TestCase[]>(environment.urlGetProblemTCById, op);
   }
 
 }

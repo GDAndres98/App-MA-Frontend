@@ -7,6 +7,7 @@ import { Problem } from 'src/app/model/problem';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProblemService } from 'src/app/services/problem/problem.service';
 import { MatDialog } from '@angular/material/dialog';
+import { TestCase } from 'src/app/model/test-case';
 
 @Component({
   selector: 'app-admin-problem',
@@ -16,6 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class AdminProblemComponent implements OnInit {
   @ViewChild('callAPIDialog') callAPIDialog: TemplateRef<any>;
   @ViewChild('dialogProblemView') dialogProblemView: TemplateRef<any>;
+  @ViewChild('testCaseEditDialog') testCaseEditDialog: TemplateRef<any>;
 
   dialogRef;
 
@@ -26,6 +28,8 @@ export class AdminProblemComponent implements OnInit {
 
   tags: Tag[] = [];
 
+  dificultList : number[] = [0,1,2,3,4,5,6,7,8,9,10];
+
   formEdit: FormGroup;
   editId: number = null;
   findEdit: boolean = false;
@@ -35,6 +39,13 @@ export class AdminProblemComponent implements OnInit {
   delId : number = null;
   findDel: boolean = false;
   problemDel: Problem;
+
+  testId: number = null;
+  findTest: boolean = false;
+  problemTest: Problem;
+  testCases: TestCase[] = [];
+  //files: File[] = [];
+
 
   constructor(
     private fb: FormBuilder,
@@ -151,9 +162,21 @@ export class AdminProblemComponent implements OnInit {
       this.findDel = true;      
     },
     err =>{
-      this.snackBar.open('Artículo no existe', "Cerrar", { duration: 2000,});
+      this.snackBar.open('Problema no existe', "Cerrar", { duration: 2000,});
       this.findDel = false;
       this.problemDel = null;
+    });
+  }
+
+  searchTest(testId: number){
+    this.problemService.getProblemById(testId).subscribe(problem =>{
+      this.problemTest = problem;
+      this.findTest = true;      
+    },
+    err =>{
+      this.snackBar.open('Problema no existe', "Cerrar", { duration: 2000,});
+      this.findTest = false;
+      this.problemTest = null;
     });
   }
 
@@ -175,6 +198,70 @@ export class AdminProblemComponent implements OnInit {
     },
     () =>{
       this.dialogRef.close();
+    });
+  }
+
+  saveTestCase(){
+    this.testCases.forEach((v, i) =>{
+      if(v.tcInputURL === undefined || !v.tcInputURL.trim()){
+        this.snackBar.open('Caso de prueba ' + (i+1) + ' tiene el input vacío', "Cerrar", { duration: 2000,});
+        return;
+      }
+      if(v.tcOutputURL  === undefined || !v.tcOutputURL.trim()){
+        this.snackBar.open('Caso de prueba ' + (i+1) + ' tiene el output vacío', "Cerrar", { duration: 2000,});
+        return;
+      }
+    });
+
+    this.adminService.setTestCases(this.problemTest.id, this.testCases).subscribe(v =>{
+      this.snackBar.open('Casos de prueba actualizados', "Cerrar", { duration: 2000,});
+    },
+    err => {
+      this.snackBar.open('Hubo un error al actualizar los casos de prueba', "Cerrar", { duration: 2000,});
+
+    });
+    
+  }
+
+  addTestCase(){
+    let tc: TestCase = new TestCase();
+    tc.tcDifficulty = 0;
+    this.testCases.push(tc);
+  }
+
+  removeTestCase(i: number){
+    this.testCases.splice(i,1);
+  }
+
+
+  handleFileInput(files: FileList, testCase: TestCase) {
+    let file : File = files.item(0);
+    if(file)
+      file.text().then(v => testCase.tcInputURL = v);
+  }
+
+  handleFileOutput(files: FileList, testCase: TestCase) {
+    let file :File = files.item(0);
+    if(file)
+      file.text().then(v => testCase.tcOutputURL = v);
+  }
+
+
+
+
+  openTestCaseDialog(problemTest: Problem){
+    this.problemService.getProblemTCById(this.problemTest.id).subscribe(v => {
+      this.testCases = v;
+      console.log("nice");
+      
+    },
+    err => {
+      this.snackBar.open('Hubo un error al intentar traer los casos de prueba', "Cerrar", { duration: 2000,});
+    });
+    this.dialogRef = this.dialog.open(this.testCaseEditDialog, {
+      height: "80vh",
+      width:  "80vw",
+      disableClose: true
     });
   }
 
