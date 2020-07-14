@@ -19,7 +19,9 @@ export class CourseOutletComponent implements OnInit {
     private router: Router,
     private routerActivated: ActivatedRoute,
     private courseService: CourseService,
-    private authService: StorageService) {}
+    private authService: StorageService) {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    }
 
 
   ngOnInit(): void {

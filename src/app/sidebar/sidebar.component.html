@@ -35,7 +35,7 @@
                 </a>
             </li>
             <mat-divider></mat-divider>
-            <span class ="my-2" style="margin-left: 60px; color: white;" *ngIf="coursesOwn.length > 0">Cursos (Docente)</span>
+            <span class ="my-2 nav-text" style="margin-left: 60px; color: white;" *ngIf="coursesOwn.length > 0">Cursos (Docente)</span>
             <mat-divider></mat-divider>
                 <div style="overflow-y: auto; height: 50vh; overflow-x: hidden;" *ngIf="coursesOwn.length > 0">
                 <div *ngFor="let c of coursesOwn">
@@ -53,7 +53,7 @@
             </div>
 
             <mat-divider></mat-divider>
-            <span class ="my-2" style="margin-left: 60px; color: white" *ngIf="courses.length > 0">Cursos </span>
+            <span class ="my-2 nav-text" style="margin-left: 60px; color: white" *ngIf="courses.length > 0">Cursos </span>
             <mat-divider></mat-divider>
                 <div style="overflow-y: auto; height: 50vh; overflow-x: hidden;" *ngIf="courses.length > 0">
                 <div *ngFor="let c of courses">

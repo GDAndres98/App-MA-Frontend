@@ -21,6 +21,8 @@ export const environment = {
   urlGetAllProblems:          url + "getAllProblems", //Provisional FIXME
   urldGetProblemsWithTags:    url + "getProblemsWithTags",
   urlGetSearchProblem:        url + "getSearchProblem",
+  urlGetProblemTCById:        url + "getAllTestCasesByProblemId",
+
   
   urlGetAllTags: url + "getAllTags",
   
@@ -68,6 +70,7 @@ export const environment = {
   urlCreateProblem: url + "createProblem",
   urlUpdateProblem: url + "updateProblem",
   urlDeleteProblem: url + "removeProblem",
+  urlSetTestCases:  url + "setTestCases",
   
   urlGetProfesorById: url + "getProfesorById",
   urlCreateCourse   : url + "createCourse",
@@ -93,6 +96,9 @@ export const environment = {
   urlDeleteSection      : url + "deleteSection",
   urlAddArticleToSection: url + "addArticleToSection",
   urlRemoveArticleToSection: url + "removeArticleToSection",
+  urlSetSectionAttached : url + "setSectionAttached",
+  urlAddProblemToSection: url + "addProblemToSection",
+  urlRemoveProblemToSection: url + "removeProblemToSection",
 
 
 
