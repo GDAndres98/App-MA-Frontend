@@ -24,6 +24,7 @@ export class ProblemEmbeddedComponent implements OnInit {
     this._index = index;
     this.getProblem();
   }
+  @Input() inContest=true;
 
 
   @ViewChild('callAPIDialog') callAPIDialog: TemplateRef<any>;
@@ -116,7 +117,7 @@ export class ProblemEmbeddedComponent implements OnInit {
         value,
         this.form.get('lang').value,
       ).subscribe(res => {
-        this.snackBar.open('Envio hecho correctamente.', "Ver envíos", { duration: 5000, }).onAction().subscribe(
+        this.snackBar.open('Envio hecho correctamente.', this.inContest? "Ver envíos":"", { duration: 5000, }).onAction().subscribe(
           () => {
             this.dialog.closeAll();
             this.router.navigateByUrl("/contest/" + this.contest.id + "/status");
