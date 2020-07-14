@@ -38,7 +38,6 @@ export class CourseComponent implements OnInit {
             this.courseService.getSectionFromCourse(this.course.id).subscribe(data => {
               data.sort((a,b) => a.orderSection-b.orderSection);
               this.sections = data;
-              console.log(data);
             });
         }
       });
@@ -53,7 +52,6 @@ export class CourseComponent implements OnInit {
            this.courseService.getSectionFromCourse(this.course.id).subscribe(data => {
             data.sort((a,b) => a.orderSection-b.orderSection);
              this.sections = data;
-             console.log(data);
            });
        }
      });

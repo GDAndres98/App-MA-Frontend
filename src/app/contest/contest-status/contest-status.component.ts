@@ -45,8 +45,6 @@ export class ContestStatusComponent implements OnInit {
     this.submitService.getContestSubmitPage(this.pageNo - 1, this.pageSize, this.sortBy, false, this.contest.id).subscribe(
       data => {
         this.submitShowing = data.content;
-        console.log(this.submitShowing);
-        console.log(this.veredict);
         
         this.collectionSize = data.totalElements;
 
@@ -56,7 +54,6 @@ export class ContestStatusComponent implements OnInit {
           }
         });
 
-        console.log(this.letterOfProblem);
       });
   }
 

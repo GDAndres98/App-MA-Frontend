@@ -24,7 +24,6 @@ export class ContestOverviewComponent implements OnInit {
     this.stats.forEach(stat => {
       this.statsMap.set(stat.id, stat);
     })
-    console.log(this.contest);
   }
 
 }

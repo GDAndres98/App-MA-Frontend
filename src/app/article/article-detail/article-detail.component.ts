@@ -14,21 +14,16 @@ export class ArticleDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private articleService: ArticleService) { 
-      console.log("OPEN");
-      
     }
 
   ngOnInit(): void {
     this.getArticle();
-    console.log("OPEN");
-
   }
 
   getArticle(): void {
     if(!this.articleSelected){
       const id = +this.route.snapshot.paramMap.get('id');
       this.articleService.getArticleById(id).subscribe(article => {this.articleSelected = article;
-        console.log(this.articleSelected);});
       }
   }
 

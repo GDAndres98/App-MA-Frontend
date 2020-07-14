@@ -150,7 +150,6 @@ export class ArticleListComponent implements OnInit {
 
     if (!this.selectedTags.includes(tag)) {
       this.selectedTags.push(tag);
-      console.log(this.selectedTags);
 
       this.filteredByTags = true;
       this.pageNo = 1;
@@ -165,7 +164,6 @@ export class ArticleListComponent implements OnInit {
     if (index > -1) {
       this.selectedTags.splice(index, 1);
     }
-    console.log(this.selectedTags);
     if (this.selectedTags.length < 1)
       this.filteredByTags = false;
     this.pageNo = 1;

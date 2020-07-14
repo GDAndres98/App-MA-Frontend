@@ -48,8 +48,6 @@ export class PostComponent implements OnInit {
 
       this.routerActivated.params.subscribe(params => {
         let id = +params['id'];
-        console.log(idCourse);
-        console.log(id);
         this.courseService.getPostById(id).subscribe(data => {
           this.notFound = data.userCourse.id.courseId != idCourse;
           if (!this.notFound) {
@@ -75,7 +73,6 @@ export class PostComponent implements OnInit {
             this.authors.set(reply.userCourse.student.id, reply.userCourse.student.firstName + " " + reply.userCourse.student.lastName);
           reply.author = this.authors.get(reply.userCourse.id.studentId);
         });
-        console.log(replies);
         this.loaded = true;
       })
     }
