@@ -43,6 +43,8 @@ export class ProblemDetailComponent implements OnInit {
     private snackBar: MatSnackBar,
     private dialog: MatDialog) {
     this.language = Object.keys(Language);
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+
   }
 
   ngOnInit(): void {
