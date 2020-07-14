@@ -139,7 +139,6 @@ export class ContestOutletComponent implements OnInit {
       this.contest.isValid = true;
       this.timeDisplayed = this.time;
       if (!(Math.trunc(this.timeDisplayed / 1000) % 360)) {
-        console.log(this.timeDisplayed);
         this.getContest();
       }
       this.contestProgress = this.time / this.maxTime * 100;

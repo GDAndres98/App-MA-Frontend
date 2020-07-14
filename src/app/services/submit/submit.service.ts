@@ -26,7 +26,6 @@ export class SubmitService {
     .set("idProblem", problemId+"")
     .set("source", source)
     .set("language", sl);
-    console.log(sl);
     
 
     //console.log("HEE HEE ");  

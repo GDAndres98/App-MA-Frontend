@@ -101,8 +101,6 @@ export class CourseService {
       .set("title", post.title.trim())
       .set("content", post.content.trim());
 
-    console.log(body);
-
     return this.http.post(environment.urlCreatePost, body, { responseType: 'text' });
   }
 

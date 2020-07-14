@@ -42,13 +42,11 @@ export class ContestScoreboardComponent implements OnInit {
   formatScoreboard() {
     
     this.scoreboard.stats.forEach(userS => {
-      console.log(userS);
       userS.problemsScore.forEach(problemS => {
         this.scoreToProblem.set(userS.id + "," + problemS.id, problemS);
       })
     });
 
-  console.log(this.scoreToProblem);
   
 
     this.scoreboard.stats.sort((a, b) => {

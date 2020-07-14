@@ -63,6 +63,5 @@ export class DialogPostComponent implements OnInit {
         err => this.snackBar.open(err.error, "Cerrar", { duration: 2000, })
       );
     }
-    console.log(this.postToSubmit);
   }
 }

@@ -43,14 +43,11 @@ export class LevelItemComponent implements OnInit {
   }
 
   getLevelData() {
-    console.log(this.level);
     
     if (this.isLoadingLevel)
       this.levelService.getLevelById(this.level.id).subscribe(data => {
         this.level = data;
         
-    console.log("get level data");
-    console.log(this.level);
         this.level.problems.problems.sort((a, b) => {
           if (a.letter > b.letter)
             return 1;
@@ -65,7 +62,6 @@ export class LevelItemComponent implements OnInit {
   }
 
   getSolvedProblems() {
-    console.log(this.level);
     
     this.contestService.getSolvedProblems(this.level.problems.id, this.userService.getId()).subscribe(data => {
       this.problemsSolved = data;
@@ -91,7 +87,6 @@ export class LevelItemComponent implements OnInit {
   }
 
   openSubmits() {
-    console.log(this.level.problems.id);
     this.dialogRef = this.dialog.open(this.callSubmitTableDialong);
     this.dialogRef.afterClosed().subscribe(result => {
       this.getSolvedProblems();

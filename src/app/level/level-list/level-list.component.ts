@@ -31,7 +31,6 @@ export class LevelListComponent implements OnInit {
     this.userService.getLevelNumber(this.userService.getId()).subscribe(data => {
       this.levelNumber = data;
     });
-    console.log("LLAMADÏSIMO");
   }
 
 }

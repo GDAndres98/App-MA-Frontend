@@ -49,7 +49,6 @@ export class SendsComponent implements OnInit {
       .subscribe(submits => {
         this.submitShowing = submits.content;
         this.collectionSize = submits.totalElements;
-        console.log(this.submitShowing);
         
         this.isLoading = false;
       }, () => {

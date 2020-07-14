@@ -53,8 +53,6 @@ export class ContestListComponent implements OnInit {
     this.contestService.getPastContests(this.pageNo - 1, this.pageSize, this.sortBy).subscribe(
       data => {
         this.pastContests = data.content;
-        console.log(data);
-        console.log(this.pastContests);
 
         this.collectionSize = data.totalElements;
       });
