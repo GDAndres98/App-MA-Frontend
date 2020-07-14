@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Submit, Language, Veredict } from 'src/app/model/submit';
+import { Submit, Language, Veredict, LanguageSyntax } from 'src/app/model/submit';
 import { SubmitService } from 'src/app/services/submit/submit.service';
+
 
 @Component({
   selector: 'app-dialog-send',
@@ -11,10 +12,11 @@ import { SubmitService } from 'src/app/services/submit/submit.service';
 export class DialogSendComponent implements OnInit {
 
   public submit: Submit;
-  public code: String = "";
+  public code: string = "";
 
   language = Language;
   veredict = Veredict;
+  languageSyntax = LanguageSyntax;
 
 
   constructor( 

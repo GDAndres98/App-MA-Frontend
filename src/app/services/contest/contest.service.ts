@@ -62,4 +62,11 @@ export class ContestService {
     return this.http.get<any>(environment.urlGetPastContests, op);
   }
 
+  getSolvedProblems(contestId: number, userId: number, problemsId: number[]=[]) : Observable<any> {
+    const op = {
+      headers: new HttpHeaders({ 'contestId': contestId + '', 'userId': userId + '', 'problemsId': problemsId + '' })
+    };
+    return this.http.get<any>(environment.urlGetSolvedProblems, op);
+  }
+
 }

@@ -28,5 +28,5 @@
 </div>
 
 <div class="container">
-<mat-card style="background-color: var(--dark2)"><code><pre style="color: white; ">{{code}}</pre></code></mat-card>
+<mat-card style="background-color: var(--dark2)"><markdown [data]="code | language : languageSyntax[submit.language]"></markdown></mat-card>
 </div>

@@ -1,3 +1,7 @@
+<div *ngIf="isLoading" class="m-4">
+    <mat-spinner diameter="50"></mat-spinner>
+</div>
+
 <div *ngIf="problem && !isLoading" class="row m-3" style="height: 7vh;">
     <mat-card class="col-2 mx-auto d-flex align-items-center justify-content-center  h-100"
         style="background-color: var(--tag2);">
@@ -65,8 +69,8 @@
             </div>
 
             <div mat-dialog-actions class="row mx-auto w-100">
-                <button type="submit" mat-raised-button class="h-50 mt-3 w-100"
-                    style="background-color: var(--accent);">
+                <button type="submit" mat-raised-button class="h-50 mt-3 w-100" style="background-color: var(--accent);"
+                    mat-dialog-close>
                     Enviar solución <i class="fas fa-paper-plane"></i></button>
             </div>
         </form>

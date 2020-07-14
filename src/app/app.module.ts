@@ -100,6 +100,9 @@ import { ContestItemComponent } from './contest/contest-list/contest-item/contes
 import { SectionEditComponent } from './course/section-edit/section-edit.component';
 import { StudentListComponent } from './course/student-list/student-list.component';
 
+import { LevelListComponent } from './level/level-list/level-list.component';
+import { LevelItemComponent } from './level/level-item/level-item.component';
+import { SendTableEmbeddedComponent } from './sends/send-table-embedded/send-table-embedded.component';
 
 @NgModule({
   declarations: [
@@ -149,6 +152,9 @@ import { StudentListComponent } from './course/student-list/student-list.compone
     ContestItemComponent,
     SectionEditComponent,
     StudentListComponent,
+    LevelListComponent,
+    LevelItemComponent,
+    SendTableEmbeddedComponent,
   ],
   imports: [
     HttpClientModule,
