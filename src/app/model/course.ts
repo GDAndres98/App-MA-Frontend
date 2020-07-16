@@ -5,6 +5,7 @@ export class Course{
     public name: string;
     public logoUrl: string;
     public professor: User;
+    public contestId: number;
 }
 
 export class UserCourse{

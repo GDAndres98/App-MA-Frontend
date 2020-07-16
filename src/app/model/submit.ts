@@ -32,4 +32,5 @@ export class Submit {
     public timeConsumed: number;
     public submitDate: Date;
     public problem: Problem;
+    public grade: number = 0.0;           // Esto es por pereza, salu2
 }

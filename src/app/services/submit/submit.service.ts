@@ -96,5 +96,17 @@ export class SubmitService {
     return this.http.get<Submit[]>(environment.utlGetLastProblemAttempt, op);
   }
 
+  getLastSubmitAttempt(userId: number, contestId: number, problemId: number): Observable<Submit>{
+    const op = {
+      headers: new HttpHeaders(
+        {
+          'userId': userId + '',
+          'contestId': contestId + '',
+          'problemId': problemId + ''
+      })
+    };
+    return this.http.get<Submit>(environment.urlGetLastSubmitAttempt, op);
+  }
+
 
 }

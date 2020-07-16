@@ -104,6 +104,7 @@ import { StudentListComponent } from './course/student-list/student-list.compone
 import { LevelListComponent } from './level/level-list/level-list.component';
 import { LevelItemComponent } from './level/level-item/level-item.component';
 import { SendTableEmbeddedComponent } from './sends/send-table-embedded/send-table-embedded.component';
+import { CourseHomeworkComponent } from './course/course-homework/course-homework.component';
 import { StagesComponent } from './level/stages/stages.component';
 
 @NgModule({
@@ -157,6 +158,7 @@ import { StagesComponent } from './level/stages/stages.component';
     LevelListComponent,
     LevelItemComponent,
     SendTableEmbeddedComponent,
+    CourseHomeworkComponent,
     StagesComponent,
   ],
   imports: [
@@ -208,7 +210,8 @@ import { StagesComponent } from './level/stages/stages.component';
   providers: [AuthService, AuthGuard, StorageService, AuthDeGuard, AdminGuard, AdminDeGuard],
   bootstrap: [AppComponent],
   entryComponents: [
-    DialogArticleComponent
-],
+    DialogArticleComponent,
+    DialogSendComponent
+  ],
 })
 export class AppModule { }

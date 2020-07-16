@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Contest, ContestStats, Scoreboard, ContestPreview } from 'src/app/model/contest';
 import { environment } from 'src/environments/environment';
 import { Problem } from 'src/app/model/problem';
+import { TestCase } from 'src/app/model/test-case';
 
 @Injectable({
   providedIn: 'root'
@@ -67,6 +68,23 @@ export class ContestService {
       headers: new HttpHeaders({ 'contestId': contestId + '', 'userId': userId + '', 'problemsId': problemsId + '' })
     };
     return this.http.get<any>(environment.urlGetSolvedProblems, op);
+  }
+
+  getHomeworkById(contestId: number){
+    const op = {
+      headers: new HttpHeaders({ 'id': contestId + ''})
+    };
+    return this.http.get<any>(environment.urlGetHomeworkById, op);
+  }
+
+  addHomework(contestId: number, problemId: number, limitDate: Date, testcases: boolean[]){
+    const body = new HttpParams()
+    .set("contestId",   contestId + "")
+    .set("problemId",   problemId + "")
+    .set("limitDate",   limitDate + "")
+    .set("testCases",   testcases.toString());
+
+    return this.http.post(environment.urlAddHomework, body, {responseType: 'text'});
   }
 
 }

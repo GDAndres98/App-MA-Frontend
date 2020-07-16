@@ -11,4 +11,5 @@ export class Problem {
     public markdown: string;
     public solutions: number;
     public letter: string; // Ignorelo, lo usé solo por pereza, salu2
+    public limitDate: Date; // Ignorelo, lo usé solo por pereza, salu2
 }
