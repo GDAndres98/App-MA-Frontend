@@ -10,4 +10,5 @@ export class Problem {
     public tags: Tag[];
     public markdown: string;
     public letter: string; // Ignorelo, lo usé solo por pereza, salu2
+    public limitDate: Date; // Ignorelo, lo usé solo por pereza, salu2
 }

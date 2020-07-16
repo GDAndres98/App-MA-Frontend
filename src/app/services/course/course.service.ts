@@ -135,77 +135,96 @@ export class CourseService {
       })};
       return this.http.get<boolean>(environment.urlHasCoursePermision, op);
   }
-
+  
   createSection(section: Section, courseId: number): Observable<Section>{
     const body = new HttpParams()
-      .set("title",       section.title)
-      .set("description", section.description)
-      .set("order",       section.orderSection + "")
-      .set("courseId",    courseId +"");
-      return this.http.post<Section>(environment.urlCreateSection, body);
+    .set("title",       section.title)
+    .set("description", section.description)
+    .set("order",       section.orderSection + "")
+    .set("courseId",    courseId +"");
+    return this.http.post<Section>(environment.urlCreateSection, body);
   }
-
+  
   setOrderSection(ids: number[]){
     const body = new HttpParams()
     .set("ids", ids.toString());
     return this.http.post(environment.urlUpdateOrderSection, body, { responseType: 'text' });
-
+    
   }
-
+  
   editSection(section: Section): Observable<Section>{
     
     const body = new HttpParams()
-      .set("id",          section.id + "")
-      .set("title",       section.title)
-      .set("description", section.description)
-      .set("order",       section.orderSection + "");
+    .set("id",          section.id + "")
+    .set("title",       section.title)
+    .set("description", section.description)
+    .set("order",       section.orderSection + "");
       return this.http.post<Section>(environment.urlUpdateSection, body);
-  }
-
-  deleteSection(section: Section){
-    const body = new HttpParams()
+    }
+    
+    deleteSection(section: Section){
+      const body = new HttpParams()
       .set("id",          section.id + "");
       return this.http.post(environment.urlDeleteSection, body, { responseType: 'text' });
-  }
-
-  addArticleToSection(sectionId: number, articleId: number){
-    const body = new HttpParams()
+    }
+    
+    addArticleToSection(sectionId: number, articleId: number){
+      const body = new HttpParams()
       .set("articleId", articleId + "")
       .set("sectionId", sectionId + "");
-
+      
       return this.http.post(environment.urlAddArticleToSection, body, { responseType: 'text' });
-  } 
-
-  removeArticleToSection(sectionId: number, articleId: number){
-    const body = new HttpParams()
+    } 
+    
+    removeArticleToSection(sectionId: number, articleId: number){
+      const body = new HttpParams()
       .set("articleId", articleId + "")
       .set("sectionId", sectionId + "");
-
+      
       return this.http.post(environment.urlRemoveArticleToSection, body, { responseType: 'text' });
-  } 
-
-  setSectionAttached(sectionId: number, attached: string){
-    const body = new HttpParams()
-    .set("id", sectionId + "")
-    .set("attached", attached);
-
-    return this.http.post(environment.urlSetSectionAttached, body, { responseType: 'text' });
-  }
-
-
-  addProblemToSection(sectionId: number, problemId: number){
-    const body = new HttpParams()
+    } 
+    
+    setSectionAttached(sectionId: number, attached: string){
+      const body = new HttpParams()
+      .set("id", sectionId + "")
+      .set("attached", attached);
+      
+      return this.http.post(environment.urlSetSectionAttached, body, { responseType: 'text' });
+    }
+    
+    
+    addProblemToSection(sectionId: number, problemId: number){
+      const body = new HttpParams()
       .set("problemId", problemId + "")
       .set("sectionId", sectionId + "");
-
+      
       return this.http.post(environment.urlAddProblemToSection, body, { responseType: 'text' });
-  } 
-
-  removeProblemToSection(sectionId: number, problemId: number){
-    const body = new HttpParams()
+    } 
+    
+    removeProblemToSection(sectionId: number, problemId: number){
+      const body = new HttpParams()
       .set("problemId", problemId + "")
       .set("sectionId", sectionId + "");
-
+      
       return this.http.post(environment.urlRemoveProblemToSection, body, { responseType: 'text' });
-  } 
-}
+    }
+    
+    getGradeFromStudent(userId: number, contestId: number, problemId: number){
+      const op = { headers: new HttpHeaders(
+        { 'userId'   : userId + '',
+        'contestId': contestId + "",
+        'problemId': problemId + "",
+      })};
+      return this.http.get<any>(environment.urlGetGradeFromStudent, op);
+    }
+
+    saveGrades(contestId: number, problemId: number, studentsId: number[], grades: number[]){
+      const body = new HttpParams()
+      .set("idContest",   contestId + "")
+      .set("idProblem",   problemId + "")
+      .set("studentsId",  studentsId.toString())
+      .set("grades",      grades.toString());
+      
+      return this.http.post(environment.urlSaveGrades, body, { responseType: 'text' });
+    }
+  }

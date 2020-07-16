@@ -1,3 +1,5 @@
+import { Submit } from './submit';
+
 export class User {
     public id       :number
     public username : string;
@@ -6,6 +8,8 @@ export class User {
     public lastName : string;
     public rating   : number;
     public admin    : boolean;
+
+    public submit   : Submit;       // esto es por pereza, salu2
 }
 
 export class UserLogin {

@@ -37,6 +37,7 @@ import { AdminContestComponent } from './admin/admin-contest/admin-contest.compo
 import { SectionEditComponent } from './course/section-edit/section-edit.component';
 import { StudentListComponent } from './course/student-list/student-list.component';
 import { LevelListComponent } from './level/level-list/level-list.component';
+import { CourseHomeworkComponent } from './course/course-homework/course-homework.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,7 @@ const routes: Routes = [
       { path: 'forum', component: PostListComponent },
       { path: 'forum/:id', component: PostComponent },
       { path: 'student', component: StudentListComponent },
+      { path: 'homework', component: CourseHomeworkComponent },
 
     ]
   },

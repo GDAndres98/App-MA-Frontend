@@ -62,12 +62,12 @@ export class AdminProblemComponent implements OnInit {
 
   ngOnInit(): void {
     this.formCreate = this.fb.group({
-      title:  ['', Validators.required],
-      author:  ['', Validators.required],
-      source:  ['', Validators.required],
-      time:  ['', Validators.required],
-      memory:  ['', Validators.required],
-      tags:  ['', Validators.required],
+      title:    ['', Validators.required],
+      author:   ['', Validators.required],
+      source:   ['', Validators.required],
+      time:     ['', Validators.required],
+      memory:   ['', Validators.required],
+      tags:     ['', Validators.required],
     });
 
     this.formEdit = this.fb.group({
@@ -202,24 +202,34 @@ export class AdminProblemComponent implements OnInit {
   }
 
   saveTestCase(){
-    this.testCases.forEach((v, i) =>{
+    let todoBien: boolean = true;
+    for(let i = 0; i < this.testCases.length && todoBien; i++){
+      let v = this.testCases[i];
+
       if(v.tcInputURL === undefined || !v.tcInputURL.trim()){
         this.snackBar.open('Caso de prueba ' + (i+1) + ' tiene el input vacío', "Cerrar", { duration: 2000,});
-        return;
+        console.log("i" + (i+1));
+        todoBien = false;
+        break;
       }
       if(v.tcOutputURL  === undefined || !v.tcOutputURL.trim()){
+        console.log("o" + (i+1));
+        todoBien = false;
         this.snackBar.open('Caso de prueba ' + (i+1) + ' tiene el output vacío', "Cerrar", { duration: 2000,});
-        return;
+        break;
       }
-    });
+    }
 
-    this.adminService.setTestCases(this.problemTest.id, this.testCases).subscribe(v =>{
-      this.snackBar.open('Casos de prueba actualizados', "Cerrar", { duration: 2000,});
-    },
-    err => {
-      this.snackBar.open('Hubo un error al actualizar los casos de prueba', "Cerrar", { duration: 2000,});
 
-    });
+    if(todoBien){ 
+      this.adminService.setTestCases(this.problemTest.id, this.testCases).subscribe(v =>{
+        this.snackBar.open('Casos de prueba actualizados', "Cerrar", { duration: 2000,});
+      },
+      err => {
+        this.snackBar.open('Hubo un error al actualizar los casos de prueba', "Cerrar", { duration: 2000,});
+        
+      });
+    }
     
   }
 

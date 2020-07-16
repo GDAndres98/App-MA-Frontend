@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 const url = "http://localhost:8080/";
-// const url = "https://app-ma-backend.herokuapp.com/";
+//const url = "https://app-ma-backend.herokuapp.com/";
 
 export const environment = {
   production: false,
@@ -22,7 +22,7 @@ export const environment = {
   urldGetProblemsWithTags:    url + "getProblemsWithTags",
   urlGetSearchProblem:        url + "getSearchProblem",
   urlGetProblemTCById:        url + "getAllTestCasesByProblemId",
-
+  
   
   urlGetAllTags: url + "getAllTags",
   
@@ -53,7 +53,7 @@ export const environment = {
   urlGetContestSubmits:       url + "getContestSubmits",
   urlGetSourceCode:           url + "getSourceCode",
   utlGetLastProblemAttempt:   url + "getLastProblemAttempt",
-
+  
   urlGetAllLevels:      url + "getAllLevels",
   urlGetLevelById:      url + "getLevelById",
   urlGetLevelByUserId:  url + "getLevelByUserId",
@@ -99,8 +99,12 @@ export const environment = {
   urlSetSectionAttached : url + "setSectionAttached",
   urlAddProblemToSection: url + "addProblemToSection",
   urlRemoveProblemToSection: url + "removeProblemToSection",
-
-
+  
+  urlGetHomeworkById   : url + "getHomeworkById",
+  urlAddHomework       : url + "addHomework",
+  urlGetLastSubmitAttempt : url + "getLastSubmitAttempt",
+  urlGetGradeFromStudent : url + "getGradeFromStudent",
+  urlSaveGrades : url + "saveGrades",
 
 
 

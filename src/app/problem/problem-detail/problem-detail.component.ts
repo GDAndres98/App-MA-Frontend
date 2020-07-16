@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { Problem } from 'src/app/model/problem';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProblemService } from 'src/app/services/problem/problem.service';
@@ -42,8 +42,9 @@ export class ProblemDetailComponent implements OnInit {
     private submitService: SubmitService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog) {
-    this.language = Object.keys(Language);
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.language = Object.keys(Language);
+      //this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      //this.ref.detectChanges();
 
   }
 

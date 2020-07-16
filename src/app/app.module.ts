@@ -103,6 +103,7 @@ import { StudentListComponent } from './course/student-list/student-list.compone
 import { LevelListComponent } from './level/level-list/level-list.component';
 import { LevelItemComponent } from './level/level-item/level-item.component';
 import { SendTableEmbeddedComponent } from './sends/send-table-embedded/send-table-embedded.component';
+import { CourseHomeworkComponent } from './course/course-homework/course-homework.component';
 
 @NgModule({
   declarations: [
@@ -155,6 +156,7 @@ import { SendTableEmbeddedComponent } from './sends/send-table-embedded/send-tab
     LevelListComponent,
     LevelItemComponent,
     SendTableEmbeddedComponent,
+    CourseHomeworkComponent,
   ],
   imports: [
     HttpClientModule,
@@ -204,7 +206,8 @@ import { SendTableEmbeddedComponent } from './sends/send-table-embedded/send-tab
   providers: [AuthService, AuthGuard, StorageService, AuthDeGuard, AdminGuard, AdminDeGuard],
   bootstrap: [AppComponent],
   entryComponents: [
-    DialogArticleComponent
-],
+    DialogArticleComponent,
+    DialogSendComponent
+  ],
 })
 export class AppModule { }

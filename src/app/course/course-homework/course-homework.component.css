@@ -1,0 +1,69 @@
+.title{
+    color: white;
+    font-size: x-large;
+}
+
+.card{
+    height: 200px;
+    width: 200px;
+}
+
+.card2{
+    height: 200px;
+    width: 200px;
+}
+
+.center-box{
+    text-align: center;
+    font-size: large;   
+}
+
+.new-homework{
+    background-color: transparent;
+    border: var(--accent2);
+    border-style: dashed;
+}
+.new-homework:hover{
+    background-color: rgba(0, 182, 134, 0.253);
+    cursor: pointer;
+}
+
+.button-menu{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.signin-content {
+    padding: 60px 1rem;
+  }
+  .full-width-input {
+    width: 100%;
+  }
+
+
+.new-homework:hover i{
+    animation-name: new-homework-animation;
+    animation-duration: 0.4s;
+    animation-timing-function: cubic-bezier(0,0,.15,1.12);
+    animation-fill-mode: forwards;
+
+}
+
+.title {
+    word-wrap: break-word !important;
+}
+
+
+
+@keyframes new-homework-animation {
+    from {font-size: 50px;}
+    to {font-size: 70px;}
+  }
+
+
+  .test-case-input{
+    height: 150px;
+    max-height: 150px;
+    min-height: 150px;
+  }
