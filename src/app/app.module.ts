@@ -41,6 +41,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 
 
 import { MarkdownModule, KatexOptions } from 'ngx-markdown';
@@ -104,6 +105,7 @@ import { LevelListComponent } from './level/level-list/level-list.component';
 import { LevelItemComponent } from './level/level-item/level-item.component';
 import { SendTableEmbeddedComponent } from './sends/send-table-embedded/send-table-embedded.component';
 import { CourseHomeworkComponent } from './course/course-homework/course-homework.component';
+import { StagesComponent } from './level/stages/stages.component';
 
 @NgModule({
   declarations: [
@@ -157,6 +159,7 @@ import { CourseHomeworkComponent } from './course/course-homework/course-homewor
     LevelItemComponent,
     SendTableEmbeddedComponent,
     CourseHomeworkComponent,
+    StagesComponent,
   ],
   imports: [
     HttpClientModule,
@@ -164,6 +167,7 @@ import { CourseHomeworkComponent } from './course/course-homework/course-homewor
     AppRoutingModule,
     MatButtonModule,
     ScrollingModule,
+    ClipboardModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatInputModule,

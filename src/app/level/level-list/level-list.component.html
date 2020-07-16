@@ -1,4 +1,13 @@
-<div class="container">
+<div class="container my-3">
+    <div *ngIf="stage">
+        <h1 class="mat-display-1 my-4" style="color: white;">
+            {{stage.name}} <i class="mx-2 {{stage.logo}}"></i>
+        </h1>
+        <p class="mat-body-1" style="color: white;">
+            {{stage.description}}
+        </p>
+        <mat-divider></mat-divider>
+    </div>
     <div class="col m-4  justify-content-md-center" *ngFor="let level of levels" style="width: 1000px;">
         <app-level-item [level]="level" [lock]="level.number>levelNumber" [actual]="level.number===levelNumber"
             (eventEmitter)="getUserLevel($event)"> </app-level-item>

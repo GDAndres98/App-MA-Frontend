@@ -34,7 +34,7 @@ export class SendsComponent implements OnInit {
     private userService: UserService,
     private dialog: MatDialog) { 
     this.pageNo = 1;
-    this.pageSize = 10;
+    this.pageSize = 25;
     this.sortBy = "submitDate";    
     this.submitShowing = new Array();
 

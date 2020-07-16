@@ -6,7 +6,6 @@
 <div class ="container-fluid m-0 p-0 bg-dark h-100">
     <div class = "m-auto centered" style="text-align: center; width: 50%;">
         <i class="fas fa-user fa-10x" style="color: rgb(255, 255, 255);"></i>
-        <h3 class="text-white mt-3 mb-0">Specialist</h3>
         <h2 class="text-white mt-1 p-0">{{user.username}}</h2>
 
         <div class="col text-white">
@@ -18,11 +17,9 @@
                 <div class="col-md-3 p-0 text-left h6 my-0"> Correo </div>
                 <div class="col-md-9 p-0 text-left"> {{user.email}} </div>
             </div>
-            <div class="row">
-                <div class="col-md-3 p-0 text-left h6 my-0"> Rating </div>
-                <div class="col-md-9 p-0 text-left"> {{user.rating}} </div>
-            </div>
         </div>
         <button mat-raised-button class="bg-success" routerLink="/sends">Envios</button>
+        
+        <app-send-table-embedded [contestId]="1"></app-send-table-embedded>
     </div>
 </div>
