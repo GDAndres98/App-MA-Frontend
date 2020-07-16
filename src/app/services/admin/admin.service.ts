@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Article } from 'src/app/model/article';
 import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Tag } from 'src/app/model/tag';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Problem } from 'src/app/model/problem';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/model/User';

@@ -5,7 +5,7 @@ import { Session } from './Session';
 import { BehaviorSubject } from 'rxjs';
 import { UserService } from '../user/user.service';
 import * as CryptoJS from 'crypto-js';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable()
