@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Level } from 'src/app/model/level';
+import { Level, Stage } from 'src/app/model/level';
 import { LevelService } from 'src/app/services/level/level.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { ActivatedRoute } from '@angular/router';
@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LevelListComponent implements OnInit {
 
+  public stage: Stage;
   public levels: Level[];
   public levelNumber: number;
 
@@ -25,6 +26,9 @@ export class LevelListComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       let stageId = +params['id'];
+      this.levelService.getStageById(stageId).subscribe(data => {
+        this.stage = data;
+      });
       this.levelService.getAllLevelsByStage(stageId).subscribe(data => {
         this.levels = data;
       });

@@ -57,6 +57,7 @@ export const environment = {
   urlGetAllStages:                url + "getAllStages",
   urlGetAllLevelsByStage:         url + "getAllLevelsByStage",
   urlGetLevelById:                url + "getLevelById",
+  urlGetStageById:                url + "getStageById",
   urlGetLevelByUserIdAndStageId:  url + "getLevelByUserIdAndStageId",
   
   

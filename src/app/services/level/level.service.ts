@@ -23,14 +23,18 @@ export class LevelService {
     return this.http.get<Level[]>(environment.urlGetAllLevelsByStage, op);
   }
 
+  getStageById(id: number): Observable<Stage> {
+    let op = {
+      headers: new HttpHeaders({ 'id': id + '' })
+    };
+    return this.http.get<Stage>(environment.urlGetStageById, op);
+  }
+
   getLevelById(id: number): Observable<Level> {
     let op = {
       headers: new HttpHeaders({ 'id': id + '' })
     };
     return this.http.get<Level>(environment.urlGetLevelById, op);
   }
-
-
-
 
 }
