@@ -26,6 +26,8 @@ export class CourseHomeworkComponent implements OnInit {
   @ViewChild('homeworkView') homeworkView: TemplateRef<any>;
   @ViewChild('submitDialog') submitView: TemplateRef<any>;
   @ViewChild('gradesDialog') gradesDialog: TemplateRef<any>;
+  @ViewChild('editHomework') editHomework: TemplateRef<any>;
+  @ViewChild('deleteHomeworkDialog') deleteHomeworkDialog: TemplateRef<any>;
 
   dialogRef;
 
@@ -60,7 +62,8 @@ export class CourseHomeworkComponent implements OnInit {
 
   students : User[] = [];
 
-
+  list: Problem[];
+  index: number;
 
 
   profesor: boolean = false;
@@ -115,6 +118,7 @@ export class CourseHomeworkComponent implements OnInit {
          if(this.valid){
             this.contestService.getHomeworkById(this.course.contestId).subscribe(v =>{
               this.problems = [];
+              console.log(v);
               
               v.forEach(element => {                
                 let now: number = new Date(element.currentTime).valueOf();
@@ -142,7 +146,8 @@ export class CourseHomeworkComponent implements OnInit {
         if(this.valid){
             this.contestService.getHomeworkById(this.course.contestId).subscribe(v =>{
               this.problems = [];
-              
+              console.log(v);
+
               v.forEach(element => {                
                 let now: number = new Date(element.currentTime).valueOf();
                 
@@ -203,7 +208,6 @@ export class CourseHomeworkComponent implements OnInit {
     err =>{
       this.snackBar.open('Hubo un problema de al crear la tarea', "Cerrar", { duration: 2000,});
     }); 
-    
   }
 
   searchProblem(problemId: number){
@@ -309,8 +313,7 @@ export class CourseHomeworkComponent implements OnInit {
     });
   }
 
-  openGradesDialog(problem: Problem){
-    
+  openGradesDialog(problem: Problem){    
     this.problemToched = problem;
     this.students.forEach(v =>{
       v.submit = null;
@@ -338,6 +341,64 @@ export class CourseHomeworkComponent implements OnInit {
     },
     err =>{
       this.snackBar.open('Hubo un error al actualizar las notas', "Cerrar", { duration: 3000, });
+    });
+  }
+
+  openEditDialog(problem: Problem){
+    this.problem = problem;
+    this.formCreate.reset();
+    let basura: string = "";
+    basura += this.problem.limitDate.getFullYear() + "-";
+    basura += (this.problem.limitDate.getMonth() <9? "0" + (this.problem.limitDate.getMonth()+1): this.problem.limitDate.getMonth()+1) + "-";
+    basura += (this.problem.limitDate.getDate() <10? "0" + this.problem.limitDate.getDate(): this.problem.limitDate.getDate());
+    basura += "T";
+    basura += (this.problem.limitDate.getHours() <10? "0" + this.problem.limitDate.getHours(): this.problem.limitDate.getHours()) + ":";
+    basura += (this.problem.limitDate.getMinutes() <10? "0" + this.problem.limitDate.getMinutes(): this.problem.limitDate.getMinutes());
+
+    this.formCreate.get('dateLimit').setValue(basura);
+
+    this.dialogRef = this.dialog.open(this.editHomework);
+  }
+
+  onEditHomework(){
+    let x : Date = new Date(this.formCreate.get("dateLimit").value);
+
+    console.log(this.course.contestId);
+    
+    this.courseService.editHomework(this.course.contestId, this.problem.id, x).subscribe(v => {
+      this.snackBar.open('Tarea editada', "Cerrar", { duration: 2000,});
+      this.problem.limitDate = x;
+      this.problem = null;
+      this.problemId = null;
+      this.findProblem = false;
+      this.dialogRef.close();
+      this.formCreate.reset();
+    },
+    err =>{
+      this.snackBar.open('Hubo un problema de al editar la tarea', "Cerrar", { duration: 2000,});
+    });
+  }
+
+  openDeleteDialog(problem: Problem, list: Problem[], index: number){
+    this.problem = problem;
+    this.list = list;
+    this.index = index;
+    this.dialogRef = this.dialog.open(this.deleteHomeworkDialog);
+  }
+
+  deleteHomework(){
+
+    this.courseService.removeHomework(this.course.contestId, this.problem.id).subscribe(v => {
+      this.snackBar.open('Tarea eliminada correctamente', "Cerrar", { duration: 2000,});
+      this.problem = null;
+      this.problemId = null;
+      this.findProblem = false;
+      this.list.splice(this.index, 1);
+      this.dialogRef.close();
+      this.formCreate.reset();
+    },
+    err =>{
+      this.snackBar.open('Hubo un problema de al eliminar la tarea', "Cerrar", { duration: 2000,});
     });
   }
 }
