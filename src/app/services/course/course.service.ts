@@ -227,4 +227,21 @@ export class CourseService {
       
       return this.http.post(environment.urlSaveGrades, body, { responseType: 'text' });
     }
+
+    editHomework(contestId: number, problemId: number, limitDate: Date){
+      const body = new HttpParams()
+      .set("contestId",   contestId + "")
+      .set("problemId",   problemId + "")
+      .set("limitDate",   limitDate + "");
+  
+      return this.http.post(environment.urlEditHomework, body, {responseType: 'text'});
+    }
+
+    removeHomework(contestId: number, problemId: number){
+      const body = new HttpParams()
+      .set("contestId",   contestId + "")
+      .set("problemId",   problemId + "");
+  
+      return this.http.post(environment.urlRemoveHomework, body, {responseType: 'text'});
+    }
   }

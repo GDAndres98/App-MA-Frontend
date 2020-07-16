@@ -17,16 +17,16 @@
     <h2 class="title my-3">Tareas pendientes</h2>
 
     <div class="row container-fluid my-2">
-        <mat-card class="card mx-2 my-2" *ngFor="let h of problemNew">
+        <mat-card class="card mx-2 my-2" *ngFor="let h of problemNew; let i = index">
             <button class="button-menu" mat-icon-button [matMenuTriggerFor]="menu" *ngIf="profesor">
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                  <button mat-menu-item>
+                  <button mat-menu-item (click)="openEditDialog(h)">
                     <mat-icon>edit</mat-icon>
-                    <span>Editar</span>
+                    <span>Editar fecha de entrega</span>
                   </button>
-                <button mat-menu-item>
+                <button mat-menu-item (click)="openDeleteDialog(h, problemNew, i)">
                   <mat-icon>delete</mat-icon>
                   <span>Eliminar</span>
                 </button>
@@ -255,4 +255,36 @@
         <button mat-raised-button class="m-3" type="submit" style="color: white;" color="accent" (click)="saveGrades()" >Guardar</button>
     </div>
 
+</ng-template>
+
+
+
+<ng-template #editHomework>
+    <div>
+        <div mat-dialog-title>
+            <h1>Editar tarea</h1>
+        </div>
+        <form class="my-2" [formGroup]="formCreate" (ngSubmit)="onEditHomework()">
+            <div class="row my-2">
+                <mat-form-field class="full-width-input col" color = "accent">
+                    <mat-label>Fecha de entrega</mat-label>
+                    <input matInput type = "datetime-local" autocomplete="off" formControlName="dateLimit" required>
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+    <div mat-dialog-actions class="row justify-content-end">
+        <button mat-raised-button class="m-3" type="submit" style="color: white;" color="accent" (click)="onEditHomework()" >Guardar</button>
+    </div>
+</ng-template>
+
+
+<ng-template #deleteHomeworkDialog>
+    <div mat-dialog-title>
+        <p>Esta seguro que desea eliminar la tarea:</p>
+    </div>
+    <div mat-dialog-actions>
+    <button mat-button (click) = "this.dialogRef.close()">No</button>
+    <button mat-button (click) = "deleteHomework()" cdkFocusInitial>Sí</button>
+    </div>
 </ng-template>
