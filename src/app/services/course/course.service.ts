@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Course } from 'src/app/model/course';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { User } from 'src/app/model/User';
 import { Section } from 'src/app/model/section';
 import { Post, PostToSubmit } from 'src/app/model/post';
