@@ -6,7 +6,7 @@
 const url = "https://app-ma-backend.herokuapp.com/";
 
 export const environment = {
-  production: false,
+  production: true,
   urlvalidatedUser:   url + "validatedUser",
   urlStudentCreation: url + "createStudent",
   
