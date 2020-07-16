@@ -54,9 +54,10 @@ export const environment = {
   urlGetSourceCode:           url + "getSourceCode",
   utlGetLastProblemAttempt:   url + "getLastProblemAttempt",
 
-  urlGetAllLevels:      url + "getAllLevels",
-  urlGetLevelById:      url + "getLevelById",
-  urlGetLevelByUserId:  url + "getLevelByUserId",
+  urlGetAllStages:                url + "getAllStages",
+  urlGetAllLevelsByStage:         url + "getAllLevelsByStage",
+  urlGetLevelById:                url + "getLevelById",
+  urlGetLevelByUserIdAndStageId:  url + "getLevelByUserIdAndStageId",
   
   
   // ADMIN

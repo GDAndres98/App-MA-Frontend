@@ -1,0 +1,48 @@
+<div style="overflow-y: auto; height: 100vh;">
+    <div class="container my-4">
+        <h1 class="mat-display-2" style="color: white;">Entrenamiento Guiado</h1>
+        <div class="col m-4" *ngFor="let stage of stages1">
+            <mat-card class="p-4" routerLink="/stage/{{stage.id}}">
+                <div class="m-4 d-flex justify-content-md-center">
+                    <i class="{{stage.logo}} fa-9x"></i>
+                </div>
+                <mat-card-title>{{stage.name}}</mat-card-title>
+                <mat-card-content>
+                    {{stage.description}}
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <h1 class="mat-h1" style="color: white;">Lenguajes</h1>
+        <mat-divider></mat-divider>
+        <div class="row d-flex justify-content-around">
+            <div class="col-sm-3 m-4 d-flex align-items-stretch" *ngFor="let stage of stages2">
+                <mat-card class="p-4" routerLink="/stage/{{stage.id}}">
+                    <mat-card-title>{{stage.name}}</mat-card-title>
+                    <div class="m-4 d-flex justify-content-md-center">
+                        <i class="{{stage.logo}} fa-9x"></i>
+                    </div>
+                    <mat-card-content>
+                        {{stage.description}}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+        <h1 class="mat-h1" style="color: white;">Temas</h1>
+        <mat-divider></mat-divider>
+        <div class="row d-flex justify-content-around">
+            <div class="col-sm-3 m-4 d-flex align-items-stretch" *ngFor="let stage of stages3">
+                <mat-card class="p-4" routerLink="/stage/{{stage.id}}">
+                    <mat-card-title>{{stage.name}}</mat-card-title>
+                    <div class="m-4 d-flex justify-content-md-center">
+                        <i class="{{stage.logo}} fa-9x"></i>
+                    </div>
+                    <mat-card-content>
+                        {{stage.description| stringShorter:70}}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

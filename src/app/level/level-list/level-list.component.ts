@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Level } from 'src/app/model/level';
 import { LevelService } from 'src/app/services/level/level.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-level-list',
@@ -15,20 +16,24 @@ export class LevelListComponent implements OnInit {
 
 
   constructor(private levelService: LevelService,
-    private userService: UserService) {
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute,) {
     this.levelNumber = 0;
     this.getUserLevel();
   }
 
   ngOnInit(): void {
-    this.levelService.getAllLevels().subscribe(data => {
-      this.levels = data;
+    this.activatedRoute.params.subscribe(params => {
+      let stageId = +params['id'];
+      this.levelService.getAllLevelsByStage(stageId).subscribe(data => {
+        this.levels = data;
+      });
     });
 
   }
 
   getUserLevel(event = null) {
-    this.userService.getLevelNumber(this.userService.getId()).subscribe(data => {
+    this.userService.getLevelNumber(this.userService.getId(), 1).subscribe(data => {
       this.levelNumber = data;
     });
   }

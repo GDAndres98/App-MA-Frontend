@@ -37,6 +37,7 @@ import { AdminContestComponent } from './admin/admin-contest/admin-contest.compo
 import { SectionEditComponent } from './course/section-edit/section-edit.component';
 import { StudentListComponent } from './course/student-list/student-list.component';
 import { LevelListComponent } from './level/level-list/level-list.component';
+import { StagesComponent } from './level/stages/stages.component';
 
 
 const routes: Routes = [
@@ -61,7 +62,10 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'arcade', component: LevelListComponent, canActivate: [AuthGuard],
+    path: 'stages', component: StagesComponent, canActivate: [AuthGuard],
+  },
+  {
+    path: 'stage/:id', component: LevelListComponent, canActivate: [AuthGuard],
   },
   { path: 'articles', component: ArticleListComponent },
   { path: 'article/:id', component: ArticleDetailComponent },

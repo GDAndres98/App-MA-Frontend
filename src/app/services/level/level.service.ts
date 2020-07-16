@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Level } from 'src/app/model/level';
+import { Level, Stage } from 'src/app/model/level';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -12,6 +12,16 @@ export class LevelService {
   constructor(private http: HttpClient) { }
 
 
+  getAllStages(): Observable<Stage[]> {
+    return this.http.get<Stage[]>(environment.urlGetAllStages);
+  }
+
+  getAllLevelsByStage(id: number): Observable<Level[]> {
+    let op = {
+      headers: new HttpHeaders({ 'id': id + '' })
+    };
+    return this.http.get<Level[]>(environment.urlGetAllLevelsByStage, op);
+  }
 
   getLevelById(id: number): Observable<Level> {
     let op = {
@@ -21,8 +31,6 @@ export class LevelService {
   }
 
 
-  getAllLevels(): Observable<Level[]> {
-    return this.http.get<Level[]>(environment.urlGetAllLevels);
-  }
+
 
 }
