@@ -1,7 +1,7 @@
 <div class="container my-3">
     <div *ngIf="stage">
         <h1 class="mat-display-1 my-4" style="color: white;">
-            {{stage.name}} <i class="mx-2 fa fa-{{stage.logo}}"></i>
+            {{stage.name}} <i class="mx-2 {{stage.logo}}"></i>
         </h1>
         <p class="mat-body-1" style="color: white;">
             {{stage.description}}

@@ -109,7 +109,6 @@ export class ContestOutletComponent implements OnInit {
   }
 
   startTimer() {
-    this.getCurrentTime();
     this.interval = setInterval(() => {
       this.getCurrentTime();
     }, 1000);

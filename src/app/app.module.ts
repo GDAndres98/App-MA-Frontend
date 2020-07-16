@@ -41,6 +41,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 
 
 import { MarkdownModule, KatexOptions } from 'ngx-markdown';
@@ -164,6 +165,7 @@ import { StagesComponent } from './level/stages/stages.component';
     AppRoutingModule,
     MatButtonModule,
     ScrollingModule,
+    ClipboardModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatInputModule,

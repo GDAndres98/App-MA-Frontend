@@ -28,5 +28,8 @@
 </div>
 
 <div class="container">
+<button mat-flat-button [cdkCopyToClipboard]="code" (click)="copiedMessage()" style="background-color: var(--accent2);">
+    Copiar código al portapapeles <i class="fas fa-clipboard"></i>
+</button>
 <mat-card style="background-color: var(--dark2)"><markdown [data]="code | language : languageSyntax[submit.language]"></markdown></mat-card>
 </div>
