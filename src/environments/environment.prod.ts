@@ -22,7 +22,7 @@ export const environment = {
   urldGetProblemsWithTags:    url + "getProblemsWithTags",
   urlGetSearchProblem:        url + "getSearchProblem",
   urlGetProblemTCById:        url + "getAllTestCasesByProblemId",
-
+  
   
   urlGetAllTags: url + "getAllTags",
   
@@ -101,8 +101,12 @@ export const environment = {
   urlSetSectionAttached : url + "setSectionAttached",
   urlAddProblemToSection: url + "addProblemToSection",
   urlRemoveProblemToSection: url + "removeProblemToSection",
-
-
+  
+  urlGetHomeworkById   : url + "getHomeworkById",
+  urlAddHomework       : url + "addHomework",
+  urlGetLastSubmitAttempt : url + "getLastSubmitAttempt",
+  urlGetGradeFromStudent : url + "getGradeFromStudent",
+  urlSaveGrades : url + "saveGrades",
 
 
 
