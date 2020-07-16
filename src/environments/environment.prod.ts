@@ -104,6 +104,8 @@ export const environment = {
   
   urlGetHomeworkById   : url + "getHomeworkById",
   urlAddHomework       : url + "addHomework",
+  urlEditHomework      : url + "editHomework",
+  urlRemoveHomework    : url + "deleteHomework",
   urlGetLastSubmitAttempt : url + "getLastSubmitAttempt",
   urlGetGradeFromStudent : url + "getGradeFromStudent",
   urlSaveGrades : url + "saveGrades",
