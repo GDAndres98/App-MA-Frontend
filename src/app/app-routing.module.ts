@@ -39,6 +39,7 @@ import { StudentListComponent } from './course/student-list/student-list.compone
 import { LevelListComponent } from './level/level-list/level-list.component';
 import { CourseHomeworkComponent } from './course/course-homework/course-homework.component';
 import { StagesComponent } from './level/stages/stages.component';
+import { AdminProfesorComponent } from './admin/admin-profesor/admin-profesor.component';
 
 
 const routes: Routes = [
@@ -94,6 +95,7 @@ const routes: Routes = [
       { path: 'problems', component: AdminProblemComponent},
       { path: 'courses',  component: AdminCoursesComponent},
       { path: 'contest',  component: AdminContestComponent},
+      { path: 'profesor',  component: AdminProfesorComponent},
 
     ]
     

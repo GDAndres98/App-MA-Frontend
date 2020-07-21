@@ -87,6 +87,9 @@ export const environment = {
   urlCreateContest    : url + "createContest",
   urlEditContest      : url + "editContest",
   urlDeleteContest    : url + "deleteContest",
+
+  urlGetUserById        : url + "getUserById",
+  urlSetProfesorRole    : url + "setProfesorRole",
   
   // PROFESOR
   urlIsProfesor         : url + "isProfesor",
