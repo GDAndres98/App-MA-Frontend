@@ -205,8 +205,23 @@ export class AdminService {
     //console.log("HEE HEE ");  
       return this.http.post(environment.urlDeleteContest, body, {responseType: 'text'});
   }
+  
+  
+  getUser(userId: number): Observable<User>{    
+    const op = {
+      headers: new HttpHeaders({ 'id': userId + ""})
+    };
 
-
+    return this.http.get<User>(environment.urlGetUserById, op);
+  }
+  
+  setProfesorRole(userId: number, isProfesor: boolean){
+    const body = new HttpParams()
+    .set("userId", userId + "")    
+    .set("isProfesor", isProfesor + "");    
+    //console.log("HEE HEE ");  
+      return this.http.post(environment.urlSetProfesorRole, body, {responseType: 'text'});
+  }
 
 
 }

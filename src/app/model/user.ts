@@ -8,6 +8,7 @@ export class User {
     public lastName : string;
     public rating   : number;
     public admin    : boolean;
+    public profesor    : boolean;
 
     public submit   : Submit;       // esto es por pereza, salu2
 }

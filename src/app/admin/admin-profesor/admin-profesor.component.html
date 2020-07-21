@@ -1,0 +1,31 @@
+<div class="px-4 py-3" style="color: white;">
+    <mat-accordion class="my-3">
+        <!--Editar rol-->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div style="font-weight: 400; font-size: medium;">Editar rol usuario </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row align-items-center">
+                <mat-form-field class="full-width-input col-9" color = "accent">
+                    <input matInput  type = "number" placeholder="Id de usuario" autocomplete="off"  [(ngModel)]="userId" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <div class="col-2">
+                    <button mat-raised-button color="primary" [disabled]="userId === null" (click)="searchUser(userId)">Buscar</button>
+                </div>
+            </div>
+            <div class="row align-items-center" *ngIf="findUser">
+                <mat-form-field class="full-width-input col-9" color = "accent">
+                    <input matInput  type = "text" placeholder="Nombre del usuario" disabled autocomplete="off"  [(ngModel)]="user.firstName + ' ' + user.lastName" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <mat-slide-toggle class="ml-2" [(ngModel)]="user.profesor">Profesor</mat-slide-toggle>
+                <button class="ml-2" mat-icon-button matTooltip="Guardar" type="button" (click)="saveUser()">
+                    <mat-icon>save</mat-icon>
+                </button>
+            </div>
+        </mat-expansion-panel>
+        <mat-divider></mat-divider>
+    </mat-accordion>
+</div>

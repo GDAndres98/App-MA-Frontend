@@ -106,6 +106,7 @@ import { LevelItemComponent } from './level/level-item/level-item.component';
 import { SendTableEmbeddedComponent } from './sends/send-table-embedded/send-table-embedded.component';
 import { CourseHomeworkComponent } from './course/course-homework/course-homework.component';
 import { StagesComponent } from './level/stages/stages.component';
+import { AdminProfesorComponent } from './admin/admin-profesor/admin-profesor.component';
 
 @NgModule({
   declarations: [
@@ -160,6 +161,7 @@ import { StagesComponent } from './level/stages/stages.component';
     SendTableEmbeddedComponent,
     CourseHomeworkComponent,
     StagesComponent,
+    AdminProfesorComponent,
   ],
   imports: [
     HttpClientModule,
