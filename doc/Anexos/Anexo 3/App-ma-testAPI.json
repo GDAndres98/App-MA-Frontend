@@ -1,0 +1,1836 @@
+{
+	"info": {
+		"_postman_id": "1d5f2eae-8f24-4a69-83da-6646fa849bc9",
+		"name": "AppMA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Creación",
+					"item": [
+						{
+							"name": "Registrar Usuario 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createStudent?firstName=Andrés&lastName=Osorio&username=GDAndres98&email=gd_andres98@hotmail.com&password=12345&profilePic=img.png",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createStudent"
+									],
+									"query": [
+										{
+											"key": "firstName",
+											"value": "Andrés"
+										},
+										{
+											"key": "lastName",
+											"value": "Osorio"
+										},
+										{
+											"key": "username",
+											"value": "GDAndres98"
+										},
+										{
+											"key": "email",
+											"value": "gd_andres98@hotmail.com"
+										},
+										{
+											"key": "password",
+											"value": "12345"
+										},
+										{
+											"key": "profilePic",
+											"value": "img.png"
+										}
+									]
+								},
+								"description": "Registro de un usuario."
+							},
+							"response": []
+						},
+						{
+							"name": "Registrar Usuario 2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createStudent?firstName=Marlon&lastName=Estupiñán&username=Alex_gal&email=maestupinan2@hotmail.com&password=123123&profilePic=imgcfff.png",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createStudent"
+									],
+									"query": [
+										{
+											"key": "firstName",
+											"value": "Marlon"
+										},
+										{
+											"key": "lastName",
+											"value": "Estupiñán"
+										},
+										{
+											"key": "username",
+											"value": "Alex_gal"
+										},
+										{
+											"key": "email",
+											"value": "maestupinan2@hotmail.com"
+										},
+										{
+											"key": "password",
+											"value": "123123"
+										},
+										{
+											"key": "profilePic",
+											"value": "imgcfff.png"
+										}
+									]
+								},
+								"description": "Registro de un usuario."
+							},
+							"response": []
+						},
+						{
+							"name": "Registrar Usuario 3",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createStudent?firstName=Ashoka&lastName=Tano&username=nomovie2&email=nomovie2@hotmail.com&password=123456&profilePic=imgcfff.png",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createStudent"
+									],
+									"query": [
+										{
+											"key": "firstName",
+											"value": "Ashoka"
+										},
+										{
+											"key": "lastName",
+											"value": "Tano"
+										},
+										{
+											"key": "username",
+											"value": "nomovie2"
+										},
+										{
+											"key": "email",
+											"value": "nomovie2@hotmail.com"
+										},
+										{
+											"key": "password",
+											"value": "123456"
+										},
+										{
+											"key": "profilePic",
+											"value": "imgcfff.png"
+										}
+									]
+								},
+								"description": "Registro de un usuario."
+							},
+							"response": []
+						},
+						{
+							"name": "Registrar Profesor 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createProfessor?firstName=Rey&lastName=Palpatine&username=nonskywalker1&email=nonskywalker1@poligran.edu.co&password=123123&profilePic=img.jpg",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createProfessor"
+									],
+									"query": [
+										{
+											"key": "firstName",
+											"value": "Rey"
+										},
+										{
+											"key": "lastName",
+											"value": "Palpatine"
+										},
+										{
+											"key": "username",
+											"value": "nonskywalker1"
+										},
+										{
+											"key": "email",
+											"value": "nonskywalker1@poligran.edu.co"
+										},
+										{
+											"key": "password",
+											"value": "123123"
+										},
+										{
+											"key": "profilePic",
+											"value": "img.jpg"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Registrar Profesor 2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createProfessor?firstName=Anakin&lastName=Skywalker&username=anisky2&email=anisky2@poligran.edu.co&password=123123&profilePic=img.jpg",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createProfessor"
+									],
+									"query": [
+										{
+											"key": "firstName",
+											"value": "Anakin"
+										},
+										{
+											"key": "lastName",
+											"value": "Skywalker"
+										},
+										{
+											"key": "username",
+											"value": "anisky2"
+										},
+										{
+											"key": "email",
+											"value": "anisky2@poligran.edu.co"
+										},
+										{
+											"key": "password",
+											"value": "123123"
+										},
+										{
+											"key": "profilePic",
+											"value": "img.jpg"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d5d0ce9d-8367-4288-bcbd-9d8234046b8f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a0c6fff8-c959-4ba8-b886-c648e56664fb",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Test Inserción",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Obtener todos los Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/getAllUsers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getAllUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Usuario por Username",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "username",
+								"value": "ALEX_GAL",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/getUserByUsername",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getUserByUsername"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Usuario por Email",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "gd_andres98@hotmail.com",
+								"type": "text",
+								"equals": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/getUserByEmail",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getUserByEmail"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "gd_andres98@hotmail.com",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Usuario por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/getUserById",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getUserById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/validatedUser?username=GDAndres98&password=12345",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"validatedUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "GDAndres98"
+								},
+								{
+									"key": "password",
+									"value": "12345"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Course",
+			"item": [
+				{
+					"name": "Creación de Cursos",
+					"item": [
+						{
+							"name": "Crear Curso 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createCourse?name=Programación&image=img.jpg&professorId=4",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createCourse"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Programación"
+										},
+										{
+											"key": "image",
+											"value": "img.jpg"
+										},
+										{
+											"key": "professorId",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Crear Curso 2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createCourse?name=Algoritmos&image=img.jpg&professorId=5",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createCourse"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Algoritmos"
+										},
+										{
+											"key": "image",
+											"value": "img.jpg"
+										},
+										{
+											"key": "professorId",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Inserción de Estudiantes",
+					"item": [
+						{
+							"name": "Añadir Estudiante 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/addStudentToCourse?studentId=3&courseId=2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"addStudentToCourse"
+									],
+									"query": [
+										{
+											"key": "studentId",
+											"value": "3"
+										},
+										{
+											"key": "courseId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Añadir Estudiante 2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/addStudentToCourse?studentId=1&courseId=2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"addStudentToCourse"
+									],
+									"query": [
+										{
+											"key": "studentId",
+											"value": "1"
+										},
+										{
+											"key": "courseId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Traer Estudiantes de Clase",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "id",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/getCourseStudentsById",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getCourseStudentsById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Traer Clases de Estudiante",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "id",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/getCourseStudentsById",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getCourseStudentsById"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Creación",
+					"item": [
+						{
+							"name": "Crear Post 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createPost?title=Ayuda por favor&content=No sé cómo funciona este foro&userId=1&courseId=2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createPost"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Ayuda por favor"
+										},
+										{
+											"key": "content",
+											"value": "No sé cómo funciona este foro"
+										},
+										{
+											"key": "userId",
+											"value": "1"
+										},
+										{
+											"key": "courseId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Crear Post 2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createPost?title=Hola a todos&content=Me llamo Antonio en realidad&userId=3&courseId=2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createPost"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Hola a todos"
+										},
+										{
+											"key": "content",
+											"value": "Me llamo Antonio en realidad"
+										},
+										{
+											"key": "userId",
+											"value": "3"
+										},
+										{
+											"key": "courseId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Crear Respuesta 1 a Post 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createSubPost?content=Buenas noches, con qué necesita ayuda?&userId=3&courseId=2&postId=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createSubPost"
+									],
+									"query": [
+										{
+											"key": "content",
+											"value": "Buenas noches, con qué necesita ayuda?"
+										},
+										{
+											"key": "userId",
+											"value": "3"
+										},
+										{
+											"key": "courseId",
+											"value": "2"
+										},
+										{
+											"key": "postId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Visualizar",
+					"item": [
+						{
+							"name": "Ver Post de una Clase",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "id",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/getPostsFromCourse",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"getPostsFromCourse"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ver Post de una Clase Copy",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "id",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/getSubPostFromPost",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"getSubPostFromPost"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Article",
+			"item": [
+				{
+					"name": "Creación",
+					"item": [
+						{
+							"name": "Creción Article 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createArticle?title=Servicios RESTful&author=Interner Gomez&markdownURL=latex.md&dateWritten=2020/05/18",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createArticle"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Servicios RESTful"
+										},
+										{
+											"key": "author",
+											"value": "Interner Gomez"
+										},
+										{
+											"key": "markdownURL",
+											"value": "latex.md"
+										},
+										{
+											"key": "dateWritten",
+											"value": "2020/05/18"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Creción Article 2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createArticle?title=Algoritmos Avaros&author=Don Cormen&markdownURL=latex.md&dateWritten=1998/03/12",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createArticle"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Algoritmos Avaros"
+										},
+										{
+											"key": "author",
+											"value": "Don Cormen"
+										},
+										{
+											"key": "markdownURL",
+											"value": "latex.md"
+										},
+										{
+											"key": "dateWritten",
+											"value": "1998/03/12"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Creción Article 3",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createArticle?title=Grafos para ruta mas corta&author=Don Cormen&markdownURL=latex.md&dateWritten=2009/12/31",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createArticle"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Grafos para ruta mas corta"
+										},
+										{
+											"key": "author",
+											"value": "Don Cormen"
+										},
+										{
+											"key": "markdownURL",
+											"value": "latex.md"
+										},
+										{
+											"key": "dateWritten",
+											"value": "2009/12/31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Creción Article 4",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createArticle?title=Grafos en General&author=Don Cormen&markdownURL=latex.md&dateWritten=2011/03/12",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createArticle"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Grafos en General"
+										},
+										{
+											"key": "author",
+											"value": "Don Cormen"
+										},
+										{
+											"key": "markdownURL",
+											"value": "latex.md"
+										},
+										{
+											"key": "dateWritten",
+											"value": "2011/03/12"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Creción Article 5",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createArticle?title=Este título es largo solo para ver cómo la pantalla al mostrarse pues... un titulo largo&author=Don Cormen&markdownURL=latex.md&dateWritten=1998/03/12",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createArticle"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Este título es largo solo para ver cómo la pantalla al mostrarse pues... un titulo largo"
+										},
+										{
+											"key": "author",
+											"value": "Don Cormen"
+										},
+										{
+											"key": "markdownURL",
+											"value": "latex.md"
+										},
+										{
+											"key": "dateWritten",
+											"value": "1998/03/12"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Traer todos los Articulos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/getAllArticles",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getAllArticles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Traer Articulo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/getArticleById",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getArticleById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Traer pagina de articulos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/getSearchArticle?prefix=\"graf\"",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getSearchArticle"
+							],
+							"query": [
+								{
+									"key": "prefix",
+									"value": "\"graf\""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Section",
+			"item": [
+				{
+					"name": "Creación",
+					"item": [
+						{
+							"name": "Crear Sección 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createSection?title=Grafos conexos&description=Son grafos que estan siempre unidos&courseId=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createSection"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Grafos conexos"
+										},
+										{
+											"key": "description",
+											"value": "Son grafos que estan siempre unidos"
+										},
+										{
+											"key": "courseId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Crear Sección 2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createSection?title=Grafos DAG&description=Son grafos dirigidos aciclicos&courseId=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createSection"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Grafos DAG"
+										},
+										{
+											"key": "description",
+											"value": "Son grafos dirigidos aciclicos"
+										},
+										{
+											"key": "courseId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Inserción de Articulos",
+					"item": [
+						{
+							"name": "Insertar Articulo 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/addArticleToSection?articleId=1&sectionId=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"addArticleToSection"
+									],
+									"query": [
+										{
+											"key": "articleId",
+											"value": "1"
+										},
+										{
+											"key": "sectionId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Insertar Articulo 2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/addArticleToSection?articleId=2&sectionId=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"addArticleToSection"
+									],
+									"query": [
+										{
+											"key": "articleId",
+											"value": "2"
+										},
+										{
+											"key": "sectionId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Insertar Articulo 3",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/addArticleToSection?articleId=2&sectionId=2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"addArticleToSection"
+									],
+									"query": [
+										{
+											"key": "articleId",
+											"value": "2"
+										},
+										{
+											"key": "sectionId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Obtener todos las secciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/getAllSections",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getAllSections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos las secciones de un Curso",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "id",
+								"value": "1",
+								"equals": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/getSectionsByCourseId",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getSectionsByCourseId"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "Creación",
+					"item": [
+						{
+							"name": "Crear Tag 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createTag?name=Grafos&level=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createTag"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Grafos"
+										},
+										{
+											"key": "level",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Crear Tag 2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createTag?name=Distancia mas corta&level=2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createTag"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Distancia mas corta"
+										},
+										{
+											"key": "level",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Crear Tag 3",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/createTag?name=Programación Dinámica&level=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"createTag"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Programación Dinámica"
+										},
+										{
+											"key": "level",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Inserción de Tags a Articulos",
+					"item": [
+						{
+							"name": "Insertar Tag 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/addTagtoArticle?tagId=1&articleId=3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"addTagtoArticle"
+									],
+									"query": [
+										{
+											"key": "tagId",
+											"value": "1"
+										},
+										{
+											"key": "articleId",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Insertar Tag 2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/addTagtoArticle?tagId=2&articleId=3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"addTagtoArticle"
+									],
+									"query": [
+										{
+											"key": "tagId",
+											"value": "2"
+										},
+										{
+											"key": "articleId",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Insertar Tag 3",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/addTagtoArticle?tagId=1&articleId=4",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"addTagtoArticle"
+									],
+									"query": [
+										{
+											"key": "tagId",
+											"value": "1"
+										},
+										{
+											"key": "articleId",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7bf67ab3-1f04-4896-b1ef-650377eb4299",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "d8db519c-8384-478a-8ce7-ed55287f297c",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Obtener Artículos por Tag",
+					"item": [
+						{
+							"name": "Obtener Articulos 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/addTagtoArticle?tagId=2&articleId=3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"addTagtoArticle"
+									],
+									"query": [
+										{
+											"key": "tagId",
+											"value": "2"
+										},
+										{
+											"key": "articleId",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4204a6eb-c823-4dae-93f2-d47799e7b9f3",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "1355833f-4ec3-465a-acb2-a0cc735093ec",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Obetener todos los Tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/getAllTags",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getAllTags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Tags por nivel",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "level",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/getTagsByLevel",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getTagsByLevel"
+							],
+							"query": [
+								{
+									"key": "level",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Problems",
+			"item": [
+				{
+					"name": "Crear Problema 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/createProblem?title=Suma&author=CodeForces&markdownURL=Sume dos números&timeLimit=100&memoryLimit=100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"createProblem"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Suma"
+								},
+								{
+									"key": "author",
+									"value": "CodeForces"
+								},
+								{
+									"key": "markdownURL",
+									"value": "Sume dos números"
+								},
+								{
+									"key": "timeLimit",
+									"value": "100"
+								},
+								{
+									"key": "memoryLimit",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Problema 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/createProblem?title=Resta&author=CodeForces&markdownURL=Reste dos números&timeLimit=100&memoryLimit=100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"createProblem"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Resta"
+								},
+								{
+									"key": "author",
+									"value": "CodeForces"
+								},
+								{
+									"key": "markdownURL",
+									"value": "Reste dos números"
+								},
+								{
+									"key": "timeLimit",
+									"value": "100"
+								},
+								{
+									"key": "memoryLimit",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Caso de Prueba 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/addTestCase?problemId=1&tcInput=1 1&tcOutput=2&tcDifficulty=100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"addTestCase"
+							],
+							"query": [
+								{
+									"key": "problemId",
+									"value": "1"
+								},
+								{
+									"key": "tcInput",
+									"value": "1 1"
+								},
+								{
+									"key": "tcOutput",
+									"value": "2"
+								},
+								{
+									"key": "tcDifficulty",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Caso de Prueba 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/addTestCase?problemId=1&tcInput=2 3&tcOutput=5&tcDifficulty=100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"addTestCase"
+							],
+							"query": [
+								{
+									"key": "problemId",
+									"value": "1"
+								},
+								{
+									"key": "tcInput",
+									"value": "2 3"
+								},
+								{
+									"key": "tcOutput",
+									"value": "5"
+								},
+								{
+									"key": "tcDifficulty",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Caso de Prueba 3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/addTestCase?problemId=2&tcInput=3 2&tcOutput=1&tcDifficulty=100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"addTestCase"
+							],
+							"query": [
+								{
+									"key": "problemId",
+									"value": "2"
+								},
+								{
+									"key": "tcInput",
+									"value": "3 2"
+								},
+								{
+									"key": "tcOutput",
+									"value": "1"
+								},
+								{
+									"key": "tcDifficulty",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Problema 1 Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/getAllProblems",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getAllProblems"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Problema 1 Copy Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/getAllTC",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getAllTC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Problem Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Problem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/removeProblem?problemId=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"removeProblem"
+							],
+							"query": [
+								{
+									"key": "problemId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "876fdd1b-63dc-462a-a286-d4e375d104a7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "99eb6727-c3fb-4a66-98c8-786ced7540e7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
