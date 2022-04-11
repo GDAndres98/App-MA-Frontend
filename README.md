@@ -1,6 +1,6 @@
 # Muestra de App
 
-Extracto del trabajo de grado [Diseño e implementación de un prototipo de plataforma de apoyo al aprendizaje de la programación de computadores y la algoritmia para los programas de ingeniería del Politécnico Grancolombiano](https://github.com/GDAndres98/App-MA-Frontend/blob/master/doc/Tesis%20Marlon%20Andres.pdf)
+Extracto del trabajo de grado [Diseño e implementación de un prototipo de plataforma de apoyo al aprendizaje de la programación de computadores y la algoritmia para los programas de ingeniería del Politécnico Grancolombiano](https://github.com/GDAndres98/App-MA-Frontend/blob/master/doc/Tesis%20Marlon%20Andres.pdf?raw=true)
 
 ## Resultados
 
